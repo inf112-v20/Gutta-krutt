@@ -32,13 +32,13 @@ public class HelloWorld implements ApplicationListener {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tiledmap = tmxLoader.load("../../../assets/testBoard.tmx");
+        tiledmap = tmxLoader.load("assets/testBoard.tmx");
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
-        renderer = new OrthogonalTiledMapRenderer(tiledmap, 1/300);
+        renderer = new OrthogonalTiledMapRenderer(tiledmap, 1);
 
-        camera.setToOrtho(false, (float) 2.5 ,5);
+        camera.setToOrtho(false, 1500 ,1500);
         camera.update();
         renderer.setView(camera);
 
