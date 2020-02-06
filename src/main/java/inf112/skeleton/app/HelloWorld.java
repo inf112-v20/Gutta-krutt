@@ -1,7 +1,6 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.assets.loaders.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -17,7 +16,7 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
 public class HelloWorld extends InputAdapter implements ApplicationListener  {
-    private  OrthogonalTiledMapRenderer renderer;
+    private OrthogonalTiledMapRenderer renderer;
     private TiledMap tiledmap;
     private TiledMapTileLayer Hole;
     private TiledMapTileLayer Board;
@@ -27,9 +26,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
     private Vector2 playerPosition;
-
-
-
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -49,23 +45,24 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tiledmap, 1);
 
+
         camera.setToOrtho(false, 1500 ,1500);
         camera.update();
         renderer.setView(camera);
 
 
-
         Board = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
         Flag = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
         Hole = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
+        playerLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Player");
 
         //player
-        Texture texture = new Texture(Gdx.files.internal("player.png"));
+        Texture texture = new Texture("assets/player.png");
         TextureRegion textureRegion = new TextureRegion(texture);
         //[] row [] column
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
-        System.out.println(pictures[0][0]);
+        System.out.println(pictures[0][1]);
 
         player = new TiledMapTileLayer.Cell();
         playerWon = new TiledMapTileLayer.Cell();
@@ -100,7 +97,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
 
         renderer.render();
 
-        playerLayer.setCell(100,100,player);
+        playerLayer.setCell(0,0,player);
 
     }
 
