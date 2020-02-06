@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -16,7 +17,6 @@ public class HelloWorld implements ApplicationListener {
     private  OrthogonalTiledMapRenderer renderer;
     private TiledMap tiledmap;
     private TiledMapTileLayer Hole;
-    //private TiledMapTileLayer Player;
     private TiledMapTileLayer Board;
     private TiledMapTileLayer Flag;
 
@@ -33,6 +33,7 @@ public class HelloWorld implements ApplicationListener {
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tiledmap = tmxLoader.load("assets/testBoard.tmx");
+            
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
