@@ -11,18 +11,24 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+
 
 public class HelloWorld implements ApplicationListener {
-    private  OrthogonalTiledMapRenderer renderer;
+    private OrthogonalTiledMapRenderer renderer;
     private TiledMap tiledmap;
     private TiledMapTileLayer Hole;
-    //private TiledMapTileLayer Player;
     private TiledMapTileLayer Board;
     private TiledMapTileLayer Flag;
-
+    private Cell player;
+    private Cell playerWon;
+    private Cell playerDied;
+    private Vector2 pos;
 
     private SpriteBatch batch;
     private BitmapFont font;
+
 
     @Override
     public void create() {
@@ -30,15 +36,19 @@ public class HelloWorld implements ApplicationListener {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
+        //initialize player texture
+
+
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tiledmap = tmxLoader.load("../../../assets/testBoard.tmx");
+        tiledmap = tmxLoader.load("assets/testBoard.tmx");
+
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
-        renderer = new OrthogonalTiledMapRenderer(tiledmap, 1/300);
+        renderer = new OrthogonalTiledMapRenderer(tiledmap, 1);
 
-        camera.setToOrtho(false, (float) 2.5 ,5);
+        camera.setToOrtho(false, (float) 1500 ,1500);
         camera.update();
         renderer.setView(camera);
 
