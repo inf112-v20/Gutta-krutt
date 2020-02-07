@@ -17,7 +17,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Game extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer renderer;
-    private TiledMap tiledmap;
+    private TiledMap tilemap;
     private TiledMapTileLayer holeLayer;
     private TiledMapTileLayer boardLayer;
     private TiledMapTileLayer flagLayer;
@@ -26,6 +26,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
     private Vector2 playerPosition;
+
+    //the length of one of the sides of the quadratic board
+    final private int BOARDSIZE = 5;
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -41,41 +44,37 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tiledmap = tmxLoader.load("assets/testBoard.tmx");
+        tilemap = tmxLoader.load("assets/testBoard.tmx");
             
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
-        renderer = new OrthogonalTiledMapRenderer(tiledmap, 1);
-
+        renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
 
         camera.setToOrtho(false, 1500 ,1500);
         camera.update();
         renderer.setView(camera);
 
 
-        boardLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
-        flagLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
-        holeLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
-        playerLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Player");
+        boardLayer = (TiledMapTileLayer) tilemap.getLayers().get("Board");
+        flagLayer = (TiledMapTileLayer) tilemap.getLayers().get("Flag");
+        holeLayer = (TiledMapTileLayer) tilemap.getLayers().get("Hole");
+        playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
 
-        //player
+        //loading in player texture
         Texture texture = new Texture("assets/player.png");
         TextureRegion textureRegion = new TextureRegion(texture);
-        //[] row [] column
+        //splitting the picture into squares [row][column]
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         player = new TiledMapTileLayer.Cell();
         playerWon = new TiledMapTileLayer.Cell();
         playerDied = new TiledMapTileLayer.Cell();
 
-        StaticTiledMapTile playerTile = new StaticTiledMapTile(pictures[0][0]);
-        StaticTiledMapTile playerDiedTile = new StaticTiledMapTile(pictures[0][1]);
-        StaticTiledMapTile playerWonTile = new StaticTiledMapTile(pictures[0][2]);
-
-        player.setTile(playerTile);
-        playerWon.setTile(playerDiedTile);
-        playerDied.setTile(playerWonTile);
+        //instantiating and setting the different player pictures
+        player.setTile(new StaticTiledMapTile(pictures[0][0]));
+        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
+        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
 
         playerPosition = new Vector2(PlayerStartingX, PlayerStartingY);
         Gdx.input.setInputProcessor(this);
@@ -119,14 +118,15 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
+
         playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y, null);
-        if(keycode == Input.Keys.UP) {
+        if(keycode == Input.Keys.UP && playerPosition.y+1 < BOARDSIZE){
             playerPosition.y += 1;
-        } else if(keycode == Input.Keys.DOWN) {
+        } else if(keycode == Input.Keys.DOWN && playerPosition.y-1 >= 0) {
             playerPosition.y -=1;
-        } else if(keycode == Input.Keys.LEFT) {
+        } else if(keycode == Input.Keys.LEFT && playerPosition.x-1 >= 0) {
             playerPosition.x -= 1;
-        } else if(keycode == Input.Keys.RIGHT) {
+        } else if(keycode == Input.Keys.RIGHT && playerPosition.x+1 < BOARDSIZE) {
             playerPosition.x += 1;
         } else {
             return false;
@@ -135,3 +135,5 @@ public class Game extends InputAdapter implements ApplicationListener  {
         return true;
     }
 }
+
+
