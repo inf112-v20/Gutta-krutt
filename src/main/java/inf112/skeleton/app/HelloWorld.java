@@ -18,9 +18,9 @@ import com.badlogic.gdx.math.Vector2;
 public class HelloWorld extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer renderer;
     private TiledMap tiledmap;
-    private TiledMapTileLayer Hole;
-    private TiledMapTileLayer Board;
-    private TiledMapTileLayer Flag;
+    private TiledMapTileLayer holeLayer;
+    private TiledMapTileLayer boardLayer;
+    private TiledMapTileLayer flagLayer;
     private TiledMapTileLayer playerLayer;
     private TiledMapTileLayer.Cell player;
     private TiledMapTileLayer.Cell playerWon;
@@ -54,9 +54,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         renderer.setView(camera);
 
 
-        Board = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
-        Flag = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
-        Hole = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
+        boardLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
+        flagLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
+        holeLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
         playerLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Player");
 
         //player
@@ -91,6 +91,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
     public void render() {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+
 
         playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,player);
         renderer.render();
