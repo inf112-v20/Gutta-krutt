@@ -1,7 +1,6 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.assets.loaders.TextureLoader;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -13,56 +12,23 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-<<<<<<< HEAD
-<<<<<<< HEAD
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-
-
-public class HelloWorld implements ApplicationListener {
-    private OrthogonalTiledMapRenderer renderer;
-=======
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
-=======
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
-import com.badlogic.gdx.math.Vector2;
-
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
 public class HelloWorld extends InputAdapter implements ApplicationListener  {
-    private  OrthogonalTiledMapRenderer renderer;
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
+    private OrthogonalTiledMapRenderer renderer;
     private TiledMap tiledmap;
     private TiledMapTileLayer Hole;
     private TiledMapTileLayer Board;
     private TiledMapTileLayer Flag;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private Cell player;
-    private Cell playerWon;
-    private Cell playerDied;
-    private Vector2 pos;
-=======
-=======
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
     private TiledMapTileLayer playerLayer;
     private TiledMapTileLayer.Cell player;
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
     private Vector2 playerPosition;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
-
-
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
-
     private SpriteBatch batch;
     private BitmapFont font;
-
 
     @Override
     public void create() {
@@ -70,49 +36,33 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        //initialize player texture
-
-
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tiledmap = tmxLoader.load("assets/testBoard.tmx");
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
-=======
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
+            
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tiledmap, 1);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        camera.setToOrtho(false, (float) 1500 ,1500);
-=======
+
         camera.setToOrtho(false, 1500 ,1500);
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
-=======
-        camera.setToOrtho(false, 1500 ,1500);
->>>>>>> 8271eb1c45b49dfbc8968c958f6d398c15e21778
         camera.update();
         renderer.setView(camera);
-
 
 
         Board = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
         Flag = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
         Hole = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
+        playerLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Player");
 
         //player
-        Texture texture = new Texture(Gdx.files.internal("player.png"));
+        Texture texture = new Texture("assets/player.png");
         TextureRegion textureRegion = new TextureRegion(texture);
         //[] row [] column
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
-        System.out.println(pictures[0][0]);
+        System.out.println(pictures[0][1]);
 
         player = new TiledMapTileLayer.Cell();
         playerWon = new TiledMapTileLayer.Cell();
@@ -147,7 +97,7 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
 
         renderer.render();
 
-        playerLayer.setCell(100,100,player);
+        playerLayer.setCell(0,0,player);
 
     }
 
