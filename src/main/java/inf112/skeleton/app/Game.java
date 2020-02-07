@@ -92,8 +92,16 @@ public class Game extends InputAdapter implements ApplicationListener  {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
-
-        playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,player);
+        //displaying the corresponding picture depending on what tile you are standing on
+        if(holeLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,playerWon);
+        }
+        else if (flagLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,playerDied);
+        }
+        else {
+            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,player);
+        }
         renderer.render();
     }
 
