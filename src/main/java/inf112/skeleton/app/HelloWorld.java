@@ -36,6 +36,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
+        int PlayerStartingX = 0;
+        int PlayerStartingY = 0;
+
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tiledmap = tmxLoader.load("assets/testBoard.tmx");
@@ -62,8 +65,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         //[] row [] column
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
-        System.out.println(pictures[0][1]);
-
         player = new TiledMapTileLayer.Cell();
         playerWon = new TiledMapTileLayer.Cell();
         playerDied = new TiledMapTileLayer.Cell();
@@ -76,12 +77,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         playerWon.setTile(playerDiedTile);
         playerDied.setTile(playerWonTile);
 
-        playerPosition = new Vector2(100, 100);
-
-        //Gdx.input.setInputProcessor((InputProcessor) this);
-
-
-
+        playerPosition = new Vector2(PlayerStartingX, PlayerStartingY);
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
@@ -95,10 +92,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
+        playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,player);
         renderer.render();
-
-        playerLayer.setCell(0,0,player);
-
     }
 
     @Override
@@ -115,6 +110,19 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y, null);
+        if(keycode == Input.Keys.UP) {
+            playerPosition.y += 1;
+        } else if(keycode == Input.Keys.DOWN) {
+            playerPosition.y -=1;
+        } else if(keycode == Input.Keys.LEFT) {
+            playerPosition.x -= 1;
+        } else if(keycode == Input.Keys.RIGHT) {
+            playerPosition.x += 1;
+        } else {
+            return false;
+        }
+        playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, player);
+        return true;
     }
 }
