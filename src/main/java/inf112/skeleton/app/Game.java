@@ -15,12 +15,12 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
-public class HelloWorld extends InputAdapter implements ApplicationListener  {
+public class Game extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer renderer;
     private TiledMap tiledmap;
-    private TiledMapTileLayer Hole;
-    private TiledMapTileLayer Board;
-    private TiledMapTileLayer Flag;
+    private TiledMapTileLayer holeLayer;
+    private TiledMapTileLayer boardLayer;
+    private TiledMapTileLayer flagLayer;
     private TiledMapTileLayer playerLayer;
     private TiledMapTileLayer.Cell player;
     private TiledMapTileLayer.Cell playerWon;
@@ -35,6 +35,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
+
+        int PlayerStartingX = 0;
+        int PlayerStartingY = 0;
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
@@ -51,9 +54,9 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         renderer.setView(camera);
 
 
-        Board = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
-        Flag = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
-        Hole = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
+        boardLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Board");
+        flagLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
+        holeLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
         playerLayer = (TiledMapTileLayer) tiledmap.getLayers().get("Player");
 
         //player
@@ -61,8 +64,6 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         TextureRegion textureRegion = new TextureRegion(texture);
         //[] row [] column
         TextureRegion[][] pictures = textureRegion.split(300, 300);
-
-        System.out.println(pictures[0][1]);
 
         player = new TiledMapTileLayer.Cell();
         playerWon = new TiledMapTileLayer.Cell();
@@ -76,12 +77,8 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         playerWon.setTile(playerDiedTile);
         playerDied.setTile(playerWonTile);
 
-        playerPosition = new Vector2(100, 100);
-
-        //Gdx.input.setInputProcessor((InputProcessor) this);
-
-
-
+        playerPosition = new Vector2(PlayerStartingX, PlayerStartingY);
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
@@ -95,10 +92,17 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
+        //displaying the corresponding picture depending on what tile you are standing on
+        if(holeLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,playerWon);
+        }
+        else if (flagLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
+            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,playerDied);
+        }
+        else {
+            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,player);
+        }
         renderer.render();
-
-        playerLayer.setCell(0,0,player);
-
     }
 
     @Override
@@ -115,6 +119,19 @@ public class HelloWorld extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
-        return false;
+        playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y, null);
+        if(keycode == Input.Keys.UP) {
+            playerPosition.y += 1;
+        } else if(keycode == Input.Keys.DOWN) {
+            playerPosition.y -=1;
+        } else if(keycode == Input.Keys.LEFT) {
+            playerPosition.x -= 1;
+        } else if(keycode == Input.Keys.RIGHT) {
+            playerPosition.x += 1;
+        } else {
+            return false;
+        }
+        playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, player);
+        return true;
     }
 }
