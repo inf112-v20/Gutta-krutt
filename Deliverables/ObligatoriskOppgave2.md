@@ -27,6 +27,7 @@ Valgene vi har tatt hittil har fungert bra, vi er løsningsorienterte og effekti
 * Foreløpig har vi jobbet mye med parprogrammering derfor har det kommet flere commits fra Sedric.
  
 #### Referat fra møter siden forrige leveranse skal legges ved.
+ * Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
  
 #### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint.
 1. Kommunikasjon mellom møter.
