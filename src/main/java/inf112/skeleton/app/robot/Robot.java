@@ -16,8 +16,8 @@ public class Robot {
     public Robot(Vector2 pos) {
         this.playerPosition = pos;
         this.direction = Direction.EAST;
-
-
+        this.maxHealth = 10;
+        this.currentHealth = 10;
         this.lifesLeft = 3; // Player starts with 3 lifes
     }
 
