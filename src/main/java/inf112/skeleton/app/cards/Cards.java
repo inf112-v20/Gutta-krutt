@@ -2,6 +2,7 @@ package inf112.skeleton.app.cards;
 
 public class Cards {
 
+    //Variables
     private int distance;
     private int priority;
     private Direction direction;
