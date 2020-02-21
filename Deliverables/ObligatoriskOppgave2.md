@@ -40,15 +40,15 @@ For hvert krav dere jobber med, må dere lage
 2) akseptansekriterier
 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
  
-#### Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
+* Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
  
-#### Forklar kort hvordan dere har prioritert oppgavene fremover
+* Forklar kort hvordan dere har prioritert oppgavene fremover
  
-#### Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
+*  Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
  
-#### Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
+*  Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
  
-#### Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
+*  Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
  
 
 
@@ -59,13 +59,13 @@ Brukerhistorie - Kort:
 * Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
 #### Arbeidsoppgaver:
-Konstruer de 7 forskjellige sekvenskortene. 
+* Konstruer de 7 forskjellige sekvenskortene. 
 Lage et system hvor spiller kan velge mellom 9 kort og lagre en sekvens med 5 av kortene.
 Få spiller-objektet til å utføre den lagrede sekvensen, og flytte seg på brettet ut i fra instruksene. 
 Lag en visuell representasjon av systemet.
 
-Akseptansekrav:
-Kort er visuelt korrekt
+#### Akseptansekrav:
+* Kort er visuelt korrekt
 Kortene må korrespondere til riktig bevegelse.
 Posisjon må oppdateres
 
