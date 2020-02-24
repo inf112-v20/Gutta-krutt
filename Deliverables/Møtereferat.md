@@ -55,3 +55,9 @@ Fravær(Sedric Kvarnes - syk)
 * Starte på testene
 * Abstrahere
 * Begynne på testene
+
+#### Til fredag:
+* Sedric - Vegger, conveyerbelts
+* Oskar - Upgrade cards, arbeidskrav og brukerhistorie
+* Vegard - cards
+* Fredrik - Card/Interface
