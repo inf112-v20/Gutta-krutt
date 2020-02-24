@@ -14,15 +14,11 @@ public class CardStack {
 
     }
 
-    public void moveOneCard() {
+    public void moveCard() {
 
     }
 
     public void moveTwoCard() {
-
-    }
-
-    public void moveOneCard() {
 
     }
 }

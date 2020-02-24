@@ -27,8 +27,10 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private TiledMapTileLayer.Cell playerDied;
     private Vector2 playerPosition;
 
-    //the length of one of the sides of the quadratic board
-    final private int BOARDSIZE = 5;
+    //number of tiles per side of the board
+    final private int BOARDSIZE = 12;
+    // pixelSize of each tile
+    final private int TILESIZE = 300;
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -51,7 +53,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
 
-        camera.setToOrtho(false, 1500 ,1500);
+        camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
         camera.update();
         renderer.setView(camera);
 
@@ -91,17 +93,26 @@ public class Game extends InputAdapter implements ApplicationListener  {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 
+
         //displaying the corresponding picture depending on what tile you are standing on
-        if(holeLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,playerWon);
+        displayPlayer();
+
+        renderer.render();
+    }
+
+    public void displayPlayer() {
+        int playerX = (int) playerPosition.x;
+        int playerY = (int) playerPosition.y;
+
+        if(holeLayer.getCell(playerX, playerY) != null) {
+            playerLayer.setCell(playerX, playerY, playerWon);
         }
-        else if (flagLayer.getCell((int) playerPosition.x, (int) playerPosition.y) != null) {
-            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,playerDied);
+        else if (flagLayer.getCell(playerX, playerY) != null) {
+            playerLayer.setCell(playerX, playerY, playerDied);
         }
         else {
-            playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y,player);
+            playerLayer.setCell(playerX, playerY, player);
         }
-        renderer.render();
     }
 
     @Override
