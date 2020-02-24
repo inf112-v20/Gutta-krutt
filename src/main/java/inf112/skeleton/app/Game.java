@@ -18,10 +18,17 @@ import com.badlogic.gdx.math.Vector2;
 public class Game extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer renderer;
     private TiledMap tilemap;
+
     private TiledMapTileLayer holeLayer;
     private TiledMapTileLayer boardLayer;
     private TiledMapTileLayer flagLayer;
     private TiledMapTileLayer playerLayer;
+    private TiledMapTileLayer northWall;
+    private TiledMapTileLayer eastWall;
+    private TiledMapTileLayer westWall;
+    private TiledMapTileLayer southWall;
+
+    private TiledMapTileLayer westSouthWall;
     private TiledMapTileLayer.Cell player;
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
@@ -47,7 +54,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
-            
+
+        getMapLayers();
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
@@ -56,12 +64,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
         camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
         camera.update();
         renderer.setView(camera);
-
-
-        boardLayer = (TiledMapTileLayer) tilemap.getLayers().get("Board");
-        flagLayer = (TiledMapTileLayer) tilemap.getLayers().get("Flag");
-        holeLayer = (TiledMapTileLayer) tilemap.getLayers().get("Hole");
-        playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
 
         //loading in player texture
         Texture texture = new Texture("assets/player.png");
@@ -80,6 +82,18 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         playerPosition = new Vector2(PlayerStartingX, PlayerStartingY);
         Gdx.input.setInputProcessor(this);
+    }
+
+    public void getMapLayers() {
+        boardLayer = (TiledMapTileLayer) tilemap.getLayers().get("Board");
+        flagLayer = (TiledMapTileLayer) tilemap.getLayers().get("Flag");
+        holeLayer = (TiledMapTileLayer) tilemap.getLayers().get("Hole");
+        playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+        northWall = (TiledMapTileLayer) tilemap.getLayers().get("North_Walls");
+        eastWall = (TiledMapTileLayer) tilemap.getLayers().get("East_Walls");
+        westWall = (TiledMapTileLayer) tilemap.getLayers().get("West_Wall");
+        southWall = (TiledMapTileLayer) tilemap.getLayers().get("South_Walls");
+        westSouthWall = (TiledMapTileLayer) tilemap.getLayers().get("West_South_Walls");
     }
 
     @Override
@@ -130,7 +144,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
     @Override
     public boolean keyUp(int keycode) {
 
+        //clearing the previouse tile
         playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y, null);
+
         if(keycode == Input.Keys.UP && playerPosition.y+1 < BOARDSIZE){
             playerPosition.y += 1;
         } else if(keycode == Input.Keys.DOWN && playerPosition.y-1 >= 0) {
@@ -142,6 +158,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
         } else {
             return false;
         }
+
+        //setting the new player tile
         playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, player);
         return true;
     }
