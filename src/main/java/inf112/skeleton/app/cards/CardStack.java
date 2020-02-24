@@ -28,6 +28,16 @@ public class CardStack {
 
     }
 
+    // There is 6 u turn cards with priority between: 10 - 60
+    public HashMap<Integer, Integer> uTurnCard() {
+        HashMap<Integer, Integer>uTurnCards = new HashMap<>();
+        for (int i = 10; i < 61; i += 10) {
+            uTurnCards.put(i, 0);
+        }
+        //Returns 6 "u-turn" cards with priority value
+        return uTurnCards;
+    }
+
     // There is 18 rotate right cards with priority between: 80 - 420
     public HashMap<Integer, Integer> rotateRight() {
         HashMap<Integer, Integer>rotateRightCards = new HashMap<>();
@@ -78,16 +88,6 @@ public class CardStack {
         return moveThreeCards;
     }
 
-    // There is 6 u turn cards with priority between: 10 - 60
-    public HashMap<Integer, Integer> uTurnCard() {
-        HashMap<Integer, Integer>uTurnCards = new HashMap<>();
-        for (int i = 10; i < 61; i += 10) {
-            uTurnCards.put(i, 0);
-        }
-        //Returns 6 "u-turn" cards with priority value
-        return uTurnCards;
-    }
-
     // There is 6 back up cards with priority between: 430 - 480
     public HashMap<Integer, Integer> backUpCard() {
         HashMap<Integer, Integer> backUpCards = new HashMap<>();
@@ -97,5 +97,4 @@ public class CardStack {
         //Returns 6 "back-up" cards with priority value
         return backUpCards;
     }
-
 }
