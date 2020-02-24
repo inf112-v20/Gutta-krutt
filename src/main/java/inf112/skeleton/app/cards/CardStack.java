@@ -1,8 +1,9 @@
 package inf112.skeleton.app.cards;
 
-import java.util.ArrayList;
+// Imports
 import java.util.HashMap;
 
+// CLass for Card Stack in game
 public class CardStack {
 
     // There is 18 rotate right cards with priority between: 80 - 420
