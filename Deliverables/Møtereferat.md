@@ -54,4 +54,8 @@ Fravær(Sedric Kvarnes - syk)
 * Fordele arbeidsoppgaver
 * Starte på testene
 * Abstrahere
-* Begynne på testene
+####Arbeidsoppgaver til fredag
+* Sedric - board og objekter
+* Vegard - Tester og cards
+* Oskar - Brukerhistorier og arbeidskrav
+* Fredrik - Cards og dealer
