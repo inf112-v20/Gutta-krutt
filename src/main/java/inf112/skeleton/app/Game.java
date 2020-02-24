@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.Player.Player;
 
 public class Game extends InputAdapter implements ApplicationListener  {
     private OrthogonalTiledMapRenderer renderer;
@@ -48,9 +49,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-        int PlayerStartingX = 0;
-        int PlayerStartingY = 0;
-
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
@@ -80,7 +78,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
         playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
         playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
 
-        playerPosition = new Vector2(PlayerStartingX, PlayerStartingY);
+        Player player = new Player(0,0);
+
         Gdx.input.setInputProcessor(this);
     }
 
