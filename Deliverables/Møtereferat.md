@@ -19,6 +19,8 @@ Sette opp fremtidige møter
 * Deloppgave 1 og 2
 
 ## Møtereferat 03.02.2020
+Fravær(Sedric Kvarnes - syk)
+
 * Undersøk LibGdx
 * Minstekrav
 * Deloppgave 3
@@ -39,6 +41,7 @@ Fravær(Sedric Kvarnes - syk)
 * Spiller kan ikke forlate brettet
 
 ## Møtereferat 19.02.2020
+(Fravær Oscar - syk)
 * Starte på Oblig 2
 * Hovedfokuset ligger på et fungerende Brett og en kortstokk
 * Vegard jobber nå mer med tester fremover
@@ -46,3 +49,9 @@ Fravær(Sedric Kvarnes - syk)
 * Fullført deloppgave 1. Oblig 2
 * Laget ett komplett spillbrett 
 * Begynt på kortstokk 
+
+## Møtereferat 24.02.2020
+* Fordele arbeidsoppgaver
+* Starte på testene
+* Abstrahere
+* Begynne på testene
