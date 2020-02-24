@@ -44,7 +44,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/testBoard.tmx");
+        tilemap = tmxLoader.load("assets/map1.tmx");
             
 
         //initialize a new camera and renderer for camera

@@ -52,4 +52,6 @@ public class Robot {
         lifesLeft -= 1;
     }
 
+    public Direction getDirection() { return this.direction; }
+
 }
