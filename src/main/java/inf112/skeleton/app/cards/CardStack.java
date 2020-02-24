@@ -7,59 +7,66 @@ import java.util.HashMap;
 public class CardStack {
 
     // There is 18 rotate right cards with priority between: 80 - 420
-    public void rotateRight() {
+    public HashMap<Integer, Integer> rotateRight() {
         HashMap<Integer, Integer>rotateRightCards = new HashMap<Integer, Integer>();
         for (int i = 80; i < 421; i += 20) {
             rotateRightCards.put(i, 0);
         }
+        return rotateRightCards;
     }
 
     // There is 18 rotate left cards  with priority between: 70 - 410
-    public void rotateLeft() {
+    public HashMap<Integer, Integer> rotateLeft() {
         HashMap<Integer, Integer> rotateLeftCards = new HashMap<Integer, Integer>();
         for (int i = 70; i < 411; i += 20) {
             rotateLeftCards.put(i, 0);
         }
+        return rotateLeftCards;
     }
 
     // There is 18 move one (spaces) cards with priority between: 490 - 661
-    public void moveOne(int distance, int priority) {
+    public HashMap<Integer, Integer> moveOne(int distance, int priority) {
         HashMap<Integer, Integer>moveOneCards = new HashMap<Integer, Integer>();
         for (int i = 490; i < 661; i += 10) {
             moveOneCards.put(i, 1);
         }
+        return moveOneCards;
     }
 
     // There is 12 move two (spaces) cards with priority between: 670 - 780
-    public void moveTwo() {
+    public HashMap<Integer, Integer> moveTwo() {
         HashMap<Integer, Integer> moveTwoCards = new HashMap<Integer, Integer>();
         for (int i = 670; i < 781; i += 10) {
             moveTwoCards.put(i, 2);
         }
+        return moveTwoCards;
     }
 
     // There is 6 move three (spaces) cards with priority between: 790 - 840
-    public void moveThree() {
+    public HashMap<Integer, Integer> moveThree() {
         HashMap<Integer, Integer> moveThreeCards = new HashMap<Integer, Integer>();
         for (int i = 790; i < 841; i += 10) {
             moveThreeCards.put(i, 3);
         }
+        return moveThreeCards;
     }
 
     // There is 6 u turn cards with priority between: 10 - 60
-    public void uTurnCard() {
+    public HashMap<Integer, Integer> uTurnCard() {
         HashMap<Integer, Integer>uTurnCards = new HashMap<Integer, Integer>();
         for (int i = 10; i < 61; i += 10) {
             uTurnCards.put(i, 0);
         }
+        return uTurnCards;
     }
 
     // There is 6 back up cards with priority between: 430 - 480
-    public void backUpCard() {
+    public HashMap<Integer, Integer> backUpCard() {
         HashMap<Integer, Integer> backUpCards = new HashMap<Integer, Integer>();
         for (int i = 430; i < 481; i += 10) {
             backUpCards.put(i, -1);
         }
+        return backUpCards;
     }
 
 }
