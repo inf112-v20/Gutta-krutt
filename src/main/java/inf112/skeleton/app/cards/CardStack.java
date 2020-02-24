@@ -28,7 +28,7 @@ public class CardStack {
     public void uTurnCard() {
         int[] priorityList = new int[5];
         int index = 0;
-        for (int pri = 70; pri < 411; pri += 20) {
+        for (int pri = 10; pri < 61; pri += 10) {
             priorityList[index] = pri;
             index++;
         }
@@ -61,7 +61,7 @@ public class CardStack {
     public void backUpCard() {
         int[] priorityList = new int[5];
         int index = 0;
-        for (int pri = 430; pri < 481; pri += 20) {
+        for (int pri = 430; pri < 481; pri += 10) {
             priorityList[index] = pri;
             index++;
         }
@@ -83,7 +83,7 @@ public class CardStack {
     public void moveTwo() {
         int[] priorityList = new int[11];
         int index = 0;
-        for (int pri = 670; pri < 781; pri += 20) {
+        for (int pri = 670; pri < 781; pri += 10) {
             priorityList[index] = pri;
             index++;
         }
@@ -94,7 +94,7 @@ public class CardStack {
     public void moveThree() {
         int[] priorityList = new int[5];
         int index = 0;
-        for (int pri = 790; pri < 841; pri += 20) {
+        for (int pri = 790; pri < 841; pri += 10) {
             priorityList[index] = pri;
             index++;
         }
