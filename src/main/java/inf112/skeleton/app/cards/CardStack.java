@@ -6,26 +6,21 @@ import java.util.HashMap;
 public class CardStack {
 
     private final String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };
-    private final int[] distanceOnCard = { -1, 1, 2, 3};
+    private final int[] distanceToMove = { -1, 1, 2, 3};
 
     public void randomCard() {
-        //Trenger en fakkings random priority og distance/direction
+        //Trenger en random priority og distance/direction
         Random random = new Random();
         int type = random.nextInt(7);
-        if (type < 3) { moveCard(typeOfCards[type], distanceOnCard[type]); }
-        else { turnCard(typeOfCards[type]); }
+        if (type < 3) { moveCard(type, distanceToMove[type]); }
+        else { rotateCard(typeOfCards[type]); }
+    }
+
+    public void moveCard(Integer type, int distance) {
 
     }
 
-    public void moveCard(String type, int distance) {
-
-    }
-
-    public void turnCard(String type) {
-    }
-
-    public void randomPriority(String type, int increment) {
-
+    public void rotateCard(String type) {
     }
 
     // There is 18 rotate right cards with priority between: 80 - 420
