@@ -1,6 +1,6 @@
 package inf112.skeleton.app.cards;
 
-public class Cards {
+public class Card {
 
     //Variables
     private int distance;
