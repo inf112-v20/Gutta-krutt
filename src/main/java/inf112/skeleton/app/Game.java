@@ -15,27 +15,22 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.screen.GameScreen;
 
 public class Game extends InputAdapter implements ApplicationListener  {
-    private OrthogonalTiledMapRenderer renderer;
+    private GameScreen gameScreen;
     private TiledMap tilemap;
 
     private TiledMapTileLayer holeLayer;
     private TiledMapTileLayer boardLayer;
     private TiledMapTileLayer flagLayer;
+    private Player player;
 
     private TiledMapTileLayer northWall;
     private TiledMapTileLayer eastWall;
     private TiledMapTileLayer westWall;
     private TiledMapTileLayer southWall;
     private TiledMapTileLayer westSouthWall;
-
-    private Player player;
-
-    //number of tiles per side of the board
-    final private int BOARDSIZE = 12;
-    // pixelSize of each tile
-    final private int TILESIZE = 300;
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -52,14 +47,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         getMapLayers();
         player = new Player(tilemap);
-
-        //initialize a new camera and renderer for camera
-        OrthographicCamera camera = new OrthographicCamera();
-        renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
-
-        camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
-        camera.update();
-        renderer.setView(camera);
+        gameScreen = new GameScreen(tilemap);
 
         Gdx.input.setInputProcessor(this);
     }
@@ -88,7 +76,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
 
         //displaying the corresponding picture depending on what tile you are standing on
-        renderer.render();
+        gameScreen.getRenderer().render();
     }
 
     @Override
