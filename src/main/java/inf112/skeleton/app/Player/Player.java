@@ -1,37 +1,76 @@
 package inf112.skeleton.app.Player;
 
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Direction;
 
-public class Player {
-    int playerX;
-    int playerY;
-    Vector2 playerPosition;
+public class Player extends InputAdapter {
+    private Vector2 position;
+    private TiledMap tilemap;
+    private TiledMapTileLayer layer;
 
-    public Player(int startingX, int startingY) {
+    private TiledMapTileLayer.Cell playerNormal;
+    private TiledMapTileLayer.Cell playerWon;
+    private TiledMapTileLayer.Cell playerDied;
 
-        playerX = startingX;
-        playerY = startingY;
-        playerPosition = new Vector2(startingX, startingY);
+    public Player(TiledMap tilemap) {
+
+        this.tilemap = tilemap;
+
+        playerNormal = new TiledMapTileLayer.Cell();
+        playerWon = new TiledMapTileLayer.Cell();
+        playerDied = new TiledMapTileLayer.Cell();
+
+        layer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+        renderPlayerTexture();
+        position = new Vector2(0, 0);
+        layer.setCell((int) getPosX(), (int) getPosY(), playerNormal);
     }
 
-    public void move(Direction dir) {
-      switch(dir) {
-          case NORTH:
-              playerY++;
-              break;
-          case SOUTH:
-              playerY--;
-              break;
-          case WEST:
-              playerX--;
-              break;
-          case EAST:
-              playerX++;
-              break;
 
-      }
+    public boolean move(int keycode) {
+
+        //clearing the previouse tile
+        layer.setCell((int) position.x,(int) position.y, null);
+
+        if(keycode == Input.Keys.UP){
+            position.y += 1;
+        } else if(keycode == Input.Keys.DOWN) {
+            position.y -=1;
+        } else if(keycode == Input.Keys.LEFT) {
+            position.x -= 1;
+        } else if(keycode == Input.Keys.RIGHT) {
+            position.x += 1;
+        } else {
+            return false;
+        }
+
+        //setting the new player tile
+        layer.setCell((int) position.x, (int) position.y, playerNormal);
+        return true;
     }
+
+    public float getPosX() {return position.x;}
+
+    public float getPosY() {return position.y;}
+
+    private void renderPlayerTexture() {
+        //loading in player texture
+        Texture texture = new Texture("assets/player.png");
+        TextureRegion textureRegion = new TextureRegion(texture);
+        //splitting the picture into squares [row][column]
+        TextureRegion[][] pictures = textureRegion.split(300, 300);
+
+        playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
+        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
+        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
+
+    }
+
 }

@@ -23,17 +23,14 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private TiledMapTileLayer holeLayer;
     private TiledMapTileLayer boardLayer;
     private TiledMapTileLayer flagLayer;
-    private TiledMapTileLayer playerLayer;
+
     private TiledMapTileLayer northWall;
     private TiledMapTileLayer eastWall;
     private TiledMapTileLayer westWall;
     private TiledMapTileLayer southWall;
-
     private TiledMapTileLayer westSouthWall;
-    private TiledMapTileLayer.Cell player;
-    private TiledMapTileLayer.Cell playerWon;
-    private TiledMapTileLayer.Cell playerDied;
-    private Vector2 playerPosition;
+
+    private Player player;
 
     //number of tiles per side of the board
     final private int BOARDSIZE = 12;
@@ -54,6 +51,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         tilemap = tmxLoader.load("assets/map1.tmx");
 
         getMapLayers();
+        player = new Player(tilemap);
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
@@ -63,23 +61,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
         camera.update();
         renderer.setView(camera);
 
-        //loading in player texture
-        Texture texture = new Texture("assets/player.png");
-        TextureRegion textureRegion = new TextureRegion(texture);
-        //splitting the picture into squares [row][column]
-        TextureRegion[][] pictures = textureRegion.split(300, 300);
-
-        player = new TiledMapTileLayer.Cell();
-        playerWon = new TiledMapTileLayer.Cell();
-        playerDied = new TiledMapTileLayer.Cell();
-
-        //instantiating and setting the different player pictures
-        player.setTile(new StaticTiledMapTile(pictures[0][0]));
-        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
-        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
-
-        Player player = new Player(0,0);
-
         Gdx.input.setInputProcessor(this);
     }
 
@@ -87,7 +68,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
         boardLayer = (TiledMapTileLayer) tilemap.getLayers().get("Board");
         flagLayer = (TiledMapTileLayer) tilemap.getLayers().get("Flag");
         holeLayer = (TiledMapTileLayer) tilemap.getLayers().get("Hole");
-        playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         northWall = (TiledMapTileLayer) tilemap.getLayers().get("North_Walls");
         eastWall = (TiledMapTileLayer) tilemap.getLayers().get("East_Walls");
         westWall = (TiledMapTileLayer) tilemap.getLayers().get("West_Wall");
@@ -108,24 +88,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
 
         //displaying the corresponding picture depending on what tile you are standing on
-        displayPlayer();
-
         renderer.render();
-    }
-
-    public void displayPlayer() {
-        int playerX = (int) playerPosition.x;
-        int playerY = (int) playerPosition.y;
-
-        if(holeLayer.getCell(playerX, playerY) != null) {
-            playerLayer.setCell(playerX, playerY, playerWon);
-        }
-        else if (flagLayer.getCell(playerX, playerY) != null) {
-            playerLayer.setCell(playerX, playerY, playerDied);
-        }
-        else {
-            playerLayer.setCell(playerX, playerY, player);
-        }
     }
 
     @Override
@@ -142,25 +105,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
-
-        //clearing the previouse tile
-        playerLayer.setCell((int) playerPosition.x,(int) playerPosition.y, null);
-
-        if(keycode == Input.Keys.UP && playerPosition.y+1 < BOARDSIZE){
-            playerPosition.y += 1;
-        } else if(keycode == Input.Keys.DOWN && playerPosition.y-1 >= 0) {
-            playerPosition.y -=1;
-        } else if(keycode == Input.Keys.LEFT && playerPosition.x-1 >= 0) {
-            playerPosition.x -= 1;
-        } else if(keycode == Input.Keys.RIGHT && playerPosition.x+1 < BOARDSIZE) {
-            playerPosition.x += 1;
-        } else {
-            return false;
-        }
-
-        //setting the new player tile
-        playerLayer.setCell((int) playerPosition.x, (int) playerPosition.y, player);
-        return true;
+        return player.move(keycode);
     }
 }
 
