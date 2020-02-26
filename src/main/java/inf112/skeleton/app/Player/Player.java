@@ -19,7 +19,7 @@ public class Player extends InputAdapter {
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
 
-    public Player(TiledMap tilemap) {
+    public Player(TiledMap tilemap, int startingX, int startingY) {
 
         this.tilemap = tilemap;
 
@@ -29,27 +29,36 @@ public class Player extends InputAdapter {
 
         layer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         renderPlayerTexture();
-        position = new Vector2(0, 0);
+        position = new Vector2(startingX, startingY);
         layer.setCell((int) getPosX(), (int) getPosY(), playerNormal);
     }
 
 
     public boolean move(int keycode) {
+        switch (keycode) {
+            case Input.Keys.UP:
+                return move(Direction.NORTH);
+            case Input.Keys.DOWN:
+                return move(Direction.SOUTH);
+            case Input.Keys.LEFT:
+                return move(Direction.WEST);
+            case Input.Keys.RIGHT:
+                return move(Direction.EAST);
+            default:
+                return false;
+        }
+    }
+
+    public boolean move(Direction dir) {
 
         //clearing the previouse tile
         layer.setCell((int) position.x,(int) position.y, null);
 
-        if(keycode == Input.Keys.UP){
-            position.y += 1;
-        } else if(keycode == Input.Keys.DOWN) {
-            position.y -=1;
-        } else if(keycode == Input.Keys.LEFT) {
-            position.x -= 1;
-        } else if(keycode == Input.Keys.RIGHT) {
-            position.x += 1;
-        } else {
-            return false;
-        }
+        if(dir == Direction.NORTH){ position.y += 1;}
+        else if(dir == Direction.SOUTH) {position.y -=1;}
+        else if(dir == Direction.WEST) {position.x -= 1;}
+        else if(dir == Direction.EAST) {position.x += 1;}
+        else {return false;}
 
         //setting the new player tile
         layer.setCell((int) position.x, (int) position.y, playerNormal);
@@ -72,5 +81,8 @@ public class Player extends InputAdapter {
         playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
 
     }
+
+    //todo: rotate player
+
 
 }
