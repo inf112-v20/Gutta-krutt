@@ -3,7 +3,7 @@ package inf112.skeleton.app.cards;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class UpgradeCards extends Cards {
+public class UpgradeCards {
     static ArrayList<String[]> upgradeCardStack = new ArrayList<>();
 
     public UpgradeCards(){
