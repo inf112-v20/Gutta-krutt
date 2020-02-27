@@ -1,6 +1,6 @@
 package inf112.skeleton.app.cards;
 
-public class Cards {
+public class Card {
 
     //Variables
     private int distance;
@@ -8,7 +8,7 @@ public class Cards {
     private Direction direction;
 
     // "One" card
-    public void Cards(int distance, int priority, Direction direction) {
+    public Card(int distance, int priority, Direction direction) {
         this.distance = distance;
         this.priority = priority;
         this.direction = direction;
@@ -25,7 +25,7 @@ public class Cards {
     }
 
     // What direction to move
-    public Direction direction(){
+    public Direction getDirection(){
         return direction;
     }
 

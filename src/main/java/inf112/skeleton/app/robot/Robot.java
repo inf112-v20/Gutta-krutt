@@ -21,17 +21,6 @@ public class Robot {
         this.lifesLeft = 3; // Player starts with 3 lifes
     }
 
-    // A function for playerMoves
-    public void movePlayer(int xMove, int yMove) {
-        playerPosition.x += xMove;
-        playerPosition.y += yMove;
-    }
-
-    // A function that rotates player direction
-    public void rotatePlayer(Direction dir) {
-        this.direction = dir;
-    }
-
     // A function to check damage taken
     public int getDamageTaken() {
         return maxHealth - currentHealth;
@@ -51,5 +40,7 @@ public class Robot {
     public void destroyed() {
         lifesLeft -= 1;
     }
+
+    public Direction getDirection() { return this.direction; }
 
 }

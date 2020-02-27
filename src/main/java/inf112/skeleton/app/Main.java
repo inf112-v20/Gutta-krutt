@@ -7,9 +7,9 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 public class Main {
     public static void main(String[] args) {
         LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-        cfg.title = "Dårlig roborally";
-        cfg.width = 500;
-        cfg.height = 500;
+        cfg.title = "RoboRally-Game";
+        cfg.width = 1000;
+        cfg.height = 1000;
 
         new LwjglApplication(new Game(), cfg);
     }
