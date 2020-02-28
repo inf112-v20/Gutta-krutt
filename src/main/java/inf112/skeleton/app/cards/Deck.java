@@ -7,15 +7,13 @@ public class Deck {
 
     private final String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };
     private HashMap<String, int[]> deck;
+    private final Direction[] directionToTurn = {  }
     private final int[] distanceToMove = { -1, 1, 2, 3};
-    private final int[] directionRotation = { 2, -1 , 1 };
 
     public Deck() {
         this.deck = initializeDeck();
     }
 
-    //Takes two random numbers to chose a type of card and a random priority corresponding to this card.
-    //Proceeds to get the corresponding distance and direction change to make a new card.
     public Card randomCard() {
         Random random = new Random();
         int type = random.nextInt(7);
@@ -23,15 +21,13 @@ public class Deck {
 
         String typeOfCard = typeOfCards[type];
         int[] priorityList = deck.get(typeOfCard);
-
         int priority = priorityList[randomPriority];
         int distance = getCorrespondingDistance(type);
-        int directionChange = getCorrespondingDirection(type);
-
-        return new Card(distance, priority, directionChange);
+        Direction direction = getCorrespondingDirection(type);
+        Card card = new Card(distance, priority, direction);
+        return card;
     }
 
-    //Uses typeOfCards and distanceToMove to find the distance corresponding to the type of card.
     public int getCorrespondingDistance(int type) {
         int distance;
         if (type > 3) {
@@ -42,17 +38,21 @@ public class Deck {
         return distance;
     }
 
-    //Uses typeOfCards and directionRotation to find how much the card needs to rotate
-    //currently the idea is to use a direction array.
-    public int getCorrespondingDirection(int type) {
-        int changeDirection;
+    public Direction getCorrespondingDirection(int type) {
+        Direction direction:
         if (type < 4) {
-            changeDirection = 0;
+            direction = Direction.DEFAULT;
         }
         else {
-            changeDirection = directionRotation[type];
+
         }
-        return changeDirection;
+    }
+
+    public void moveCard(Integer type, int distance) {
+
+    }
+
+    public void rotateCard(String type) {
     }
 
     public HashMap<String, int[]> initializeDeck() {
