@@ -5,7 +5,7 @@
 * Rollene fungerer bra slik som de er. Teamleder og kundekontakt blir som de er. 
  
 #### Trenger dere andre roller? Skriv ned noen linjer om hva de ulike rollene faktisk innebærer for dere.
-* Nei, rollefordelingen fungerer som den er, mi har behov for en som kan jobbe ekstra med tester. I løpet av oblig 2 vil Vegard fungere som tester for Gutta Krutt.
+* Nei, rollefordelingen fungerer som den er, vi har behov for en som kan jobbe ekstra med tester. I løpet av oblig 2 vil Vegard fungere som tester for Gutta Krutt.
 * Teamleder: Som teamleder må jeg organisere møter, holde meg oppdatert på hva de andre i teamet holder på med og løse eventuelle problemer som skulle oppstå innad.
 * Utvikler: Som utvikler har man hovedansvar for selve kodingen i prosjektet. 
 * Kundekontakt: Foreløpig har vi ikke hatt behov for en kundekontakt, men vi ser for oss at vi kommer til å trenge det i løp av prosjektet. 
@@ -18,61 +18,66 @@ Valgene vi har tatt hittil har fungert bra, vi er løsningsorienterte og effekti
 #### Hvordan er gruppedynamikken?
 * Gruppedynamikken fungere bra. Hittil har vi hatt noen diskusjoner og løst problemer effektivt. Alle har prestert bra og møtt opp i de ekstra møtene for å kunne fullføre oblig 1 og 2.
  
-#### Hvordan fungerer kommunikasjonen for dere?
+#### Hvordan fungerer kommunikasjonen for dere?forbedringspotensiale
 * Kommunikasjonen flyter bra og alle deltar. Ingen er redd for å ytre meningene sine, og alle forslag blir tatt på alvor. Siden vi alle kjenner hverandre så godt, skjønte vi tidlig at vi måtte fokusere på å holde seriøsiteten oppe. Dette har funket veldig bra.
  
 #### Gjør et kort retrospektiv hvor dere vurderer hva dere har klart til nå, og hva som kan forbedres. Dette skal handle om prosjektstruktur, ikke kode. Dere kan selvsagt diskutere kode, men dette handler ikke om feilretting, men om hvordan man jobber og kommuniserer.
- * 
+* I gruppen har vi kommunisert daglig og har vært flinke til å planlegge uke for uke. Dette har medført at vi alle har hatt en god oversikt over hva som er gjort, hva som må gjøres og hvem som skal gjøre hva. Vi syns forholdet har fungert veldig bra til nå, men et forberingspotensiale i gruppen er å gi en kort breef/gjennomgang (bruke de første 10 min av møtene) av hva som er gjort hvis en av oss merger sub-branchen med master-branch. Dette tror vi kan føre til en bedre flyt, og vi kan spare tid på å slippe å lese gjennom hverandres kode.  
  
 #### Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som committer, må dere legge ved en kort forklaring for hvorfor det er sånn. husk å committe alt. (Også designfiler)
-* Foreløpig har vi jobbet mye med parprogrammering derfor har det kommet flere commits fra Sedric.
+* Foreløpig har vi jobbet mye med parprogrammering, som har medført at commit-ene har blitt ujevnt fordelt på gruppen.
  
 #### Referat fra møter siden forrige leveranse skal legges ved.
- * Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
+* Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
  
 #### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint.
-1. Kommunikasjon mellom møter.
+1. Breefe hverandre når man fullfører en brukerhistorie.
 2. Selvstendig jobbing på prosjektet.
 3. Seriøsitet i møter.
 
 ## Deloppgave 2: krav
-For hvert krav dere jobber med, må dere lage 
-1) ordentlige brukerhistorier 
-2) akseptansekriterier
-3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
- 
-* Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
- 
-* Forklar kort hvordan dere har prioritert oppgavene fremover
- 
-* Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
- 
-* Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
- 
-* Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
- 
+####For hvert krav dere jobber med, må dere lage: 
+#####1) ordentlige brukerhistorier, 2) akseptansekriterier, 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
+ kdfjd
+####Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
+*
+####Forklar kort hvordan dere har prioritert oppgavene fremover
+*
+####Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
+* 
+####Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
+*
+####Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
+ *
 
 
-#### Brukerhistorier:
+### Brukerhistorier:
 
-Brukerhistorie - Kort:
+####Brukerhistorie - Kort:
 
 * Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
-#### Arbeidsoppgaver:
+Arbeidsoppgaver:
 * Konstruer de 7 forskjellige sekvenskortene. 
-Lage et system hvor spiller kan velge mellom 9 kort og lagre en sekvens med 5 av kortene.
-Få spiller-objektet til å utføre den lagrede sekvensen, og flytte seg på brettet ut i fra instruksene. 
-Lag en visuell representasjon av systemet.
+* Lage et overordnet system for kortene. Dette kan være en eller annen type for stack, for eksempel en kortstokk.
+* Gjøre det mulig for spiller å trekke ett til ni kort. 
 
-#### Akseptansekrav:
-* Kort er visuelt korrekt
-Kortene må korrespondere til riktig bevegelse.
-Posisjon må oppdateres
+Akseptansekrav:
+* Kortene må ha lokale varibler som lagrer verdiene som rettning, prioritet og distanse.
+* Kortene må korrespondere til riktig bevegelse.
+* Posisjon av spiller må oppdateres på brettet.  
 
+####Breukerhistorie - Spiller:
+*
+
+Arbeidsoppgaver:
+*
+
+Akesptansekrav:
+*
 
 ## Deloppgave 3: kode
-* Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
+*   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
 * Prosjektet skal kunne bygge, testes og kjøres på Linux, Windows og OSX.
 * Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet.
 * Utførte oppgaver skal være ferdige.

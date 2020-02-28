@@ -21,7 +21,6 @@
 #### Utvikler: Vegard Birkenes
 * Vegard er ikke bare god i koding, han er også flink til å skrive oversiktlig og lesbar kode. Noe gruppen kommer til å tjene på etterhvert som prosjektet blir større.
 
-
 #Team:
 ####Alle i teamet har studert Datateknologi i snart to år og har kompetanse innenfor Java, Haskell og Python. Det kommer godt med i et prosjekt som RoboRally. I INF101 utviklet alle et eget Battleship-spill, som alle fikk godkjent. I tillegg har alle skrevet endel kode fra før så vi forventer en oversiktlig og god kode.
 
@@ -63,7 +62,6 @@ Det skal også være mulig å spille flere sammen over LAN.
 #### Powerdown
 * Timer
 * 30 sec etter siste
-
 
 ####En prioritert liste over hvilke krav dere vil ha med i første iterasjon
 * Synlig brett uten funksjonaliteter
@@ -114,12 +112,10 @@ av roller)
 Det gir også mulighet for forbedringer i dokumentene.
 Viktige dokumenter som for eksempel møtereferat lagres i Wiki på Github repositoriet.
 
-
 * Vi planlegger å prøve ut rollefordelingen vi har satt opp. I løpet av prosjektet har vi planlagt å 
 ha to ekstra gruppemøter i uken. Vi ønsker å fordele oppgavene slik at alle får ett innblikk i de 
 ulike delene av gruppeprosjektet. Det vil si at alle får prøvd seg på programmering, brukerhistorier 
 og diverse som hører til gruppeprosjektet. 
-
 
 ## Deloppgave 4: kode
 
@@ -142,7 +138,6 @@ brettet. Med tiled-applikasjonen var det gjort relativt enkelt, og grid-systemet
 automatisk implementert. Det gjorde at utføringen av brukerhistorien ble litt mindre arbeid enn 
 planlagt, men velger å la den stå for å loggføre tankegangene vi har under arbeidet. 
 
- 
 #### Brukerhistorie - formål i spillet:
 
 * Som spiller trenger jeg et formål på brettet for å kunne vinne/tape. 
@@ -156,7 +151,6 @@ planlagt, men velger å la den stå for å loggføre tankegangene vi har under a
 * Oppdatere .tmx filen for å legge til grafikk av flagg og hull.
 * Når spiller flytter ett trekk mot øst, oppdateres x-koordinat med +1.
 * Når en spiller flytter til et hull/flagg, endres spiller-grafikken.
-
 
 #### Brukerhistorie - Kort:
 
@@ -173,7 +167,6 @@ planlagt, men velger å la den stå for å loggføre tankegangene vi har under a
 * Kortene må korrespondere til riktig bevegelse.
 * Posisjon må oppdateres
 
-
 #### Oppsummering 
 Positivt:
 * Arbeidsfordelingen fungerte fordi alle deltok i prosjektet og alle bidro like mye.
@@ -189,4 +182,3 @@ Negativt
 * Vi traff bra på oppgaven, sliter med å utvikle tester men føler alt i alt at gruppen har fått god kommunikasjon og arbeid driv.
 
 * UML- klassediagrammet ligger i klassediagram.png i deliverables.
-
