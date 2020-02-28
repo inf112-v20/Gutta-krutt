@@ -51,22 +51,30 @@ Valgene vi har tatt hittil har fungert bra, vi er løsningsorienterte og effekti
  *
 
 
-#### Brukerhistorier:
+### Brukerhistorier:
 
-Brukerhistorie - Kort:
+####Brukerhistorie - Kort:
 
 * Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
-#### Arbeidsoppgaver:
+Arbeidsoppgaver:
 * Konstruer de 7 forskjellige sekvenskortene. 
 * Lage et overordnet system for kortene. Dette kan være en eller annen type for stack, for eksempel en kortstokk.
 * Gjøre det mulig for spiller å trekke ett til ni kort. 
 
-#### Akseptansekrav:
-* Kortene må ha lokale varibler som lagrer verdiene som rettning, prioritet og 
-Kortene må korrespondere til riktig bevegelse.
-Posisjon må oppdateres
+Akseptansekrav:
+* Kortene må ha lokale varibler som lagrer verdiene som rettning, prioritet og distanse.
+* Kortene må korrespondere til riktig bevegelse.
+* Posisjon av spiller må oppdateres på brettet.  
 
+####Breukerhistorie - Spiller:
+*
+
+Arbeidsoppgaver:
+*
+
+Akesptansekrav:
+*
 
 ## Deloppgave 3: kode
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
