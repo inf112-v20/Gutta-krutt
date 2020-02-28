@@ -85,8 +85,7 @@ Akesptansekrav:
 *   Bekreft at en vegg ikke tar opp en celle på brettet ved å sjekke om det er mulig som en spiller å gå inn i cellen veggen befinner seg i.
 
 ####Brukerhistorie - Convayerbelt og pushers:
-*   Som brett trenger jeg å kunne påvirke spillers posisjon for å kunne dytte flytte spiller på brettet.
-*   Som spiller trenger jeg å bli
+*   Som brett trenger jeg å kunne påvirke spillers posisjon for å kunne dytte/flytte spiller på brettet.
 
 Arbeidsoppgaver:
 *   Legge til tre nye layers på brettet, samt deres visuelle representasjon. To layer for convayer-belt (Det er to forskjellige typer) og et for pushers.
@@ -100,14 +99,14 @@ Akspetansekrav:
 *   Som spiller trenger jeg et kontrollbrett for å kunne legge ned en sekvens.
 
 Arbeidsoppgaver:
-*  Visuell representasjon av kontrollbrettet. Kontrollbrettet skal inneholde:
-   *  Fem ruter for hvert sekvenskort.
-   *  Et område for å legge ned skadebrikker.
-   *  Et område for å bekrefte powerdown.
-   *  Et område for å vise spillerens liv.
+*   Visuell representasjon av kontrollbrettet. Kontrollbrettet skal inneholde:
+   *   Fem ruter for hvert sekvenskort.
+   *   Et område for å legge ned skadebrikker.
+   *   Et område for å bekrefte powerdown.
+   *   Et område for å vise spillerens liv.
    
 Akspetansekrav
-*  Bekreft at funksjonalitetene i arbeidsoppgavene funker som det skal, som at spiller faktisk har tre liv og at et sekvenskort blir låst fast hvis en spiller har tatt nok skade.
+*   Bekreft at funksjonalitetene i arbeidsoppgavene funker som det skal, som at spiller faktisk har tre liv og at et sekvenskort blir låst fast hvis en spiller har tatt nok skade.
 
 ## Deloppgave 3: kode
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
