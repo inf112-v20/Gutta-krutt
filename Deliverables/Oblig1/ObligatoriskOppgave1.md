@@ -82,7 +82,6 @@ I vårt project board bruker vi kolonnene:
 *   “In progress”
 
 *   “Testing”
-
 *   "Done"
 *   På den måten har vi en god oversikt over hvor langt hver brukerhistorie har kommet i utviklingsprosessen
 

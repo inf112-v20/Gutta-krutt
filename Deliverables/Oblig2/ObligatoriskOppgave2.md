@@ -30,15 +30,15 @@
 *   Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
  
 #### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint
- 1.  Breefe hverandre når man fullfører en brukerhistorie.
- 2.  Selvstendig jobbing på prosjektet.
- 3.  Seriøsitet i møter.
+1.  Breefe hverandre når man fullfører en brukerhistorie.
+2.  Selvstendig jobbing på prosjektet.
+3.  Seriøsitet i møter.
 
 ## Deloppgave 2: krav
 ### For hvert krav dere jobber med, må dere lage
- 1.  ordentlige brukerhistorier
- 2.  akseptansekriterier
- 3.  arbeidsoppgaver
+1.  ordentlige brukerhistorier
+2.  akseptansekriterier
+3.  arbeidsoppgaver
 *   Husk at akseptansekriterier ofte skrives mer eller mindre som tester
 
 ####Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også
