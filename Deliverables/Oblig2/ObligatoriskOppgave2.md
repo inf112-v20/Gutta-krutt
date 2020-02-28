@@ -80,22 +80,22 @@ Posisjon må oppdateres
 * Hvis dere tester manuelt: lever beskrivelser av hvordan testen foregår, slik at gruppeleder kan utføre testen selv.
 
 #### Vurderingskriterier og vekting
-* I denne leveransen blir det ingen presentasjon.
-* Om teamet ønsker, kan all tekst leveres på engelsk.
-* Vurderingskriterier vil bli publisert før deadline.
-* Innleveringsfrist: 28. februar 2020, klokken 16.00
-* For å få oppgaven godkjent, må gruppen:
-* Skrive fornuftige Commit meldinger når endringer lastes opp i gruppens repo.
-* Laste opp de etterspurte resultatene i repo.
-* Laste opp leveransen til github i markdown-format.
-* Leveransen skal lastes opp i egen mappe i repoet, som heter "Deliverables". Hver oblig blir da "ObligX.md" i den mappen. Eventuelle slides kan lastes inn opp til samme mappe.
-* Tag en commit av kildekoden som er leveransen til hver oblig. Dette gjør det enklere for de som skal vurdere å gjøre det på riktig tidspunkt.
-* I tillegg til koden, vil dere også vurderes på teamarbeidet gjennom semesteret.
-* For å få oppdraget godkjent, må hvert lagmedlem:
-* Møte og delta aktivt i minst 75% av ukentlige møter med deres TA og oblig.2 presentasjonen.
-* Utføre de tildelte oppgavene under og mellom disse ukentlige møtene, som avtalt i teamet.
-* Rapportere tilbake til teamet om framdrift og/eller problemer som oppstår, som avtalt i teamet.
-* Vektlegging: Denne leveransen teller 12,5% av sluttkarakteren.
+*   I denne leveransen blir det ingen presentasjon.
+*   Om teamet ønsker, kan all tekst leveres på engelsk.
+*   Vurderingskriterier vil bli publisert før deadline.
+*   Innleveringsfrist: 28. februar 2020, klokken 16.00
+*   For å få oppgaven godkjent, må gruppen:
+*   Skrive fornuftige Commit meldinger når endringer lastes opp i gruppens repo.
+*   Laste opp de etterspurte resultatene i repo.
+*   Laste opp leveransen til github i markdown-format.
+*   Leveransen skal lastes opp i egen mappe i repoet, som heter "Deliverables". Hver oblig blir da "ObligX.md" i den mappen. Eventuelle slides kan lastes inn opp til samme mappe.
+*   Tag en commit av kildekoden som er leveransen til hver oblig. Dette gjør det enklere for de som skal vurdere å gjøre det på riktig tidspunkt.
+*   I tillegg til koden, vil dere også vurderes på teamarbeidet gjennom semesteret.
+*   For å få oppdraget godkjent, må hvert lagmedlem:
+*   Møte og delta aktivt i minst 75% av ukentlige møter med deres TA og oblig.2 presentasjonen.
+*   Utføre de tildelte oppgavene under og mellom disse ukentlige møtene, som avtalt i teamet.
+*   Rapportere tilbake til teamet om framdrift og/eller problemer som oppstår, som avtalt i teamet.
+*   Vektlegging: Denne leveransen teller 12,5% av sluttkarakteren.
 #### Tips
-* Mockito kan være et bra mock-rammeverk i tillegg til JUnit. Generelt sett er det også mulig å skrive manuelle tester. Husk at testene dere skriver skal brukes. (Som nevnt i deloppgave 3)
+*   Mockito kan være et bra mock-rammeverk i tillegg til JUnit. Generelt sett er det også mulig å skrive manuelle tester. Husk at testene dere skriver skal brukes. (Som nevnt i deloppgave 3)
 
