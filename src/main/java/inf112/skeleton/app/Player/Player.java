@@ -69,6 +69,8 @@ public class Player extends InputAdapter {
 
     public float getPosY() {return position.y;}
 
+    public Vector2 getPosition() {return position;}
+
     private void renderPlayerTexture() {
         //loading in player texture
         Texture texture = new Texture("assets/player.png");
