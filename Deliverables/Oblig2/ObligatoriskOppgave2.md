@@ -30,18 +30,18 @@
 *   Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
  
 #### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint
-1.    Breefe hverandre når man fullfører en brukerhistorie.
-2.    Selvstendig jobbing på prosjektet.
-3.    Seriøsitet i møter.
+ 1.  Breefe hverandre når man fullfører en brukerhistorie.
+ 2.  Selvstendig jobbing på prosjektet.
+ 3.  Seriøsitet i møter.
 
 ## Deloppgave 2: krav
-### For hvert krav dere jobber med, må dere lage: 
-1.    ordentlige brukerhistorier
-2.    akseptansekriterier
-3.    arbeidsoppgaver
+### For hvert krav dere jobber med, må dere lage
+ 1.  ordentlige brukerhistorier
+ 2.  akseptansekriterier
+ 3.  arbeidsoppgaver
 *   Husk at akseptansekriterier ofte skrives mer eller mindre som tester
 
-####Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
+####Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også
 *   Alt ligger i Deliverables/Oblig2/ObligatoriskOppgave2.md
 
 #### Forklar kort hvordan dere har prioritert oppgavene fremover
@@ -52,11 +52,11 @@
 
 #### Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
 
-#### Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs).
+#### Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs)
 
-#### Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige.
+#### Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige
 
-## Brukerhistorier
+### Brukerhistorier
 
 #### Brukerhistorie - "Kort"
 *   Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
@@ -89,7 +89,6 @@ Akesptansekrav:
 Arbeidsoppgaver:
 *   Legge til tre nye layers på brettet, samt deres visuelle representasjon. To layer for convayer-belt (Det er to forskjellige typer) og et for pushers. 
 *   Få brettet til å dytte spiller ut i fra hva som påvirker spilleren (convayerbelt eller pusher).
-
 
 Akspetansekrav:
 *   bekreft at posisjonendringen skjer i riktig retning og at avstanden er korrekt.
