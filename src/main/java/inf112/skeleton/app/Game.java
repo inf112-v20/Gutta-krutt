@@ -56,11 +56,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
         boardLayer = (TiledMapTileLayer) tilemap.getLayers().get("Board");
         flagLayer = (TiledMapTileLayer) tilemap.getLayers().get("Flags");
         holeLayer = (TiledMapTileLayer) tilemap.getLayers().get("Holes");
-        northWall = (TiledMapTileLayer) tilemap.getLayers().get("North_Walls");
-        eastWall = (TiledMapTileLayer) tilemap.getLayers().get("East_Walls");
-        westWall = (TiledMapTileLayer) tilemap.getLayers().get("West_Wall");
-        southWall = (TiledMapTileLayer) tilemap.getLayers().get("South_Walls");
-        westSouthWall = (TiledMapTileLayer) tilemap.getLayers().get("West_South_Walls");
     }
 
     @Override
