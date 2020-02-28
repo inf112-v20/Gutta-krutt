@@ -1,5 +1,6 @@
 ## Obligatorisk oppgave 2
 ### Deloppgave 1: Prosjekt og prosjektstruktur
+(Ble en del commits/push fra Fredrik på slutten fordi han økte kodekvaliteten på Oblig1, Oblig2 og ReadMe via Codacy)
 
 #### Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamleder eller kundekontakt
 *   Rollene fungerer bra slik som de er. Teamleder og kundekontakt blir som de er.
