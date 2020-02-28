@@ -1,6 +1,5 @@
 package inf112.skeleton.app.cards;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class UpgradeCards {
@@ -24,13 +23,17 @@ public class UpgradeCards {
 
         switch (chosenCard){
             case 0:
-                dualProcessor(); break;
+                dualProcessor();
+                break;
             case 1:
-                tractorBeam(); break;
+                tractorBeam();
+                break;
             case 2:
-                conditionalProgram(); break;
+                conditionalProgram();
+                break;
             case 3:
-                miniHowitzer(); break;
+                miniHowitzer();
+                break;
             default:
                 System.err.printf("Unvalid value");
         }

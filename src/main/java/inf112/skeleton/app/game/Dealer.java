@@ -2,8 +2,8 @@ package inf112.skeleton.app.game;
 
 public class Dealer {
 
-    int numberOfPlayers; // Number of players
-    int numberOfCards; // Number of cards to be dealt
+    private int numberOfPlayers; // Number of players
+    private int numberOfCards; // Number of cards to be dealt
 
 
     public Dealer(int players) {
@@ -11,7 +11,7 @@ public class Dealer {
     }
 
     public void draw(int cards) {
-
+        this.numberOfCards = cards;
     }
 
     public void dealer() {
