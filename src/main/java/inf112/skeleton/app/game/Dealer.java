@@ -1,5 +1,4 @@
 package inf112.skeleton.app.game;
-import inf112.skeleton.app.cards.CardStack;
 
 public class Dealer {
 
