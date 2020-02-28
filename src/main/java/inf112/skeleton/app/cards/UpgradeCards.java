@@ -23,11 +23,16 @@ public class UpgradeCards {
         int chosenCard = randomNumber.nextInt(100) % upgradeCardStack.size();
 
         switch (chosenCard){
-            case 0: dualProcessor(); break;
-            case 1: tractorBeam(); break;
-            case 2: conditionalProgram(); break;
-            case 3: miniHowitzer(); break;
-            default: miniHowitzer(); break;
+            case 0:
+                dualProcessor(); break;
+            case 1:
+                tractorBeam(); break;
+            case 2:
+                conditionalProgram(); break;
+            case 3:
+                miniHowitzer(); break;
+            default:
+                System.err.printf("Unvalid value");
         }
 
     }

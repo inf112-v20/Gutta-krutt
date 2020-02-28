@@ -5,17 +5,18 @@
 * Rollene fungerer bra slik som de er. Teamleder og kundekontakt blir som de er. 
  
 #### Trenger dere andre roller? Skriv ned noen linjer om hva de ulike rollene faktisk innebærer for dere.
-* Nei, rollefordelingen fungerer som den er. Vi har behov for en som kan jobbe ekstra med tester. I løpet av oblig 2 vil Vegard fungere som tester for Gutta Krutt.
-Teamleder: Som teamleder må jeg organisere møter, holde meg oppdatert på hva de andre i teamet holder på med og løse eventuelle problemer som skulle oppstå innad.
-Utvikler: Som utvikler har man hovedansvar for selve kodingen i prosjektet. 
-Kundekontakt: Foreløpig har vi ikke hatt behov for en kundekontakt, men vi ser for oss at vi kommer til å trenge det i løp av prosjektet. 
+* Nei, rollefordelingen fungerer som den er, mi har behov for en som kan jobbe ekstra med tester. I løpet av oblig 2 vil Vegard fungere som tester for Gutta Krutt.
+* Teamleder: Som teamleder må jeg organisere møter, holde meg oppdatert på hva de andre i teamet holder på med og løse eventuelle problemer som skulle oppstå innad.
+* Utvikler: Som utvikler har man hovedansvar for selve kodingen i prosjektet. 
+* Kundekontakt: Foreløpig har vi ikke hatt behov for en kundekontakt, men vi ser for oss at vi kommer til å trenge det i løp av prosjektet. 
  
 #### Er det noen erfaringer enten team-messig eller mtp prosjektmetodikk som er verdt å nevne? Synes teamet at de valgene dere har tatt er gode? Hvis ikke, hva kan dere gjøre annerledes for å forbedre måten teamet fungerer på?
 * Foreløpig har prosjektmetodikken fungert utmerket og når problemer har oppstått har vi løst de fortløpende.
 Valgene vi har tatt hittil har fungert bra, vi er løsningsorienterte og effektive når det kommer til kommunikasjon. 
+* Vi er veldig fornøyd med "kanban" og får en god oversikt over prosjektet. 
  
 #### Hvordan er gruppedynamikken?
-* Gruppedynamikken fungere bra. Hittil har vi hatt noen diskusjoner og løst problemer effektivt. Alle har prestert bra og møtt opp i de ekstra møtene for å kunne fullføre oblig 1.
+* Gruppedynamikken fungere bra. Hittil har vi hatt noen diskusjoner og løst problemer effektivt. Alle har prestert bra og møtt opp i de ekstra møtene for å kunne fullføre oblig 1 og 2.
  
 #### Hvordan fungerer kommunikasjonen for dere?
 * Kommunikasjonen flyter bra og alle deltar. Ingen er redd for å ytre meningene sine, og alle forslag blir tatt på alvor. Siden vi alle kjenner hverandre så godt, skjønte vi tidlig at vi måtte fokusere på å holde seriøsiteten oppe. Dette har funket veldig bra.
@@ -44,11 +45,11 @@ For hvert krav dere jobber med, må dere lage
  
 * Forklar kort hvordan dere har prioritert oppgavene fremover
  
-*  Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
+* Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
  
-*  Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
+* Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
  
-*  Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
+* Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
  
 
 

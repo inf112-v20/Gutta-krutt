@@ -61,3 +61,7 @@ Fravær(Sedric Kvarnes - syk)
 * Oskar - Upgrade cards, arbeidskrav og brukerhistorie
 * Vegard - cards
 * Fredrik - Card/Interface
+
+##Møtereferat 28.08.2020
+* Jobbe videre på oppgavene fra mandag.
+* Fullføre oblig 2 txt.
