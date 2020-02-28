@@ -35,28 +35,30 @@
 3.    Seriøsitet i møter.
 
 ## Deloppgave 2: krav
-####For hvert krav dere jobber med, må dere lage: 
-#####1) ordentlige brukerhistorier, 2) akseptansekriterier, 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
+### For hvert krav dere jobber med, må dere lage: 
+1.    ordentlige brukerhistorier
+2.    akseptansekriterier
+3.    arbeidsoppgaver
+*   Husk at akseptansekriterier ofte skrives mer eller mindre som tester
 
 ####Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
 *   Alt ligger i Deliverables/Oblig2/ObligatoriskOppgave2.md
 
-####Forklar kort hvordan dere har prioritert oppgavene fremover
+#### Forklar kort hvordan dere har prioritert oppgavene fremover
 *   I begynnelsen valgte vi å prioritere kode-skjellettet. Det vil si at selve grunnlaget for spillet ble lagt. Fremmover vil vi fokusere mer på spillets funksjon og front end developent. 
  
-####Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort
+#### Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort
 *   Spillet må bli visualisert fordi man kan ikke spille spillet uten en visuell representasjon. 
 
-####Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
+#### Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
 
-####Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs).
+#### Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs).
 
-####Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige.
+#### Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige.
 
-##Brukerhistorier
+## Brukerhistorier
 
-####Brukerhistorie - "Kort"
-
+#### Brukerhistorie - "Kort"
 *   Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
 Arbeidsoppgaver:
@@ -69,9 +71,8 @@ Akseptansekrav:
 *   Kortene må korrespondere til riktig bevegelse.
 *   Posisjon av spiller må oppdateres på brettet.  
 
-####Brukerhistorie - "Vegger"
-
-*   Som spiller trenger jeg å forholde meg til brettets restriksjoner for å kunne følge spillereglene.
+#### Brukerhistorie - "Vegger"
+*   Som spiller må jeg forholde meg til brettets restriksjoner.  
 
 Arbeidsoppgaver:
 *   ForbedringspotensialeLegge til vegger visuelt på brettet i et nytt layer.
@@ -82,7 +83,6 @@ Akesptansekrav:
 *   Bekreft at en vegg ikke tar opp en celle på brettet ved å sjekke om det er mulig som en spiller å gå inn i cellen veggen befinner seg i. 
 
 ####Brukerhistorie - Convayerbelt og pushers:
-
 *  Som brett trenger jeg å kunne påvirke spillers posisjon for å kunne dytte flytte spiller på brettet.
 *  Som spiller trenger jeg å bli
 
@@ -128,5 +128,6 @@ Arbeidsoppgaver:
 *   Utføre de tildelte oppgavene under og mellom disse ukentlige møtene, som avtalt i teamet.
 *   Rapportere tilbake til teamet om framdrift og/eller problemer som oppstår, som avtalt i teamet.
 *   Vektlegging: Denne leveransen teller 12,5% av sluttkarakteren.
+
 #### Tips
 *   Mockito kan være et bra mock-rammeverk i tillegg til JUnit. Generelt sett er det også mulig å skrive manuelle tester. Husk at testene dere skriver skal brukes. (Som nevnt i deloppgave 3)
