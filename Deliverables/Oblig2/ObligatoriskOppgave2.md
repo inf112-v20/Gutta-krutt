@@ -31,29 +31,34 @@ Valgene vi har tatt hittil har fungert bra, vi er løsningsorienterte og effekti
 *   Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
  
 #### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint.
-1. Breefe hverandre når man fullfører en brukerhistorie.
-2. Selvstendig jobbing på prosjektet.
-3. Seriøsitet i møter.
+1.   Breefe hverandre når man fullfører en brukerhistorie.
+2.   Selvstendig jobbing på prosjektet.
+3.   Seriøsitet i møter.
 
 ## Deloppgave 2: krav
 ####For hvert krav dere jobber med, må dere lage: 
 #####1) ordentlige brukerhistorier, 2) akseptansekriterier, 3) arbeidsoppgaver. Husk at akseptansekriterier ofte skrives mer eller mindre som tester
- kdfjd
+*   
 ####Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
-*
+*   Alt ligger i Deliverables/Oblig2/ObligatoriskOppgave2.md
+
 ####Forklar kort hvordan dere har prioritert oppgavene fremover
-*
+*   I begynnelsen valgte vi å prioritere kode-skjellettet. Det vil si at selve grunnlaget for spillet ble lagt. Fremmover vil vi fokusere mer på spillets funksjon og front end developent. 
+ 
 ####Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge ut ifra hva som er gitt fra kunde, hvorfor er dette gjort?
-* 
+*   Spillet må bli visualisert fordi man kan ikke spille spillet uten en visuell representasjon. 
+
 ####Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
-*
-####Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Jamf deloppgave 4: Utførte oppgaver skal være ferdige.
-*
+*   
 
+####Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs).
 
-### Brukerhistorier:
+####Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige.
+*   
 
-####Brukerhistorie - Kort:
+##Brukerhistorier:
+
+####Brukerhistorie - "Kort":
 
 *   Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
@@ -67,7 +72,7 @@ Akseptansekrav:
 *   Kortene må korrespondere til riktig bevegelse.
 *   Posisjon av spiller må oppdateres på brettet.  
 
-####Breukerhistorie - Vegger:
+####Brukerhistorie - "Vegger":
 
 *   Som spiller må jeg forholde meg til brettets restriksjoner.  
 
