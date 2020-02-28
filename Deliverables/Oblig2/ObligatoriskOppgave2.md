@@ -95,13 +95,18 @@ Akspetansekrav:
 *   bekreft at posisjonendringen skjer i riktig retning og at avstanden er korrekt.
 *   Bekreft at andre funksjonaliteter på brettet blir utført hvis spiller blir dyttet inn i en celle som skal påvirke spilleren (for eksempel et hull).
 
-####Brukerhistorie - Personlig brett:
+####Brukerhistorie - Kontrollbrett:
 *   Som spiller trenger jeg et kontrollbrett for å kunne legge ned en sekvens.
 
 Arbeidsoppgaver:
 *  Visuell representasjon av kontrollbrettet. Kontrollbrettet skal inneholde:
-   *  Ni ruter for hvert sekvenskort.
-   *  en 
+   *  Fem ruter for hvert sekvenskort.
+   *  Et område for å legge ned skadebrikker.
+   *  Et område for å bekrefte powerdown.
+   *  Et område for å vise spillerens liv.
+   
+Akspetansekrav:
+*  Bekreft at funksjonalitetene i arbeidsoppgavene funker som det skal, som at spiller faktisk har tre liv og at et sekvenskort blir låst fast hvis en spiller har tatt nok skade. 
 
 ## Deloppgave 3: kode
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
