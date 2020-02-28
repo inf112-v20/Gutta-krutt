@@ -101,10 +101,10 @@ Akspetansekrav:
 
 Arbeidsoppgaver:
 *   Visuell representasjon av kontrollbrettet. Kontrollbrettet skal inneholde:
-*   Fem ruter for hvert sekvenskort.
-*   Et område for å legge ned skadebrikker.
-*   Et område for å bekrefte powerdown.
-*   Et område for å vise spillerens liv.
+    *   Fem ruter for hvert sekvenskort.
+    *   Et område for å legge ned skadebrikker.
+    *   Et område for å bekrefte powerdown.
+    *   Et område for å vise spillerens liv.
    
 Akspetansekrav
 *   Bekreft at funksjonalitetene i arbeidsoppgavene funker som det skal, som at spiller faktisk har tre liv og at et sekvenskort blir låst fast hvis en spiller har tatt nok skade.
