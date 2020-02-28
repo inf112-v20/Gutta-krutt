@@ -3,7 +3,7 @@ package inf112.skeleton.app.cards;
 import java.util.*;
 
 public class UpgradeCards {
-    static ArrayList<String[]> upgradeCardStack = new ArrayList<>();
+    private static ArrayList<String[]> upgradeCardStack = new ArrayList<>();
 
     public UpgradeCards(){
         String[] dualProcessor = {"Dual Processor", "Description"};
@@ -24,16 +24,12 @@ public class UpgradeCards {
         switch (chosenCard){
             case 0:
                 dualProcessor();
-                break;
             case 1:
                 tractorBeam();
-                break;
             case 2:
                 conditionalProgram();
-                break;
             case 3:
                 miniHowitzer();
-                break;
             default:
                 System.err.printf("Unvalid value");
         }

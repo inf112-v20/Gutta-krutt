@@ -78,9 +78,7 @@ begynner på nye arbeidsoppgaver. Derfor har vi valgt Kanban ettersom det passer
 
 I vårt project board bruker vi kolonnene:
 *   “Todo”
-
 *   “In progress”
-
 *   “Testing”
 *   "Done"
 *   På den måten har vi en god oversikt over hvor langt hver brukerhistorie har kommet i utviklingsprosessen

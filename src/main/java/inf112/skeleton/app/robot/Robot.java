@@ -7,14 +7,14 @@ public class Robot {
 
     // Variables
     private Direction direction;
-    private Vector2 playerPosition;
+    // private Vector2 playerPosition;
     private int currentHealth;
     private int maxHealth;
     private int lifesLeft;
 
     // Initializes to a start position on the start board
     public Robot(Vector2 pos) {
-        this.playerPosition = pos;
+        //this.playerPosition = pos;
         this.direction = Direction.EAST;
         this.maxHealth = 10;
         this.currentHealth = 10;

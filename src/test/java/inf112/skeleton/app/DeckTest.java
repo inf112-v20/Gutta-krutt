@@ -9,9 +9,9 @@ import static org.junit.Assert.assertEquals;
 
 public class DeckTest {
 
-    Deck deck = new Deck();
-    HashMap<String, int[]> hashDeck = deck.getDeck();
-    String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };
+    private Deck deck = new Deck();
+    private HashMap<String, int[]> hashDeck = deck.getDeck();
+    private String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };
 
 
     @Test
