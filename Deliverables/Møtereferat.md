@@ -26,7 +26,6 @@ Fravær(Sedric Kvarnes - syk)
 * Deloppgave 3
 * Finpusse deloppgave 1 og 2
 
-Fravær(Sedric Kvarnes - syk)
 
 ## Møtereferat 05.02.2020
 * Gjort Libgdx and Tiled Tutorial
@@ -54,14 +53,11 @@ Fravær(Sedric Kvarnes - syk)
 * Fordele arbeidsoppgaver
 * Starte på testene
 * Abstrahere
-* Begynne på testene
+####Arbeidsoppgaver til fredag
+* Sedric - board og objekter
+* Vegard - Tester og cards
+* Oskar - Brukerhistorier, arbeidskrav og upgradeCards
+* Fredrik - Cards og dealer
 
-#### Til fredag:
-* Sedric - Vegger, conveyerbelts
-* Oskar - Upgrade cards, arbeidskrav og brukerhistorie
-* Vegard - cards
-* Fredrik - Card/Interface
-
-##Møtereferat 28.08.2020
-* Jobbe videre på oppgavene fra mandag.
-* Fullføre oblig 2 txt.
+## Møtereferat 28.02.2020
+* 
