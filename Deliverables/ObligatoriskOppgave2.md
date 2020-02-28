@@ -68,9 +68,6 @@ Kortene må korrespondere til riktig bevegelse.
 Posisjon må oppdateres
 
 
-
-
-
 ## Deloppgave 3: kode
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
 * Prosjektet skal kunne bygge, testes og kjøres på Linux, Windows og OSX.
