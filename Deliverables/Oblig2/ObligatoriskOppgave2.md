@@ -67,8 +67,8 @@ Akseptansekrav:
 *   Kortene må korrespondere til riktig bevegelse.
 *   Posisjon av spiller må oppdateres på brettet.  
 
-####Breukerhistorie - Spiller:
-Breukerhistorie - Vegger:
+####Breukerhistorie - Vegger:
+
 *   Som spiller må jeg forholde meg til brettets restriksjoner.  
 
 Arbeidsoppgaver:
