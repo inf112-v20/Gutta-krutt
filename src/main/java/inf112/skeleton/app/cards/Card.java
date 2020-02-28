@@ -5,13 +5,15 @@ public class Card {
     //Variables
     private int distance;
     private int priority;
-    private Direction direction;
+    //The intention is to have an array containing the directions so that we can plus the changeDirection and mod with 4 to get the
+    //direction the player wants to turn.
+    private int changeDirection;
 
     // "One" card
-    public Card(int distance, int priority, Direction direction) {
+    public Card(int distance, int priority, int changeDirection) {
         this.distance = distance;
         this.priority = priority;
-        this.direction = direction;
+        this.changeDirection = changeDirection;
     }
 
     // Returns distance to move
@@ -25,8 +27,8 @@ public class Card {
     }
 
     // What direction to move
-    public Direction getDirection(){
-        return direction;
+    public int getChangeDirection(){
+        return changeDirection;
     }
 
 }
