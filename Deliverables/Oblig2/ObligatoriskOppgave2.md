@@ -1,5 +1,5 @@
-# Obligatorisk oppgave 2
-## Deloppgave 1: Prosjekt og prosjektstruktur
+## Obligatorisk oppgave 2
+### Deloppgave 1: Prosjekt og prosjektstruktur
 
 #### Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamleder eller kundekontakt
 *   Rollene fungerer bra slik som de er. Teamleder og kundekontakt blir som de er. 
@@ -20,19 +20,19 @@
 #### Hvordan fungerer kommunikasjonen for dere? forbedringspotensiale
 *   Kommunikasjonen flyter bra og alle deltar. Ingen er redd for å ytre meningene sine, og alle forslag blir tatt på alvor. Siden vi alle kjenner hverandre så godt, skjønte vi tidlig at vi måtte fokusere på å holde seriøsiteten oppe. Dette har funket veldig bra.
  
-#### Gjør et kort retrospektiv hvor dere vurderer hva dere har klart til nå, og hva som kan forbedres. Dette skal handle om prosjektstruktur, ikke kode. Dere kan selvsagt diskutere kode, men dette handler ikke om feilretting, men om hvordan man jobber og kommuniserer.
+#### Gjør et kort retrospektiv hvor dere vurderer hva dere har klart til nå, og hva som kan forbedres. Dette skal handle om prosjektstruktur, ikke kode. Dere kan selvsagt diskutere kode, men dette handler ikke om feilretting, men om hvordan man jobber og kommuniserer
 *   I gruppen har vi kommunisert daglig og har vært flinke til å planlegge uke for uke. Dette har medført at vi alle har hatt en god oversikt over hva som er gjort, hva som må gjøres og hvem som skal gjøre hva. Vi syns forholdet har fungert veldig bra til nå, men et forberingspotensiale i gruppen er å gi en kort breef/gjennomgang (bruke de første 10 min av møtene) av hva som er gjort hvis en av oss merger sub-branchen med master-branch. Dette tror vi kan føre til en bedre flyt, og vi kan spare tid på å slippe å lese gjennom hverandres kode.  
  
 #### Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som committer, må dere legge ved en kort forklaring for hvorfor det er sånn. husk å committe alt. (Også designfiler)
 *   Foreløpig har vi jobbet mye med parprogrammering, som har medført at commit-ene har blitt ujevnt fordelt på gruppen.
  
-#### Referat fra møter siden forrige leveranse skal legges ved.
+#### Referat fra møter siden forrige leveranse skal legges ved
 *   Alle møtereferatene ligger i assets/Deliverables/Møtereferat.md
  
-#### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint.
-1.   Breefe hverandre når man fullfører en brukerhistorie.
-2.   Selvstendig jobbing på prosjektet.
-3.   Seriøsitet i møter.
+#### Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint
+1.    Breefe hverandre når man fullfører en brukerhistorie.
+2.    Selvstendig jobbing på prosjektet.
+3.    Seriøsitet i møter.
 
 ## Deloppgave 2: krav
 ####For hvert krav dere jobber med, må dere lage: 
@@ -89,7 +89,7 @@ Akesptansekrav:
 *   Lever klassediagram. (Hvis det er veldig mange klasser, lager dere for de viktigste.)
 *   Hvis dere tester manuelt: lever beskrivelser av hvordan testen foregår, slik at gruppeleder kan utføre testen selv.
 
-#### Vurderingskriterier og vekting
+### Vurderingskriterier og vekting
 *   I denne leveransen blir det ingen presentasjon.
 *   Om teamet ønsker, kan all tekst leveres på engelsk.
 *   Vurderingskriterier vil bli publisert før deadline.
