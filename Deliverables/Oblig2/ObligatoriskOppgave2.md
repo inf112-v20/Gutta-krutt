@@ -68,14 +68,16 @@ Akseptansekrav:
 *   Posisjon av spiller må oppdateres på brettet.  
 
 ####Breukerhistorie - Spiller:
-Brukerhistorie:
-*
+Breukerhistorie - Vegger:
+*   Som spiller må jeg forholde meg til brettets restriksjoner.  
 
 Arbeidsoppgaver:
-*
+*   ForbedringspotensialeLegge til vegger visuelt på brettet i et nytt layer.
+*   Få spiller til å stoppe å bevege seg hvis han krasjer med en vegg.
 
 Akesptansekrav:
-*
+*   Bekreft at spiller-posisjon er den samme før og etter at en spiller har krasjet med en vegg.
+*   Bekreft at en spiller kan entre posisjonen veggen befinner seg i, og at veggen ikke "bruker opp" den cellen. 
 
 ## Deloppgave 3: kode
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelederne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
