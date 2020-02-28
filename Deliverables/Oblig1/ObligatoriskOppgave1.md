@@ -6,7 +6,6 @@
  
 #### Teamleder: Fredrik Nestvold Larsen
 *   Begrunnelse: Teamledelse kan være så mangt, alt fra å fordele oppgaver til å holde gruppen på riktig spor. Det er viktig med en som kan hjelpe med å sette klare mål, utnytte egenskaper og ulikheter samtidig som å øke motivasjon og gi tilbakemeldinger som kan øke effektiviteten. Videre, er det greit å ha en person i teamet som har overordnet ansvar for å løse konflikter som kan oppstå og delegere ansvar.
-
 *   Fredrik skyter fra leveren og er ikke redd for å si ting som de er. Vi har derfor valgt han som teamleder ettersom han kan løse eventuelle problemer som oppstår innad i teamet etterhvert i gruppeprosjektet. I tillegg er han en morsom og motiverende person.
 
 #### Kundekontakt: Oskar Marthinussen
@@ -86,11 +85,10 @@ begynner på nye arbeidsoppgaver. Derfor har vi valgt Kanban ettersom det passer
 *   På den måten har vi en god oversikt over hvor langt hver brukerhistorie har kommet i utviklingsprosessen
 
 ####Diskuter i teamet hvordan dere skal organisere dere under prosjektet
-*   Møter og hyppighet av dem:
+Møter og hyppighet av dem: (Flere møter vil bli avtalt ved behov!)
 *   Onsdag 12:15 - 14:00
 *   Torsdag: 10:15 - 12:00
 *   Fredag: 10:15 - 12:00
-*   (Flere møter vil bli avtalt ved behov!) 
 
 #### Kommunikasjon mellom møter
 *   All kommunikasjon går via Slack, slik at all informasjon blir samlet i en kanal. Blir det gjort 
@@ -108,14 +106,8 @@ av roller)
 
 #### Deling og oppbevaring av felles dokumenter, diagram og kodebase
 *   Kodeendringer skal til enhver tid commites til GitHub.
-*   Alle felles dokumenter skrives på google docs slik at alle til enhver tid har tilgang til dokumenter.
-Det gir også mulighet for forbedringer i dokumentene.
-Viktige dokumenter som for eksempel møtereferat lagres i Wiki på Github repositoriet.
-
-*   Vi planlegger å prøve ut rollefordelingen vi har satt opp. I løpet av prosjektet har vi planlagt å 
-ha to ekstra gruppemøter i uken. Vi ønsker å fordele oppgavene slik at alle får ett innblikk i de 
-ulike delene av gruppeprosjektet. Det vil si at alle får prøvd seg på programmering, brukerhistorier 
-og diverse som hører til gruppeprosjektet.
+*   Alle felles dokumenter skrives på google docs slik at alle til enhver tid har tilgang til dokumenter. Det gir også mulighet for forbedringer i dokumentene. Viktige dokumenter som for eksempel møtereferat lagres i Wiki på Github repositoriet.
+*   Vi planlegger å prøve ut rollefordelingen vi har satt opp. I løpet av prosjektet har vi planlagt å ha to ekstra gruppemøter i uken. Vi ønsker å fordele oppgavene slik at alle får ett innblikk i de ulike delene av gruppeprosjektet. Det vil si at alle får prøvd seg på programmering, brukerhistorier og diverse som hører til gruppeprosjektet.
 
 ## Deloppgave 4: kode
 
@@ -142,12 +134,12 @@ planlagt, men velger å la den stå for å loggføre tankegangene vi har under a
 
 *   Som spiller trenger jeg et formål på brettet for å kunne vinne/tape.
 
-#### Arbeidsoppgaver
+#### Arbeidsoppgaver1
 *   Trenger en posisjon som spillere kan bevege seg mot for å vinne spillet og en annen posisjon for å tape.
 *   Instansiere en spiller på brettet.
 *   Muligheten til å flytte spilleren på brettet.
 
-#### Akseptansekrav
+#### Akseptansekrav1
 *   Oppdatere .tmx filen for å legge til grafikk av flagg og hull.
 *   Når spiller flytter ett trekk mot øst, oppdateres x-koordinat med +1.
 *   Når en spiller flytter til et hull/flagg, endres spiller-grafikken.
