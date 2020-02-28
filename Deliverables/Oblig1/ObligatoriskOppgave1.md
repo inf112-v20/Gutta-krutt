@@ -24,7 +24,7 @@
 *   Alle i teamet har studert Datateknologi i snart to år og har kompetanse innenfor Java, Haskell og Python. Det kommer godt med i et prosjekt som RoboRally. I INF101 utviklet alle et eget Battleship-spill, som alle fikk godkjent. I tillegg har alle skrevet endel kode fra før så vi forventer en oversiktlig og god kode.
 
 ## Deloppgave 2: Få en oversikt over forventet produkt
-#### Spesifikasjon
+### Spesifikasjon
 *   Det overordnete målet med applikasjonen er å få en fullt fungerende digital versjon av brettspillet 
 RoboRally. Applikasjonen skal inneholde alle regler og hinder som man finner på brettspill versjonen. 
 Det skal også være mulig å spille flere sammen over LAN.
@@ -67,7 +67,7 @@ Det skal også være mulig å spille flere sammen over LAN.
 *   Plassere en spiller på brettet
 
 ##Deloppgave 3: Velg og tilpass en prosess for laget 
-####Prosjektmetodikk: Kanban
+###Prosjektmetodikk: Kanban
 
 *   Kanban: Kanban går utpå å begrense igangsatt arbeid. Det vil si at en jobb må vente hvis antall 
 påbegynte jobber har nådd en grense (MAX), men så snart en jobb er ferdig, kan neste jobb igangsettes. 
@@ -76,10 +76,13 @@ Teamet er enig om at vi heller vil ha få påbegynte arbeidsoppgaver og bli ferd
 begynner på nye arbeidsoppgaver. Derfor har vi valgt Kanban ettersom det passer godt overens med vår måte 
 å jobbe på.
 
-*   I vårt project board bruker vi kolonnene
+I vårt project board bruker vi kolonnene:
 *   “Todo”
+
 *   “In progress”
+
 *   “Testing”
+
 *   "Done"
 
 *   På den måten har vi en god oversikt over hvor langt hver brukerhistorie har kommet i utviklingsprosessen
@@ -111,7 +114,7 @@ av roller)
 
 ## Deloppgave 4: kode
 
-#### Brukerhistorie - Visualisering av brett
+### Brukerhistorie - Visualisering av brett
 
 *   Som spiller trenger jeg et brett det går an å samhandle med for å kunne spille spillet.
 
@@ -166,7 +169,7 @@ Positivt:
 *   Kommunikasjonen fungerer fordi alle kjenner hverandre fra før av så det er ingen filter på ordvekslingen.
 *   Project Board funket bra og fikk bedre oversikt.
 
-Negativt 
+Negativt:
 *   Tok mer tid enn forventet i å sette seg inn i libGdx.
 *   Siden alle kjenner hverandre fra før så oppstår det distraksjoner.
 
