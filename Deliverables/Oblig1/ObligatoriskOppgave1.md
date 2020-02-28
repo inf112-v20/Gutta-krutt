@@ -77,9 +77,9 @@ Teamet er enig om at vi heller vil ha få påbegynte arbeidsoppgaver og bli ferd
 begynner på nye arbeidsoppgaver. Derfor har vi valgt Kanban ettersom det passer godt overens med vår måte 
 å jobbe på.
 
-*   I vårt project board bruker vi kolonnene 
+*   I vårt project board bruker vi kolonnene
 *   “Todo”
-*   “In progress” 
+*   “In progress”
 *   “Testing”
 *   "Done"
 
@@ -102,34 +102,33 @@ over prosjektet.
 av roller)
 
 #### Oppfølging av arbeid
-*   Enhver på teamet har ansvar for å holde seg selv og de andre oppdatert om prosjektet. 
-*   Gjør man store endringer må man oppdatere de andre på Slack, og man må følge med på Slack og Git for 
-å selv få med seg store endringer. 
+*   Enhver på teamet har ansvar for å holde seg selv og de andre oppdatert om prosjektet.
+*   Gjør man store endringer må man oppdatere de andre på Slack, og man må følge med på Slack og Git for å selv få med seg store endringer.
 *   Teamleder har et overordnet ansvar som innebærer at han må passe på at teamet holder seg oppdatert.
 
 #### Deling og oppbevaring av felles dokumenter, diagram og kodebase
 *   Kodeendringer skal til enhver tid commites til GitHub.
-*   Alle felles dokumenter skrives på google docs slik at alle til enhver tid har tilgang til dokumenter. 
+*   Alle felles dokumenter skrives på google docs slik at alle til enhver tid har tilgang til dokumenter.
 Det gir også mulighet for forbedringer i dokumentene.
 Viktige dokumenter som for eksempel møtereferat lagres i Wiki på Github repositoriet.
 
 *   Vi planlegger å prøve ut rollefordelingen vi har satt opp. I løpet av prosjektet har vi planlagt å 
 ha to ekstra gruppemøter i uken. Vi ønsker å fordele oppgavene slik at alle får ett innblikk i de 
 ulike delene av gruppeprosjektet. Det vil si at alle får prøvd seg på programmering, brukerhistorier 
-og diverse som hører til gruppeprosjektet. 
+og diverse som hører til gruppeprosjektet.
 
 ## Deloppgave 4: kode
 
 #### Brukerhistorie - Visualisering av brett
 
-*   Som spiller trenger jeg et brett det går an å samhandle med for å kunne spille spillet. 
+*   Som spiller trenger jeg et brett det går an å samhandle med for å kunne spille spillet.
 
 #### Arbeidsoppgaver
 *   Trenger et grid-system for å angi posisjoner.
 *   Grafikk for å visualisere brettet.
 
 #### Akseptansekrav
-*   Lag en .tmx fil av brettet gjennom tiled-applikasjonen. 
+*   Lag en .tmx fil av brettet gjennom tiled-applikasjonen.
 *   Importer grafikk til assetfolder i prosjektet.
 *   Konstruer layers for forskjellige type objekter.
 
@@ -137,15 +136,15 @@ og diverse som hører til gruppeprosjektet.
 *   Før vi fullførte denne brukerhistorien så vi for oss at det kom til å bli krevende å konstruere 
 brettet. Med tiled-applikasjonen var det gjort relativt enkelt, og grid-systemet vi ønsket ble 
 automatisk implementert. Det gjorde at utføringen av brukerhistorien ble litt mindre arbeid enn 
-planlagt, men velger å la den stå for å loggføre tankegangene vi har under arbeidet. 
+planlagt, men velger å la den stå for å loggføre tankegangene vi har under arbeidet.
 
 #### Brukerhistorie - formål i spillet
 
-*   Som spiller trenger jeg et formål på brettet for å kunne vinne/tape. 
+*   Som spiller trenger jeg et formål på brettet for å kunne vinne/tape.
 
 #### Arbeidsoppgaver
 *   Trenger en posisjon som spillere kan bevege seg mot for å vinne spillet og en annen posisjon for å tape.
-*   Instansiere en spiller på brettet. 
+*   Instansiere en spiller på brettet.
 *   Muligheten til å flytte spilleren på brettet.
 
 #### Akseptansekrav
@@ -158,28 +157,27 @@ planlagt, men velger å la den stå for å loggføre tankegangene vi har under a
 *   Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
 #### Arbeidsoppgaver
-*   Konstruer de 7 forskjellige sekvenskortene. 
+*   Konstruer de 7 forskjellige sekvenskortene.
 *   Lage et system hvor spiller kan velge mellom 9 kort og lagre en sekvens med 5 av kortene.
-*   Få spiller-objektet til å utføre den lagrede sekvensen, og flytte seg på brettet ut i fra instruksene. 
+*   Få spiller-objektet til å utføre den lagrede sekvensen, og flytte seg på brettet ut i fra instruksene.
 *   Lag en visuell representasjon av systemet.
 
 #### Akseptansekrav
-*   Kort er visuelt korrekt
+*   Kort er visuelt korrekt.
 *   Kortene må korrespondere til riktig bevegelse.
-*   Posisjon må oppdateres
+*   Posisjon må oppdateres.
 
 #### Oppsummering 
 Positivt:
 *   Arbeidsfordelingen fungerte fordi alle deltok i prosjektet og alle bidro like mye.
 *   Ekstra møter fungerte fordi vi tok mer tid til prosjektet og greide å fullføre oppgaven.
 *   Kommunikasjonen fungerer fordi alle kjenner hverandre fra før av så det er ingen filter på ordvekslingen.
-*   Project Board funket bra og fikk bedre oversikt
+*   Project Board funket bra og fikk bedre oversikt.
 
 Negativt 
-*   Tok mer tid enn forventet i å sette seg inn i libGdx
+*   Tok mer tid enn forventet i å sette seg inn i libGdx.
 *   Siden alle kjenner hverandre fra før så oppstår det distraksjoner.
 
 #### Vurdering
 *   Vi traff bra på oppgaven, sliter med å utvikle tester men føler alt i alt at gruppen har fått god kommunikasjon og arbeid driv.
-
 *   UML- klassediagrammet ligger i klassediagram.png i deliverables.

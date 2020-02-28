@@ -56,9 +56,9 @@ Valgene vi har tatt hittil har fungert bra, vi er løsningsorienterte og effekti
 ####Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige.
 *   
 
-##Brukerhistorier:
+##Brukerhistorier
 
-####Brukerhistorie - "Kort":
+####Brukerhistorie - "Kort"
 
 *   Som spiller trenger jeg muligheten til å programmere en sekvens for å kunne flytte brikken på brettet.
 
@@ -72,7 +72,7 @@ Akseptansekrav:
 *   Kortene må korrespondere til riktig bevegelse.
 *   Posisjon av spiller må oppdateres på brettet.  
 
-####Brukerhistorie - "Vegger":
+####Brukerhistorie - "Vegger"
 
 *   Som spiller må jeg forholde meg til brettets restriksjoner.  
 
