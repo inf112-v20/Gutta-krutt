@@ -60,4 +60,12 @@ Fravær(Sedric Kvarnes - syk)
 * Fredrik - Cards og dealer
 
 ## Møtereferat 28.02.2020
-* 
+* Fullføre oblig 2
+* Finusse koden
+* Levere inn Oblig 2
+
+
+## Møtereferat 02.03.2020
+* Klargjøre presentasjon for 03.02
+* Retrospektiv på det vi har gjort hittil
+* Jobbe videre på kortene
