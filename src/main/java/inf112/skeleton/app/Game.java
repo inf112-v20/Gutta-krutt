@@ -37,7 +37,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/map1.tmx");
+        tilemap = tmxLoader.load("assets/wallMap.tmx");
 
         player = new Player(0 ,0);
         gameScreen = new GameScreen(tilemap);
@@ -60,6 +60,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //displaying the corresponding picture depending on what tile you are standing on
         gameScreen.getRenderer().render();
+
+        TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+        playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), player.getPlayerNormal());
     }
 
     @Override
