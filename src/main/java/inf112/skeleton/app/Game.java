@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.screen.GameScreen;
 
@@ -21,16 +22,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private GameScreen gameScreen;
     private TiledMap tilemap;
 
-    private TiledMapTileLayer holeLayer;
-    private TiledMapTileLayer boardLayer;
-    private TiledMapTileLayer flagLayer;
     private Player player;
+    private MovementHandler movementHandler;
 
-    private TiledMapTileLayer northWall;
-    private TiledMapTileLayer eastWall;
-    private TiledMapTileLayer westWall;
-    private TiledMapTileLayer southWall;
-    private TiledMapTileLayer westSouthWall;
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -43,19 +37,13 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/map1.tmx");
+        tilemap = tmxLoader.load("assets/wallMap.tmx");
 
-        getMapLayers();
-        player = new Player(tilemap, 0 ,0);
+        player = new Player(0 ,0);
         gameScreen = new GameScreen(tilemap);
+        movementHandler = new MovementHandler(player, tilemap);
 
         Gdx.input.setInputProcessor(this);
-    }
-
-    public void getMapLayers() {
-        boardLayer = (TiledMapTileLayer) tilemap.getLayers().get("Board");
-        flagLayer = (TiledMapTileLayer) tilemap.getLayers().get("Flags");
-        holeLayer = (TiledMapTileLayer) tilemap.getLayers().get("Holes");
     }
 
     @Override
@@ -72,6 +60,10 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //displaying the corresponding picture depending on what tile you are standing on
         gameScreen.getRenderer().render();
+
+        //rendering the startposition of a player
+        TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+        playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), player.getPlayerNormal());
     }
 
     @Override
@@ -88,7 +80,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
-        return player.move(keycode);
+        return movementHandler.movePlayer(keycode);
     }
 }
 

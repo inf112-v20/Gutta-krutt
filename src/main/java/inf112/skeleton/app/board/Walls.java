@@ -22,11 +22,4 @@ public class Walls {
         westSouthWall = (TiledMapTileLayer) tilemap.getLayers().get("West_South_Walls");
 
     }
-
-    public boolean canMove(Direction dir, Vector2 pos) {
-        
-        return true;
-    }
-
-
 }
