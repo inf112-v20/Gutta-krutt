@@ -99,19 +99,29 @@ public enum TileType {
     TILE_CONVEYOR_SLOW_WEST_TO_NORTH (36,0);
 
 
-    private final int tileID;
+    private final int tile_ID;
     private int damage;
 
-    //Connects tileID with tile
-    TileType(int tileID, int damage) {
-        this.tileID = tileID;
+    //Connects each tile with it´s id and damage
+    TileType(int tile_ID, int damage) {
+        this.tile_ID = tile_ID;
         this.damage = damage;
     }
 
-    public int getTileType() {return this.tileID; }
+    //Retrieve tile-type
+    public int getTileType() {
+        return this.tile_ID;
+    }
 
+    //Retrieve damage
+    public int getDamage() {
+        return this.damage;
+    }
+
+    //HashMap for collecting tiles
     private static HashMap<Integer, TileType> tileMap;
 
+    //
     static {
         for (TileType typeOfTile :  TileType.values()) {
             tileMap.put(typeOfTile.getTileType(), typeOfTile);

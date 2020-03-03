@@ -2,18 +2,20 @@ package inf112.skeleton.app.cards;
 
 //Want to use directions to navigate the players on the board. Might need default
 public enum Direction {
-    NORTH (1),
-    EAST (2),
-    SOUTH (3),
-    WEST (4);
+    NORTH (1, "North"),
+    EAST (2,"East"),
+    SOUTH (3,"South"),
+    WEST (4,"West");
 
-    private final int dir;
+    private int dirID;
+    private String direction;
 
-    Direction(int dir) {
-        this.dir = dir;
+    Direction(int dir, String direction) {
+        this.dirID = dirID;
+        this.direction = direction;
     }
 
     public int getDirection(){
-        return this.dir;
+        return this.dirID;
     }
 }
