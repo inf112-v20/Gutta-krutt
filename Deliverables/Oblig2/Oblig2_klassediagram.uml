@@ -3,40 +3,42 @@
   <ID>JAVA</ID>
   <OriginalElement>inf112.skeleton.app</OriginalElement>
   <nodes>
-    <node x="427.0" y="1164.0">inf112.skeleton.app.DeckTest</node>
-    <node x="216.0" y="1164.0">inf112.skeleton.app.Main</node>
-    <node x="237.0" y="558.0">inf112.skeleton.app.cards.UpgradeCards</node>
-    <node x="309.0" y="0.0">inf112.skeleton.app.cards.Deck</node>
-    <node x="285.0" y="914.0">inf112.skeleton.app.game.Dealer</node>
-    <node x="743.75" y="558.0">inf112.skeleton.app.cards.Card</node>
-    <node x="0.0" y="558.0">inf112.skeleton.app.robot.Robot</node>
-    <node x="0.0" y="0.0">inf112.skeleton.app.Game</node>
-    <node x="832.0" y="914.0">inf112.skeleton.app.cards.Direction</node>
-    <node x="508.0" y="914.0">inf112.skeleton.app.screen.GameScreen</node>
-    <node x="0.0" y="914.0">inf112.skeleton.app.RobotTest</node>
-    <node x="792.0" y="0.0">inf112.skeleton.app.Player.Player</node>
-    <node x="574.0" y="747.0">inf112.skeleton.app.cards.RotateCard</node>
-    <node x="834.0" y="747.0">inf112.skeleton.app.cards.MoveCard</node>
-    <node x="0.0" y="1164.0">inf112.skeleton.app.board.IBoard</node>
-    <node x="988.0" y="914.0">inf112.skeleton.app.AppTest</node>
+    <node x="0.0" y="802.0">inf112.skeleton.app.DeckTest</node>
+    <node x="821.0" y="1052.0">inf112.skeleton.app.Main</node>
+    <node x="0.0" y="488.0">inf112.skeleton.app.cards.UpgradeCards</node>
+    <node x="0.0" y="0.0">inf112.skeleton.app.cards.Deck</node>
+    <node x="885.0" y="802.0">inf112.skeleton.app.game.Dealer</node>
+    <node x="724.25" y="488.0">inf112.skeleton.app.cards.Card</node>
+    <node x="816.0" y="0.0">inf112.skeleton.app.robot.Robot</node>
+    <node x="483.0" y="0.0">inf112.skeleton.app.Game</node>
+    <node x="626.0" y="802.0">inf112.skeleton.app.cards.Direction</node>
+    <node x="0.0" y="1052.0">inf112.skeleton.app.screen.GameScreen</node>
+    <node x="341.0" y="802.0">inf112.skeleton.app.RobotTest</node>
+    <node x="811.0" y="677.0">inf112.skeleton.app.cards.RotateCard</node>
+    <node x="337.0" y="488.0">inf112.skeleton.app.Player.Player</node>
+    <node x="600.0" y="677.0">inf112.skeleton.app.cards.MoveCard</node>
+    <node x="605.0" y="1052.0">inf112.skeleton.app.board.IBoard</node>
+    <node x="324.0" y="1052.0">inf112.skeleton.app.AppTest</node>
   </nodes>
   <notes />
   <edges>
     <edge source="inf112.skeleton.app.cards.MoveCard" target="inf112.skeleton.app.cards.Card">
       <point x="0.0" y="-26.5" />
-      <point x="950.5" y="722.0" />
-      <point x="861.5" y="722.0" />
-      <point x="39.25" y="69.5" />
+      <point x="695.5" y="652.0" />
+      <point x="763.5" y="652.0" />
+      <point x="-39.25" y="69.5" />
     </edge>
     <edge source="inf112.skeleton.app.cards.RotateCard" target="inf112.skeleton.app.cards.Card">
       <point x="0.0" y="-26.5" />
-      <point x="694.0" y="722.0" />
-      <point x="783.0" y="722.0" />
-      <point x="-39.25" y="69.5" />
+      <point x="910.0" y="652.0" />
+      <point x="842.0" y="652.0" />
+      <point x="39.25" y="69.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.5201683707820745" x="646.6152436522143" y="591.3405156139852" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.5550974587855585" x="451.9999999999998" y="573.3109669660317" />
+  <SelectedNodes>
+    <node>inf112.skeleton.app.cards.Card</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
