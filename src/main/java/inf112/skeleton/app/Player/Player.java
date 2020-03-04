@@ -24,6 +24,9 @@ public class Player {
         position = new Vector2(startingX, startingY);
     }
 
+    public void setRotation(int cell_rotation) {
+        playerNormal.setRotation(cell_rotation);
+    }
     public float getPosX() {return position.x;}
 
     public float getPosY() {return position.y;}

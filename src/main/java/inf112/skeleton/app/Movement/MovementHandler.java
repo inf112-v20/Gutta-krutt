@@ -40,10 +40,10 @@ public class MovementHandler {
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){ player.setPosY(1);}
-        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {player.setPosY(-1);}
-        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {player.setPosX(-1);}
-        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {player.setPosX(1);}
+        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){ player.setPosY(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_0);}
+        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {player.setPosY(-1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_180);}
+        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {player.setPosX(-1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);}
+        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {player.setPosX(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_270);}
         else { playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;}
 
 
