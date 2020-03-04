@@ -6,7 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class GameScreen {
-    OrthogonalTiledMapRenderer renderer;
+
+    private OrthogonalTiledMapRenderer renderer;
 
     //number of tiles per side of the board
     final private int BOARDSIZE = 12;
