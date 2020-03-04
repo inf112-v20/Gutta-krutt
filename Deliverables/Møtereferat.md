@@ -69,3 +69,6 @@ Fravær(Sedric Kvarnes - syk)
 * Klargjøre presentasjon for 03.02
 * Retrospektiv på det vi har gjort hittil
 * Jobbe videre på kortene
+
+## Møtereferat 04.03.2020
+* 

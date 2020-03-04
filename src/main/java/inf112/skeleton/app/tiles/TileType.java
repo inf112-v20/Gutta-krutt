@@ -1,8 +1,6 @@
-package inf112.skeleton.app.board.tiles;
+package inf112.skeleton.app.tiles;
 
 import java.util.HashMap;
-
-import static java.lang.Integer.max;
 
 public enum TileType {
 
