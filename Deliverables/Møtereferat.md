@@ -71,4 +71,12 @@ Fravær(Sedric Kvarnes - syk)
 * Jobbe videre på kortene
 
 ## Møtereferat 04.03.2020
-* 
+* Nytt projectboard
+    * Bruk av issues
+    * Bruk av tags
+    * Assigne personer
+    * Milestone
+* Ferdig med collision
+* Ferdig med dir
+* Ferdig med tiles
+* Jobbe på sequence board

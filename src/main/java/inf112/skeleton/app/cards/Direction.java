@@ -27,15 +27,15 @@ public enum Direction {
 
     public int getUturnDirection() {
         if(this.dirID == 1) {
-            uTurnDir = 3;
+            uTurnDir = this.dirID == 3;
         } else if (this.dirID == 2){
-            uTurnDir = 4;
+            uTurnDir = this.dirID == 4;
         } else if (this.dirID == 3) {
-            uTurnDir = 1;
+            uTurnDir = this.dirID == 1;
         } else if (this.dirID == 4){
-            uTurnDir = 2;
+            uTurnDir = this.dirID == 2;
         }
-
+        return uTurnDir;
     }
 
     public int getDirection(){
