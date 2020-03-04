@@ -11,6 +11,10 @@ import inf112.skeleton.app.cards.Direction;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * handling the collion part of board.
+ * @author sedric
+ */
 public class CollisionHandler extends InputAdapter {
     Player player;
     TiledMap tilemap;
@@ -20,6 +24,13 @@ public class CollisionHandler extends InputAdapter {
         this.tilemap = tilemap;
     }
 
+    /**
+     * checks if a player can move to the newPos tile
+     * @param dir direction to move player
+     * @param newPosX the new X position of player
+     * @param newPosY the new Y position of player
+     * @return
+     */
     public boolean canMove(Direction dir, int newPosX, int newPosY) {
         HashMap<Integer, Direction[]> idToWallName = new HashMap<>();
         TiledMapTileLayer walls = (TiledMapTileLayer) tilemap.getLayers().get("Walls");

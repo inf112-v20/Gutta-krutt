@@ -18,6 +18,9 @@ import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.screen.GameScreen;
 
+/**
+ * @author Sedric, Vegard, Fredrik
+ */
 public class Game extends InputAdapter implements ApplicationListener  {
     private GameScreen gameScreen;
     private TiledMap tilemap;
