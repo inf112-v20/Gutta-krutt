@@ -3,7 +3,7 @@ Vi har som mål å lage en digital versjon av det klassiske brettspillet Robo Ra
 For å oppnå dette må vi implementere nødvendige funksjonaliteter som vegger, laser 
 etc... 
 
-Regelene er tatt fra 
+Regelene er tatt fra 2016 regelboken
 
 ## Bugs
 Non known bugs
