@@ -39,14 +39,16 @@ public class Game extends InputAdapter implements ApplicationListener  {
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
 
+        addPlayers();
+
         gameScreen = new GameScreen(tilemap);
 
-        addPlayers();
         movementHandler = new MovementHandler(playerList[0], tilemap);
         Gdx.input.setInputProcessor(this);
     }
 
     public void addPlayers(){
+        playerList = new Player[8];
         for (int x= 0; x<8; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
             Player player = new Player(x, 0, path);
