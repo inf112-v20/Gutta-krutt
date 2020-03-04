@@ -61,6 +61,7 @@ public class Player extends InputAdapter {
         else {return false;}
 
         //setting the new player tile
+        TiledMapTileLayer.Cell nextTile = layer.getCell((int) position.x, (int) position.y);
         layer.setCell((int) position.x, (int) position.y, playerNormal);
         return true;
     }
@@ -77,8 +78,8 @@ public class Player extends InputAdapter {
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
-        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
-        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
+        playerDied.setTile(new StaticTiledMapTile(pictures[0][1]));
+        playerWon.setTile(new StaticTiledMapTile(pictures[0][2]));
 
     }
 
