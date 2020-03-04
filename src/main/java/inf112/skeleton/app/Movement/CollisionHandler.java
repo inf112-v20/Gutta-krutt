@@ -32,7 +32,7 @@ public class CollisionHandler extends InputAdapter {
         Direction[] southWest = {Direction.SOUTH, Direction.WEST};
         Direction[] northEast = {Direction.NORTH, Direction.EAST};
         Direction[] southEast = {Direction.SOUTH, Direction.EAST};
-        Direction[] deafult = {Direction.DEFAULT};
+        Direction[] def = {Direction.DEFAULT};
 
         idToWallName.put(31,north);
         idToWallName.put(23,east);
@@ -42,7 +42,7 @@ public class CollisionHandler extends InputAdapter {
         idToWallName.put(32,southWest);
         idToWallName.put(16,northEast);
         idToWallName.put(8,southEast);
-        idToWallName.put(0,deafult);
+        idToWallName.put(0,def);
 
         TiledMapTileLayer.Cell newCell = walls.getCell(newPosX, newPosY);
         TiledMapTileLayer.Cell currentCell = walls.getCell((int) player.getPosX(), (int) player.getPosY());
