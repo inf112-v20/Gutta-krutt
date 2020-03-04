@@ -44,7 +44,7 @@ public class CollisionHandler extends InputAdapter {
         Direction[] northEast = {Direction.NORTH, Direction.EAST};
         Direction[] southEast = {Direction.SOUTH, Direction.EAST};
         Direction[] def = {Direction.DEFAULT};
-
+        
         idToWallName.put(31,north);
         idToWallName.put(23,east);
         idToWallName.put(30,west);
