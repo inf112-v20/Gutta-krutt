@@ -7,7 +7,11 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 
-
+/**
+ * new instance of a player, containing methods to get position, displaying and rotating
+ * player. instanciate player at given X and Y coordinates
+ * @author sedric
+ */
 public class Player {
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
@@ -45,6 +49,10 @@ public class Player {
 
     public TiledMapTileLayer.Cell getPlayerDied() {return playerDied;}
 
+    /**
+     * loading in picture of player, splitting it into 300X300px and setting
+     * correct player pitctures to the player.
+     */
     public void renderPlayerTexture() {
         //loading in player texture
         Texture texture = new Texture("assets/player.png");
@@ -57,8 +65,5 @@ public class Player {
         playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
 
     }
-
-    //todo: rotate player
-
 
 }

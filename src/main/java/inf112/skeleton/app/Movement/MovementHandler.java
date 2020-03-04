@@ -6,7 +6,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
 
-
+/**
+ * handling all movement connected to the board
+ * @author sedric
+ */
 public class MovementHandler {
     Player player;
     TiledMap tilemap;
@@ -33,18 +36,35 @@ public class MovementHandler {
         }
     }
 
+    /**
+     * moves a player in a one of four directions if possible
+     * @param dir the direction to move the player
+     * @return
+     */
     public boolean movePlayer(Direction dir) {
-
         player.renderPlayerTexture();
         //clearing the previouse tile
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){ player.setPosY(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_0);}
-        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {player.setPosY(-1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_180);}
-        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {player.setPosX(-1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);}
-        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {player.setPosX(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_270);}
-        else { playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;}
+        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+            player.setPosY(1);
+            player.setRotation(TiledMapTileLayer.Cell.ROTATE_0);
+        }
+        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+            player.setPosY(-1);
+            player.setRotation(TiledMapTileLayer.Cell.ROTATE_180);
+        }
+        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+            player.setPosX(-1);
+            player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
+        }
+        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+            player.setPosX(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_270);
+        }
+        else {
+            playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;
+        }
 
 
         //setting the new player tile
