@@ -5,6 +5,7 @@ public class Card {
     //Variables
     private int distance;
     private int priority;
+
     //The intention is to have an array containing the directions so that we can plus the changeDirection and mod with 4 to get the
     //direction the player wants to turn.
     private int changeDirection;
