@@ -60,10 +60,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //displaying the corresponding picture depending on what tile you are standing on
         gameScreen.getRenderer().render();
-
-        //rendering the startposition of a player
-        TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), player.getPlayerNormal());
     }
 
     @Override
