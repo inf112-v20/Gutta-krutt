@@ -3,7 +3,6 @@ package inf112.skeleton.app.tiles;
 import java.util.HashMap;
 
 public enum TileType {
-
     // Each tile is connected to a numeric value and damage
     TILE_GROUND (5, 0),
     TILE_HOLE (6, 9),

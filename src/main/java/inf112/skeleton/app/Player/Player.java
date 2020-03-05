@@ -15,7 +15,6 @@ public class Player {
     private TiledMapTileLayer.Cell playerNormal;
 
     public Player(int startingX, int startingY) {
-
         playerNormal = new TiledMapTileLayer.Cell();
         renderPlayerTexture();
         position = new Vector2(startingX, startingY);
@@ -42,6 +41,7 @@ public class Player {
      * loading in picture of player, splitting it into 300X300px and setting
      * correct player pitctures to the player.
      */
+
     public void renderPlayerTexture() {
         //loading in player texture
         Texture texture = new Texture("assets/Robots/Fredrik_Robot.png");
