@@ -39,7 +39,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
 
-        addPlayers();
+        //initialize all players
+        createPlayers();
 
         gameScreen = new GameScreen(tilemap);
 
@@ -47,12 +48,11 @@ public class Game extends InputAdapter implements ApplicationListener  {
         Gdx.input.setInputProcessor(this);
     }
 
-    public void addPlayers(){
+    public void createPlayers(){
         playerList = new Player[7];
         for (int x = 0; x < 7; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
-            Player player = new Player(x, 0, path);
-            playerList[x] = player;
+            playerList[x] = new Player(0, x, path);
         }
     }
 
@@ -73,6 +73,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)playerList[0].getPosX(),(int)playerList[0].getPosY(), playerList[0].getPlayerNormal());
+        playerLayer.setCell((int)playerList[1].getPosX(),(int)playerList[1].getPosY(), playerList[1].getPlayerNormal());
+        playerLayer.setCell((int)playerList[2].getPosX(),(int)playerList[2].getPosY(), playerList[2].getPlayerNormal());
+        playerLayer.setCell((int)playerList[3].getPosX(),(int)playerList[3].getPosY(), playerList[3].getPlayerNormal());
     }
 
     @Override
