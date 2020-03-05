@@ -54,9 +54,9 @@ public class Player {
         Texture texture = new Texture("assets/Robots/Fredrik_Robot.png");
         TextureRegion textureRegion = new TextureRegion(texture);
         //splitting the picture into squares [row][column]
-        TextureRegion[][] pictures = textureRegion.split(300, 300);
+        TextureRegion pictures = textureRegion;
 
-        playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
+        playerNormal.setTile(new StaticTiledMapTile(pictures));
     }
 
 }
