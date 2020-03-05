@@ -3,7 +3,22 @@ Vi har som mål å lage en digital versjon av det klassiske brettspillet Robo Ra
 For å oppnå dette må vi implementere nødvendige funksjonaliteter som vegger, laser 
 etc... 
 
-Regelene er tatt fra 2016 regelboken
+Regelene er tatt fra [RoboRally Rulebook 2016]()
+
+####Innhold:
+- ["x" Spill Brett](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps)
+- [Regelbok]()
+- [6 Kule roboter](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Robots)
+- 4 Flagg
+- 82 Programkort 
+- Ett Sekvensbrett
+- Én 30 sekunders timer
+
+## GDX-Skin
+Big shoutout to [Raymond "Raeleus" Buckley](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)
+for letting us use [Star Soldier UI Ver. 1](https://github.com/czyzby/gdx-skins/tree/master/star-soldier).
+
+Visit: [ray3k.wordpress](ray3k.wordpress.com) for games, tutorials, and much more!
 
 ## Bugs
 Hvis du har Java.X > 8 så vil du få en del warnings, men dette vil ikke påvirke selve spillet!
