@@ -5,7 +5,7 @@ etc...
 
 Regelene er tatt fra [RoboRally Rulebook 2016]()
 
-####Innhold:
+#### Innhold:
 - ["x" Spill Brett](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps)
 - [Regelbok]()
 - [6 Kule roboter](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Robots)
@@ -21,4 +21,4 @@ for letting us use [Star Soldier UI Ver. 1](https://github.com/czyzby/gdx-skins/
 Visit: [ray3k.wordpress](ray3k.wordpress.com) for games, tutorials, and much more!
 
 ## Bugs
-Hvis du har Java.X > 8 så vil du få en del warnings, men dette vil ikke påvirke selve spillet!
+Currently throws "WARNING: An illegal reflective access operation has occurred", when the java version used is >8. This has no effect on function or performance, and is just a warning.
