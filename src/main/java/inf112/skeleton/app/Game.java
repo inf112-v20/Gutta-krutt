@@ -48,8 +48,8 @@ public class Game extends InputAdapter implements ApplicationListener  {
     }
 
     public void addPlayers(){
-        playerList = new Player[8];
-        for (int x= 0; x<8; x++){
+        playerList = new Player[7];
+        for (int x = 0; x < 7; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
             Player player = new Player(x, 0, path);
             playerList[x] = player;

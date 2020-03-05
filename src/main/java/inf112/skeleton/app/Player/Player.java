@@ -49,13 +49,8 @@ public class Player {
         //loading in player texture
         Texture texture = new Texture(texturePath);
         TextureRegion textureRegion = new TextureRegion(texture);
-        //splitting the picture into squares [row][column]
-        TextureRegion[][] pictures = textureRegion.split(100, 300);
 
-
-        playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
-        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
-        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
+        playerNormal.setTile(new StaticTiledMapTile(textureRegion));
 
     }
 
