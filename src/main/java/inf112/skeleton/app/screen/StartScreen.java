@@ -1,28 +1,19 @@
-package inf112.skeleton.app.cards;
+package inf112.skeleton.app.screen;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-import java.lang.reflect.Array;
-
-public class DisplayCard extends InputAdapter implements ApplicationListener {
+public class StartScreen extends Button implements ApplicationListener {
 
     private SpriteBatch batch;
     private BitmapFont font;
-    private OrthogonalTiledMapRenderer renderer;
-    private TiledMap tilemap;
+
 
     @Override
     public void create() {
