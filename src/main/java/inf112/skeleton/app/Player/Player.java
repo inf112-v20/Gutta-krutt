@@ -2,7 +2,6 @@ package inf112.skeleton.app.Player;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
@@ -10,20 +9,14 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * new instance of a player, containing methods to get position, displaying and rotating
  * player. instanciate player at given X and Y coordinates
- * @author sedric
  */
 public class Player {
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
-    private TiledMapTileLayer.Cell playerWon;
-    private TiledMapTileLayer.Cell playerDied;
 
     public Player(int startingX, int startingY) {
 
         playerNormal = new TiledMapTileLayer.Cell();
-        playerWon = new TiledMapTileLayer.Cell();
-        playerDied = new TiledMapTileLayer.Cell();
-
         renderPlayerTexture();
         position = new Vector2(startingX, startingY);
     }
