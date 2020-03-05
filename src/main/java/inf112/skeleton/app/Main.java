@@ -2,6 +2,9 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import inf112.skeleton.app.cards.DisplayCard;
+import inf112.skeleton.app.screen.StartScreen;
 
 
 public class Main {
