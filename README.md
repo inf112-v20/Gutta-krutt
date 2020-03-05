@@ -3,7 +3,7 @@ Vi har som mål å lage en digital versjon av det klassiske brettspillet Robo Ra
 For å oppnå dette må vi implementere nødvendige funksjonaliteter som vegger, laser 
 etc... 
 
-Regelene er tatt fra [RoboRally Rulebook 2016]()
+Regelene er tatt fra [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
 
 #### Innhold:
 - ["x" Spill Brett](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps)
