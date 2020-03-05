@@ -45,25 +45,18 @@ public class Player {
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
-    public TiledMapTileLayer.Cell getPlayerWon() {return playerWon;}
-
-    public TiledMapTileLayer.Cell getPlayerDied() {return playerDied;}
-
     /**
      * loading in picture of player, splitting it into 300X300px and setting
      * correct player pitctures to the player.
      */
     public void renderPlayerTexture() {
         //loading in player texture
-        Texture texture = new Texture("assets/player.png");
+        Texture texture = new Texture("assets/Robots/Fredrik_Robot.png");
         TextureRegion textureRegion = new TextureRegion(texture);
         //splitting the picture into squares [row][column]
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
-        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
-        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
-
     }
 
 }
