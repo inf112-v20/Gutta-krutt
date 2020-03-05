@@ -38,14 +38,13 @@ public class Game extends InputAdapter implements ApplicationListener  {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
+
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
-
         player = new Player(0 ,0);
         gameScreen = new GameScreen(tilemap);
         movementHandler = new MovementHandler(player, tilemap);
-
         Gdx.input.setInputProcessor(this);
     }
 
