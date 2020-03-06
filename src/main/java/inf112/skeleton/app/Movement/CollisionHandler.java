@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class CollisionHandler extends InputAdapter {
     Player player;
     TiledMap tilemap;
-
+    
     public CollisionHandler(Player player, TiledMap tilemap) {
         this.player = player;
         this.tilemap = tilemap;
@@ -29,7 +29,7 @@ public class CollisionHandler extends InputAdapter {
      * @param dir direction to move player
      * @param newPosX the new X position of player
      * @param newPosY the new Y position of player
-     * @return
+     * @return true if it is possible to move to the new location and false otherwise
      */
     public boolean canMove(Direction dir, int newPosX, int newPosY) {
         HashMap<Integer, Direction[]> idToWallName = new HashMap<>();
