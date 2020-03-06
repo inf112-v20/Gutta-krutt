@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class CollisionHandler extends InputAdapter {
     Player player;
     TiledMap tilemap;
-    
+
     public CollisionHandler(Player player, TiledMap tilemap) {
         this.player = player;
         this.tilemap = tilemap;
