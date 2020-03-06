@@ -80,3 +80,11 @@ Fravær(Sedric Kvarnes - syk)
 * Ferdig med dir
 * Ferdig med tiles
 * Jobbe på sequence board
+
+## Møtereferat 06.03.2020
+* Begynt med startscreen m/ buttons
+* Startet med movements(direction)
+* Forskjellige roboter
+* Javadoc
+* Application listener -> Screens
+* rebase branches

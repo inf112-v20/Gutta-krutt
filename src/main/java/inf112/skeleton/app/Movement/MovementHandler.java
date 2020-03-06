@@ -15,6 +15,11 @@ public class MovementHandler {
     TiledMap tilemap;
     CollisionHandler collisionHandler;
 
+    /**
+     *
+     * @param player the player to be moved around the map
+     * @param tilemap the tilemap the movementHandler connects to
+     */
     public MovementHandler(Player player, TiledMap tilemap) {
        this.player = player;
        this.tilemap = tilemap;
