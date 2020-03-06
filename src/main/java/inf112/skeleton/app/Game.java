@@ -31,10 +31,10 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/map1.tmx");
+        tilemap = tmxLoader.load("assets/Maps/map1.tmx");
         //initialize all players
         createPlayers();
-        tilemap = tmxLoader.load("assets/Maps/map1.tmx");
+
 
         gameScreen = new GameScreen(tilemap);
         movementHandler = new MovementHandler(playerList[0], tilemap);

@@ -13,9 +13,17 @@ import com.badlogic.gdx.math.Vector2;
 public class Player {
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
+    private TiledMapTileLayer.Cell playerWon;
+    private TiledMapTileLayer.Cell playerDied;
+    private String filePath;
 
-    public Player(int startingX, int startingY) {
+    public Player(int startingX, int startingY, String filePath) {
+
         playerNormal = new TiledMapTileLayer.Cell();
+        playerWon = new TiledMapTileLayer.Cell();
+        playerDied = new TiledMapTileLayer.Cell();
+        this.filePath = filePath;
+
         renderPlayerTexture();
         position = new Vector2(startingX, startingY);
     }
@@ -42,15 +50,12 @@ public class Player {
      * correct player pitctures to the player.
      */
 
-    public void renderPlayerTexture(String texturePath) {
+    public void renderPlayerTexture() {
         //loading in player texture
-        Texture texture = new Texture(texturePath);
+        Texture texture = new Texture(filePath);
         TextureRegion textureRegion = new TextureRegion(texture);
         //splitting the picture into squares [row][column]
-        TextureRegion pictures = textureRegion;
-
-        playerNormal.setTile(new StaticTiledMapTile(pictures));
-        TextureRegion[][] pictures = textureRegion.split(900, 300);
+        TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
         playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
