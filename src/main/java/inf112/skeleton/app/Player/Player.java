@@ -42,7 +42,7 @@ public class Player {
      * correct player pitctures to the player.
      */
 
-    public void renderPlayerTexture() {
+    public void renderPlayerTexture(String texturePath) {
         //loading in player texture
         Texture texture = new Texture(texturePath);
         TextureRegion textureRegion = new TextureRegion(texture);
@@ -50,7 +50,7 @@ public class Player {
         TextureRegion pictures = textureRegion;
 
         playerNormal.setTile(new StaticTiledMapTile(pictures));
-        TextureRegion[][] pictures = textureRegion.split(300, 300);
+        TextureRegion[][] pictures = textureRegion.split(900, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
         playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
