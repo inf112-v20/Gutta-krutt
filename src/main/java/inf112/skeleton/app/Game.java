@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
@@ -52,6 +53,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //displaying the corresponding picture depending on what tile you are standing on
         gameScreen.getRenderer().render();
+
+        TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+        playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), player.getPlayerNormal());
     }
 
     @Override
