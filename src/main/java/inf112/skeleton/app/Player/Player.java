@@ -44,12 +44,17 @@ public class Player {
 
     public void renderPlayerTexture() {
         //loading in player texture
-        Texture texture = new Texture("assets/Robots/Fredrik_Robot.png");
+        Texture texture = new Texture(texturePath);
         TextureRegion textureRegion = new TextureRegion(texture);
         //splitting the picture into squares [row][column]
         TextureRegion pictures = textureRegion;
 
         playerNormal.setTile(new StaticTiledMapTile(pictures));
+        TextureRegion[][] pictures = textureRegion.split(300, 300);
+
+        playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
+        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
+        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
     }
 
 }

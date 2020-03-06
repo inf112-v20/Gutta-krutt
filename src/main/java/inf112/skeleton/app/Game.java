@@ -16,8 +16,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private GameScreen gameScreen;
     private TiledMap tilemap;
 
-    private Player player;
+    private Player[] playerList;
     private MovementHandler movementHandler;
+
 
     private SpriteBatch batch;
     private BitmapFont font;
@@ -30,13 +31,22 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
+        tilemap = tmxLoader.load("assets/map1.tmx");
+        //initialize all players
+        createPlayers();
         tilemap = tmxLoader.load("assets/Maps/map1.tmx");
 
-        player = new Player(0 ,0);
         gameScreen = new GameScreen(tilemap);
-        movementHandler = new MovementHandler(player, tilemap);
-
+        movementHandler = new MovementHandler(playerList[0], tilemap);
         Gdx.input.setInputProcessor(this);
+    }
+
+    public void createPlayers(){
+        playerList = new Player[7];
+        for (int x = 0; x < 7; x++){
+            String path = "assets/playerTexture/robot" + x + ".png";
+            playerList[x] = new Player(0, x, path);
+        }
     }
 
     @Override
@@ -55,7 +65,10 @@ public class Game extends InputAdapter implements ApplicationListener  {
         gameScreen.getRenderer().render();
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), player.getPlayerNormal());
+        playerLayer.setCell((int)playerList[0].getPosX(),(int)playerList[0].getPosY(), playerList[0].getPlayerNormal());
+        playerLayer.setCell((int)playerList[1].getPosX(),(int)playerList[1].getPosY(), playerList[1].getPlayerNormal());
+        playerLayer.setCell((int)playerList[2].getPosX(),(int)playerList[2].getPosY(), playerList[2].getPlayerNormal());
+        playerLayer.setCell((int)playerList[3].getPosX(),(int)playerList[3].getPosY(), playerList[3].getPlayerNormal());
     }
 
     @Override
