@@ -37,6 +37,7 @@ feilretting, men om hvordan man jobber og kommuniserer.
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
 committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også designfiler)
     *   Det har vært ujevn fordeling av commits hittil fordi under møter driver vi med parprogrammering og ulike personer får ulike oppgaver.
+    Noe som fører til at det bli ujevn fordeling av commits.
     
 *   Referat fra møter siden forrige leveranse skal legges ved
     *   Ligger i assets/Deliverables/Møtereferat.md
