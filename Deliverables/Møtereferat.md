@@ -1,6 +1,8 @@
 ## Møtereferat: 31.01.2020
 
 ### Fordeling av roller
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 - Teamleder: Fredrik 
 - Kundekontakt: Oskar Marthinussen
 - Utvikler: Sedric Kvarnes
@@ -19,7 +21,7 @@ Sette opp fremtidige møter
 * Deloppgave 1 og 2
 
 ## Møtereferat 03.02.2020
-Fravær(Sedric Kvarnes - syk)
+(Til stede: Fredrik, Vegard og Oskar)
 
 * Undersøk LibGdx
 * Minstekrav
@@ -28,19 +30,24 @@ Fravær(Sedric Kvarnes - syk)
 
 
 ## Møtereferat 05.02.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Gjort Libgdx and Tiled Tutorial
 * Startet på Tiled og utvikle brett for RoboRally
 * Første push til Git
 * Instansiert spiller og brett
 
 ## Møtereferat 07.02.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Finpuss på Oblig 1 txt dokoument
 * Gjøre det mulig å bevege spiller
 * Spiller kan "dø" og "vinne"
 * Spiller kan ikke forlate brettet
 
 ## Møtereferat 19.02.2020
-(Fravær Oscar - syk)
+(Til stede: Fredrik, Vegard og Sedric)
+
 * Starte på Oblig 2
 * Hovedfokuset ligger på et fungerende Brett og en kortstokk
 * Vegard jobber nå mer med tester fremover
@@ -50,9 +57,12 @@ Fravær(Sedric Kvarnes - syk)
 * Begynt på kortstokk 
 
 ## Møtereferat 24.02.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Fordele arbeidsoppgaver
 * Starte på testene
 * Abstrahere
+
 #### Arbeidsoppgaver til fredag
 * Sedric - board og objekter
 * Vegard - Tester og cards
@@ -60,17 +70,23 @@ Fravær(Sedric Kvarnes - syk)
 * Fredrik - Cards og dealer
 
 ## Møtereferat 28.02.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Fullføre oblig 2
 * Finusse koden
 * Levere inn Oblig 2
 
 
 ## Møtereferat 02.03.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Klargjøre presentasjon for 03.02
 * Retrospektiv på det vi har gjort hittil
 * Jobbe videre på kortene
 
 ## Møtereferat 04.03.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Nytt projectboard
     * Bruk av issues
     * Bruk av tags
@@ -82,6 +98,8 @@ Fravær(Sedric Kvarnes - syk)
 * Jobbe på sequence board
 
 ## Møtereferat 06.03.2020
+(Til stede: Fredrik, Vegard, Sedric og Oskar)
+
 * Begynt med startscreen m/ buttons
 * Startet med movements(direction)
 * Forskjellige roboter
