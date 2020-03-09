@@ -1,4 +1,4 @@
-# Star Soldier UI
+## Star Soldier UI
 
 ```
 Star Soldier UI Ver. 1
