@@ -66,9 +66,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)playerList[0].getPosX(),(int)playerList[0].getPosY(), playerList[0].getPlayerNormal());
-        playerLayer.setCell((int)playerList[1].getPosX(),(int)playerList[1].getPosY(), playerList[1].getPlayerNormal());
-        playerLayer.setCell((int)playerList[2].getPosX(),(int)playerList[2].getPosY(), playerList[2].getPlayerNormal());
-        playerLayer.setCell((int)playerList[3].getPosX(),(int)playerList[3].getPosY(), playerList[3].getPlayerNormal());
+        // playerLayer.setCell((int)playerList[1].getPosX(),(int)playerList[1].getPosY(), playerList[1].getPlayerNormal());
+        // playerLayer.setCell((int)playerList[2].getPosX(),(int)playerList[2].getPosY(), playerList[2].getPlayerNormal());
+        // playerLayer.setCell((int)playerList[3].getPosX(),(int)playerList[3].getPosY(), playerList[3].getPlayerNormal());
     }
 
     @Override

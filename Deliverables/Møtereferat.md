@@ -110,4 +110,10 @@ Sette opp fremtidige møter
 ## Møtereferat 10.03.2020
 (Til stede: Fredrik Vegard og Oskar)
 
-* 
+* Deloppgave 1
+* Deloppgave 2
+* Retrospektiv
+* Plan:
+    * Fikse det visuelle.
+    * Fikse objekter på brettet.
+    * Gjøre det mulig å legge en sekvens.
