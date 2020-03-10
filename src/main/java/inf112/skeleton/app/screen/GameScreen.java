@@ -1,6 +1,7 @@
 package inf112.skeleton.app.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
@@ -12,10 +13,11 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import inf112.skeleton.app.Game;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 
-public class GameScreen implements Screen {
+public class GameScreen extends InputAdapter implements Screen {
 
     private OrthogonalTiledMapRenderer renderer;
 
@@ -28,6 +30,7 @@ public class GameScreen implements Screen {
     private SpriteBatch batch;
     private BitmapFont font;
     private Stage stage;
+    private Game game;
 
     public GameScreen() {
         stage = new Stage();
@@ -57,6 +60,11 @@ public class GameScreen implements Screen {
     }
 
     @Override
+    public boolean keyUp(int keycode) {
+        return movementHandler.movePlayer(keycode);
+    }
+
+    @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
 
@@ -66,6 +74,7 @@ public class GameScreen implements Screen {
     public void render(float v) {
         Gdx.gl.glClearColor( 180/255F, 180/255F ,180/255F, 0);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+        renderer.render();
     }
 
     @Override

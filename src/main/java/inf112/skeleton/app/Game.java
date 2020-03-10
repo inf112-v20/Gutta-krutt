@@ -43,7 +43,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
         player = new Player(0 ,0);
-        gameScreen = new GameScreen(tilemap);
+        gameScreen = new GameScreen();
         movementHandler = new MovementHandler(player, tilemap);
         Gdx.input.setInputProcessor(this);
     }
