@@ -2,11 +2,11 @@
 
 ## Deloppgave 1: Prosjekt og prosjektstruktur
 *   Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt
-    *   Rollene fungerer bra som satt
+    *   Rollene fungerer bra som de er, har enda ikke fått bruk for kundekontakt, men greit å ha.
     
 *   Er det noen erfaringer enten team-messig eller mtp prosjektmetodikk som er verdt å nevne? Synes teamet
-at de valgene dere har tatt er gode? Hvis ikke, hva kan dere gjøre annerledes for å forbedre måten teamet
-fungerer på
+    at de valgene dere har tatt er gode? Hvis ikke, hva kan dere gjøre annerledes for å forbedre måten teamet
+    fungerer på
     *   Mtp prosjektmetodikken "kanban" som vi bruker er vi veldig fornøyd og har nå "modernisert" projectboardet
     vårt ved å automatisere det og legge til:
         *   Milestones
@@ -14,13 +14,13 @@ fungerer på
         *   Tags
     *   Team-messig har vi erfart fra forrige innlevering (Oblig 2) at vi bør være mer oppmerksomme på hva vi faktsik
     velger å levere inn. Sist så leverte vi inn kode som så ut til å ikke kjøre fordi vi hadde
-    glemt å assigne noen variabler. Og som en konsekvens av dette valgte vi å bruke "Travis",
-    så nå kan du se i README.md filen om prosjektet kjører. Vi har også bestemt at hele gruppen skal
+    glemt å assigne noen variabler. Og som en konsekvens av dette valgte implementerte vi "Travis",
+    som du nå kan du se i README.md filen om prosjektet kjører. Vi har også bestemt at hele gruppen skal
     være tilstede når noen merger inn i master-branchen.
     
 *   Hvordan er gruppedynamikken
     *   Gruppedynamikken er svært bra. Alle jobber bra sammen, god kommunikasjon og jobber hardt for å få tid til ekstra møter, selvstendig jobbing og en jevn progresjon. Selv utenom "oblig" periodene.
-    Vi jobber for best mulig resultat og ser på dette prosjektet som en god mulighet til å prøve ut ulike metoder og jobbe og hvordan vi som gruppe kan sammarbeide best mulig ved hjelp av git, branches og 
+    Vi jobber for best mulig resultat og ser på dette prosjektet som en god mulighet til å prøve ut ulike metoder å jobbe og hvordan vi som gruppe kan sammarbeide best mulig ved hjelp av git, branches og 
     parprogrammering. 
 
 *   Hvordan fungerer kommunikasjonen for dere
@@ -28,14 +28,14 @@ fungerer på
     at noen føler noen slags form for urettferdighet eller at man ikke blir hørt.
 
 *   Gjør et kort retrospektiv hvor dere vurderer hva dere har klart til nå, og hva som kan forbedres. Dette skal
-handle om prosjektstruktur, ikke kode. Dere kan selvsagt diskutere kode, men dette handler ikke om
-feilretting, men om hvordan man jobber og kommuniserer.
+    handle om prosjektstruktur, ikke kode. Dere kan selvsagt diskutere kode, men dette handler ikke om
+    feilretting, men om hvordan man jobber og kommuniserer.
     *   Etter gruppepresentasjonene i klassen ble vår gruppe introdusert for "tags" noe vi selv har implementert i Project Boardet. Vi har også begynt med issues og milestones. Noe som skal gjøre
-    oversikten bedre.
-    *   Har lagt til "Travis" etter at vi gikk på en smell med oblig 2 at koden ikke kjørte.
+    den totale oversikten bedre.
+    *   Har lagt til "Travis" etter at vi gikk på en smell med oblig 2 der koden ikke kjørte.
     
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
-committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også designfiler)
+    committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også designfiler)
     *   Det har vært ujevn fordeling av commits hittil fordi under møter driver vi med parprogrammering og ulike personer får ulike oppgaver.
     Noe som fører til at det bli ujevn fordeling av commits.
     
@@ -43,7 +43,7 @@ committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk 
     *   Ligger i assets/Deliverables/Møtereferat.md
 
 *   Bli enige om maks tre forbedringspunkter fra retrospektivet, som skal følges opp under neste sprint
-    1.  Alle skal være til stedet under en merge til Master branchen
+    1.  Alle burde reviewe før noen merger inn i Master branchen
     2.  Fjerne unødvendig kode/kode som ikke kjører
     3.  Jobbe bedre selvstendig
 
@@ -53,18 +53,42 @@ committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk 
     2.  Akseptansekriterier (Husk at akseptansekriterier ofte skrives mer eller mindre som tester).
     3.  Arbeidsoppgaver.
     
+
+1.  Spilleren skal kunne se kontrollbrett  
+    *   Som spiller trenger jeg å se kontrollbrettet for å ha oversikt over sekvensen min.
+    *   Som spiller trenger jeg å se kontrollbrettet for å ha oversikt over livene til roboten.
+    *   Som spiller trenger jeg å se kontrollbrettet for å ha oversikt over skaden på roboten.
+    *   Som spiller trenger jeg å se kontrollbrettet for å ha oversikt over powerdown.
+    
+2.  Spiller skal ha kontrollbrett
+    *   Som spiller trenger jeg kontrollbrettet for å legge en sekvens for roboten min.
+    *   Som spiller trenger jeg kontrollbrettet for å legge en sekvens og vinne RoboRally.
+    *   Som spiller trenger jeg kontrollbrettet for å aktivere powerdown.
+    *   Som spiller trenger jeg kontrollbrettet 
+
+3.  Spiller skal motta kort
+    *   Som spiller trenger jeg kort for å legge en sekvens.
+    *   Som spiller trenger jeg kort for å legge en strategi.
+
+4.  Spiller trenger en menu
+    *   Som spiller trenger jeg en menu der jeg kan velge Bane.
+    *   Som spiller trenger jeg en menu der jeg kan velge Robot.
+    *   Som spiller trenger jeg en menu der jeg kan lese reglene til spillet.
+    
 *   Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også
-    *   
+    *   Starter med sekvensbrettet/kontrollbrettet og utvide funksjonaliteten på brettet.
     
 *   Forklar kort hvordan dere har prioritert oppgavene fremover
-    *   Prioriteten fremover ligger mest i det visuelle og funksjonaliteten til brettet.
+    *   Vi har valgt å fokusere på de funkjsonelle oppgavene fremover. Vi ønsker å kunne spille spillet ved neste innlevering.
     
 *   Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge utfra hva som er gitt fra kunde, hvorfor er dette gjort
-    *   
+    *   Å kunne se brettet 
+    *   Å kunne legge en sekvens
+    *   At spillet kjører/(går ann å spille)
     
 *   Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
-    *   
-     
+    *   Prioriteten fremover ligger i de kravene vi har spesifisert ovenfor.
+    
 *   Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs)
     *   
     

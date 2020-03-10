@@ -106,3 +106,8 @@ Sette opp fremtidige møter
 * Javadoc
 * Application listener -> Screens
 * rebase branches
+
+## Møtereferat 10.03.2020
+(Til stede: Fredrik Vegard og Oskar)
+
+* 
