@@ -4,77 +4,95 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Direction;
+import sun.font.TrueTypeFont;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * handling all movement connected to the board
  * @author sedric
  */
 public class MovementHandler {
-    Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
 
     /**
      *
-     * @param player the player to be moved around the map
      * @param tilemap the tilemap the movementHandler connects to
      */
-    public MovementHandler(Player player, TiledMap tilemap) {
-       this.player = player;
+    public MovementHandler(TiledMap tilemap) {
        this.tilemap = tilemap;
-       collisionHandler = new CollisionHandler(player, tilemap);
+       collisionHandler = new CollisionHandler(tilemap);
     }
 
-    public boolean movePlayer(int keycode) {
-        switch (keycode) {
-            case Input.Keys.UP:
-                return movePlayer(Direction.NORTH);
-            case Input.Keys.DOWN:
-                return movePlayer(Direction.SOUTH);
-            case Input.Keys.LEFT:
-                return movePlayer(Direction.WEST);
-            case Input.Keys.RIGHT:
-                return movePlayer(Direction.EAST);
-            default:
-                return false;
+
+    public void rotatePlayerLeft(Player player){
+        int currentDirection = player.getDirection();
+        if (currentDirection == 0) {
+            player.setDirection(3);
+            player.getPlayerNormal().setRotation(3);
+        }
+        else{
+            player.setDirection(currentDirection - 1);
+            player.getPlayerNormal().setRotation(currentDirection - 1);
+        }
+    }
+    public void rotatePlayerRight(Player player){
+        int currentDirection = player.getDirection();
+        int newDirection = (currentDirection + 1) % 4;
+        player.setDirection(newDirection);
+        player.getPlayerNormal().setRotation(newDirection);
+
+    }
+
+    /**
+     * Get direction based on the number the player-variable (int) direction.
+     * @param direction a number between 0-3 where each number represent a direction.
+     * @return the direction as an enum value.
+     */
+    public Direction getDirection(int direction){
+        switch(direction){
+            case(0): return Direction.NORTH;
+            case(1): return Direction.WEST;
+            case(2): return Direction.SOUTH;
+            case(3): return Direction.EAST;
+            default: return null;
         }
     }
 
     /**
      * moves a player in a one of four directions if possible
-     * @param dir the direction to move the player
+     * @param player the player you want to move.
      * @return
      */
-    public boolean movePlayer(Direction dir) {
+    public boolean movePlayer(Player player) {
+        Direction dir = getDirection(player.getDirection());
         player.renderPlayerTexture();
         //clearing the previouse tile
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_0);
         }
-        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_180);
         }
-        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
         }
-        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
-            player.setPosX(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_270);
+        else if(dir == Direction.EAST && collisionHandler.canMove(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+            player.setPosX(1);
         }
         else {
-            playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;
+            playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
+            return false;
         }
-
-
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
     }
-
 }

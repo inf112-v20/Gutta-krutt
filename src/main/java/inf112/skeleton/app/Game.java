@@ -10,13 +10,20 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.Player.PlayerCardPair;
+import inf112.skeleton.app.cards.Card;
+import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.screen.GameScreen;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 
 public class Game extends InputAdapter implements ApplicationListener  {
     private GameScreen gameScreen;
     private TiledMap tilemap;
 
     private Player[] playerList;
+    private Deck deck;
     private MovementHandler movementHandler;
 
 
@@ -34,10 +41,12 @@ public class Game extends InputAdapter implements ApplicationListener  {
         tilemap = tmxLoader.load("assets/Maps/map1.tmx");
         //initialize all players
         createPlayers();
+        //initialize deck
+        deck = new Deck();
 
 
         gameScreen = new GameScreen(tilemap);
-        movementHandler = new MovementHandler(playerList[0], tilemap);
+        movementHandler = new MovementHandler(tilemap);
         Gdx.input.setInputProcessor(this);
     }
 
@@ -45,7 +54,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         playerList = new Player[7];
         for (int x = 0; x < 7; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
-            playerList[x] = new Player(0, x, path);
+            playerList[x] = new Player(0, x, path, x);
         }
     }
 
@@ -65,10 +74,10 @@ public class Game extends InputAdapter implements ApplicationListener  {
         gameScreen.getRenderer().render();
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        playerLayer.setCell((int)playerList[0].getPosX(),(int)playerList[0].getPosY(), playerList[0].getPlayerNormal());
-        playerLayer.setCell((int)playerList[1].getPosX(),(int)playerList[1].getPosY(), playerList[1].getPlayerNormal());
-        playerLayer.setCell((int)playerList[2].getPosX(),(int)playerList[2].getPosY(), playerList[2].getPlayerNormal());
-        playerLayer.setCell((int)playerList[3].getPosX(),(int)playerList[3].getPosY(), playerList[3].getPlayerNormal());
+        //Initialize players
+        for (int i = 0; i<1; i++) {
+            playerLayer.setCell((int) playerList[i].getPosX(), (int) playerList[i].getPosY(), playerList[i].getPlayerNormal());
+        }
     }
 
     @Override
@@ -85,8 +94,74 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
     @Override
     public boolean keyUp(int keycode) {
-        return movementHandler.movePlayer(keycode);
+        //return movementHandler.keyUp(playerList[0], keycode);
+        gameTurn();
+        return true;
+    }
+
+    public void executeCard(PlayerCardPair pair){
+        int distance = pair.getCard().getDistance();
+        int rotation = pair.getCard().getChangeDirection();
+
+        System.out.println(playerList[0].getDirection());
+        if (distance != 0){
+            while (distance > 0){
+                for (Player player : playerList){
+                    if (player.getPlayerID() == pair.getPlayerID()){
+                        movementHandler.movePlayer(player);
+                        distance -= 1;
+                    }
+                }
+            }
+        }
+        else if (rotation < 0){
+            for (Player player : playerList){
+                if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerLeft(player);}
+            }
+        }
+        else if (rotation > 0){
+            for (Player player : playerList){
+                if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerRight(player);}
+            }
+        }
+    }
+
+    public void gameTurn(){
+        int roundThisTurn = 1;
+        for (Player player : playerList){
+            laySequence(player);
+        }
+        while (roundThisTurn <= 5) {
+            ArrayList<PlayerCardPair> currentRound = new ArrayList<>();
+
+            //Gather the first card from each player's sequence and put it in a list
+            //that is sorted in the order each card should be executed
+            for (Player player : playerList) {
+                PlayerCardPair pair = new PlayerCardPair(player.getPlayerID(), player.getSequence().pollFirst());
+                if (pair.getCard() != null) {
+                    if (currentRound.size() == 0) {
+                        currentRound.add(0, pair);
+                    } else {
+                        for (int i = 0; i < currentRound.size(); i++) {
+                            if (pair.getCard().getPriority() < currentRound.get(i).getCard().getPriority()) {
+                                currentRound.add(i + 1, pair);
+                            }
+                        }
+                    }
+                }
+            }
+            for (PlayerCardPair currentPair : currentRound) {
+                executeCard(currentPair);
+            }
+            roundThisTurn++;
+        }
+    }
+
+    public void laySequence(Player player) {
+        LinkedList<Card> sequence = new LinkedList<>();
+        sequence.add(new Card(1, 600,0));
+        sequence.add(new Card(0, 650,1));
+        sequence.add(new Card(1, 700,0));
+        player.setSequence(sequence);
     }
 }
-
-
