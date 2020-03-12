@@ -16,6 +16,7 @@ import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.screen.GameScreen;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 
 public class Game extends InputAdapter implements ApplicationListener  {
@@ -23,6 +24,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private TiledMap tilemap;
 
     private Player[] playerList;
+    private int amountOfPlayers = 3;
     private Deck deck;
     private MovementHandler movementHandler;
 
@@ -40,7 +42,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/Maps/map1.tmx");
         //initialize all players
-        createPlayers();
+        createPlayers(amountOfPlayers);
         //initialize deck
         deck = new Deck();
 
@@ -50,9 +52,13 @@ public class Game extends InputAdapter implements ApplicationListener  {
         Gdx.input.setInputProcessor(this);
     }
 
-    public void createPlayers(){
-        playerList = new Player[7];
-        for (int x = 0; x < 7; x++){
+    /**
+     * This method is called when the game starts to initialize all the players.
+     * @param amountOfPlayers amount of players playing.
+     */
+    public void createPlayers(int amountOfPlayers){
+        playerList = new Player[amountOfPlayers];
+        for (int x = 0; x < amountOfPlayers; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
             playerList[x] = new Player(0, x, path, x);
         }
@@ -74,8 +80,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
         gameScreen.getRenderer().render();
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        //Initialize players
-        for (int i = 0; i<1; i++) {
+
+        //Render all the players
+        for (int i = 0; i<amountOfPlayers; i++) {
             playerLayer.setCell((int) playerList[i].getPosX(), (int) playerList[i].getPosY(), playerList[i].getPlayerNormal());
         }
     }
@@ -99,11 +106,15 @@ public class Game extends InputAdapter implements ApplicationListener  {
         return true;
     }
 
+    /**
+     * Helper-method for gameTurn(). GameTurn call this method every time it execute a card.
+     * @param pair It is a pair containing the specific card and playerID for the player that layed this card in his sequence.
+     */
     public void executeCard(PlayerCardPair pair){
+        System.out.println("RobotID: " + pair.getPlayerID() + " priority: " + pair.getCard().getPriority());
         int distance = pair.getCard().getDistance();
         int rotation = pair.getCard().getChangeDirection();
 
-        System.out.println(playerList[0].getDirection());
         if (distance != 0){
             while (distance > 0){
                 for (Player player : playerList){
@@ -125,43 +136,74 @@ public class Game extends InputAdapter implements ApplicationListener  {
             }
         }
     }
-
+    
+    /**
+     * Collects every players sequence and execute each card in a specific order, based on the cards priority.
+     */
     public void gameTurn(){
         int roundThisTurn = 1;
-        for (Player player : playerList){
-            laySequence(player);
-        }
+        laySequence1(playerList[0]);
+        laySequence2(playerList[1]);
+        laySequence3(playerList[2]);
+
         while (roundThisTurn <= 5) {
             ArrayList<PlayerCardPair> currentRound = new ArrayList<>();
-
-            //Gather the first card from each player's sequence and put it in a list
+            //Gather the first card from each player's sequence and put it in a ArrayList
             //that is sorted in the order each card should be executed
             for (Player player : playerList) {
                 PlayerCardPair pair = new PlayerCardPair(player.getPlayerID(), player.getSequence().pollFirst());
                 if (pair.getCard() != null) {
-                    if (currentRound.size() == 0) {
-                        currentRound.add(0, pair);
-                    } else {
-                        for (int i = 0; i < currentRound.size(); i++) {
-                            if (pair.getCard().getPriority() < currentRound.get(i).getCard().getPriority()) {
-                                currentRound.add(i + 1, pair);
+                    if (currentRound.size() == 0) { currentRound.add(0, pair); }
+                    else {
+                        int arraySizeBeforeInsertion = currentRound.size();
+                        for (int i = 0; i < arraySizeBeforeInsertion; i++) {
+                            if (pair.getCard().getPriority() >= currentRound.get(i).getCard().getPriority()) {
+                                currentRound.add(i, pair);
                             }
                         }
+                        if (arraySizeBeforeInsertion == currentRound.size()){ currentRound.add(pair); }
                     }
                 }
             }
-            for (PlayerCardPair currentPair : currentRound) {
-                executeCard(currentPair);
-            }
+            for (PlayerCardPair currentPair : currentRound) { executeCard(currentPair); }
             roundThisTurn++;
         }
     }
 
-    public void laySequence(Player player) {
+
+    /**
+     * Temporary method to lay a sequence for a player.
+     * @param player The player you want to lay a sequence for.
+     */
+    public void laySequence1(Player player) {
         LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(1, 600,0));
-        sequence.add(new Card(0, 650,1));
-        sequence.add(new Card(1, 700,0));
+        sequence.add(new Card(1, 640,0));
+        sequence.add(new Card(0, 930,1));
+        sequence.add(new Card(1, 210,0));
+        sequence.add(new Card(0, 310,-1));
+        sequence.add(new Card(1, 200,0));
         player.setSequence(sequence);
     }
+    /**
+     * Temporary method to lay a sequence for a player.
+     * @param player The player you want to lay a sequence for.
+     */
+    public void laySequence2(Player player) {
+        LinkedList<Card> sequence = new LinkedList<>();
+        sequence.add(new Card(0, 820,1));
+        sequence.add(new Card(3, 650,0));
+        sequence.add(new Card(0, 700,-1));
+        sequence.add(new Card(0, 450,1));
+        player.setSequence(sequence);
+    }
+    /**
+     * Temporary method to lay a sequence for a player.
+     * @param player The player you want to lay a sequence for.
+     */
+    public void laySequence3(Player player) {
+        LinkedList<Card> sequence = new LinkedList<>();
+        sequence.add(new Card(0, 320,1));
+        player.setSequence(sequence);
+    }
+
 }

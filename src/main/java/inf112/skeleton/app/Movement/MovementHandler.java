@@ -28,8 +28,11 @@ public class MovementHandler {
        collisionHandler = new CollisionHandler(tilemap);
     }
 
-
-    public void rotatePlayerLeft(Player player){
+    /**
+     * Rotates the player 90 degrees to the right.
+     * @param player The player you want to rotate.
+     */
+    public void rotatePlayerRight(Player player){
         int currentDirection = player.getDirection();
         if (currentDirection == 0) {
             player.setDirection(3);
@@ -40,11 +43,16 @@ public class MovementHandler {
             player.getPlayerNormal().setRotation(currentDirection - 1);
         }
     }
-    public void rotatePlayerRight(Player player){
+
+    /**
+     * Rotates the player 90 degrees to the left.
+     * @param player The player you want to rotate.
+     */
+    public void rotatePlayerLeft(Player player){
         int currentDirection = player.getDirection();
         int newDirection = (currentDirection + 1) % 4;
         player.setDirection(newDirection);
-        player.getPlayerNormal().setRotation(newDirection);
+        player.getPlayerNormal().setRotation(player.getDirection());
 
     }
 
