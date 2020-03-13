@@ -17,6 +17,11 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 -   Install [Maven](https://maven.apache.org/download.cgi)
 -   Clone git repostery: `git clone git@github.com:inf112-v20/Gutta-krutt.git`
 
+### How to run the game
+-   Run main.java which is located in: _src/main/java/roborally_ in intellij.
+-   Press the start button
+-   Move around with the arrows
+
 ## GDX-Skin
 Big shoutout to [Raymond "Raeleus" Buckley](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)
 for letting us use [Star Soldier UI Ver. 1](https://github.com/czyzby/gdx-skins/tree/master/star-soldier).
