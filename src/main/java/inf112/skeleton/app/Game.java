@@ -16,7 +16,7 @@ import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.screen.GameScreen;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.concurrent.TimeUnit;
+
 
 
 public class Game extends InputAdapter implements ApplicationListener  {
@@ -170,6 +170,32 @@ public class Game extends InputAdapter implements ApplicationListener  {
     }
 
     /**
+     * Reset a players sequence. The amount of cards that are locked for next round correspond to the amount of
+     * damagetokens a player got minus 4.
+     */
+    public void resetSequences(){
+        for (Player player : playerList){
+            LinkedList<Card> lastSequence = player.getLastTurnSequence();
+            LinkedList<Card> newSequence = new LinkedList<>();
+
+            if (player.getDamageTaken() > 4){
+                int lockedCards = player.getDamageTaken() - 4;
+                while (lockedCards > 0){
+                    newSequence.add(lastSequence.pollFirst());
+                    lockedCards--;
+                }
+                player.setSequence(newSequence);
+            }
+            else{ player.setSequence(null); }
+        }
+    }
+
+    public void powerDown(Player player){
+        player.setSequence(null);
+        player.setDamageTaken(0);
+    }
+
+    /**
      * Temporary method to lay a sequence for a player.
      * @param player The player you want to lay a sequence for.
      */
@@ -182,6 +208,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         sequence.add(new Card(1, 200,0));
         player.setSequence(sequence);
     }
+
     /**
      * Temporary method to lay a sequence for a player.
      * @param player The player you want to lay a sequence for.
@@ -194,6 +221,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         sequence.add(new Card(0, 450,1));
         player.setSequence(sequence);
     }
+
     /**
      * Temporary method to lay a sequence for a player.
      * @param player The player you want to lay a sequence for.

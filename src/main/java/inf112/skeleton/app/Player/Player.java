@@ -19,10 +19,15 @@ public class Player {
     private TiledMapTileLayer.Cell playerNormal;
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
-    private String filePath;
-    private  int direction = 0; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_** is an int.
     private LinkedList<Card> sequence;
+    private LinkedList<Card> lastTurnSequence;
+    private String filePath;
     private int playerID;
+    private  int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_** is an int.
+    private int healthLeft; //Players start with 3 lives
+    private int damageTaken; //Amount of damagetokens a player have received. Goes up to 9
+
+
 
     public Player(int startingX, int startingY, String filePath, int playerID) {
 
@@ -31,6 +36,9 @@ public class Player {
         playerDied = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
         this.playerID = playerID;
+        this.direction = 0;
+        this.healthLeft = 3;
+        this.damageTaken = 0;
 
         renderPlayerTexture();
         position = new Vector2(startingX, startingY);
@@ -54,6 +62,10 @@ public class Player {
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
+    public LinkedList<Card> getLastTurnSequence() {
+        return lastTurnSequence;
+    }
+
     public LinkedList<Card> getSequence() {
         return sequence;
     }
@@ -64,6 +76,22 @@ public class Player {
 
     public int getPlayerID() {
         return playerID;
+    }
+
+    public int getHealthLeft() {
+        return healthLeft;
+    }
+
+    public void decreaseHealth() {
+        this.healthLeft -= 1;
+    }
+
+    public int getDamageTaken() {
+        return damageTaken;
+    }
+
+    public void setDamageTaken(int damageTaken) {
+        this.damageTaken = damageTaken;
     }
 
     /**
