@@ -23,9 +23,9 @@ public class Player {
     private LinkedList<Card> lastTurnSequence;
     private String filePath;
     private int playerID;
-    private  int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_** is an int.
+    private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_** is an int.
     private int healthLeft; //Players start with 3 lives
-    private int damageTaken; //Amount of damagetokens a player have received. Goes up to 9
+    private int damageTaken; //Amount of damage tokens a player have received. Goes up to 9
 
 
 
