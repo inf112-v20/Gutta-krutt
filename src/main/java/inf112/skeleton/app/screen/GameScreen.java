@@ -37,7 +37,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/map1.tmx");
+        tilemap = tmxLoader.load("assets/Maps/map1.tmx");
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();

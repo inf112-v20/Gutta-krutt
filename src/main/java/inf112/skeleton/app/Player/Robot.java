@@ -3,11 +3,12 @@ package inf112.skeleton.app.Player;
 import java.util.HashMap;
 
 public enum Robot {
-    ROBOT_GREEN (1,"GREEN",9,3),
-    ROBOT_GREY (2,"GREY",9,3),
-    ROBOT_NERD (3,"NERDY",9,3),
-    ROBOT_ORANGE (4,"ORANGE",9,3),
-    ROBOT_RED(5,"RED",9,3);
+    Fredrik_Robot (1,"Fredrik",9,3),
+    Glitch_Robot (2,"Glitch",9,3),
+    Hacker_Robot (3,"Hacker",9,3),
+    Oskar_Robot (4,"Oskar",9,3),
+    Sedric_Robot(5,"Sedric",9,3),
+    Vegard_Robot(6,"Vegard",9,3);
 
     private final int robot_ID;
     private  String robotName;
