@@ -12,6 +12,10 @@ import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.screen.GameScreen;
 
+/**
+ * @author Sedric, Vegard, Fredrik
+ * Brukes ikke lenger til å vise fram skjermen
+ */
 public class Game extends InputAdapter implements ApplicationListener  {
     private GameScreen gameScreen;
     private TiledMap tilemap;
@@ -36,16 +40,16 @@ public class Game extends InputAdapter implements ApplicationListener  {
         createPlayers();
 
 
-        gameScreen = new GameScreen(tilemap);
+        gameScreen = new GameScreen();
         movementHandler = new MovementHandler(playerList[0], tilemap);
         Gdx.input.setInputProcessor(this);
     }
 
     public void createPlayers(){
         playerList = new Player[7];
-        for (int x = 0; x < 7; x++){
-            String path = "assets/playerTexture/robot" + x + ".png";
-            playerList[x] = new Player(0, x, path);
+        for (int y = 0; y < 7; y++){
+            String path = "assets/playerTexture/robot" + y + ".png";
+            playerList[y] = new Player(0, y, path);
         }
     }
 
