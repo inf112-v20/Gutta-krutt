@@ -111,7 +111,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
      * @param pair It is a pair containing the specific card and playerID for the player that layed this card in his sequence.
      */
     public void executeCard(PlayerCardPair pair){
-        System.out.println("RobotID: " + pair.getPlayerID() + " priority: " + pair.getCard().getPriority());
         int distance = pair.getCard().getDistance();
         int rotation = pair.getCard().getChangeDirection();
 
@@ -136,7 +135,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
             }
         }
     }
-    
+
     /**
      * Collects every players sequence and execute each card in a specific order, based on the cards priority.
      */
@@ -149,7 +148,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         while (roundThisTurn <= 5) {
             ArrayList<PlayerCardPair> currentRound = new ArrayList<>();
             //Gather the first card from each player's sequence and put it in a ArrayList
-            //that is sorted in the order each card should be executed
+            //that is sorted in the order each card should be executed.
             for (Player player : playerList) {
                 PlayerCardPair pair = new PlayerCardPair(player.getPlayerID(), player.getSequence().pollFirst());
                 if (pair.getCard() != null) {
@@ -169,7 +168,6 @@ public class Game extends InputAdapter implements ApplicationListener  {
             roundThisTurn++;
         }
     }
-
 
     /**
      * Temporary method to lay a sequence for a player.
@@ -205,5 +203,4 @@ public class Game extends InputAdapter implements ApplicationListener  {
         sequence.add(new Card(0, 320,1));
         player.setSequence(sequence);
     }
-
 }
