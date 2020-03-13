@@ -114,6 +114,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         int distance = pair.getCard().getDistance();
         int rotation = pair.getCard().getChangeDirection();
 
+        //Execute distance card.
         if (distance != 0){
             while (distance > 0){
                 for (Player player : playerList){
@@ -124,11 +125,13 @@ public class Game extends InputAdapter implements ApplicationListener  {
                 }
             }
         }
+        //execute rotate left
         else if (rotation < 0){
             for (Player player : playerList){
                 if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerLeft(player);}
             }
         }
+        //execute rotate right
         else if (rotation > 0){
             for (Player player : playerList){
                 if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerRight(player);}
@@ -137,19 +140,27 @@ public class Game extends InputAdapter implements ApplicationListener  {
     }
 
     /**
-     * Collects every players sequence and execute each card in a specific order, based on the cards priority.
+     * Collects every players sequence and execute each card in a specific order, based on the card priority.
      */
     public void gameTurn(){
         int roundThisTurn = 1;
+
+        //Will be removed when branch is merged into master
         laySequence1(playerList[0]);
-        laySequence2(playerList[1]);
-        laySequence3(playerList[2]);
+        laySequence1(playerList[1]);
+        laySequence1(playerList[2]);
+
+
+        //Reset the list "lastTurnSequence" and prepare it for a a new one.
+        for (Player player : playerList){ player.resetLastTurnSequence(); }
 
         while (roundThisTurn <= 5) {
             ArrayList<PlayerCardPair> currentRound = new ArrayList<>();
-            //Gather the first card from each player's sequence and put it in a ArrayList
-            //that is sorted in the order each card should be executed.
+
+            //Gather the first card from each player's sequence and put it in a sorted ArrayList.
+            //The ArrayList is sorted after execution order.
             for (Player player : playerList) {
+                player.getLastTurnSequence().add(player.getSequence().peek());
                 PlayerCardPair pair = new PlayerCardPair(player.getPlayerID(), player.getSequence().pollFirst());
                 if (pair.getCard() != null) {
                     if (currentRound.size() == 0) { currentRound.add(0, pair); }
@@ -158,77 +169,41 @@ public class Game extends InputAdapter implements ApplicationListener  {
                         for (int i = 0; i < arraySizeBeforeInsertion; i++) {
                             if (pair.getCard().getPriority() >= currentRound.get(i).getCard().getPriority()) {
                                 currentRound.add(i, pair);
+                                break;
                             }
                         }
                         if (arraySizeBeforeInsertion == currentRound.size()){ currentRound.add(pair); }
                     }
                 }
             }
+            //Execute each card
             for (PlayerCardPair currentPair : currentRound) { executeCard(currentPair); }
             roundThisTurn++;
         }
+        //reset sequence and lock cards based on damage taken.
+        for (Player player : playerList){ player.resetSequences(); }
     }
 
-    /**
-     * Reset a players sequence. The amount of cards that are locked for next round correspond to the amount of
-     * damagetokens a player got minus 4.
-     */
-    public void resetSequences(){
-        for (Player player : playerList){
-            LinkedList<Card> lastSequence = player.getLastTurnSequence();
-            LinkedList<Card> newSequence = new LinkedList<>();
 
-            if (player.getDamageTaken() > 4){
-                int lockedCards = player.getDamageTaken() - 4;
-                while (lockedCards > 0){
-                    newSequence.add(lastSequence.pollFirst());
-                    lockedCards--;
-                }
-                player.setSequence(newSequence);
-            }
-            else{ player.setSequence(null); }
-        }
-    }
-
-    public void powerDown(Player player){
-        player.setSequence(null);
-        player.setDamageTaken(0);
-    }
-
-    /**
-     * Temporary method to lay a sequence for a player.
-     * @param player The player you want to lay a sequence for.
-     */
+    // Both the methods under are here just for testing functionality, and will be deleted
+    //when the branch is merged into master.
     public void laySequence1(Player player) {
+        LinkedList<Card> sequence = new LinkedList<>();
+        sequence.add(new Card(0, 100,1));
+        sequence.add(new Card(1, 200,0));
+        sequence.add(new Card(1, 300,0));
+        sequence.add(new Card(1, 400,0));
+        sequence.add(new Card(0, 500,-1));
+        player.setSequence(sequence);
+    }
+
+    public LinkedList<Card> laySequenc2() {
         LinkedList<Card> sequence = new LinkedList<>();
         sequence.add(new Card(1, 640,0));
         sequence.add(new Card(0, 930,1));
         sequence.add(new Card(1, 210,0));
         sequence.add(new Card(0, 310,-1));
         sequence.add(new Card(1, 200,0));
-        player.setSequence(sequence);
-    }
-
-    /**
-     * Temporary method to lay a sequence for a player.
-     * @param player The player you want to lay a sequence for.
-     */
-    public void laySequence2(Player player) {
-        LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(0, 820,1));
-        sequence.add(new Card(3, 650,0));
-        sequence.add(new Card(0, 700,-1));
-        sequence.add(new Card(0, 450,1));
-        player.setSequence(sequence);
-    }
-
-    /**
-     * Temporary method to lay a sequence for a player.
-     * @param player The player you want to lay a sequence for.
-     */
-    public void laySequence3(Player player) {
-        LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(0, 320,1));
-        player.setSequence(sequence);
+        return sequence;
     }
 }

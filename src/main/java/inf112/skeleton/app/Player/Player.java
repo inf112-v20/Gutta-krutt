@@ -31,17 +31,18 @@ public class Player {
 
     public Player(int startingX, int startingY, String filePath, int playerID) {
 
-        playerNormal = new TiledMapTileLayer.Cell();
-        playerWon = new TiledMapTileLayer.Cell();
-        playerDied = new TiledMapTileLayer.Cell();
+        this.playerNormal = new TiledMapTileLayer.Cell();
+        this.playerWon = new TiledMapTileLayer.Cell();
+        this.playerDied = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
         this.playerID = playerID;
         this.direction = 0;
         this.healthLeft = 3;
         this.damageTaken = 0;
+        this.position = new Vector2(startingX, startingY);
 
+        //Cant render player texture while running tests. Comment out this line for tests.
         renderPlayerTexture();
-        position = new Vector2(startingX, startingY);
     }
 
     public float getPosX() {return position.x;}
@@ -62,36 +63,45 @@ public class Player {
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
-    public LinkedList<Card> getLastTurnSequence() {
-        return lastTurnSequence;
+    public LinkedList<Card> getLastTurnSequence() { return lastTurnSequence; }
+
+    public LinkedList<Card> getSequence() { return sequence; }
+
+    public void setSequence(LinkedList<Card> sequence) { this.sequence = sequence; }
+
+    public int getPlayerID() { return playerID; }
+
+    public int getHealthLeft() { return healthLeft; }
+
+    public void decreaseHealthLeft() { this.healthLeft -= 1; }
+
+    public int getDamageTaken() { return damageTaken; }
+
+    public void setDamageTaken(int damageTaken) { this.damageTaken = damageTaken; }
+
+    public void powerDown(){
+        setSequence(null);
+        setDamageTaken(0);
     }
 
-    public LinkedList<Card> getSequence() {
-        return sequence;
-    }
+    public void resetLastTurnSequence() { this.lastTurnSequence = new LinkedList<>(); }
 
-    public void setSequence(LinkedList<Card> sequence) {
-        this.sequence = sequence;
-    }
+    /**
+     * Reset players sequence. The amount of cards that are locked for the next round correspond to the amount of
+     * damagetokens a player got minus 4.
+     */
+    public void resetSequences(){
+        LinkedList<Card> newSequence = new LinkedList<>();
+        setSequence(new LinkedList<Card>());
 
-    public int getPlayerID() {
-        return playerID;
-    }
-
-    public int getHealthLeft() {
-        return healthLeft;
-    }
-
-    public void decreaseHealth() {
-        this.healthLeft -= 1;
-    }
-
-    public int getDamageTaken() {
-        return damageTaken;
-    }
-
-    public void setDamageTaken(int damageTaken) {
-        this.damageTaken = damageTaken;
+        if (getDamageTaken() > 4){
+            int lockedCards = getDamageTaken() - 4;
+            while (lockedCards > 0){
+                newSequence.add(getLastTurnSequence().pollFirst());
+                lockedCards--;
+            }
+            setSequence(newSequence);
+        }
     }
 
     /**
@@ -108,5 +118,12 @@ public class Player {
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
         playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
         playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
+    }
+
+    /**
+     * This method is just used for testing.
+     */
+    public void setLastTurnSequence(LinkedList<Card> lastTurnSequence) {
+        this.lastTurnSequence = lastTurnSequence;
     }
 }
