@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,32 +18,26 @@ import inf112.skeleton.app.Game;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 
+/**
+ * @author vegardbirkenes
+ */
 public class GameScreen extends InputAdapter implements Screen {
 
     private OrthogonalTiledMapRenderer renderer;
-
     final private int BOARDSIZE = 12;
     final private int TILESIZE = 300;
-    private GameScreen gameScreen;
     private TiledMap tilemap;
     private Player player;
     private MovementHandler movementHandler;
-    private SpriteBatch batch;
     private BitmapFont font;
-    private Stage stage;
-    private Game game;
 
     public GameScreen() {
-        stage = new Stage();
-
-        batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.RED);
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/map1.tmx");
-        player = new Player(0 ,0);
 
         //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
@@ -52,9 +47,16 @@ public class GameScreen extends InputAdapter implements Screen {
         camera.update();
         renderer.setView(camera);
 
+        //initializes the player and renders him on the board
+        player = new Player(0 ,0);
+        TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+        playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(),player.getPlayerNormal());
+
+        //used to handle movement with the keyUp function from superclass InputAdapter
         movementHandler = new MovementHandler(player, tilemap);
     }
 
+    //Currently used in game, but might be unneccessary if game is deleted
     public OrthogonalTiledMapRenderer getRenderer() {
         return renderer;
     }
@@ -66,7 +68,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void show() {
-        Gdx.input.setInputProcessor(stage);
+        Gdx.input.setInputProcessor(this);
 
     }
 

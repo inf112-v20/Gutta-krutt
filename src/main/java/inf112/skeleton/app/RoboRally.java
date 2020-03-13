@@ -1,9 +1,12 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import inf112.skeleton.app.screen.MenuScreen;
 
+/**
+ * @author vegardbirkenes
+ */
+//This is libgdx own Game class, this makes it possible to switch between screens.
 public class RoboRally extends Game {
 
     @Override
@@ -15,4 +18,7 @@ public class RoboRally extends Game {
     public void render() {
         super.render();
     }
+
+
+
 }

@@ -20,6 +20,7 @@ import inf112.skeleton.app.screen.GameScreen;
 
 /**
  * @author Sedric, Vegard, Fredrik
+ * Brukes ikke lenger til å vise fram skjermen
  */
 public class Game extends InputAdapter implements ApplicationListener  {
     private GameScreen gameScreen;
@@ -45,6 +46,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         player = new Player(0 ,0);
         gameScreen = new GameScreen();
         movementHandler = new MovementHandler(player, tilemap);
+
         Gdx.input.setInputProcessor(this);
     }
 
@@ -62,6 +64,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //displaying the corresponding picture depending on what tile you are standing on
         gameScreen.getRenderer().render();
+
     }
 
     @Override
