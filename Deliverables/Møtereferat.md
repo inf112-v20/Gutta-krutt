@@ -119,10 +119,20 @@ Sette opp fremtidige møter
     * Gjøre det mulig å legge en sekvens.
     
 ## Møtereferat 13.03.2020 (Remote via Discord)
-(Til stede: Fredrik, Sedric, og Oskar)
+(Til stede: Fredrik, Sedric, og Vegard)
 
 * Har satt opp en discord (kommunikasjons plattform) for fremtidige møter.
 * Begynne med å kunne legge en sekvens
 * Fortsette med det visuelle, startscreen 
 * Oppdatere hverandre på branches
-* 
+
+## Møtereferat 20.03.2020 (Remote via Discord)
+(Til stede: Fredrik, Sedric, Vegard og Oskar)
+
+* Oskar oppdaterte resten på det han jobbet med sist.
+
+Personlige oppgaver til Oblig 3 innlevering:
+* Vegard    -> Jobber med Kontrollbrettet
+* Oskar     -> Jobber med funksjonalitet/refactoring kode
+* Fredrik   -> Jobber med funksjonalitet
+* Sedric    -> Jobber med elementer på brettet
