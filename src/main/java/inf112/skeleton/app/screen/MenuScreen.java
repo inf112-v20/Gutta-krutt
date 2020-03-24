@@ -22,6 +22,7 @@ public class MenuScreen implements Screen {
     private ImageButton playButton;
     private Stage stage;
     private TextureRegionDrawable textureDrawable;
+    private RoboRally game;
 
     /**Makes a new menuscreen with an image button. The button is not yet centered because we are considering using a skin.
      * Makes a texture and adds this to an imagebutton. The imagebutton is then added to a stage which is displayed using show and render.
@@ -29,6 +30,7 @@ public class MenuScreen implements Screen {
      * @param game, has to take in a final game in order to be able to handle a clickevent.
      */
     public MenuScreen(final RoboRally game) {
+        this.game = game;
         this.stage = new Stage();
         texture = new Texture(Gdx.files.internal("startknapp.png"));
         textureRegion = new TextureRegion(texture);
@@ -40,7 +42,7 @@ public class MenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public boolean handle(Event event) {
-                game.setScreen(new GameScreen());
+                game.setScreen(new GameScreen(game));
                 return true;
             }
         });

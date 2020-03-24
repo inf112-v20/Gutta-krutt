@@ -40,7 +40,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
         createPlayers();
 
 
-        gameScreen = new GameScreen();
+        //gameScreen = new GameScreen();
         movementHandler = new MovementHandler(playerList[0], tilemap);
         Gdx.input.setInputProcessor(this);
     }
