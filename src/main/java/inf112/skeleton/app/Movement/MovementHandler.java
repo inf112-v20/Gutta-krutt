@@ -75,11 +75,9 @@ public class MovementHandler {
         return true;
     }
 
-    // TODO sjekke om neste er mulig å ture til
-    public static boolean canGo(Board board, Player player, Direction dir, int steps) {
-
-        return false;
+    public void moveSteps(Direction dir, int steps) {
+        for(int i = 0; i < steps; i++) {
+            movePlayer(dir);
+        }
     }
-
-    //
 }
