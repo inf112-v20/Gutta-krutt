@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.RoboRally;
@@ -23,6 +24,7 @@ public class MenuScreen implements Screen {
     private Stage stage;
     private TextureRegionDrawable textureDrawable;
     private RoboRally game;
+    private Table table;
 
     /**Makes a new menuscreen with an image button. The button is not yet centered because we are considering using a skin.
      * Makes a texture and adds this to an imagebutton. The imagebutton is then added to a stage which is displayed using show and render.
@@ -32,12 +34,15 @@ public class MenuScreen implements Screen {
     public MenuScreen(final RoboRally game) {
         this.game = game;
         this.stage = new Stage();
+        this.table = new Table();
         texture = new Texture(Gdx.files.internal("startknapp.png"));
         textureRegion = new TextureRegion(texture);
         textureDrawable = new TextureRegionDrawable(textureRegion);
 
         playButton = new ImageButton(textureDrawable);
-        stage.addActor(playButton);
+        table.setFillParent(true);
+        table.add(playButton);
+        stage.addActor(table);
 
         playButton.addListener(new ClickListener() {
             @Override
