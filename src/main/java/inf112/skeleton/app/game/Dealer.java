@@ -1,5 +1,10 @@
 package inf112.skeleton.app.game;
 
+/**
+ * handling all movement connected to the board
+ * @author Fredrik Larsen
+ */
+
 public class Dealer {
 
     private int numberOfPlayers; // Number of players
