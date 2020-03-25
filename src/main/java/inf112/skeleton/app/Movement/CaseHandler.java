@@ -16,8 +16,17 @@ import java.util.HashMap;
  */
 public class CaseHandler {
 
+    private MovementHandler movementHandlerhandler;
+    private Player player;
+    private TiledMap board;
     private static int Tile_ID;
-    MovementHandler movementHandlerhandler;
+
+    public CaseHandler(MovementHandler movementHandler, Player player, TiledMap board) {
+        this.player = player;
+        this.board = board;
+        this.movementHandlerhandler = new MovementHandler(player, board);
+    }
+
 
     // If a player is pushed onto a "conveyorbelt-turn" by a conveyorbelt, the player should rotate.
     private static boolean fromConveyorBelt = false;
@@ -28,7 +37,7 @@ public class CaseHandler {
 
 
 
-    public static void tileHandler(Board board, Player player) {
+    public void tileHandler() {
 
 
         TileType boardObjects = TileType.getTileTypeByID(Tile_ID);
@@ -43,12 +52,12 @@ public class CaseHandler {
 
             //Repair and upgrade
             case TILE_WRENCH:
-                player.repairRoot();
+                player.repairRobot();
                 break;
 
             case TILE_WRENCH_HAMMER:
-                player.repairRoot();
-                player.repairRoot();
+                player.repairRobot();
+                player.repairRobot();
                 break;
 
             //Holes
@@ -388,13 +397,13 @@ public class CaseHandler {
     }
 
 
-    public static boolean outsideGrid (Player player){
+    public boolean outsideGrid (Player player){
         if (player.getPosX() < 0 || 0 > player.getPosY())
             return true;
         return false;
     }
 
-    public static boolean canGo (Direction dir, Player player, int steps, TiledMap tiledMap) {
-        movementHandlerhandler.movePlayer(dir);
+    public boolean canGo (Direction dir, Player player, int steps, TiledMap tiledMap) {
+        return movementHandlerhandler.movePlayer(dir);
     }
 }
