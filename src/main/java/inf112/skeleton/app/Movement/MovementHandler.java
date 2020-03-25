@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.board.Board;
 import inf112.skeleton.app.cards.Direction;
 
 /**
@@ -52,20 +53,17 @@ public class MovementHandler {
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && collisionHandler.canGo(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_0);
         }
-        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && collisionHandler.canGo(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_180);
         }
-        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && collisionHandler.canGo(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
         }
-        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
-            player.setPosX(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_270);
+        else if(dir == Direction.EAST && collisionHandler.canGo(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+            player.setPosX(1);
         }
         else {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;
@@ -77,4 +75,11 @@ public class MovementHandler {
         return true;
     }
 
+    // TODO sjekke om neste er mulig å ture til
+    public static boolean canGo(Board board, Player player, Direction dir, int steps) {
+
+        return false;
+    }
+
+    //
 }
