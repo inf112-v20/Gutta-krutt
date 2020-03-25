@@ -5,7 +5,22 @@ import java.util.HashMap;
 public enum TileType {
     // Each tile is connected to a numeric value and damage
     TILE_GROUND (5, 0),
-    TILE_HOLE (6, 9),
+    TILE_HOLE1 (6, 9),
+    TILE_HOLE2 (91,9),
+    TILE_HOLE3 (92,9),
+    TILE_HOLE4 (105,9),
+    TILE_HOLE5 (106,9),
+    TILE_HOLE6 (107,9),
+    TILE_HOLE7 (108,9),
+    TILE_HOLE8 (109,9),
+    TILE_HOLE9 (110,9),
+    TILE_HOLE10 (113,9),
+    TILE_HOLE11 (114,9),
+    TILE_HOLE12 (115,9),
+    TILE_HOLE13 (116,9),
+    TILE_HOLE14 (117,9),
+    TILE_HOLE15 (118,9),
+
 
     //TODO WRENCH AND HAMMER
     TILE_WRENCH (15, 0),
@@ -37,7 +52,7 @@ public enum TileType {
     TILE_FLAG_1 (55,0),
     TILE_FLAG_2 (63,0),
     TILE_FLAG_3 (71,0),
-    TILE_FLAG_$ (79,0),
+    TILE_FLAG_4 (79,0),
 
 
     //TODO START POSITION
@@ -108,6 +123,7 @@ public enum TileType {
 
     private final int tile_ID;
     private int damage;
+
 
     //Connects each tile with it´s id and damage
     TileType(int tile_ID, int damage) {

@@ -29,7 +29,7 @@ public enum Robot {
 
     }
 
-    public int getDirection() {
+    public int getRobot_ID() {
         return this.robot_ID;
     }
 
@@ -46,7 +46,7 @@ public enum Robot {
 
     static {
         for (Robot robot : Robot.values()) {
-            robots.put(robot.getDirection(), robot);
+            robots.put(robot.getRobot_ID(), robot);
         }
     }
 

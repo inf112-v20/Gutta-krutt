@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.cards.Direction;
 
 /**
  * new instance of a player, containing methods to get position, displaying and rotating
@@ -16,7 +17,7 @@ public class Player {
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
     private String filePath;
-    private int maxHealth;
+    private int maxHealth = 7;
     private int currentHealth;
     private int lifes = 3;
 
@@ -62,15 +63,12 @@ public class Player {
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
     }
 
-    // A function to check damage taken
-    public int getDamageTaken() {
-        return maxHealth - currentHealth;
-    }
 
     // A function that takes in damage and reduce current health
     public void takeDamage(int damage) {
         currentHealth -= damage;
     }
+
 
     // A function for power-down, sets current health to max health
     public void powerDown() {
@@ -81,7 +79,28 @@ public class Player {
     public void destroyed() { this.lifes -= 1; }
 
     public void gameOver() {
-        if (this.lifes == 0);
+        if (this.lifes >= 0);
             System.out.println("Game over!");
+            return;
+    }
+
+    public void repairRoot() {
+        if (currentHealth < maxHealth && currentHealth != 0) {
+            currentHealth ++;
+        }
+        return;
+    }
+
+    public int getCurrentHealth () { return currentHealth; }
+
+    //Setting default dir to north
+    private Direction dir = Direction.NORTH;
+
+    // Getting the the current direction
+    public Direction getDir() {
+        return dir;
+    }
+    public void setDir(Direction direction){
+        this.dir = direction;
     }
 }

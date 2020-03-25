@@ -5,13 +5,38 @@ import java.util.WeakHashMap;
 
 /**
  * Possible directions
- * @author Vegard Birkenes
+ * @author Vegard Birkenes, Fredrik Larsen
  */
 
 public enum Direction {
     NORTH, EAST, SOUTH, WEST, DEFAULT;
 
-    static public Direction invert(Direction dir) {
+    /**
+     * TODO
+     * @param dir
+     * @return
+     */
+
+    //Getting rotate right direction of player
+    public static Direction rotateRight(Direction dir) { return getDir(dir, WEST, EAST); }
+    //Getting rotate left direction of player
+    public static Direction rotateLeft(Direction dir) { return getDir(dir, EAST, WEST); }
+    //Rotation function
+    public static Direction getDir(Direction dir, Direction east, Direction west) {
+        if (dir.equals(west)){
+            return NORTH;
+        } else if(dir.equals(NORTH)) {
+            return east;
+        } else if (dir.equals(east)) {
+            return SOUTH;
+        } else if (dir.equals(SOUTH)) {
+            return west;
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+    //Getting reversed direction of player
+    static public Direction uTurn(Direction dir) {
         switch (dir) {
             case NORTH:
                 return SOUTH;
@@ -21,21 +46,6 @@ public enum Direction {
                 return WEST;
             case WEST:
                 return EAST;
-            default:
-                return DEFAULT;
-        }
-    }
-
-    static public Direction rotateRight(Direction turnRight) {
-        switch (turnRight) {
-            case NORTH:
-                return EAST;
-            case SOUTH:
-                return WEST;
-            case WEST:
-                return NORTH;
-            case EAST:
-                return SOUTH;
             default:
                 return DEFAULT;
         }
