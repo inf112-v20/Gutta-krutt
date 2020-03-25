@@ -62,13 +62,13 @@ public enum TileType {
     TILE_WALL_NORTH (31,0),
 
     //TODO PUSHERS
-    TILE_PUSHER_DOWN_2_4 (1,0),
+    TILE_PUSHER_DOWN_2_4_6 (1,0),
     TILE_PUSHER_DOWN_1_3_5 (9,0),
-    TILE_PUSHER_LEFT_2_4 (2,0),
+    TILE_PUSHER_LEFT_2_4_6 (2,0),
     TILE_PUSHER_LEFT_1_3_5 (10,0),
-    TILE_PUSHER_UP_2_4 (11,0),
+    TILE_PUSHER_UP_2_4_6 (11,0),
     TILE_PUSHER_UP_1_3_5 (3,0),
-    TILE_PUSHER_RIGHT_2_4 (4,0),
+    TILE_PUSHER_RIGHT_2_4_6 (4,0),
     TILE_PUSHER_RIGHT_1_3_5 (12,0),
 
     //TODO FAST CONVEOUR BELT
@@ -104,6 +104,7 @@ public enum TileType {
     TILE_CONVEYOR_SLOW_SOUTH_TO_WEST (44,0),
     TILE_CONVEYOR_SLOW_WEST_TO_NORTH (36,0);
 
+    public static final int TILE_SIZE = 300;
 
     private final int tile_ID;
     private int damage;
@@ -114,28 +115,28 @@ public enum TileType {
         this.damage = damage;
     }
 
-    //Retrieve tile-type
-    public int getTileType() {
-        return this.tile_ID;
-    }
-
-    //Retrieve damage
     public int getDamage() {
-        return this.damage;
+        return damage;
     }
 
-    //HashMap for collecting tiles
+    public int getTile_ID() {
+        return tile_ID;
+    }
+
+    //HashMap for storing the tile values
     private static HashMap<Integer, TileType> tileMap;
 
-    //
+    //Looping trough the values from the enum and putting them into the HashMap
     static {
-        for (TileType typeOfTile :  TileType.values()) {
-            tileMap.put(typeOfTile.getTileType(), typeOfTile);
+        for (TileType tileType : TileType.values()) {
+            tileMap.put(tileType.tile_ID, tileType);
         }
     }
 
-    public static TileType getTileByID (int id) {
+    //Putting
+    public static TileType getTileTypeByID (int id) {
         return tileMap.get(id);
     }
+
 }
 

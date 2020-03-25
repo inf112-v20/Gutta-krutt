@@ -9,19 +9,20 @@ import com.badlogic.gdx.math.Vector2;
 /**
  * new instance of a player, containing methods to get position, displaying and rotating
  * player. instanciate player at given X and Y coordinates
+ * @author Sedric Kvarnes, Vegard Birkenes, Fredrik Larsen
  */
 public class Player {
+    public int getPlayerID;
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
-    private TiledMapTileLayer.Cell playerWon;
-    private TiledMapTileLayer.Cell playerDied;
     private String filePath;
+    private int maxHealth;
+    private int currentHealth;
+    private int lifes = 3;
 
     public Player(int startingX, int startingY, String filePath) {
 
         playerNormal = new TiledMapTileLayer.Cell();
-        playerWon = new TiledMapTileLayer.Cell();
-        playerDied = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
 
         renderPlayerTexture();
@@ -31,6 +32,7 @@ public class Player {
     public void setRotation(int cell_rotation) {
         playerNormal.setRotation(cell_rotation);
     }
+
     public float getPosX() {return position.x;}
 
     public float getPosY() {return position.y;}
@@ -58,8 +60,28 @@ public class Player {
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
-        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
-        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
     }
 
+    // A function to check damage taken
+    public int getDamageTaken() {
+        return maxHealth - currentHealth;
+    }
+
+    // A function that takes in damage and reduce current health
+    public void takeDamage(int damage) {
+        currentHealth -= damage;
+    }
+
+    // A function for power-down, sets current health to max health
+    public void powerDown() {
+        currentHealth = maxHealth;
+    }
+
+    // A function of lifes left in game
+    public void destroyed() { this.lifes -= 1; }
+
+    public void gameOver() {
+        if (this.lifes == 0);
+            System.out.println("Game over!");
+    }
 }

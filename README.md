@@ -4,7 +4,7 @@ Out goal is to create the most realistic digital versjon of the classic Robo Ral
 
 We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
 
-## Innhold
+## Game content
 -   ["x" Player boards](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps)
 -   [Rulebook]()
 -   [6 Awesome robots](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Robots)
@@ -14,8 +14,9 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 -   One 30-second timer
 
 ## Setup
--   Install [Maven](https://maven.apache.org/download.cgi)
--   Clone git repostery: `git clone git@github.com:inf112-v20/Gutta-krutt.git`
+1.  Install [Maven](https://maven.apache.org/download.cgi)
+2.  Clone git repostery: `git clone git@github.com:inf112-v20/Gutta-krutt.git`
+3.  Build game with: `mvn clean install`
 
 ### How to run the game
 -   Run main.java which is located in: _src/main/java/roborally_ in intellij.
