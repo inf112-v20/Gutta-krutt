@@ -145,3 +145,10 @@ Personlige oppgaver til Oblig 3 innlevering:
 * Jobbet med å få circuit boardet på brettet for å legge kort
 * Kan nå velge 1 kort
 * Kan swappe mellom circuitboard og brett
+
+## Møtereferat 27.03.2020 (Remote via Discord)
+* Snart ferdig med implementering af funkskjoner på brettet.
+* Koblet sammen tile_id med getCell.
+* Ferdig med sequence board.
+* Jobbet med sequencene.
+* Gått igjennom sjekklisten for oblig 3.

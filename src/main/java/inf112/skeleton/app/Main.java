@@ -11,7 +11,6 @@ public class Main {
         cfg.title = "RoboRally-Game";
         cfg.width = 1000;
         cfg.height = 1000;
-
         new LwjglApplication(new RoboRally(), cfg);
     }
 }

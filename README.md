@@ -22,6 +22,11 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 -   Press the start button
 -   Move around with the arrows
 
+### How to play
+-   G to switch between gamescreen and and sequencescreen.
+-   Numbers 1-9 to pick available cards.
+-   R to remove the card last added
+
 ## GDX-Skin
 Big shoutout to [Raymond "Raeleus" Buckley](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)
 for letting us use [Star Soldier UI Ver. 1](https://github.com/czyzby/gdx-skins/tree/master/star-soldier).
