@@ -86,10 +86,10 @@ public class MovementHandler {
         else if(dir == Direction.SOUTH && collisionHandler.canGo(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
         }
-        else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && collisionHandler.canGo(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
         }
-        else if(dir == Direction.EAST && collisionHandler.canMove(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+        else if(dir == Direction.EAST && collisionHandler.canGo(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
             player.setPosX(1);
         }
         else {

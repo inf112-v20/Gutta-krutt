@@ -142,7 +142,7 @@ public class RoboRally extends Game {
         sequence.add(new Card(0, 100,1));
         sequence.add(new Card(1, 200,0));
         sequence.add(new Card(0, 300,-1));
-        sequence.add(new Card(1, 400,0));
+        sequence.add(new Card(3, 400,0));
         sequence.add(new Card(1, 500,0));
         player.setSequence(sequence);
     }
