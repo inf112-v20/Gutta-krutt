@@ -18,6 +18,7 @@ import inf112.skeleton.app.RoboRally;
 
 /**
  * @author vegardbirkenes
+ * Press G to enter the sequence board.
  */
 public class GameScreen extends InputAdapter implements Screen {
 
@@ -56,7 +57,7 @@ public class GameScreen extends InputAdapter implements Screen {
         movementHandler = new MovementHandler(player, tilemap);
     }
 
-    //Currently used in game, but might be unnecessary if game is deleted
+    //Currently used in game
     public OrthogonalTiledMapRenderer getRenderer() {
         return renderer;
     }
