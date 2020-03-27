@@ -84,7 +84,7 @@ public class Player {
             return;
     }
 
-    public void repairRobot() {
+    public void repairRobot(int repair) {
         if (currentHealth < maxHealth && currentHealth != 0) {
             currentHealth ++;
         }

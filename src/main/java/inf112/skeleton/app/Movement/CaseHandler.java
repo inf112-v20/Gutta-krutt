@@ -9,6 +9,7 @@ import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.tiles.TileType;
 import org.graalvm.compiler.lir.sparc.SPARCMove;
 
+import java.lang.management.PlatformLoggingMXBean;
 import java.util.HashMap;
 
 /**
@@ -30,34 +31,59 @@ public class CaseHandler {
 
     // If a player is pushed onto a "conveyorbelt-turn" by a conveyorbelt, the player should rotate.
     private static boolean fromConveyorBelt = false;
-    private static boolean wallNORTH = false;
-    private static boolean wallSOUTH = false;
-    private static boolean wallWEST = false;
-    private static boolean wallEAST = false;
-
-
 
     public void tileHandler() {
 
+        TileType evenSequence = TileType.getTileTypeByID(Tile_ID);
+        TileType oddSequence = TileType.getTileTypeByID(Tile_ID);
+        TileType allSequences = TileType.getTileTypeByID(Tile_ID);
 
-        TileType boardObjects = TileType.getTileTypeByID(Tile_ID);
-        switch (boardObjects) {
-
-            case TILE_GROUND:
-            case TILE_FLAG_1:
-            case TILE_FLAG_2:
-            case TILE_FLAG_3:
-            case TILE_FLAG_4:
+        switch (oddSequence) {
+            case TILE_PUSHER_DOWN_1_3_5:
+                movementHandlerhandler.moveSteps(Direction.SOUTH,1);
                 break;
+
+            case TILE_PUSHER_LEFT_1_3_5:
+                movementHandlerhandler.moveSteps(Direction.WEST,1);
+                break;
+
+            case TILE_PUSHER_RIGHT_1_3_5:
+                movementHandlerhandler.moveSteps(Direction.EAST,1);
+                break;
+
+            case TILE_PUSHER_UP_1_3_5:
+                movementHandlerhandler.moveSteps(Direction.NORTH,1);
+                break;
+        }
+
+        switch (evenSequence) {
+            case TILE_PUSHER_DOWN_2_4:
+                movementHandlerhandler.moveSteps(Direction.SOUTH,1);
+                break;
+
+            case TILE_PUSHER_LEFT_2_4:
+                movementHandlerhandler.moveSteps(Direction.WEST,1);
+                break;
+
+            case TILE_PUSHER_RIGHT_2_4:
+                movementHandlerhandler.movePlayer(Direction.EAST);
+                break;
+
+            case TILE_PUSHER_UP_2_4:
+                movementHandlerhandler.moveSteps(Direction.NORTH,1);
+                break;
+        }
+
+        switch (allSequences) {
+
 
             //Repair and upgrade
             case TILE_WRENCH:
-                player.repairRobot();
+                player.repairRobot(1);
                 break;
 
             case TILE_WRENCH_HAMMER:
-                player.repairRobot();
-                player.repairRobot();
+                player.repairRobot(2);
                 break;
 
             //Holes
@@ -79,43 +105,7 @@ public class CaseHandler {
                 player.destroyed();
                 break;
 
-            //Walls
-            case TILE_WALL_EAST:
-                wallEAST = true;
-                break;
-
-            case TILE_WALL_WEST:
-                wallWEST = true;
-                break;
-
-            case TILE_WALL_NORTH:
-                wallNORTH = true;
-                break;
-
-            case TILE_WALL_SOUTH:
-                wallSOUTH = true;
-
-            case TILE_WALL_NORTH_EAST:
-                wallNORTH = true;
-                wallEAST = true;
-                break;
-
-            case TILE_WALL_NORTH_WEST:
-                wallNORTH = true;
-                wallWEST = true;
-                break;
-
-            case TILE_WALL_SOUTH_EAST:
-                wallSOUTH = true;
-                wallEAST = true;
-                break;
-
-            case TILE_WALL_SOUTH_WEST:
-                wallSOUTH = true;
-                wallWEST = true;
-                break;
-
-                // Cogwheel
+            // Cogwheel
             case TILE_GEAR_GREEN:
                 Direction.rotateRight(player.getDir());
                 break;
@@ -126,236 +116,163 @@ public class CaseHandler {
 
             // The slow conveyorbelts
             case TILE_CONVEYOR_SLOW_NORTH:
-                player.setPosY(1);
+                movementHandlerhandler.moveSteps(Direction.NORTH,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_SOUTH:
-                player.setPosY(-1);
+                movementHandlerhandler.moveSteps(Direction.SOUTH,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_WEST:
-                player.setPosX(1);
+                movementHandlerhandler.moveSteps(Direction.WEST,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_EAST:
-                player.setPosX(-1);
+                movementHandlerhandler.moveSteps(Direction.EAST,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_WEST_TO_SOUTH:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-
+                movementHandlerhandler.moveSteps(Direction.SOUTH,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_SOUTH_TO_EAST:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosX(1);
+                movementHandlerhandler.moveSteps(Direction.EAST,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_EAST_TO_NORTH:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosY(1);
+                movementHandlerhandler.moveSteps(Direction.NORTH,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_NORTH_TO_WEST:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosX(-1);
+                movementHandlerhandler.moveSteps(Direction.WEST,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_EAST_TO_SOUTH:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosY(-1);
+                movementHandlerhandler.moveSteps(Direction.SOUTH,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_NORTH_TO_EAST:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosX(1);
+                movementHandlerhandler.moveSteps(Direction.EAST,1);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_SLOW_SOUTH_TO_WEST:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosX(-1);
+                movementHandlerhandler.moveSteps(Direction.WEST,1);
                 fromConveyorBelt = true;
                 break;
+
             case TILE_CONVEYOR_SLOW_WEST_TO_NORTH:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosY(1);
+                movementHandlerhandler.moveSteps(Direction.NORTH,1);
                 fromConveyorBelt = true;
                 break;
 
             // The fast conveyor belts
             case TILE_CONVEYOR_FAST_NORTH:
-                player.setPosY(2);
+                movementHandlerhandler.moveSteps(Direction.NORTH,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_SOUTH:
-                player.setPosY(-2);
+                movementHandlerhandler.moveSteps(Direction.SOUTH,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_WEST:
-                player.setPosX(-2);
+                movementHandlerhandler.moveSteps(Direction.WEST,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_EAST:
-                player.setPosX(2);
+                movementHandlerhandler.moveSteps(Direction.EAST,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_WEST_TO_SOUTH:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosY(-2);
+                movementHandlerhandler.moveSteps(Direction.SOUTH,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_SOUTH_TO_EAST:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosX(2);
+                movementHandlerhandler.moveSteps(Direction.EAST,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_EAST_TO_NORTH:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosY(2);
+                movementHandlerhandler.moveSteps(Direction.NORTH,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_NORTH_TO_WEST:
                 if (fromConveyorBelt)
                     Direction.rotateLeft(player.getDir());
-                player.setPosX(-2);
+                movementHandlerhandler.moveSteps(Direction.WEST,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_EAST_TO_SOUTH:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosY(-2);
+                movementHandlerhandler.moveSteps(Direction.SOUTH,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_NORTH_TO_EAST:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosX(2);
+                movementHandlerhandler.moveSteps(Direction.EAST,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_SOUTH_TO_WEST:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosX(-2);
+                movementHandlerhandler.moveSteps(Direction.WEST,2);
                 fromConveyorBelt = true;
                 break;
 
             case TILE_CONVEYOR_FAST_WEST_TO_NORTH:
                 if (fromConveyorBelt)
                     Direction.rotateRight(player.getDir());
-                player.setPosY(2);
+                movementHandlerhandler.moveSteps(Direction.NORTH,2);
                 fromConveyorBelt = true;
-                break;
-
-
-            //Pushers
-            case TILE_PUSHER_DOWN_1_3_5:
-                if ((player.getPlayerID * 5) % 10 == 5) {
-                    player.setPosY(-1);
-                }
-                wallNORTH = true;
-                break;
-
-            case TILE_PUSHER_DOWN_2_4_6:
-                if ((player.getPlayerID * 5) % 10 == 0) {
-                    player.setPosY(-1);
-                }
-                wallNORTH = true;
-                break;
-
-            case TILE_PUSHER_LEFT_1_3_5:
-                if ((player.getPlayerID * 5) % 10 == 5) {
-                    player.setPosX(-1);
-                }
-                wallEAST = true;
-                break;
-
-            case TILE_PUSHER_LEFT_2_4_6:
-                if ((player.getPlayerID * 5) % 10 == 0) {
-                    player.setPosX(-1);
-                }
-                wallEAST = true;
-                break;
-
-            case TILE_PUSHER_RIGHT_1_3_5:
-                if ((player.getPlayerID * 5) % 10 == 5) {
-                    player.setPosX(1);
-                }
-                wallWEST = true;
-                break;
-
-            case TILE_PUSHER_RIGHT_2_4_6:
-                if ((player.getPlayerID * 5) % 10 == 0) {
-                    player.setPosX(1);
-                }
-                wallWEST = true;
-                break;
-
-            case TILE_PUSHER_UP_1_3_5:
-                if ((player.getPlayerID * 5) % 10 == 0) {
-                    player.setPosY(1);
-                }
-                wallSOUTH = true;
-                break;
-
-            case TILE_PUSHER_UP_2_4_6:
-                if ((player.getPlayerID * 5) % 10 == 5) {
-                    player.setPosY(1);
-                }
-                wallSOUTH = true;
                 break;
 
             // Laser
             case TILE_LASER_SINGLE_WALL_EAST:
-                player.takeDamage(1);
-                wallEAST = true;
-                break;
-
             case TILE_LASER_SINGLE_WALL_NORTH:
-                player.takeDamage(1);
-                wallNORTH = true;
-                break;
-
             case TILE_LASER_SINGLE_WALL_SOUTH:
-                player.takeDamage(1);
-                wallSOUTH = true;
-                break;
-
             case TILE_LASER_SINGLE_WALL_WEST:
-                player.takeDamage(1);
-                wallWEST = true;
-                break;
-
             case TILE_LASER_SINGLE_HORIZONTAL:
             case TILE_LASER_SINGLE_VERTICAL:
                 player.takeDamage(1);
@@ -364,46 +281,24 @@ public class CaseHandler {
             case TILE_LASER_DOUBLE_HORIZONTAL:
             case TILE_LASER_DOUBLE_VERTICAL:
             case TILE_LASER_SINGLE_CROSS:
-                player.takeDamage(2);
-                break;
-
             case TILE_LASER_DOUBLE_WALL_EAST:
-                player.takeDamage(2);
-                wallEAST = true;
-                break;
-
             case TILE_LASER_DOUBLE_WALL_NORTH:
-                player.takeDamage(2);
-                wallNORTH = true;
-                break;
-
             case TILE_LASER_DOUBLE_WALL_SOUTH:
-                player.takeDamage(2);
-                wallSOUTH = true;
-                break;
-
             case TILE_LASER_DOUBLE_WALL_WEST:
                 player.takeDamage(2);
-                wallWEST = true;
                 break;
 
             case TILE_LASER_DOUBLE_CROSS:
                 player.takeDamage(4);
                 break;
-
-            default:
-                throw new IllegalStateException("Unexpected value: " + boardObjects);
         }
     }
 
-
     public boolean outsideGrid (Player player){
-        if (player.getPosX() < 0 || 0 > player.getPosY())
+        if (player.getPosX() < 0 || 12 < player.getPosX())
+            return true;
+        else if (player.getPosY() < 0 || 12 < player.getPosY())
             return true;
         return false;
-    }
-
-    public boolean canGo (Direction dir, Player player, int steps, TiledMap tiledMap) {
-        return movementHandlerhandler.movePlayer(dir);
     }
 }
