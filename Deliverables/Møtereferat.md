@@ -136,3 +136,12 @@ Personlige oppgaver til Oblig 3 innlevering:
 * Oskar     -> Jobber med funksjonalitet/refactoring kode
 * Fredrik   -> Jobber med funksjonalitet
 * Sedric    -> Jobber med elementer på brettet
+
+## Møtereferat 24-25.03.2020 
+(Til stede: Fredrik, Vegard)
+
+* Videreutviklet brettfunksjonene
+* Laget et startsecreen
+* Jobbet med å få circuit boardet på brettet for å legge kort
+* Kan nå velge 1 kort
+* Kan swappe mellom circuitboard og brett
