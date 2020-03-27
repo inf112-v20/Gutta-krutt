@@ -1,25 +1,24 @@
 package inf112.skeleton.app.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import inf112.skeleton.app.Game;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.RoboRally;
 
 /**
  * @author vegardbirkenes
+ * Press G to enter the sequence board.
  */
 public class GameScreen extends InputAdapter implements Screen {
 
@@ -30,8 +29,10 @@ public class GameScreen extends InputAdapter implements Screen {
     private Player player;
     private MovementHandler movementHandler;
     private BitmapFont font;
+    private RoboRally game;
 
-    public GameScreen() {
+    public GameScreen(RoboRally game) {
+        this.game = game;
         font = new BitmapFont();
         font.setColor(Color.RED);
 
@@ -56,13 +57,17 @@ public class GameScreen extends InputAdapter implements Screen {
         movementHandler = new MovementHandler(player, tilemap);
     }
 
-    //Currently used in game, but might be unneccessary if game is deleted
+    //Currently used in game
     public OrthogonalTiledMapRenderer getRenderer() {
         return renderer;
     }
 
     @Override
     public boolean keyUp(int keycode) {
+        if (keycode == Input.Keys.G) {
+            game.setScreen(new RegisterScreen(this, game));
+            return true;
+        }
         return movementHandler.movePlayer(keycode);
     }
 
@@ -101,6 +106,5 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void dispose() {
-
     }
 }
