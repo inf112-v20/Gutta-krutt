@@ -75,8 +75,6 @@ public class CaseHandler {
         }
 
         switch (allSequences) {
-
-
             //Repair and upgrade
             case TILE_WRENCH:
                 player.repairRobot(1);

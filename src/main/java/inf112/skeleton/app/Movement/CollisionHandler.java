@@ -73,7 +73,6 @@ public class CollisionHandler extends InputAdapter {
                 return false;
             }
         }
-
         return true;
     }
 }
