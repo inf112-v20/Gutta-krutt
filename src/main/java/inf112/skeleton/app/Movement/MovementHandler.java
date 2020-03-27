@@ -47,6 +47,7 @@ public class MovementHandler {
      * @param dir the direction to move the player
      * @return
      */
+
     public boolean movePlayer(Direction dir) {
         player.renderPlayerTexture();
         //clearing the previouse tile
