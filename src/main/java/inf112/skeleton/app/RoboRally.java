@@ -2,7 +2,6 @@ package inf112.skeleton.app;
 
 import com.badlogic.gdx.Game;
 import inf112.skeleton.app.screen.MenuScreen;
-import inf112.skeleton.app.screen.RegisterScreen;
 
 /**
  * @author vegardbirkenes
