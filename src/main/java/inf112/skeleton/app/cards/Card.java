@@ -1,5 +1,9 @@
 package inf112.skeleton.app.cards;
 
+/**
+ * Collecting cards
+ * @author Fredrik Larsen, Vegard Birkenes
+ */
 public class Card {
 
     //Variables

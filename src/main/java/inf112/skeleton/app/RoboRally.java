@@ -7,7 +7,6 @@ import inf112.skeleton.app.Player.PlayerCardPair;
 import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
-import inf112.skeleton.app.screen.RegisterScreen;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

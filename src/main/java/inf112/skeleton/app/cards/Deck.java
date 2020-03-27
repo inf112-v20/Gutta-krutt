@@ -3,6 +3,11 @@ package inf112.skeleton.app.cards;
 import java.util.Random;
 import java.util.HashMap;
 
+/**
+ * handling all movement connected to the board
+ * @author Fredrik Larsen, Vegard Birkenes
+ */
+
 public class Deck {
 
     private final String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };

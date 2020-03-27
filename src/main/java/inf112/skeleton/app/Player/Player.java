@@ -5,16 +5,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Direction;
-
-import java.util.LinkedList;
 
 /**
  * new instance of a player, containing methods to get position, displaying and rotating
  * player. instanciate player at given X and Y coordinates
+ * @author Sedric Kvarnes, Vegard Birkenes, Fredrik Larsen
  */
 public class Player {
+    public int getPlayerID;
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
     private TiledMapTileLayer.Cell playerWon;
@@ -27,6 +26,9 @@ public class Player {
     private int healthLeft; //Players start with 3 lives
     private int damageTaken; //Amount of damage tokens a player have received. Goes up to 9
 
+    private int maxHealth = 7;
+    private int currentHealth;
+    private int lifes = 3;
 
 
     public Player(int startingX, int startingY, String filePath, int playerID) {
@@ -34,6 +36,7 @@ public class Player {
         this.playerNormal = new TiledMapTileLayer.Cell();
         this.playerWon = new TiledMapTileLayer.Cell();
         this.playerDied = new TiledMapTileLayer.Cell();
+        playerNormal = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
         this.playerID = playerID;
         this.direction = 0;
@@ -43,6 +46,11 @@ public class Player {
 
         //Cant render player texture while running tests. Comment out this line for tests.
         renderPlayerTexture();
+        position = new Vector2(startingX, startingY);
+    }
+
+    public void setRotation(int cell_rotation) {
+        playerNormal.setRotation(cell_rotation);
     }
 
     public float getPosX() {return position.x;}
@@ -108,6 +116,7 @@ public class Player {
      * loading in picture of player, splitting it into 300X300px and setting
      * correct player pitctures to the player.
      */
+
     public void renderPlayerTexture() {
         //loading in player texture
         Texture texture = new Texture(filePath);
@@ -116,10 +125,48 @@ public class Player {
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
-        playerWon.setTile(new StaticTiledMapTile(pictures[0][1]));
-        playerDied.setTile(new StaticTiledMapTile(pictures[0][2]));
     }
 
+
+    // A function that takes in damage and reduce current health
+    public void takeDamage(int damage) {
+        currentHealth -= damage;
+    }
+
+
+    // A function for power-down, sets current health to max health
+    public void powerDown() {
+        currentHealth = maxHealth;
+    }
+
+    // A function of lifes left in game
+    public void destroyed() { this.lifes -= 1; }
+
+    public void gameOver() {
+        if (this.lifes >= 0);
+            System.out.println("Game over!");
+            return;
+    }
+
+    public void repairRobot(int repair) {
+        if (currentHealth < maxHealth && currentHealth != 0) {
+            currentHealth ++;
+        }
+        return;
+    }
+
+    public int getCurrentHealth () { return currentHealth; }
+
+    //Setting default dir to north
+    private Direction dir = Direction.NORTH;
+
+    // Getting the the current direction
+    public Direction getDir() {
+        return dir;
+    }
+    public void setDir(Direction direction){
+        this.dir = direction;
+    }
     /**
      * This method is just used for testing.
      */

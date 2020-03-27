@@ -2,6 +2,11 @@ package inf112.skeleton.app.Player;
 
 import java.util.HashMap;
 
+/**
+ * handling all movement connected to the board
+ * @author Fredrik Larsen
+ */
+
 public enum Robot {
     Fredrik_Robot (1,"Fredrik",9,3),
     Glitch_Robot (2,"Glitch",9,3),
@@ -24,7 +29,7 @@ public enum Robot {
 
     }
 
-    public int getDirection() {
+    public int getRobot_ID() {
         return this.robot_ID;
     }
 
@@ -41,7 +46,7 @@ public enum Robot {
 
     static {
         for (Robot robot : Robot.values()) {
-            robots.put(robot.getDirection(), robot);
+            robots.put(robot.getRobot_ID(), robot);
         }
     }
 

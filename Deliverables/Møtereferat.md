@@ -147,8 +147,19 @@ Personlige oppgaver til Oblig 3 innlevering:
 * Kan swappe mellom circuitboard og brett
 
 ## Møtereferat 27.03.2020 (Remote via Discord)
-* Snart ferdig med implementering af funkskjoner på brettet.
-* Koblet sammen tile_id med getCell.
-* Ferdig med sequence board.
-* Jobbet med sequencene.
-* Gått igjennom sjekklisten for oblig 3.
+(tilstede: Sedric, Fredrik, Vegard, Oskar)
+
+#####Arbeid som har blitt gjort siden sist:
+* Vi har blitt ferdige med en prototype på å legge kort og en sekvens.
+Vi har koblet sammen tile_id med getCell, dette henger sammen med funksjonaliteten på brettet.
+Vi er snart ferdig med å implementere funksjonalitet på brettet som hull, flagg og belter.
+
+#####Videre arbeid
+* Fremover så er hovedmålet å jobbe videre på det å kunne legge en sekvens og den grafiske fremvisningen av dette
+vi skal finne riktige kort og legge inn istedet for placeholder kort som vi midlertidig nå har.
+Vi er snart ferdig med å implementere all funksjonaliteten, et av hovedmålene er å få dette til å fungere til neste gang
+
+#####Annet
+* Det har ikke vært noen nye ting å bli enige om i dagens møte, vi har i hovedsak fått mer forståelse 
+    for hverandres kode  og har en felles forståelse om hvordan vi ønsker å arbeide fremover.
+

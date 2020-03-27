@@ -4,12 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Direction;
-
-
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * handling all movement connected to the board
@@ -75,6 +70,8 @@ public class MovementHandler {
      * moves a player in a one of four directions if possible
      * @param player the player you want to move.
      * @return
+     * @param dir the direction to move the player
+     * @return moved the player
      */
     public boolean movePlayer(Player player) {
         Direction dir = getDirection(player.getDirection());
@@ -83,10 +80,10 @@ public class MovementHandler {
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && collisionHandler.canGo(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
         }
-        else if(dir == Direction.SOUTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && collisionHandler.canGo(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
         }
         else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
@@ -99,8 +96,16 @@ public class MovementHandler {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
             return false;
         }
+
+
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
+    }
+
+    public void moveSteps(Direction dir, int steps) {
+        for(int i = 0; i < steps; i++) {
+            movePlayer(dir);
+        }
     }
 }
