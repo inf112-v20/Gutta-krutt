@@ -1,16 +1,11 @@
 package inf112.skeleton.app.Movement;
 
 
-import com.badlogic.gdx.graphics.g3d.particles.ParticleSorter;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.board.Board;
 import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.tiles.TileType;
-import org.graalvm.compiler.lir.sparc.SPARCMove;
-
-import java.lang.management.PlatformLoggingMXBean;
-import java.util.HashMap;
 
 /**
  * @author Fredrik Larsen
@@ -25,7 +20,7 @@ public class CaseHandler {
     public CaseHandler(MovementHandler movementHandler, Player player, TiledMap board) {
         this.player = player;
         this.board = board;
-        this.movementHandlerhandler = new MovementHandler(player, board);
+        this.movementHandlerhandler = movementHandler;
     }
 
 
@@ -37,6 +32,11 @@ public class CaseHandler {
         TileType evenSequence = TileType.getTileTypeByID(Tile_ID);
         TileType oddSequence = TileType.getTileTypeByID(Tile_ID);
         TileType allSequences = TileType.getTileTypeByID(Tile_ID);
+
+        //getting tile layer
+        TiledMapTileLayer greenRotate = (TiledMapTileLayer) board.getLayers().get("green_Rotator");
+        //getting current tile for set tileLayer
+        TiledMapTileLayer.Cell greenRotateCell = greenRotate.getCell((int) player.getPosX(), (int) player.getPosY());
 
         switch (oddSequence) {
             case TILE_PUSHER_DOWN_1_3_5:
