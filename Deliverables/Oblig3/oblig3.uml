@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>inf112.skeleton.app</OriginalElement>
+  <nodes>
+    <node x="226.28198051948056" y="1492.0">inf112.skeleton.app.Main</node>
+    <node x="0.0" y="412.0">inf112.skeleton.app.screen.RegisterScreen</node>
+    <node x="244.28198051948056" y="1367.0">inf112.skeleton.app.RoboRally</node>
+    <node x="126.33376623376626" y="88.0">inf112.skeleton.app.cards.Direction</node>
+    <node x="205.1321428571429" y="833.0">inf112.skeleton.app.screen.GameScreen</node>
+    <node x="201.960551948052" y="1112.0">inf112.skeleton.app.screen.MenuScreen</node>
+    <node x="353.63079004329006" y="0.0">inf112.skeleton.app.Player.Player</node>
+    <node x="284.0" y="555.0">inf112.skeleton.app.Movement.MovementHandler</node>
+    <node x="221.45876623376626" y="309.0">inf112.skeleton.app.Movement.CollisionHandler</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.41980830670926517" x="283.0" y="772.5" />
+  <SelectedNodes>
+    <node>inf112.skeleton.app.Player.Player</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
