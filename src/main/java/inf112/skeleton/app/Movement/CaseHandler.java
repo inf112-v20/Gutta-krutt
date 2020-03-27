@@ -1,6 +1,6 @@
 package inf112.skeleton.app.Movement;
 
-
+//Imports
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
