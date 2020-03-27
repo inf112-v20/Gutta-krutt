@@ -1,16 +1,10 @@
 package inf112.skeleton.app.Movement;
 
-
-import com.badlogic.gdx.graphics.g3d.particles.ParticleSorter;
+//Imports
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.board.Board;
 import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.tiles.TileType;
-import org.graalvm.compiler.lir.sparc.SPARCMove;
-
-import java.lang.management.PlatformLoggingMXBean;
-import java.util.HashMap;
 
 /**
  * @author Fredrik Larsen
