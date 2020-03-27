@@ -16,7 +16,8 @@ import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.screen.GameScreen;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Game extends InputAdapter implements ApplicationListener  {
@@ -24,7 +25,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private TiledMap tilemap;
 
     private Player[] playerList;
-    private int amountOfPlayers = 1;
+    private int amountOfPlayers = 4;
     private Deck deck;
     private MovementHandler movementHandler;
 
@@ -137,7 +138,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
                 if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerRight(player);}
             }
         }
-    }
+    }       
 
     /**
      * Collects every players sequence and execute each card in a specific order, based on the card priority.
@@ -147,7 +148,9 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //Will be removed when branch is merged into master
         laySequence1(playerList[0]);
-      // laySequence1(playerList[2]);
+        laySequence1(playerList[1]);
+        laySequence1(playerList[2]);
+        laySequence1(playerList[3]);
 
 
         //Reset the list "lastTurnSequence" and prepare it for a a new one.
@@ -183,26 +186,14 @@ public class Game extends InputAdapter implements ApplicationListener  {
         for (Player player : playerList){ player.resetSequences(); }
     }
 
-
-    // Both the methods under are here just for testing functionality, and will be deleted
-    //when the branch is merged into master.
+    // Method for testing functionality. It is here temporarily until its possible for player lock his own sequence.
     public void laySequence1(Player player) {
         LinkedList<Card> sequence = new LinkedList<>();
         sequence.add(new Card(0, 100,1));
         sequence.add(new Card(1, 200,0));
-        sequence.add(new Card(1, 300,0));
+        sequence.add(new Card(0, 300,-1));
         sequence.add(new Card(1, 400,0));
-        sequence.add(new Card(0, 500,-1));
+        sequence.add(new Card(1, 500,0));
         player.setSequence(sequence);
-    }
-
-    public LinkedList<Card> laySequenc2() {
-        LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(1, 640,0));
-        sequence.add(new Card(0, 930,1));
-        sequence.add(new Card(1, 210,0));
-        sequence.add(new Card(0, 310,-1));
-        sequence.add(new Card(1, 200,0));
-        return sequence;
     }
 }
