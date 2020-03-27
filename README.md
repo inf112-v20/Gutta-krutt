@@ -1,18 +1,31 @@
+![Gutta Krutt](logo.png)
 # Robo Rally [![Build Status](https://travis-ci.com/inf112-v20/Gutta-krutt.svg?branch=master)](https://travis-ci.com/inf112-v20/Gutta-krutt) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb70fbcc87ab437c85e2f1a17cf31c35)](https://www.codacy.com/gh/inf112-v20/Gutta-krutt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=inf112-v20/Gutta-krutt&amp;utm_campaign=Badge_Grade)
-Vi har som mål å lage en digital versjon av det klassiske brettspillet Robo Rally.
-For å oppnå dette må vi implementere nødvendige funksjonaliteter som vegger, laser 
-etc... 
+Out goal is to create the most realistic digital versjon of the classic Robo Rally Board Game. To achieve our goal we have to implement necessary game functions as: walls, lasers, pushers, rotators etc...
 
-Regelene er tatt fra [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
+We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
 
 ## Innhold
--   ["x" Spill Brett](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps)
--   [Regelbok]()
--   [6 Kule roboter](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Robots)
--   4 Flagg
--   82 Programkort 
--   Ett Sekvensbrett
--   Én 30 sekunders timer
+-   ["x" Player boards](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps)
+-   [Rulebook]()
+-   [6 Awesome robots](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Robots)
+-   4 Flags
+-   82 Programcards 
+-   One sequence board
+-   One 30-second timer
+
+## Setup
+-   Install [Maven](https://maven.apache.org/download.cgi)
+-   Clone git repostery: `git clone git@github.com:inf112-v20/Gutta-krutt.git`
+
+### How to run the game
+-   Run main.java which is located in: _src/main/java/roborally_ in intellij.
+-   Press the start button
+-   Move around with the arrows
+
+### How to play
+-   G to switch between gamescreen and and sequencescreen.
+-   Numbers 1-9 to pick available cards.
+-   R to remove the card last added
 
 ## GDX-Skin
 Big shoutout to [Raymond "Raeleus" Buckley](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)

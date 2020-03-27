@@ -106,3 +106,49 @@ Sette opp fremtidige møter
 * Javadoc
 * Application listener -> Screens
 * rebase branches
+
+## Møtereferat 10.03.2020
+(Til stede: Fredrik Vegard og Oskar)
+
+* Deloppgave 1
+* Deloppgave 2
+* Retrospektiv
+* Plan:
+    * Fikse det visuelle.
+    * Fikse objekter på brettet.
+    * Gjøre det mulig å legge en sekvens.
+    
+## Møtereferat 13.03.2020 (Remote via Discord)
+(Til stede: Fredrik, Sedric, og Vegard)
+
+* Har satt opp en discord (kommunikasjons plattform) for fremtidige møter.
+* Begynne med å kunne legge en sekvens
+* Fortsette med det visuelle, startscreen 
+* Oppdatere hverandre på branches
+
+## Møtereferat 20.03.2020 (Remote via Discord)
+(Til stede: Fredrik, Sedric, Vegard og Oskar)
+
+* Oskar oppdaterte resten på det han jobbet med sist.
+
+Personlige oppgaver til Oblig 3 innlevering:
+* Vegard    -> Jobber med Kontrollbrettet
+* Oskar     -> Jobber med funksjonalitet/refactoring kode
+* Fredrik   -> Jobber med funksjonalitet
+* Sedric    -> Jobber med elementer på brettet
+
+## Møtereferat 24-25.03.2020 
+(Til stede: Fredrik, Vegard)
+
+* Videreutviklet brettfunksjonene
+* Laget et startsecreen
+* Jobbet med å få circuit boardet på brettet for å legge kort
+* Kan nå velge 1 kort
+* Kan swappe mellom circuitboard og brett
+
+## Møtereferat 27.03.2020 (Remote via Discord)
+* Snart ferdig med implementering af funkskjoner på brettet.
+* Koblet sammen tile_id med getCell.
+* Ferdig med sequence board.
+* Jobbet med sequencene.
+* Gått igjennom sjekklisten for oblig 3.
