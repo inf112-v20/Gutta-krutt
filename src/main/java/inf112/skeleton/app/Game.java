@@ -24,7 +24,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
     private TiledMap tilemap;
 
     private Player[] playerList;
-    private int amountOfPlayers = 3;
+    private int amountOfPlayers = 1;
     private Deck deck;
     private MovementHandler movementHandler;
 
@@ -108,7 +108,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
     /**
      * Helper-method for gameTurn(). GameTurn call this method every time it execute a card.
-     * @param pair It is a pair containing the specific card and playerID for the player that layed this card in his sequence.
+     * @param pair A pair containing the card to be executed and playerID.
      */
     public void executeCard(PlayerCardPair pair){
         int distance = pair.getCard().getDistance();
@@ -147,8 +147,7 @@ public class Game extends InputAdapter implements ApplicationListener  {
 
         //Will be removed when branch is merged into master
         laySequence1(playerList[0]);
-        laySequence1(playerList[1]);
-        laySequence1(playerList[2]);
+      // laySequence1(playerList[2]);
 
 
         //Reset the list "lastTurnSequence" and prepare it for a a new one.
