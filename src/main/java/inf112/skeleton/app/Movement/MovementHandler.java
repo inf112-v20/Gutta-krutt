@@ -4,7 +4,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.board.Board;
 import inf112.skeleton.app.cards.Direction;
 
 /**
@@ -45,7 +44,7 @@ public class MovementHandler {
     /**
      * moves a player in a one of four directions if possible
      * @param dir the direction to move the player
-     * @return
+     * @return moved the player
      */
 
     public boolean movePlayer(Direction dir) {
