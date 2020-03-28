@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
+import inf112.skeleton.app.tiles.*;
 
 /**
  * handling all movement connected to the board
@@ -14,6 +15,11 @@ public class MovementHandler {
     Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
+    ActionTiles hole;
+    ActionTiles rotateLeft;
+    ActionTiles rotateRight;
+    ActionTiles flag;
+    ActionTiles repair;
 
     /**
      *
@@ -24,6 +30,11 @@ public class MovementHandler {
        this.player = player;
        this.tilemap = tilemap;
        collisionHandler = new CollisionHandler(player, tilemap);
+       hole = new Hole(tilemap);
+       rotateLeft = new RotateLeft(tilemap);
+       rotateRight = new RotateRight(tilemap);
+       flag = new Flag(tilemap);
+       repair = new Repair(tilemap);
     }
 
     public boolean movePlayer(int keycode) {
@@ -48,6 +59,7 @@ public class MovementHandler {
      */
     public boolean movePlayer(Direction dir) {
         player.renderPlayerTexture();
+
         //clearing the previouse tile
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
@@ -72,9 +84,28 @@ public class MovementHandler {
         }
 
 
+
+        hole.tileAction(player);
+        rotateLeft.tileAction(player);
+        rotateRight.tileAction(player);
+        flag.tileAction(player);
+        repair.tileAction(player);
+        outOfBoard();
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
+    }
+
+    //TODO: bugg in out of bounds of board
+    private void outOfBoard() {
+        if(player.getPosX() < 0 || player.getPosX() > 12) {
+            player.isDestoyed();
+            player.setPos(player.getCheckpoint());
+        }
+        if(player.getPosY() < 0 || player.getPosY() > 12) {
+            player.isDestoyed();
+            player.setPos(player.getCheckpoint());
+        }
     }
 
 }

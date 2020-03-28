@@ -16,6 +16,8 @@ public class Player {
     private TiledMapTileLayer.Cell playerWon;
     private TiledMapTileLayer.Cell playerDied;
     private String filePath;
+    private int health;
+    private Vector2 checkpoint;
 
     public Player(int startingX, int startingY, String filePath) {
 
@@ -23,25 +25,40 @@ public class Player {
         playerWon = new TiledMapTileLayer.Cell();
         playerDied = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
+        health = 10;
+        checkpoint = new Vector2(startingX,startingY);
 
         renderPlayerTexture();
         position = new Vector2(startingX, startingY);
     }
 
-    public void setRotation(int cell_rotation) {
-        playerNormal.setRotation(cell_rotation);
-    }
+    public void setRotation(int cell_rotation) {playerNormal.setRotation(cell_rotation);}
+
+    public int getRotation() {return playerNormal.getRotation();}
+
+    public void setCheckpoint() {checkpoint = position.cpy();}
+
+    public Vector2 getCheckpoint() {return checkpoint;}
+
     public float getPosX() {return position.x;}
 
     public float getPosY() {return position.y;}
 
     public void setPos(float x, float y) {position.add(x,y);}
 
+    public void setPos(Vector2 vector) {position = vector;}
+
     public void setPosX(float x) {setPos(x,0);}
 
     public void setPosY(float y) {setPos(0,y);}
 
     public Vector2 getPosition() {return position;}
+
+    public void isDestoyed() {health = 0;}
+
+    public void setFullHealth() {health = 10;}
+
+    public int getHealth() {return health;}
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
