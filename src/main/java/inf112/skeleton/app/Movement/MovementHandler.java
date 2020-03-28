@@ -2,6 +2,7 @@ package inf112.skeleton.app.Movement;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
@@ -15,11 +16,8 @@ public class MovementHandler {
     Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
-    ActionTiles hole;
-    ActionTiles rotateLeft;
-    ActionTiles rotateRight;
-    ActionTiles flag;
-    ActionTiles repair;
+
+    ActionTiles[] actionTiles;
 
     /**
      *
@@ -29,12 +27,26 @@ public class MovementHandler {
     public MovementHandler(Player player, TiledMap tilemap) {
        this.player = player;
        this.tilemap = tilemap;
+
        collisionHandler = new CollisionHandler(player, tilemap);
-       hole = new Hole(tilemap);
-       rotateLeft = new RotateLeft(tilemap);
-       rotateRight = new RotateRight(tilemap);
-       flag = new Flag(tilemap);
-       repair = new Repair(tilemap);
+       ActionTiles hole = new Hole(tilemap);
+       ActionTiles rotateLeft = new RotateLeft(tilemap);
+       ActionTiles rotateRight = new RotateRight(tilemap);
+       ActionTiles flag = new Flag(tilemap);
+       ActionTiles repair = new Repair(tilemap);
+       //-1 is placeholder for nonvalid roation
+       ActionTiles slowBeltDown = new Belt(tilemap, Direction.SOUTH, -1, new int[]{50}, 1, "Conveyor_Belt_Yellow");
+       ActionTiles slowBeltRotateDown = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_180, new int[]{33,36}, 1, "Conveyor_Belt_Yellow");
+       ActionTiles slowBeltUp = new Belt(tilemap, Direction.NORTH, -1, new int[]{49}, 1, "Conveyor_Belt_Yellow");
+       ActionTiles slowBeltLeft = new Belt(tilemap, Direction.WEST, -1, new int[]{51}, 1, "Conveyor_Belt_Yellow");
+       ActionTiles slowBeltRight = new Belt(tilemap, Direction.EAST, -1, new int[]{52}, 1, "Conveyor_Belt_Yellow");
+       ActionTiles fastBeltUp = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Conveyor_Belt_Blue");
+       ActionTiles fastBeltleft = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Conveyor_Belt_Blue");
+       ActionTiles fastBeltRotateLeft = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Conveyor_Belt_Blue");
+       ActionTiles fastBeltRotateUp = new Belt(tilemap, Direction.NORTH,TiledMapTileLayer.Cell.ROTATE_0, new int[]{77}, 2, "Conveyor_Belt_Blue");
+
+       actionTiles = new ActionTiles[]{hole,rotateLeft,rotateRight,flag,repair,slowBeltDown,slowBeltRotateDown,slowBeltUp,slowBeltLeft,slowBeltRight,
+                fastBeltUp,fastBeltleft,fastBeltRotateLeft,fastBeltRotateUp};
     }
 
     public boolean movePlayer(int keycode) {
@@ -83,13 +95,11 @@ public class MovementHandler {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;
         }
 
+        //activates tileaction for all tiles
+        for(ActionTiles tile : actionTiles) {
+            tile.tileAction(player);
+        }
 
-
-        hole.tileAction(player);
-        rotateLeft.tileAction(player);
-        rotateRight.tileAction(player);
-        flag.tileAction(player);
-        repair.tileAction(player);
         outOfBoard();
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
