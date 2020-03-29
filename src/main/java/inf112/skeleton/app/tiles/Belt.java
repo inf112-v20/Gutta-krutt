@@ -8,6 +8,14 @@ import inf112.skeleton.app.cards.Direction;
 import java.util.HashMap;
 import java.util.zip.DeflaterInputStream;
 
+/**
+ * class to implement all types of belts
+ * takes a map that is to be used, a direction to which the player should be moved
+ * a int for rotation if it is a rotate tile, -1 if no rotation
+ * int steps to specify how many steps are to be takes when interacting with the belt tile
+ * a string layer to specify what layer the belt is located in
+ * @author sedric, fredrik
+ */
 public class Belt implements ActionTiles {
 
     private TiledMap tiledmap;
@@ -26,6 +34,10 @@ public class Belt implements ActionTiles {
         this.layer = layer;
     }
 
+    /**
+     * takes the specified direction and moves the player "steps" times in that direction
+     * @param player, the player the action is to be executed on
+     */
     @Override
     public void tileAction(Player player) {
 
@@ -45,6 +57,11 @@ public class Belt implements ActionTiles {
         }
     }
 
+    /**
+     * checks if the current tile the player is standing on is a belt-tile
+     * @param player the player to be checked
+     * @return returns true if the player is on the specified belt tile and false otherwise
+     */
     public boolean isBelt(Player player) {
         TiledMapTileLayer belt = (TiledMapTileLayer) tiledmap.getLayers().get(layer);
         TiledMapTileLayer.Cell currentTile = belt.getCell((int) player.getPosX(), (int) player.getPosY());

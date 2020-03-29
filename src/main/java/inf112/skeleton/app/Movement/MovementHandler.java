@@ -28,25 +28,30 @@ public class MovementHandler {
        this.player = player;
        this.tilemap = tilemap;
 
-       collisionHandler = new CollisionHandler(player, tilemap);
-       ActionTiles hole = new Hole(tilemap);
-       ActionTiles rotateLeft = new RotateLeft(tilemap);
-       ActionTiles rotateRight = new RotateRight(tilemap);
-       ActionTiles flag = new Flag(tilemap);
-       ActionTiles repair = new Repair(tilemap);
-       //-1 is placeholder for nonvalid roation
-       ActionTiles slowBeltDown = new Belt(tilemap, Direction.SOUTH, -1, new int[]{50}, 1, "Conveyor_Belt_Yellow");
-       ActionTiles slowBeltRotateDown = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_180, new int[]{33,36}, 1, "Conveyor_Belt_Yellow");
-       ActionTiles slowBeltUp = new Belt(tilemap, Direction.NORTH, -1, new int[]{49}, 1, "Conveyor_Belt_Yellow");
-       ActionTiles slowBeltLeft = new Belt(tilemap, Direction.WEST, -1, new int[]{51}, 1, "Conveyor_Belt_Yellow");
-       ActionTiles slowBeltRight = new Belt(tilemap, Direction.EAST, -1, new int[]{52}, 1, "Conveyor_Belt_Yellow");
-       ActionTiles fastBeltUp = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Conveyor_Belt_Blue");
-       ActionTiles fastBeltleft = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Conveyor_Belt_Blue");
-       ActionTiles fastBeltRotateLeft = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Conveyor_Belt_Blue");
-       ActionTiles fastBeltRotateUp = new Belt(tilemap, Direction.NORTH,TiledMapTileLayer.Cell.ROTATE_0, new int[]{77}, 2, "Conveyor_Belt_Blue");
+       initializeTiles();
+    }
 
-       actionTiles = new ActionTiles[]{hole,rotateLeft,rotateRight,flag,repair,slowBeltDown,slowBeltRotateDown,slowBeltUp,slowBeltLeft,slowBeltRight,
+    private void initializeTiles() {
+        collisionHandler = new CollisionHandler(player, tilemap);
+        ActionTiles hole = new Hole(tilemap);
+        ActionTiles rotateLeft = new RotateLeft(tilemap);
+        ActionTiles rotateRight = new RotateRight(tilemap);
+        ActionTiles flag = new Flag(tilemap);
+        ActionTiles repair = new Repair(tilemap);
+        //-1 is placeholder for no roation
+        ActionTiles slowBeltDown = new Belt(tilemap, Direction.SOUTH, -1, new int[]{50}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltRotateDown = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_180, new int[]{33,36}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltUp = new Belt(tilemap, Direction.NORTH, -1, new int[]{49}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltLeft = new Belt(tilemap, Direction.WEST, -1, new int[]{51}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltRight = new Belt(tilemap, Direction.EAST, -1, new int[]{52}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles fastBeltUp = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltleft = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltRotateLeft = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltRotateUp = new Belt(tilemap, Direction.NORTH,TiledMapTileLayer.Cell.ROTATE_0, new int[]{77}, 2, "Conveyor_Belt_Blue");
+
+        actionTiles = new ActionTiles[]{hole,rotateLeft,rotateRight,flag,repair,slowBeltDown,slowBeltRotateDown,slowBeltUp,slowBeltLeft,slowBeltRight,
                 fastBeltUp,fastBeltleft,fastBeltRotateLeft,fastBeltRotateUp};
+
     }
 
     public boolean movePlayer(int keycode) {
