@@ -78,18 +78,15 @@ public class MovementHandler {
 
         if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_0);
         }
         else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_180);
         }
         else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
         }
         else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
-            player.setPosX(1); player.setRotation(TiledMapTileLayer.Cell.ROTATE_270);
+            player.setPosX(1);
         }
         else {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;
@@ -108,14 +105,9 @@ public class MovementHandler {
 
     //TODO: bugg in out of bounds of board
     private void outOfBoard() {
-        if(player.getPosX() < 0 || player.getPosX() > 12) {
-            player.isDestoyed();
-            player.setPos(player.getCheckpoint());
-        }
-        if(player.getPosY() < 0 || player.getPosY() > 12) {
+        if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
             player.isDestoyed();
             player.setPos(player.getCheckpoint());
         }
     }
-
 }
