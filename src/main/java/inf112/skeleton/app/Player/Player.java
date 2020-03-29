@@ -17,7 +17,7 @@ public class Player {
     private Vector2 position;
     private TiledMapTileLayer.Cell playerNormal;
     private String filePath;
-    private int maxHealth = 7;
+    private final int maxHealth = 10;
     private int currentHealth;
     private int lifes = 3;
 
@@ -25,6 +25,7 @@ public class Player {
 
         playerNormal = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
+        this.currentHealth = maxHealth;
 
         renderPlayerTexture();
         position = new Vector2(startingX, startingY);
@@ -69,6 +70,9 @@ public class Player {
         currentHealth -= damage;
     }
 
+    public int getDamageTaken () {
+        return maxHealth - currentHealth;
+    }
 
     // A function for power-down, sets current health to max health
     public void powerDown() {
@@ -78,10 +82,11 @@ public class Player {
     // A function of lifes left in game
     public void destroyed() { this.lifes -= 1; }
 
-    public void gameOver() {
-        if (this.lifes >= 0);
-            System.out.println("Game over!");
-            return;
+    public boolean gameOver() {
+        if (this.lifes >= 0)
+            return true;
+        else
+            return false;
     }
 
     public void repairRobot(int repair) {
@@ -90,6 +95,8 @@ public class Player {
         }
         return;
     }
+
+    public int getMaxHealth () { return maxHealth; }
 
     public int getCurrentHealth () { return currentHealth; }
 
