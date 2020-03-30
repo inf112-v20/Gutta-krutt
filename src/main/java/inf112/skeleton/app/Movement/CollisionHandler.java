@@ -31,7 +31,7 @@ public class CollisionHandler extends InputAdapter {
      * @param newPosY the new Y position of player
      * @return true if it is possible to move to the new location and false otherwise
      */
-    public boolean canGo(Direction dir, int newPosX, int newPosY) {
+    public boolean canGo(Player player, Direction dir, int newPosX, int newPosY) {
         HashMap<Integer, Direction[]> idToWallName = new HashMap<>();
         TiledMapTileLayer walls = (TiledMapTileLayer) tilemap.getLayers().get("Walls");
 

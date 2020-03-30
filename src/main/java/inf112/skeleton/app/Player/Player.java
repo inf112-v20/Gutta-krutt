@@ -5,7 +5,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
+import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Direction;
+
+import java.util.LinkedList;
 
 /**
  * new instance of a player, containing methods to get position, displaying and rotating
@@ -27,7 +30,6 @@ public class Player {
     private int damageTaken; //Amount of damage tokens a player have received. Goes up to 9
 
     private int maxHealth = 7;
-    private final int maxHealth = 10;
     private int currentHealth;
     private int lifes = 3;
 
