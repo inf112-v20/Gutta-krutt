@@ -38,7 +38,7 @@ public class Player {
 
     public void setCheckpoint() {checkpoint = position.cpy();}
 
-    public Vector2 getCheckpoint() {return checkpoint;}
+    public Vector2 getCheckpoint() {return checkpoint.cpy();}
 
     public float getPosX() {return position.x;}
 
