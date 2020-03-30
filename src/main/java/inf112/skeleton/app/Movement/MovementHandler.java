@@ -32,7 +32,7 @@ public class MovementHandler {
     }
 
     private void initializeTiles() {
-        collisionHandler = new CollisionHandler(player, tilemap);
+        collisionHandler = new CollisionHandler(tilemap);
         ActionTiles hole = new Hole(tilemap);
         ActionTiles rotateLeft = new RotateLeft(tilemap);
         ActionTiles rotateRight = new RotateRight(tilemap);
@@ -81,16 +81,16 @@ public class MovementHandler {
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
         }
-        else if(dir == Direction.SOUTH && collisionHandler.canMove(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
         }
-        else if(dir == Direction.WEST && collisionHandler.canMove(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
         }
-        else if(dir == Direction.EAST && collisionHandler.canMove(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+        else if(dir == Direction.EAST && collisionHandler.canMove(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
             player.setPosX(1);
         }
         else {
