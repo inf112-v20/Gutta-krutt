@@ -162,4 +162,21 @@ Vi er snart ferdig med å implementere all funksjonaliteten, et av hovedmålene 
 #####Annet
 * Det har ikke vært noen nye ting å bli enige om i dagens møte, vi har i hovedsak fått mer forståelse 
     for hverandres kode  og har en felles forståelse om hvordan vi ønsker å arbeide fremover.
+    
+## Møtereferat 30.03.2020 (Remote via Discord)
+(Til stede: Vegard, Fredrik, Sedric og Oskar)
+
+####Gjort idag
+* Gått gjennom koden fra forrige oblig slik at alle er oppdatert. Diskutert implementasjon
+og diskutert eventuell refaktorering og effektivisering.
+
+####Videre
+* Vegard: Implementere kort i stedet for placeholder kort. Implementer lockdown. Implementer lagring av sequence. Lage visuelle kort. Finne ut hvordan priority skal vises. 
+* Sedric: Tester til funksjoner på boardet. Flere spillere på et brett. Spillere kan dytte på hverandre.
+* Oskar: Merge implementasjon som ikke kom med på forrige oblig grunnet merge conflicts. 
+* Fredrik: Bugs i brettfunksjonalitet. 
+
+####Annet
+* Spillet vil forhåpentligvis være ferdig når sequenceboard er ferdig og valgte kort 
+bindes sammen med eksisterende kode for å execute dem.
 
