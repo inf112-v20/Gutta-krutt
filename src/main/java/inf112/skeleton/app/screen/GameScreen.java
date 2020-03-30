@@ -61,14 +61,39 @@ public class GameScreen extends InputAdapter implements Screen {
         return this.tilemap;
     }
 
+
     @Override
     public boolean keyUp(int keycode) {
+        MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0];
         if (keycode == Input.Keys.G) {
             game.setScreen(new RegisterScreen(this, game));
             return true;
         }
         else if(keycode == Input.Keys.P){
             game.gameTurn();
+        }
+
+        //Up, Down, Left and Right are here temporarily, so its possible to move around the board.
+        //Only used for testing and will be removed when board functionality is finished.
+        else if (keycode == Input.Keys.UP){
+            movementhandlerPlayer1.movePlayer();
+        }
+        else if (keycode == Input.Keys.LEFT){
+            movementhandlerPlayer1.rotatePlayerLeft();
+            movementhandlerPlayer1.movePlayer();
+            movementhandlerPlayer1.rotatePlayerRight();
+        }
+        else if (keycode == Input.Keys.RIGHT){
+            movementhandlerPlayer1.rotatePlayerRight();
+            movementhandlerPlayer1.movePlayer();
+            movementhandlerPlayer1.rotatePlayerLeft();
+        }
+        else if (keycode == Input.Keys.DOWN){
+            movementhandlerPlayer1.rotatePlayerLeft();
+            movementhandlerPlayer1.rotatePlayerLeft();
+            movementhandlerPlayer1.movePlayer();
+            movementhandlerPlayer1.rotatePlayerLeft();
+            movementhandlerPlayer1.rotatePlayerLeft();
         }
         return true;
     }

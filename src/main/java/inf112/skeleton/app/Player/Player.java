@@ -33,9 +33,6 @@ public class Player {
         this.direction = 0;
         this.position = new Vector2(startingX, startingY);
         this.currentHealth = maxHealth;
-
-        //Cant render player texture while running tests. Comment out this line for tests.
-        renderPlayerTexture();
     }
 
     public void setRotation(int cell_rotation) {
@@ -106,6 +103,8 @@ public class Player {
         return;
     }
 
+    public int getLife() { return life; }
+
     /**
      * Get max health
      * @return Max health
@@ -149,17 +148,16 @@ public class Player {
     }
 
     /**
-     * This method is just used for testing.
-     */
-    public void setLastTurnSequence(LinkedList<Card> lastTurnSequence) {
-        this.lastTurnSequence = lastTurnSequence;
-    }
-
-    /**
      * Get last turn sequence
      * @return Last turn sequence
      */
     public LinkedList<Card> getLastTurnSequence() { return lastTurnSequence; }
+
+    /**
+     * Set last turn sequence. Method used for testing.
+     * @param sequence the sequence you want to set.
+     */
+    public void setLastTurnSequence(LinkedList<Card> sequence) {this.lastTurnSequence = sequence; }
 
     /**
      * Reset last turn sequence

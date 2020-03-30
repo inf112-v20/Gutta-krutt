@@ -47,6 +47,7 @@ public class RoboRally extends Game {
         for (int x = 0; x < amountOfPlayers; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
             playerList[x] = new Player(0, x, path);
+            playerList[x].renderPlayerTexture();
         }
     }
 
@@ -62,10 +63,16 @@ public class RoboRally extends Game {
         return gameScreen;
     }
 
-    //Return GameScreen, Used in GameScreen to render players
+    //Return playerList, Used in GameScreen to render players
     public Player[] getPlayerList() {
         return playerList;
     }
+
+    //Return movementHandlerList, Used in GameScreen to render players
+    public MovementHandler[] getMovementHandlerList() {
+        return movementHandlerList;
+    }
+
 
     /**
      * Helper-method for gameTurn(). GameTurn call this method every time it execute a card.
