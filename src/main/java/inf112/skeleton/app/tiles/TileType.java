@@ -118,34 +118,29 @@ public enum TileType {
     TILE_CONVEYOR_SLOW_SOUTH_TO_WEST (44),
     TILE_CONVEYOR_SLOW_WEST_TO_NORTH (36);
 
-    public static final int TILE_SIZE = 300;
-
     private final int tile_ID;
-
 
     //Connects each tile with it´s id
     TileType(int tile_ID) {
         this.tile_ID = tile_ID;
     }
 
-    public int getTile_ID() {
-        return tile_ID;
+    public int getTileID() {
+        return this.tile_ID;
     }
 
-    //HashMap for storing the tile values
+    //HashMap for collecting tiles
     private static HashMap<Integer, TileType> tileMap;
 
-    //Looping trough the values from the enum and putting them into the HashMap
+    //
     static {
-        for (TileType tileType : TileType.values()) {
-            tileMap.put(tileType.tile_ID, tileType);
+        for (TileType typeOfTile :  TileType.values()) {
+            tileMap.put(typeOfTile.getTileID(), typeOfTile);
         }
     }
 
-    //Putting
-    public static TileType getTileTypeByID (int id) {
+    public static TileType getTileByID (int id) {
         return tileMap.get(id);
     }
-
 }
 
