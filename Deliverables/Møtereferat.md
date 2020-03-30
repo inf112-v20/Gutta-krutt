@@ -173,8 +173,8 @@ og diskutert eventuell refaktorering og effektivisering.
 ####Videre
 * Vegard: Implementere kort i stedet for placeholder kort. Implementer lockdown. Implementer lagring av sequence. Lage visuelle kort. Finne ut hvordan priority skal vises. 
 * Sedric: Tester til funksjoner på boardet. Flere spillere på et brett. Spillere kan dytte på hverandre.
-* Oskar: Merge implementasjon som ikke kom med på forrige oblig grunnet merge conflicts. 
-* Fredrik: Bugs i brettfunksjonalitet. 
+* Oskar: Merge implementasjon som ikke kom med på forrige oblig grunnet merge conflicts. Se videre på upgrade kort. 
+* Fredrik: Bugs i brettfunksjonalitet. Merge player og robot klassene og fikser playertest.
 
 ####Annet
 * Spillet vil forhåpentligvis være ferdig når sequenceboard er ferdig og valgte kort 
