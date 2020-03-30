@@ -187,6 +187,15 @@ public class RegisterScreen extends InputAdapter implements Screen {
         if (keycode == Input.Keys.R) {
             removeCard();
         }
+        if (keycode == Input.Keys.L) {
+            for (int i = 0; i < 5; i++) {
+                if (isChosen[i] == -1) {
+                    System.out.println("Pick 5 cards to lock in");
+                    return true;
+                }
+            }
+            game.setScreen(gameScreen);
+        }
         return false;
     }
 
@@ -297,5 +306,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
         rootTable.row();
         rootTable.add(newChosenTable);
+    }
+
+    public Image[] getChosenImages() {
+        return chosenImages;
     }
 }
