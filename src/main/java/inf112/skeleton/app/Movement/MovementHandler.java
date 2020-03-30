@@ -8,9 +8,10 @@ import inf112.skeleton.app.cards.Direction;
 
 /**
  * handling all movement connected to the board
- * @author sedric
+ * @author sedric, Oskar Marthinussen
  */
 public class MovementHandler {
+    Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
 
@@ -18,16 +19,16 @@ public class MovementHandler {
      *
      * @param tilemap the tilemap the movementHandler connects to
      */
-    public MovementHandler(TiledMap tilemap) {
-       this.tilemap = tilemap;
-       collisionHandler = new CollisionHandler(tilemap);
+    public MovementHandler(Player player, TiledMap tilemap) {
+        this.player = player;
+        this.tilemap = tilemap;
+        this.collisionHandler = new CollisionHandler(this.player, tilemap);
     }
 
     /**
      * Rotates the player 90 degrees to the right.
-     * @param player The player you want to rotate.
      */
-    public void rotatePlayerRight(Player player){
+    public void rotatePlayerRight(){
         int currentDirection = player.getDirection();
         if (currentDirection == 0) {
             player.setDirection(3);
@@ -41,9 +42,8 @@ public class MovementHandler {
 
     /**
      * Rotates the player 90 degrees to the left.
-     * @param player The player you want to rotate.
      */
-    public void rotatePlayerLeft(Player player){
+    public void rotatePlayerLeft(){
         int currentDirection = player.getDirection();
         int newDirection = (currentDirection + 1) % 4;
         player.setDirection(newDirection);
@@ -68,28 +68,25 @@ public class MovementHandler {
 
     /**
      * moves a player in a one of four directions if possible
-     * @param player the player you want to move.
-     * @return
-     * @param dir the direction to move the player
      * @return moved the player
      */
-    public boolean movePlayer(Player player) {
+    public boolean movePlayer() {
         Direction dir = getDirection(player.getDirection());
         player.renderPlayerTexture();
         //clearing the previouse tile
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canGo(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && collisionHandler.canGo(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
         }
-        else if(dir == Direction.SOUTH && collisionHandler.canGo(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && collisionHandler.canGo(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
         }
-        else if(dir == Direction.WEST && collisionHandler.canGo(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && collisionHandler.canGo(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
         }
-        else if(dir == Direction.EAST && collisionHandler.canGo(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+        else if(dir == Direction.EAST && collisionHandler.canGo(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
             player.setPosX(1);
         }
         else {
@@ -97,15 +94,8 @@ public class MovementHandler {
             return false;
         }
 
-
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
-    }
-
-    public void moveSteps(Direction dir, int steps) {
-        for(int i = 0; i < steps; i++) {
-            movePlayer(dir);
-        }
     }
 }

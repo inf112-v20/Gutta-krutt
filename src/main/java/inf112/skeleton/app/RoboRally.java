@@ -12,23 +12,24 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
- * @author vegardbirkenes
+ * @author vegardbirkenes, Oskar Marthinussen
  */
 //This is libgdx own Game class, this makes it possible to switch between screens.
 public class RoboRally extends Game {
 
     private GameScreen gameScreen;
     private Player[] playerList;
+    private MovementHandler[] movementHandlerList;
     private int amountOfPlayers = 4;
-    private MovementHandler movementHandler;
 
 
     @Override
     public void create() {
         createPlayers(amountOfPlayers);
         gameScreen = new GameScreen(this);
+        createMovementHandlers();
         setScreen(new MenuScreen(this));
-        movementHandler = new MovementHandler(gameScreen.getilTiledMap());
+
     }
 
     @Override
@@ -42,9 +43,17 @@ public class RoboRally extends Game {
      */
     public void createPlayers(int amountOfPlayers){
         playerList = new Player[amountOfPlayers];
+        movementHandlerList = new MovementHandler[amountOfPlayers];
         for (int x = 0; x < amountOfPlayers; x++){
             String path = "assets/playerTexture/robot" + x + ".png";
-            playerList[x] = new Player(0, x, path, x);
+            playerList[x] = new Player(0, x, path);
+        }
+    }
+
+    public void createMovementHandlers(){
+        movementHandlerList = new MovementHandler[playerList.length];
+        for (int i = 0; i < playerList.length; i++){
+            movementHandlerList[i] = new MovementHandler(playerList[i],gameScreen.getilTiledMap());
         }
     }
 
@@ -60,7 +69,7 @@ public class RoboRally extends Game {
 
     /**
      * Helper-method for gameTurn(). GameTurn call this method every time it execute a card.
-     * @param pair A pair containing the card to be executed and playerID.
+     * @param pair A pair containing the card to be executed and the players MovementHandler.
      */
     public void executeCard(PlayerCardPair pair){
         int distance = pair.getCard().getDistance();
@@ -69,30 +78,18 @@ public class RoboRally extends Game {
         //Execute distance card.
         if (distance != 0){
             while (distance > 0){
-                for (Player player : playerList){
-                    if (player.getPlayerID() == pair.getPlayerID()){
-                        movementHandler.movePlayer(player);
-                        distance -= 1;
-                    }
-                }
+                pair.getMovementHandler().movePlayer();
+                distance--;
             }
         }
         //execute rotate left
-        else if (rotation < 0){
-            for (Player player : playerList){
-                if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerLeft(player);}
-            }
-        }
+        else if (rotation < 0){ pair.getMovementHandler().rotatePlayerLeft(); }
         //execute rotate right
-        else if (rotation > 0){
-            for (Player player : playerList){
-                if (player.getPlayerID() == pair.getPlayerID()){ movementHandler.rotatePlayerRight(player);}
-            }
-        }
+        else if (rotation > 0){ pair.getMovementHandler().rotatePlayerRight( ); }
     }
 
     /**
-     * Collects every players sequence and execute each card in a specific order, based on the card priority.
+     * Collects every players sequence and execute each card in execution order, based on the card priority.
      */
     public void gameTurn(){
         int roundThisTurn = 1;
@@ -105,15 +102,14 @@ public class RoboRally extends Game {
 
         //Reset the list "lastTurnSequence" and prepare it for a a new one.
         for (Player player : playerList){ player.resetLastTurnSequence(); }
-
         while (roundThisTurn <= 5) {
             ArrayList<PlayerCardPair> currentRound = new ArrayList<>();
 
             //Gather the first card from each player's sequence and put it in a sorted ArrayList.
             //The ArrayList is sorted after execution order.
-            for (Player player : playerList) {
-                player.getLastTurnSequence().add(player.getSequence().peek());
-                PlayerCardPair pair = new PlayerCardPair(player.getPlayerID(), player.getSequence().pollFirst());
+            for (int x = 0; x<playerList.length; x++){
+                playerList[x].getLastTurnSequence().add(playerList[x].getSequence().peek());
+                PlayerCardPair pair = new PlayerCardPair(movementHandlerList[x], playerList[x].getSequence().pollFirst());
                 if (pair.getCard() != null) {
                     if (currentRound.size() == 0) { currentRound.add(0, pair); }
                     else {
@@ -139,11 +135,7 @@ public class RoboRally extends Game {
     // Method for testing functionality. It is here temporarily until its possible for player lock his own sequence.
     public void laySequence1(Player player) {
         LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(0, 100,1));
-        sequence.add(new Card(1, 200,0));
-        sequence.add(new Card(0, 300,-1));
-        sequence.add(new Card(3, 400,0));
-        sequence.add(new Card(1, 500,0));
+        sequence.add(new Card(1, 100,0));
         player.setSequence(sequence);
     }
 }

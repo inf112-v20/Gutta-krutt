@@ -1,5 +1,8 @@
 package inf112.skeleton.app;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Card;
 import org.junit.Test;
@@ -13,9 +16,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Oskar Marthinussen, Fredrik Larsen
+ */
 public class PlayerTest {
 
-    Player player = new Player(0,0, "assets/playerTexture/robot0.png", 0);
+    //initialize a new tilemap
+    TmxMapLoader tmxLoader = new TmxMapLoader();
+    TiledMap tilemap = tmxLoader.load("assets/Maps/map1.tmx");
+
+    //initialize a new tilemap and his MovementHandler
+    Player player = new Player(0,0, "assets/playerTexture/robot0.png");
+    MovementHandler movementHandler = new MovementHandler(player, tilemap);
     LinkedList<Card> sequence = new LinkedList<>();
 
     public void createSequence(){
@@ -29,7 +41,7 @@ public class PlayerTest {
     @Test
     public void powerDownTest() {
         sequence.add(new Card(0,300,1));
-        player.setDamageTaken(8);
+        player.takeDamage(8);
         player.setSequence(sequence);
         player.powerDown();
 
@@ -45,30 +57,28 @@ public class PlayerTest {
     }
 
     @Test
-    public void resetSequenceWithMoreThanFourDamageTokensTest(){
-        for (int i = 1; i <= 5; i++){
+    public void resetSequenceWithMoreThanFourDamageTokensTest() {
+        for (int i = 1; i <= 5; i++) {
             player.setSequence(sequence);
             player.setLastTurnSequence(sequence);
-            player.setDamageTaken(4 + i);
+            player.takeDamage(4 + i);
             player.resetSequences();
             assertEquals(i, player.getSequence().size());
         }
-    int x, y = 0;
-
-    Player player = new Player(x,y,"assets/Robots/Fredrik_Robot.png");
+    }
 
     @Test
-    public void robotHasFullHealthTest() {
+    public void robotHasFullHealthTest(){
         assertEquals(10,player.getMaxHealth());
+    };
+
+    @Test
+    public void robotDirectionTest() {
+        assertEquals(Direction.NORTH, player.getDirection());
     }
 
     @Test
-    public void robotDirectionTest () {
-        assertEquals(Direction.NORTH, player.getDir());
-    }
-
-    @Test
-    public void takeDamageTest () {
+    public void takeDamageTest() {
         player.takeDamage(4);
         assertEquals(4, player.getDamageTaken());
     }

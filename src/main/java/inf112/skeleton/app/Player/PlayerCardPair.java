@@ -1,13 +1,17 @@
 package inf112.skeleton.app.Player;
 
+import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.cards.Card;
 
+/**
+ * @author Oskar Marthinussen
+ */
 public class PlayerCardPair {
-    private int playerID;
+    private MovementHandler movementHandler;
     private Card card;
 
-    public PlayerCardPair(int playerID, Card card){
-        this.playerID = playerID;
+    public PlayerCardPair(MovementHandler movementHandler, Card card){
+        this.movementHandler = movementHandler;
         this.card = card;
     }
 
@@ -15,7 +19,7 @@ public class PlayerCardPair {
         return card;
     }
 
-    public int getPlayerID() {
-        return playerID;
+    public MovementHandler getMovementHandler() {
+        return movementHandler;
     }
 }

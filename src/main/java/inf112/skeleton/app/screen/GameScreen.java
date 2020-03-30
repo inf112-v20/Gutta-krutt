@@ -49,10 +49,6 @@ public class GameScreen extends InputAdapter implements Screen {
         camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
         camera.update();
         renderer.setView(camera);
-
-
-        //used to handle movement with the keyUp function from superclass InputAdapter
-        movementHandler = new MovementHandler(tilemap);
     }
 
     //Currently used in game
