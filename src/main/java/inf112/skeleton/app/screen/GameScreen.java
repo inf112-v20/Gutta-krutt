@@ -17,7 +17,7 @@ import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
 
 /**
- * @author vegardbirkenes
+ * @author vegardbirkenes, Oskar Marthinussen
  * Press G to enter the sequence board.
  */
 public class GameScreen extends InputAdapter implements Screen {
@@ -27,7 +27,6 @@ public class GameScreen extends InputAdapter implements Screen {
     final private int TILESIZE = 300;
     private TiledMap tilemap;
     private Player[] playerList;
-    private MovementHandler movementHandler;
     private BitmapFont font;
     private RoboRally game;
 
