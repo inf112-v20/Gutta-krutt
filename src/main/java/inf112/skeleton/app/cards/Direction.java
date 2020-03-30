@@ -12,9 +12,8 @@ public enum Direction {
     NORTH, EAST, SOUTH, WEST, DEFAULT;
 
     /**
-     * TODO
-     * @param dir
-     * @return
+     * @param dir is the direction player is facing,
+     * @return the the next direction player should be facing.
      */
 
     //Getting rotate right direction of player
