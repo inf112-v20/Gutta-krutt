@@ -6,11 +6,11 @@ import inf112.skeleton.app.cards.Card;
 /**
  * @author Oskar Marthinussen
  */
-public class PlayerCardPair {
+public class PlayerMovementHandlerPair {
     private MovementHandler movementHandler;
     private Card card;
 
-    public PlayerCardPair(MovementHandler movementHandler, Card card){
+    public PlayerMovementHandlerPair(MovementHandler movementHandler, Card card){
         this.movementHandler = movementHandler;
         this.card = card;
     }

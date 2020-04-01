@@ -3,7 +3,7 @@ package inf112.skeleton.app;
 import com.badlogic.gdx.Game;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.Player.PlayerCardPair;
+import inf112.skeleton.app.Player.PlayerMovementHandlerPair;
 import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
@@ -61,7 +61,7 @@ public class RoboRally extends Game {
     //
 
     /**
-     * @returnreturn GameScreen, used in MenuScreen
+     * @return GameScreen, used in MenuScreen
      */
     public GameScreen getGameScreen() {
         return gameScreen;
@@ -86,7 +86,7 @@ public class RoboRally extends Game {
      * Helper-method for gameTurn(). GameTurn call this method every time it execute a card.
      * @param pair A pair containing the card to be executed and the players MovementHandler.
      */
-    public void executeCard(PlayerCardPair pair){
+    public void executeCard(PlayerMovementHandlerPair pair){
         int distance = pair.getCard().getDistance();
         int rotation = pair.getCard().getChangeDirection();
 
@@ -112,13 +112,13 @@ public class RoboRally extends Game {
         //Reset the list "lastTurnSequence" and prepare it for a a new one.
         for (Player player : playerList){ player.resetLastTurnSequence(); }
         while (roundThisTurn <= 5) {
-            ArrayList<PlayerCardPair> currentRound = new ArrayList<>();
+            ArrayList<PlayerMovementHandlerPair> currentRound = new ArrayList<>();
 
             //Gather the first card from each player's sequence and put it in a sorted ArrayList.
             //The ArrayList is sorted after execution order.
             for (int x = 0; x<playerList.length; x++){
                 playerList[x].getLastTurnSequence().add(playerList[x].getSequence().peek());
-                PlayerCardPair pair = new PlayerCardPair(movementHandlerList[x], playerList[x].getSequence().pollFirst());
+                PlayerMovementHandlerPair pair = new PlayerMovementHandlerPair(movementHandlerList[x], playerList[x].getSequence().pollFirst());
                 if (pair.getCard() != null) {
                     if (currentRound.size() == 0) { currentRound.add(0, pair); }
                     else {
@@ -134,7 +134,7 @@ public class RoboRally extends Game {
                 }
             }
             //Execute each card
-            for (PlayerCardPair currentPair : currentRound) { executeCard(currentPair); }
+            for (PlayerMovementHandlerPair currentPair : currentRound) { executeCard(currentPair); }
             roundThisTurn++;
         }
         //reset sequence and lock cards based on damage taken.
