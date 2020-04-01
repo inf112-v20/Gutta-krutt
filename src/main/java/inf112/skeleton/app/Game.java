@@ -17,13 +17,11 @@ import inf112.skeleton.app.screen.GameScreen;
  * Brukes ikke lenger til å vise fram skjermen
  */
 public class Game extends InputAdapter implements ApplicationListener  {
+
     private GameScreen gameScreen;
     private TiledMap tilemap;
-
     private Player[] playerList;
     private MovementHandler movementHandler;
-
-
     private SpriteBatch batch;
     private BitmapFont font;
 
@@ -91,6 +89,13 @@ public class Game extends InputAdapter implements ApplicationListener  {
     public boolean keyUp(int keycode) {
         return movementHandler.movePlayer(keycode);
     }
+
+    /**
+     * method for getting the tilemap
+     * used for testing the code
+     * @return the current tilemap
+     */
+    public TiledMap getTilemap(){return tilemap;}
 }
 
 
