@@ -37,8 +37,6 @@ public class Player {
         lives = 3;
         direction = 0;
         health = 10;
-
-        renderPlayerTexture();
     }
 
     /**
