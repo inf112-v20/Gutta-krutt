@@ -23,8 +23,8 @@ public class Hole implements ActionTiles {
     @Override
     public boolean tileAction(Player player) {
         if (isHole(player)) {
-            player.isDestoyed();
-            player.setPos(player.getCheckpoint());
+            player.isDestroyed();
+            player.addPos(player.getCheckpoint());
             return true;
         }
         return false;

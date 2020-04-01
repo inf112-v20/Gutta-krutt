@@ -54,21 +54,29 @@ public class RoboRally extends Game {
     public void createMovementHandlers(){
         movementHandlerList = new MovementHandler[playerList.length];
         for (int i = 0; i < playerList.length; i++){
-            movementHandlerList[i] = new MovementHandler(playerList[i],gameScreen.getilTiledMap());
+            movementHandlerList[i] = new MovementHandler(playerList[i],gameScreen.getTiledMap());
         }
     }
 
-    //return GameScreen, used in MenuScreen
+    //
+
+    /**
+     * @returnreturn GameScreen, used in MenuScreen
+     */
     public GameScreen getGameScreen() {
         return gameScreen;
     }
 
-    //Return playerList, Used in GameScreen to render players
+    /**
+     * @return Return playerList, Used in GameScreen to render players
+     */
     public Player[] getPlayerList() {
         return playerList;
     }
 
-    //Return movementHandlerList, Used in GameScreen to render players
+    /**
+     * @return Return movementHandlerList, Used in GameScreen to render players
+     */
     public MovementHandler[] getMovementHandlerList() {
         return movementHandlerList;
     }
@@ -100,12 +108,6 @@ public class RoboRally extends Game {
      */
     public void gameTurn(){
         int roundThisTurn = 1;
-
-        //Will be removed when branch is merged into master
-        laySequence1(playerList[0]);
-        laySequence1(playerList[1]);
-        laySequence1(playerList[2]);
-        laySequence1(playerList[3]);
 
         //Reset the list "lastTurnSequence" and prepare it for a a new one.
         for (Player player : playerList){ player.resetLastTurnSequence(); }

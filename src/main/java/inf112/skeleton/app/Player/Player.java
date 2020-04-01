@@ -6,8 +6,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Card;
-import inf112.skeleton.app.cards.Direction;
-
 import java.util.LinkedList;
 
 /**
@@ -17,31 +15,36 @@ import java.util.LinkedList;
  */
 public class Player {
     private Vector2 position;
+    private Vector2 checkpoint;
     private TiledMapTileLayer.Cell playerNormal;
-    private LinkedList<Card> sequence;
+    private LinkedList<Card> sequence; //skal kanskje dette endres til array?
     private LinkedList<Card> lastTurnSequence;
     private String filePath;
-    private int maxHealth;
     private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
-    private int currentHealth;
-    private int life;
+    private int health;
+    private int lives;
 
-    private Vector2 checkpoint;
-
+    /**
+     * @param startingX the starting x-coordinate for player
+     * @param startingY the starting y-coordinate for player
+     * @param filePath the filepath to a png/jpg for displaying a player
+     */
     public Player(int startingX, int startingY, String filePath) {
-        this.playerNormal = new TiledMapTileLayer.Cell();
+        playerNormal = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
-        maxHealth = 10;
-        life = 3;
         checkpoint = new Vector2(startingX,startingY);
+        position = new Vector2(startingX, startingY);
+        lives = 3;
+        direction = 0;
+        health = 10;
 
         renderPlayerTexture();
-        position = new Vector2(startingX, startingY);
-        this.direction = 0;
-        this.position = new Vector2(startingX, startingY);
-        this.currentHealth = maxHealth;
     }
 
+    /**
+     * sets the roation of a player
+     * @param cell_rotation takes an int form TiledMapTileLayer.Cell.ROTATE_* (0,90,180,270)
+     */
     public void setRotation(int cell_rotation) {playerNormal.setRotation(cell_rotation);}
 
     public int getRotation() {return playerNormal.getRotation();}
@@ -54,21 +57,50 @@ public class Player {
 
     public float getPosY() {return position.y;}
 
-    public void setPos(float x, float y) {position.add(x,y);}
+    public void addPos(float x, float y) {position.add(x,y);}
 
-    public void setPos(Vector2 vector) {position = vector;}
+    public void addPos(Vector2 vector) {position = vector;}
 
-    public void setPosX(float x) {setPos(x,0);}
+    public void addPosX(float x) {addPos(x,0);}
 
-    public void setPosY(float y) {setPos(0,y);}
+    public void addPosY(float y) {addPos(0,y);}
 
     public int getDirection() {return direction;}
 
     public void setDirection(int direction) {this.direction = direction;}
 
-    public void isDestoyed() {maxHealth = 0;}
+    public void isDestroyed() {health = 0;}
 
-    public void setFullHealth() {maxHealth = 10;}
+    public void setFullHealth() {health = 10;}
+
+    /**
+     * reduces lives of a player by one
+     */
+    public void destroyed() {lives -= 1;}
+
+    public int getLives() { return lives; }
+
+    public int getCurrentHealth () { return health; }
+
+    /**
+     * reduces health by damage
+     * @param damage the amount of damage
+     */
+    public void takeDamage(int damage) {
+        health -= damage;
+    }
+
+    public int getDamageTaken () {
+        return 10 - health;
+    }
+
+    /**
+     * sets the health to max, health = 10
+     */
+    public void powerDown() {
+        health = 10;
+        setSequence(null);
+    }
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
@@ -86,63 +118,27 @@ public class Player {
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
     }
 
-    // A function that takes in damage and reduce current health
-    public void takeDamage(int damage) {
-        currentHealth -= damage;
-    }
 
-    public int getDamageTaken () {
-        return maxHealth - currentHealth;
-    }
-
-    // A function for power-down, sets current health to max health
-    public void powerDown() {
-        currentHealth = maxHealth;
-        setSequence(null);
-    }
-
-    // A function of lifes left in game
-    public void destroyed() { this.life -= 1; }
-
-    public boolean gameOver() {
-        if (this.life >= 0)
-            return true;
-        else
-            return false;
-    }
-
-    public void repairRobot(int repair) {
-        if (currentHealth < maxHealth && currentHealth != 0) {
-            currentHealth ++;
-        }
-        return;
-    }
-
-    public int getLife() { return life; }
-
-    /**
-     * Get max health
-     * @return Max health
-     */
-    public int getMaxHealth () { return maxHealth; }
-
-    /**
-     * Get current health
-     * @return Current health
-     */
-    public int getCurrentHealth () { return currentHealth; }
-
-    /**
-     * Set current round sequence.
-     * @param sequence The sequence you want to execute this turn.
-     */
     public void setSequence(LinkedList<Card> sequence) { this.sequence = sequence; }
 
-    /**
-     * Get this turn sequence.
-     * @return this turn sequence.
-     */
     public LinkedList<Card> getSequence() { return sequence; }
+
+    /**
+     * Get last turn sequence
+     * @return Last turn sequence
+     */
+    public LinkedList<Card> getLastTurnSequence() { return lastTurnSequence; }
+
+    /**
+     * Set last turn sequence. Method used for testing.
+     * @param sequence the sequence you want to set.
+     */
+    public void setLastTurnSequence(LinkedList<Card> sequence) {this.lastTurnSequence = sequence; }
+
+    /**
+     * Reset last turn sequence
+     */
+    public void resetLastTurnSequence() { this.lastTurnSequence = new LinkedList<>(); }
 
     /**
      * Reset players sequence. The amount of cards that are locked for the next round correspond to the amount of
@@ -161,21 +157,4 @@ public class Player {
             setSequence(newSequence);
         }
     }
-
-    /**
-     * Get last turn sequence
-     * @return Last turn sequence
-     */
-    public LinkedList<Card> getLastTurnSequence() { return lastTurnSequence; }
-
-    /**
-     * Set last turn sequence. Method used for testing.
-     * @param sequence the sequence you want to set.
-     */
-    public void setLastTurnSequence(LinkedList<Card> sequence) {this.lastTurnSequence = sequence; }
-
-    /**
-     * Reset last turn sequence
-     */
-    public void resetLastTurnSequence() { this.lastTurnSequence = new LinkedList<>(); }
 }

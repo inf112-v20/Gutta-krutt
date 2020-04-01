@@ -17,7 +17,7 @@ import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
 
 /**
- * @author vegardbirkenes, Oskar Marthinussen
+ * @author vegardbirkenes
  * Press G to enter the sequence board.
  */
 public class GameScreen extends InputAdapter implements Screen {
@@ -36,7 +36,6 @@ public class GameScreen extends InputAdapter implements Screen {
         font = new BitmapFont();
         font.setColor(Color.RED);
 
-
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/Maps/map1.tmx");
@@ -50,31 +49,22 @@ public class GameScreen extends InputAdapter implements Screen {
         renderer.setView(camera);
     }
 
-    //Currently used in game
-    public OrthogonalTiledMapRenderer getRenderer() {
-        return renderer;
-    }
-
-
-    //Return TiledMap
-    public TiledMap getilTiledMap(){
+    /**
+     * used for testing map functionality
+     * @return returns the current tiledMap
+     */
+    public TiledMap getTiledMap(){
         return this.tilemap;
     }
 
-
     @Override
     public boolean keyUp(int keycode) {
-        MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0];
+        MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0]; // todo: this is maybe not optimal
         if (keycode == Input.Keys.G) {
             game.setScreen(new RegisterScreen(this, game));
             return true;
         }
-        else if(keycode == Input.Keys.P){
-            game.gameTurn();
-            return true;
-        }
-        movementhandlerPlayer1.movePlayer(keycode);
-        return true;
+        return movementhandlerPlayer1.movePlayer(keycode);
     }
 
     @Override

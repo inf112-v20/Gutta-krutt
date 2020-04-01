@@ -2,7 +2,6 @@ package inf112.skeleton.app.Movement;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
@@ -16,12 +15,11 @@ public class MovementHandler {
     Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
-
     ActionTiles[] actionTiles;
 
     /**
-     *
-     * @param tilemap the tilemap the movementHandler connects to
+     * @param player the player to connect the movementhandler with
+     * @param tilemap the tilemap the movementHandler connects with
      */
     public MovementHandler(Player player, TiledMap tilemap) {
        this.player = player;
@@ -30,6 +28,9 @@ public class MovementHandler {
        initializeTiles();
     }
 
+    /**
+     * initialize all the different actionTiles
+     */
     private void initializeTiles() {
         collisionHandler = new CollisionHandler(tilemap);
         ActionTiles hole = new Hole(tilemap);
@@ -54,6 +55,11 @@ public class MovementHandler {
 
     }
 
+    /**
+     * moves the player in a given direction, depending on keycode
+     * @param keycode keycode from keyboard
+     * @return true if valid keycode, false otherwise
+     */
     public boolean movePlayer(int keycode) {
         switch (keycode) {
             case Input.Keys.UP:
@@ -71,7 +77,7 @@ public class MovementHandler {
 
     /**
      * moves a player in a one of four directions if possible
-     * @return moved the player
+     * @return returns true if valid movement, false otherwise
      */
     public boolean movePlayer(Direction dir) {
         player.renderPlayerTexture();
@@ -81,17 +87,17 @@ public class MovementHandler {
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
         if(dir == Direction.NORTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
-            player.setPosY(1);
+            player.addPosY(1);
         }
         else if(dir == Direction.SOUTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
-            player.setPosY(-1);
+            player.addPosY(-1);
         }
         else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
-            player.setPosX(-1);
+            player.addPosX(-1);
             player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
         }
         else if(dir == Direction.EAST && collisionHandler.canMove(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
-            player.setPosX(1);
+            player.addPosX(1);
         }
         else {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
@@ -99,7 +105,7 @@ public class MovementHandler {
         }
 
         //checks if a player is on a an actionTile and executes that tileAction
-        // only one tileAction will be called, e.g not allowed to activate more than one tile even if you jump to another ActionTile.
+        // only one tileAction will be called, i.e not allowed to activate more than one tile even if you jump to another ActionTile.
         for(ActionTiles tile : actionTiles) {
             if(tile.tileAction(player)) {break;}
         }
@@ -113,8 +119,8 @@ public class MovementHandler {
     //TODO: bugg in out of bounds of board
     private void outOfBoard() {
         if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
-            player.isDestoyed();
-            player.setPos(player.getCheckpoint());
+            player.isDestroyed();
+            player.addPos(player.getCheckpoint());
         }
     }
 }

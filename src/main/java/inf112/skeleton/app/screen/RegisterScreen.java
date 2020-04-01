@@ -15,12 +15,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.RoboRally;
 
 /**
- * @author vegardbirkenes
  * The screen is built up of a stage containing a root table and two tables inside the root table. One table for the cards to chose from and
  * one table for the cards you chose. When you chose a card the chosen table is removed from the root table, updated and added to the root
  * table again. This is how most of the functions that change the chosen table work.
  *
  * Choose numbers between 1-9 to chose cards, R to remove cards and G to go back to the GameScreen.
+ *
+ * @author vegardbirkenes
  */
 public class RegisterScreen extends InputAdapter implements Screen {
 
@@ -199,6 +200,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
         return false;
     }
 
+    /**
+     * checks if a card is already picked
+     * @param cardIndex the index of the chosen card
+     * @return true if already chosen, false otherwise
+     */
     public boolean isAlreadyPicked(int cardIndex) {
         for (int i = 0; i < 5; i++) {
             if (isChosen[i] == cardIndex) {
@@ -208,6 +214,10 @@ public class RegisterScreen extends InputAdapter implements Screen {
         return false;
     }
 
+    /**
+     * visually makes a table of cards
+     * @return a table of cards to chose from
+     */
     public Table makeCardTable() {
         Table tableForCards = new Table();
         for (String filename : cards) {
@@ -219,6 +229,10 @@ public class RegisterScreen extends InputAdapter implements Screen {
         return tableForCards;
     }
 
+    /**
+     * checks if a any cardsa are chosen, if they are they will show up, otherwise a placeholder is shown
+     * @return a table of chosen cards
+     */
     public Table makeChosenTable() {
         Table newChosenCards = new Table();
         for (int i = 0; i < 5; i++) {
@@ -234,14 +248,18 @@ public class RegisterScreen extends InputAdapter implements Screen {
         return newChosenCards;
     }
 
-    //can be used to initialize or reset isChosen boolean list.
+    /**
+     * can be used to initialize or reset isChosen boolean list.
+     */
     public void initializeIsChosen() {
         for (int i = 0; i < 5; i++) {
             isChosen[i] = -1;
         }
     }
 
-    //Initializes the chosen table to not chosen cards.
+    /**
+     * Initializes the chosen table to placeholder cards.
+     */
     public void initializeChosenImages() {
         for (int i = 0; i < 5; i++) {
             Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture("assets/cards/not_chosen_card.png")));
@@ -250,7 +268,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
         }
     }
 
-    //removes the card that was added last
+    /**
+     * removes the card that was added last
+     */
     public void removeCard() {
         int removeIndex = -1;
         for (int i = 4; i >= 0 ; i--) {
@@ -272,7 +292,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
         rootTable.add(newChosenTable);
     }
 
-    //Adds a card to the chosen table.
+    /**
+     * Adds a card to the chosen table.
+     * @param cardIndex index of chosen card
+     * @param filename filepath to picture of chosen card.
+     */
     public void addCardToChosen(int cardIndex, String filename) {
         int slot = -1;
         for (int i = 0; i < 5; i++) {
@@ -294,7 +318,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
         Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture(filename)));
         Image chosenCard = new Image(drawable);
 
-        //
         isChosen[slot] = cardIndex;
         chosenImages[slot] = chosenCard;
 
