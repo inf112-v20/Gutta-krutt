@@ -47,9 +47,10 @@ public class MovementHandler {
         ActionTiles fastBeltleft = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Conveyor_Belt_Blue");
         ActionTiles fastBeltRotateLeft = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Conveyor_Belt_Blue");
         ActionTiles fastBeltRotateUp = new Belt(tilemap, Direction.NORTH,TiledMapTileLayer.Cell.ROTATE_0, new int[]{77}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltDown = new Belt(tilemap, Direction.SOUTH,-1, new int[]{21}, 2, "Conveyor_Belt_Blue");
 
         actionTiles = new ActionTiles[]{hole,rotateLeft,rotateRight,flag,repair,slowBeltDown,slowBeltRotateDown,slowBeltUp,slowBeltLeft,slowBeltRight,
-                fastBeltUp,fastBeltleft,fastBeltRotateLeft,fastBeltRotateUp};
+                fastBeltUp,fastBeltleft,fastBeltRotateLeft,fastBeltRotateUp,fastBeltDown};
 
     }
 

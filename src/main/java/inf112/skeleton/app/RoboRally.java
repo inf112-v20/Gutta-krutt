@@ -85,14 +85,14 @@ public class RoboRally extends Game {
         //Execute distance card.
         if (distance != 0){
             while (distance > 0){
-                pair.getMovementHandler().movePlayer();
+                //pair.getMovementHandler().movePlayer();
                 distance--;
             }
         }
         //execute rotate left
-        else if (rotation < 0){ pair.getMovementHandler().rotatePlayerLeft(); }
+        //else if (rotation < 0){ pair.getMovementHandler().rotatePlayerLeft(); }
         //execute rotate right
-        else if (rotation > 0){ pair.getMovementHandler().rotatePlayerRight( ); }
+        //else if (rotation > 0){ pair.getMovementHandler().rotatePlayerRight( ); }
     }
 
     /**

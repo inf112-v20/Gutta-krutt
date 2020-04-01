@@ -21,18 +21,18 @@ public class Player {
     private LinkedList<Card> sequence;
     private LinkedList<Card> lastTurnSequence;
     private String filePath;
-    private int maxHealth = 10;
+    private int maxHealth;
     private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
     private int currentHealth;
-    private int life = 3;
+    private int life;
 
-    private int health;
     private Vector2 checkpoint;
 
     public Player(int startingX, int startingY, String filePath) {
         this.playerNormal = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
-        health = 10;
+        maxHealth = 10;
+        life = 3;
         checkpoint = new Vector2(startingX,startingY);
 
         renderPlayerTexture();
@@ -66,11 +66,9 @@ public class Player {
 
     public void setDirection(int direction) {this.direction = direction;}
 
-    public void isDestoyed() {health = 0;}
+    public void isDestoyed() {maxHealth = 0;}
 
-    public void setFullHealth() {health = 10;}
-
-    public int getHealth() {return health;}
+    public void setFullHealth() {maxHealth = 10;}
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
