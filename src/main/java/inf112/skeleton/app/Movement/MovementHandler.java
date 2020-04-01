@@ -94,7 +94,6 @@ public class MovementHandler {
         }
         else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.addPosX(-1);
-            player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
         }
         else if(dir == Direction.EAST && collisionHandler.canMove(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
             player.addPosX(1);
