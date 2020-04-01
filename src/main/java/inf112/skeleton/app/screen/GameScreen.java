@@ -71,6 +71,7 @@ public class GameScreen extends InputAdapter implements Screen {
         }
         else if(keycode == Input.Keys.P){
             game.gameTurn();
+            return true;
         }
         movementhandlerPlayer1.movePlayer(keycode);
         return true;
