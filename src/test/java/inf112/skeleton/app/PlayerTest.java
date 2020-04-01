@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;
 
 /**
- * @author Oskar Marthinussen, Fredrik Larsen
+ * @author Oskar Marthinussen, Fredrik Larsen, Vegard Birkenes
  */
 public class PlayerTest {
    Player player = new Player(0,0,"assets/playerTexture/robot0.png");
