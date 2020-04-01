@@ -97,9 +97,10 @@ public class MovementHandler {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal()); return false;
         }
 
-        //activates tileaction for all tiles
+        //checks if a player is on a an actionTile and executes that tileAction
+        // only one tileAction will be called, e.g not allowed to activate more than one tile even if you jump to another ActionTile.
         for(ActionTiles tile : actionTiles) {
-            tile.tileAction(player);
+            if(tile.tileAction(player)) {break;}
         }
 
         outOfBoard();

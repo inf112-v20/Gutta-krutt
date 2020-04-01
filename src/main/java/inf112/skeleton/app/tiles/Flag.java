@@ -21,10 +21,12 @@ public class Flag implements ActionTiles{
      * @param player, the player the action is to be executed on
      */
     @Override
-    public void tileAction(Player player) {
+    public boolean tileAction(Player player) {
         if(isFlag(player)) {
             player.setCheckpoint();
+            return true;
         }
+        return false;
     }
 
     /**

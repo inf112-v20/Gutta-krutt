@@ -18,10 +18,12 @@ public class RotateLeft implements ActionTiles {
      * @param player, the player the action is to be executed on
      */
     @Override
-    public void tileAction(Player player) {
+    public boolean tileAction(Player player) {
         if(isRotator(player)) {
             player.setRotation((player.getRotation()+TiledMapTileLayer.Cell.ROTATE_90) % 4);
+            return true;
         }
+        return false;
     }
 
     /**

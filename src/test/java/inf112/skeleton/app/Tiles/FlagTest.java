@@ -19,7 +19,7 @@ public class FlagTest {
     @Before
     public void init() {
         RoboRally game = new RoboRally();
-        flag = new Flag();
+        //flag = new Flag();
         player = new Player(0,0, "assets/playerTexture/robot0.png");
     }
 

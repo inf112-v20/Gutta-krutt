@@ -21,11 +21,13 @@ public class Hole implements ActionTiles {
      * @param player, the player the action is to be executed on
      */
     @Override
-    public void tileAction(Player player) {
+    public boolean tileAction(Player player) {
         if (isHole(player)) {
             player.isDestoyed();
             player.setPos(player.getCheckpoint());
+            return true;
         }
+        return false;
     }
 
     /**

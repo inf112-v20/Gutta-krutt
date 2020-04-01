@@ -21,10 +21,12 @@ public class Repair implements ActionTiles {
      * @param player, the player the action is to be executed on
      */
     @Override
-    public void tileAction(Player player) {
+    public boolean tileAction(Player player) {
         if(isRepair(player)) {
             player.setFullHealth();
+            return true;
         }
+        return false;
     }
 
     /**

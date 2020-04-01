@@ -12,5 +12,5 @@ public interface ActionTiles {
      * used to call the action which is to be executed when standing on an ActionTile
      * @param player, the player the action is to be executed on
      */
-    void tileAction(Player player);
+    boolean tileAction(Player player);
 }

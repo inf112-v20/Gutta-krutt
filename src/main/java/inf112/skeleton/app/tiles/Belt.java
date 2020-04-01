@@ -39,7 +39,7 @@ public class Belt implements ActionTiles {
      * @param player, the player the action is to be executed on
      */
     @Override
-    public void tileAction(Player player) {
+    public boolean tileAction(Player player) {
 
         if(isBelt(player)) {
             if(dir == Direction.NORTH) {
@@ -54,7 +54,9 @@ public class Belt implements ActionTiles {
             if(rotation != -1) {
                 player.setRotation(rotation);
             }
+            return true;
         }
+        return false;
     }
 
     /**
