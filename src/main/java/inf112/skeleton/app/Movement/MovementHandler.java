@@ -2,67 +2,69 @@ package inf112.skeleton.app.Movement;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
+import inf112.skeleton.app.tiles.*;
 
 /**
  * handling all movement connected to the board
- * @author sedric, Oskar Marthinussen
+ * @author sedric
  */
 public class MovementHandler {
     Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
 
+    ActionTiles[] actionTiles;
+
     /**
      *
      * @param tilemap the tilemap the movementHandler connects to
      */
     public MovementHandler(Player player, TiledMap tilemap) {
-        this.player = player;
-        this.tilemap = tilemap;
-        this.collisionHandler = new CollisionHandler(this.player, tilemap);
+       this.player = player;
+       this.tilemap = tilemap;
+
+       initializeTiles();
     }
 
-    /**
-     * Rotates the player 90 degrees to the right.
-     */
-    public void rotatePlayerRight(){
-        int currentDirection = player.getDirection();
-        if (currentDirection == 0) {
-            player.setDirection(3);
-            player.getPlayerNormal().setRotation(3);
-        }
-        else{
-            player.setDirection(currentDirection - 1);
-            player.getPlayerNormal().setRotation(currentDirection - 1);
-        }
-    }
+    private void initializeTiles() {
+        collisionHandler = new CollisionHandler(tilemap);
+        ActionTiles hole = new Hole(tilemap);
+        ActionTiles rotateLeft = new RotateLeft(tilemap);
+        ActionTiles rotateRight = new RotateRight(tilemap);
+        ActionTiles flag = new Flag(tilemap);
+        ActionTiles repair = new Repair(tilemap);
+        //-1 is placeholder for no roation
+        ActionTiles slowBeltDown = new Belt(tilemap, Direction.SOUTH, -1, new int[]{50}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltRotateDown = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_180, new int[]{33,36}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltUp = new Belt(tilemap, Direction.NORTH, -1, new int[]{49}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltLeft = new Belt(tilemap, Direction.WEST, -1, new int[]{51}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles slowBeltRight = new Belt(tilemap, Direction.EAST, -1, new int[]{52}, 1, "Conveyor_Belt_Yellow");
+        ActionTiles fastBeltUp = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltleft = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltRotateLeft = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Conveyor_Belt_Blue");
+        ActionTiles fastBeltRotateUp = new Belt(tilemap, Direction.NORTH,TiledMapTileLayer.Cell.ROTATE_0, new int[]{77}, 2, "Conveyor_Belt_Blue");
 
-    /**
-     * Rotates the player 90 degrees to the left.
-     */
-    public void rotatePlayerLeft(){
-        int currentDirection = player.getDirection();
-        int newDirection = (currentDirection + 1) % 4;
-        player.setDirection(newDirection);
-        player.getPlayerNormal().setRotation(player.getDirection());
+        actionTiles = new ActionTiles[]{hole,rotateLeft,rotateRight,flag,repair,slowBeltDown,slowBeltRotateDown,slowBeltUp,slowBeltLeft,slowBeltRight,
+                fastBeltUp,fastBeltleft,fastBeltRotateLeft,fastBeltRotateUp};
 
     }
 
-    /**
-     * Get direction based on the number the player-variable (int) direction.
-     * @param direction a number between 0-3 where each number represent a direction.
-     * @return the direction as an enum value.
-     */
-    public Direction getDirection(int direction){
-        switch(direction){
-            case(0): return Direction.NORTH;
-            case(1): return Direction.WEST;
-            case(2): return Direction.SOUTH;
-            case(3): return Direction.EAST;
-            default: return null;
+    public boolean movePlayer(int keycode) {
+        switch (keycode) {
+            case Input.Keys.UP:
+                return movePlayer(Direction.NORTH);
+            case Input.Keys.DOWN:
+                return movePlayer(Direction.SOUTH);
+            case Input.Keys.LEFT:
+                return movePlayer(Direction.WEST);
+            case Input.Keys.RIGHT:
+                return movePlayer(Direction.EAST);
+            default:
+                return false;
         }
     }
 
@@ -70,23 +72,24 @@ public class MovementHandler {
      * moves a player in a one of four directions if possible
      * @return moved the player
      */
-    public boolean movePlayer() {
-        Direction dir = getDirection(player.getDirection());
+    public boolean movePlayer(Direction dir) {
         player.renderPlayerTexture();
+
         //clearing the previouse tile
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && collisionHandler.canGo(dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
             player.setPosY(1);
         }
-        else if(dir == Direction.SOUTH && collisionHandler.canGo(dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && collisionHandler.canMove(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
             player.setPosY(-1);
         }
-        else if(dir == Direction.WEST && collisionHandler.canGo(dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && collisionHandler.canMove(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
             player.setPosX(-1);
+            player.setRotation(TiledMapTileLayer.Cell.ROTATE_90);
         }
-        else if(dir == Direction.EAST && collisionHandler.canGo(dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+        else if(dir == Direction.EAST && collisionHandler.canMove(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
             player.setPosX(1);
         }
         else {
@@ -94,8 +97,23 @@ public class MovementHandler {
             return false;
         }
 
+        //checks if a player is on a an actionTile and executes that tileAction
+        // only one tileAction will be called, e.g not allowed to activate more than one tile even if you jump to another ActionTile.
+        for(ActionTiles tile : actionTiles) {
+            if(tile.tileAction(player)) {break;}
+        }
+
+        outOfBoard();
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
+    }
+
+    //TODO: bugg in out of bounds of board
+    private void outOfBoard() {
+        if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
+            player.isDestoyed();
+            player.setPos(player.getCheckpoint());
+        }
     }
 }

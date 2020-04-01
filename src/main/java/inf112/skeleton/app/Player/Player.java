@@ -21,23 +21,34 @@ public class Player {
     private LinkedList<Card> sequence;
     private LinkedList<Card> lastTurnSequence;
     private String filePath;
-    private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
     private int maxHealth = 10;
+    private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
     private int currentHealth;
     private int life = 3;
 
+    private int health;
+    private Vector2 checkpoint;
 
     public Player(int startingX, int startingY, String filePath) {
         this.playerNormal = new TiledMapTileLayer.Cell();
         this.filePath = filePath;
+        health = 10;
+        checkpoint = new Vector2(startingX,startingY);
+
+        renderPlayerTexture();
+        position = new Vector2(startingX, startingY);
         this.direction = 0;
         this.position = new Vector2(startingX, startingY);
         this.currentHealth = maxHealth;
     }
 
-    public void setRotation(int cell_rotation) {
-        playerNormal.setRotation(cell_rotation);
-    }
+    public void setRotation(int cell_rotation) {playerNormal.setRotation(cell_rotation);}
+
+    public int getRotation() {return playerNormal.getRotation();}
+
+    public void setCheckpoint() {checkpoint = position.cpy();}
+
+    public Vector2 getCheckpoint() {return checkpoint.cpy();}
 
     public float getPosX() {return position.x;}
 
@@ -45,7 +56,7 @@ public class Player {
 
     public void setPos(float x, float y) {position.add(x,y);}
 
-    public Vector2 getPosition() {return position;}
+    public void setPos(Vector2 vector) {position = vector;}
 
     public void setPosX(float x) {setPos(x,0);}
 
@@ -54,6 +65,12 @@ public class Player {
     public int getDirection() {return direction;}
 
     public void setDirection(int direction) {this.direction = direction;}
+
+    public void isDestoyed() {health = 0;}
+
+    public void setFullHealth() {health = 10;}
+
+    public int getHealth() {return health;}
 
     public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
 
