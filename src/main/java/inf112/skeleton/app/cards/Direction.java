@@ -1,11 +1,8 @@
 package inf112.skeleton.app.cards;
 
-import javax.swing.*;
-import java.util.WeakHashMap;
-
 /**
  * Possible directions
- * @author Vegard Birkenes, Fredrik Larsen
+ * @author Vegard Birkenes, Fredrik Larsen, Sedric Kvarnes
  */
 
 public enum Direction {
@@ -16,11 +13,7 @@ public enum Direction {
      * @return the the next direction player should be facing.
      */
 
-    //Getting rotate right direction of player
-    public static Direction rotateRight(Direction dir) { return getDir(dir, WEST, EAST); }
-    //Getting rotate left direction of player
-    public static Direction rotateLeft(Direction dir) { return getDir(dir, EAST, WEST); }
-    //Rotation function
+
     public static Direction getDir(Direction dir, Direction east, Direction west) {
         if (dir.equals(west)){
             return NORTH;
@@ -35,7 +28,7 @@ public enum Direction {
         }
     }
     //Getting reversed direction of player
-    static public Direction uTurn(Direction dir) {
+    static public Direction invert(Direction dir) {
         switch (dir) {
             case NORTH:
                 return SOUTH;

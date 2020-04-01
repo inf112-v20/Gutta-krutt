@@ -4,7 +4,7 @@ import inf112.skeleton.app.Player.Player;
 
 /**
  * interface to implement behavior for all the tiles that has an action to it
- * @author sedric, fredrik
+ * @author sedric
  */
 public interface ActionTiles {
 

@@ -2,13 +2,10 @@ package inf112.skeleton.app.Movement;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.utils.Array;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -16,8 +13,12 @@ import java.util.HashMap;
  * @author sedric
  */
 public class CollisionHandler extends InputAdapter {
+
     TiledMap tilemap;
 
+    /**
+     * @param tilemap the tileMap to handle collision on
+     */
     public CollisionHandler(TiledMap tilemap) {
         this.tilemap = tilemap;
     }
@@ -62,7 +63,7 @@ public class CollisionHandler extends InputAdapter {
         if(currentCell != null) { currentPosWallId = currentCell.getTile().getId();}
 
         for(Direction wall : idToWallName.get(newPosWallId)) {
-            if(dir == Direction.uTurn(wall)) {
+            if(dir == Direction.invert(wall)) {
                 return false;
             }
         }

@@ -5,9 +5,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
 
-import java.util.HashMap;
-import java.util.zip.DeflaterInputStream;
-
 /**
  * class to implement all types of belts
  * takes a map that is to be used, a direction to which the player should be moved
@@ -43,13 +40,13 @@ public class Belt implements ActionTiles {
 
         if(isBelt(player)) {
             if(dir == Direction.NORTH) {
-                player.setPosY(steps);
+                player.addPosY(steps);
             } else if (dir == Direction.SOUTH){
-                player.setPosY(-steps);
+                player.addPosY(-steps);
             } else if (dir == Direction.EAST) {
-                player.setPosX(steps);
+                player.addPosX(steps);
             } else if (dir == Direction.WEST) {
-                player.setPosX(-steps);
+                player.addPosX(-steps);
             }
             if(rotation != -1) {
                 player.setRotation(rotation);

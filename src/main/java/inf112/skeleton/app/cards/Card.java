@@ -6,32 +6,38 @@ package inf112.skeleton.app.cards;
  */
 public class Card {
 
-    //Variables
     private int distance;
     private int priority;
-
-    //The intention is to have an array containing the directions so that we can plus the changeDirection and mod with 4 to get the
-    //direction the player wants to turn.
     private int changeDirection;
 
-    // "One" card
+    /**
+     * @param distance the distance to move
+     * @param priority the priority of a card, i.e specifying what card to be executed first
+     * @param changeDirection a int between 1 and 3 depending on what direction to rotate
+     */
     public Card(int distance, int priority, int changeDirection) {
         this.distance = distance;
         this.priority = priority;
         this.changeDirection = changeDirection;
     }
 
-    // Returns distance to move
+    /**
+     * @return returns distance to move
+     */
     public int getDistance(){
         return distance;
     }
 
-    // Card priority (who gets to move first)
+    /**
+     * @return returns the priority of a card
+     */
     public int getPriority() {
         return priority;
     }
 
-    // What direction to move
+    /**
+     * @return returns an int specifying what direction to rotate
+     */
     public int getChangeDirection(){
         return changeDirection;
     }

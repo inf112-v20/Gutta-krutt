@@ -1,19 +1,10 @@
 package inf112.skeleton.app;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Card;
-import inf112.skeleton.app.screen.GameScreen;
 import org.junit.Test;
 
 import java.util.LinkedList;
-
-import com.badlogic.gdx.math.Vector2;
-import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.cards.Direction;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -86,6 +77,6 @@ public class PlayerTest {
     @Test
     public void playerLostLifeTest(){
         player.destroyed();
-        assertEquals(2, player.getLife());
+        assertEquals(2, player.getLives());
     }
 }
