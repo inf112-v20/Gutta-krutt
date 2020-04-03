@@ -193,8 +193,9 @@ bindes sammen med eksisterende kode for å execute dem.
 
 ####Kommende arbeid
 * Vi jobber videre med de arbeidsoppgavene som ble fordelt forrige møte.
-* Vegard jobber videre med deck og hvordan man skal dele ut kortene.
-
-
+* Jobber videre med deck og hvordan man skal dele ut kortene.
+* Skrive flere tester. Mange av testene til nå har vi gjort manuelt, men vi ønsker å lage flere junit tester.
+* Ønsker å få implementert en win condition.
+* Jobbe videre med game loop.
 
 
