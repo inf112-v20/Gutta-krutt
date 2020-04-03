@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.cards.Card;
 
 /**
  * The screen is built up of a stage containing a root table and two tables inside the root table. One table for the cards to chose from and
@@ -38,6 +39,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
     //isChosen is a list of the cardindexes of the cards chosen
     private int[] isChosen;
     private Image[] chosenImages;
+    private Card[] chosenCards;
 
     public RegisterScreen(GameScreen gameScreen, RoboRally game) {
         this.game = game;
@@ -46,6 +48,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
         font = new BitmapFont();
         isChosen = new int[5];
         chosenImages = new Image[5];
+        chosenCards = new Card[5];
         initializeIsChosen();
         initializeChosenImages();
         rootTable = new Table();
@@ -96,6 +99,10 @@ public class RegisterScreen extends InputAdapter implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
+    }
+
+    public Card[] getChosenCards() {
+        return chosenCards;
     }
 
     @Override
@@ -249,7 +256,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
     }
 
     /**
-     * can be used to initialize or reset isChosen boolean list.
+     * can be used to initialize or reset isChosen index list.
      */
     public void initializeIsChosen() {
         for (int i = 0; i < 5; i++) {
@@ -329,9 +336,5 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
         rootTable.row();
         rootTable.add(newChosenTable);
-    }
-
-    public Image[] getChosenImages() {
-        return chosenImages;
     }
 }

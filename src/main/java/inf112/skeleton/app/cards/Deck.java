@@ -11,11 +11,14 @@ import java.util.HashMap;
 public class Deck {
 
     private final String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };
-    private HashMap<String, int[]> deck;
     private final int[] distanceToMove = { -1, 1, 2, 3, 0, 0, 0};
     //the idea behind an int array to represent direction is to later implement a direction array where the indexes from
     //represent a direction. By using formula "x + directionRotation[i] % 4" you can easily turn the player the correct way.
     private final int[] directionRotation = { 0, 0, 0, 0, 2, -1 , 1 };
+    private final String[] filepath = { "assets/cards/SequenceCards/Backup.png", "assets/cards/SequenceCards/Move_1.png",
+            "assets/cards/SequenceCards/Move_2.png", "assets/cards/SequenceCards/Move_3.png", "assets/cards/SequenceCards/Rotate_left.png",
+            "assets/cards/SequenceCards/Rotate_right.png", "assets/cards/SequenceCards/U_turn.png"};
+    private HashMap<String, int[]> deck;
 
     public Deck() {
         this.deck = initializeDeck();
@@ -43,7 +46,9 @@ public class Deck {
         int distance = getCorrespondingDistance(randomType);
         int directionChange = getCorrespondingDirection(randomType);
 
-        return new Card(distance, priority, directionChange);
+        String cardFilepath = filepath[randomType];
+
+        return new Card(distance, priority, directionChange, cardFilepath);
     }
 
     /**
@@ -84,7 +89,7 @@ public class Deck {
         moveThree(deck);
         return deck;
     }
-
+    //todo should the initializing functions in deck be private?
     /**
      * There is 6 u turn cards with priority between: 10 - 60
      * @param deck the current deck.

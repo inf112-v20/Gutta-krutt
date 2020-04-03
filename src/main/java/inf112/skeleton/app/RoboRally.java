@@ -44,10 +44,10 @@ public class RoboRally extends Game {
     public void createPlayers(int amountOfPlayers){
         playerList = new Player[amountOfPlayers];
         movementHandlerList = new MovementHandler[amountOfPlayers];
-        for (int x = 0; x < amountOfPlayers; x++){
-            String path = "assets/playerTexture/robot" + x + ".png";
-            playerList[x] = new Player(0, x, path);
-            playerList[x].renderPlayerTexture();
+        for (int y = 0; y < amountOfPlayers; y++){
+            String path = "assets/playerTexture/robot" + y + ".png";
+            playerList[y] = new Player(0, y, path);
+            playerList[y].renderPlayerTexture();
         }
     }
 
@@ -144,7 +144,7 @@ public class RoboRally extends Game {
     // Method for testing functionality. It is here temporarily until its possible for player lock his own sequence.
     public void laySequence1(Player player) {
         LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(1, 100,0));
+        sequence.add(new Card(1, 100,0, "assets/SequenceCards/Move_1.png"));
         player.setSequence(sequence);
     }
 }
