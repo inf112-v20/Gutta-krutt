@@ -177,6 +177,23 @@ og diskutert eventuell refaktorering og effektivisering.
 * Fredrik: Bugs i brettfunksjonalitet. Merge player og robot klassene og fikser playertest.
 
 ####Annet
-* Spillet vil forhåpentligvis være ferdig når sequenceboard er ferdig og valgte kort 
-bindes sammen med eksisterende kode for å execute dem.
+* Spillet vil forhåpentligvis være spillbart når sequenceboard er ferdig og valgte kort 
+bindes sammen med eksisterende kode for å execute dem. 
+
+## Møtereferat 03.04.2020 (Remote via Discord)
+(Til stede: Vegard, Sedric, Fredrik)
+
+####Gjort ila uken
+* Diskutert hvordan vi skal binde sammen sequence board og game board.
+* Gjort en stor refaktorering av koden og lagt til javadoc. 
+* Laget visuelle spillekort slik at disse kan brukes når man legger en sekvens.
+* Fikset funksjonalitet på alle tiles.
+* Merget player og robot klassene.
+* Fikset playertest.
+
+####Kommende arbeid
+* Vi jobber videre med de arbeidsoppgavene som ble fordelt forrige møte.
+
+
+
 
