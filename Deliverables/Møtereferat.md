@@ -181,7 +181,7 @@ og diskutert eventuell refaktorering og effektivisering.
 bindes sammen med eksisterende kode for å execute dem. 
 
 ## Møtereferat 03.04.2020 (Remote via Discord)
-(Til stede: Vegard, Sedric, Fredrik)
+(Til stede: Vegard, Sedric, Fredrik, Oskar)
 
 ####Gjort ila uken
 * Diskutert hvordan vi skal binde sammen sequence board og game board.
@@ -193,6 +193,7 @@ bindes sammen med eksisterende kode for å execute dem.
 
 ####Kommende arbeid
 * Vi jobber videre med de arbeidsoppgavene som ble fordelt forrige møte.
+* Vegard jobber videre med deck og hvordan man skal dele ut kortene.
 
 
 
