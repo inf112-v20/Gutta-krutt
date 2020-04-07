@@ -107,95 +107,41 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
     @Override
     public boolean keyUp(int keycode) {
-        if (keycode == Input.Keys.G) {
-            game.setScreen(gameScreen);
-            return true;
-        }
+        int indexOfChosen = -1;
         if (keycode == Input.Keys.NUM_1) {
-            if (isAlreadyPicked(0)) {
-                System.out.println("Cannot pick a card twice.");
-            } else {
-                String filename = cards[0];
-                addCardToChosen(0, filename);
-            }
-            return true;
+            indexOfChosen = 0;
         }
-        if (keycode == Input.Keys.NUM_2) {
-            if (isAlreadyPicked(1)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[1];
-                addCardToChosen(1, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_2) {
+            indexOfChosen = 1;
         }
-        if (keycode == Input.Keys.NUM_3) {
-            if (isAlreadyPicked(2)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[2];
-                addCardToChosen(2, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_3) {
+            indexOfChosen = 2;
         }
-        if (keycode == Input.Keys.NUM_4) {
-            if (isAlreadyPicked(3)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[3];
-                addCardToChosen(3, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_4) {
+            indexOfChosen = 3;
         }
-        if (keycode == Input.Keys.NUM_5) {
-            if (isAlreadyPicked(4)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[4];
-                addCardToChosen(4, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_5) {
+            indexOfChosen = 4;
         }
-        if (keycode == Input.Keys.NUM_6) {
-            if (isAlreadyPicked(5)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[5];
-                addCardToChosen(5, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_6) {
+            indexOfChosen = 5;
         }
-        if (keycode == Input.Keys.NUM_7) {
-            if (isAlreadyPicked(6)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[6];
-                addCardToChosen(6, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_7) {
+            indexOfChosen = 6;
         }
-        if (keycode == Input.Keys.NUM_8) {
-            if (isAlreadyPicked(7)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[7];
-                addCardToChosen(7, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_8) {
+            indexOfChosen = 7;
         }
-        if (keycode == Input.Keys.NUM_9) {
-            if (isAlreadyPicked(8)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[8];
-                addCardToChosen(8, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_9) {
+            indexOfChosen = 8;
         }
-        if (keycode == Input.Keys.R) {
+        else if (keycode == Input.Keys.G) {
+            game.setScreen(gameScreen);
+        }
+        else if (keycode == Input.Keys.R) {
             removeCard();
         }
-        if (keycode == Input.Keys.L) {
+        else if (keycode == Input.Keys.L) {
             for (int i = 0; i < 5; i++) {
                 if (isChosen[i] == -1) {
                     System.out.println("Pick 5 cards to lock in");
@@ -204,7 +150,15 @@ public class RegisterScreen extends InputAdapter implements Screen {
             }
             game.setScreen(gameScreen);
         }
-        return false;
+
+        if (isAlreadyPicked(indexOfChosen)) {
+            System.out.println("Cannot pick a card twice.");
+        }
+        else if (indexOfChosen > -1) {
+            String filename = cards[indexOfChosen];
+            addCardToChosen(indexOfChosen, filename);
+        }
+        return true;
     }
 
     /**

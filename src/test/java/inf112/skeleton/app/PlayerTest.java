@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * @author Oskar Marthinussen, Fredrik Larsen, Vegard Birkenes
@@ -20,11 +21,11 @@ public class PlayerTest {
      */
     public LinkedList<Card> sequence(){
         LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(0,300,1));
-        sequence.add(new Card(0,300,1));
-        sequence.add(new Card(0,300,1));
-        sequence.add(new Card(0,300,1));
-        sequence.add(new Card(0,300,1));
+        sequence.add(new Card(0,300,1, "assets/cards/SequenceCards/Rotate_right.png"));
+        sequence.add(new Card(0,300,1, "assets/cards/SequenceCards/Rotate_right.png"));
+        sequence.add(new Card(0,300,1, "assets/cards/SequenceCards/Rotate_right.png"));
+        sequence.add(new Card(0,300,1, "assets/cards/SequenceCards/Rotate_right.png"));
+        sequence.add(new Card(0,300,1, "assets/cards/SequenceCards/Rotate_right.png"));
         return sequence;
     }
 
@@ -35,7 +36,7 @@ public class PlayerTest {
         player.powerDown();
 
         assertEquals(0, player.getDamageTaken());
-        assertEquals(null, player.getSequence());
+        assertNull(player.getSequence());
     }
 
     @Test
@@ -60,7 +61,7 @@ public class PlayerTest {
     @Test
     public void robotHasFullHealthTest(){
         assertEquals(10,player.getCurrentHealth());
-    };
+    }
 
     @Test
     public void robotDirectionTest() {
