@@ -11,11 +11,15 @@ import java.util.HashMap;
 public class Deck {
 
     private final String[] typeOfCards = { "backUp", "move1", "move2", "move3", "uTurn", "rotateLeft", "rotateRight" };
-    private HashMap<String, int[]> deck;
     private final int[] distanceToMove = { -1, 1, 2, 3, 0, 0, 0};
     //the idea behind an int array to represent direction is to later implement a direction array where the indexes from
     //represent a direction. By using formula "x + directionRotation[i] % 4" you can easily turn the player the correct way.
     private final int[] directionRotation = { 0, 0, 0, 0, 2, -1 , 1 };
+    private final String[] filepath = { "assets/cards/SequenceCards/Backup.png", "assets/cards/SequenceCards/Move_1.png",
+            "assets/cards/SequenceCards/Move_2.png", "assets/cards/SequenceCards/Move_3.png", "assets/cards/SequenceCards/Rotate_left.png",
+            "assets/cards/SequenceCards/Rotate_right.png", "assets/cards/SequenceCards/U_turn.png"};
+    private final int[] amountOfPriorities = { 5, 17, 11, 5, 5, 17, 17 };
+    private HashMap<String, int[]> deck;
 
     public Deck() {
         this.deck = initializeDeck();
@@ -34,16 +38,19 @@ public class Deck {
     public Card randomCard() {
         Random random = new Random();
         int randomType = random.nextInt(7);
-        int randomPriority = random.nextInt(7);
-
         String typeOfCard = typeOfCards[randomType];
-        int[] priorityList = deck.get(typeOfCard);
 
+        int[] priorityList = deck.get(typeOfCard);
+        int prioritiesToChooseFrom = amountOfPriorities[randomType];
+        int randomPriority = random.nextInt(prioritiesToChooseFrom);
         int priority = priorityList[randomPriority];
+
         int distance = getCorrespondingDistance(randomType);
         int directionChange = getCorrespondingDirection(randomType);
 
-        return new Card(distance, priority, directionChange);
+        String cardFilepath = filepath[randomType];
+
+        return new Card(distance, priority, directionChange, cardFilepath);
     }
 
     /**
@@ -73,7 +80,7 @@ public class Deck {
      * card as well as a list of possible priorities on the card to a given hashmap.
      * @return returns a deck with all the cards
      */
-    public HashMap<String, int[]> initializeDeck() {
+    private HashMap<String, int[]> initializeDeck() {
         HashMap<String, int[]> deck= new HashMap<>();
         uTurnCard(deck);
         rotateLeft(deck);
@@ -118,7 +125,7 @@ public class Deck {
     }
 
     /**
-     * There is 18 rotate left cards  with priority between: 80-420
+     * There is 18 rotate right cards  with priority between: 80-420
      * @param deck the current deck
      * @return the deck with RotateRight cards
      */
@@ -134,7 +141,7 @@ public class Deck {
     }
 
     /**
-     * There is 18 rotate left cards  with priority between: 430-480
+     * There is 5 backup cards  with priority between: 430-480
      * @param deck the current deck
      * @return the deck with BackUP cards
      */
@@ -151,7 +158,7 @@ public class Deck {
 
 
     /**
-     * There is 18 rotate left cards  with priority between: 490-660
+     * There is 18 move one cards  with priority between: 490-660
      * @param deck the current deck
      * @return the deck with moveOne cards
      */
@@ -167,7 +174,7 @@ public class Deck {
     }
 
     /**
-     * There is 18 rotate left cards  with priority between: 670-780
+     * There is 12 move two cards  with priority between: 670-780
      * @param deck the current deck
      * @return the deck with moveTwo cards
      */
@@ -183,7 +190,7 @@ public class Deck {
     }
 
     /**
-     * There is 18 rotate left cards  with priority between: 790-840
+     * There is 6 move three cards  with priority between: 790-840
      * @param deck the current deck
      * @return the deck with moveThree cards
      */

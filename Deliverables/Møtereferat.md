@@ -199,3 +199,19 @@ bindes sammen med eksisterende kode for å execute dem.
 * Jobbe videre med game loop.
 
 
+## Møtereferat 03.04.2020 (Remote via Discord)
+(Til stede: Vegard, Sedric)
+
+####Gjort ila uken
+* Diskutert hvordan vi skal binde sammen sequence board og game board.
+* Gjort en stor refaktorering av koden og lagt til javadoc. 
+* Laget visuelle spillekort slik at disse kan brukes når man legger en sekvens.
+* Fikset funksjonalitet på alle tiles.
+* Merget player og robot klassene.
+* Fikset playertest.
+
+####Kommende arbeid
+* Vi jobber videre med de arbeidsoppgavene som ble fordelt forrige møte.
+
+####Annet
+* 

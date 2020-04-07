@@ -13,6 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.cards.Card;
+import inf112.skeleton.app.cards.Deck;
 
 /**
  * The screen is built up of a stage containing a root table and two tables inside the root table. One table for the cards to chose from and
@@ -32,12 +34,12 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private Table cardTable;
     private Table chosenTable;
     private Table rootTable;
-    private final String[] cards = { "assets/cards/ace_of_clubs.png", "assets/cards/ace_of_diamonds.png", "assets/cards/ace_of_hearts.png",
-            "assets/cards/ace_of_spades.png", "assets/cards/joker.png", "assets/cards/king_of_clubs.png", "assets/cards/king_of_diamonds.png",
-            "assets/cards/king_of_hearts.png", "assets/cards/king_of_spades.png"};
+    private Deck deck;
+    private final Card[] cards;
     //isChosen is a list of the cardindexes of the cards chosen
     private int[] isChosen;
     private Image[] chosenImages;
+    private Card[] chosenCards;
 
     public RegisterScreen(GameScreen gameScreen, RoboRally game) {
         this.game = game;
@@ -46,9 +48,12 @@ public class RegisterScreen extends InputAdapter implements Screen {
         font = new BitmapFont();
         isChosen = new int[5];
         chosenImages = new Image[5];
+        chosenCards = new Card[5];
         initializeIsChosen();
         initializeChosenImages();
         rootTable = new Table();
+        deck = new Deck();
+        cards = new Card[9];
         cardTable = makeCardTable();
         chosenTable = makeChosenTable();
         rootTable.setFillParent(true);
@@ -57,6 +62,13 @@ public class RegisterScreen extends InputAdapter implements Screen {
         rootTable.row();
         rootTable.add(chosenTable);
         stage.addActor(rootTable);
+    }
+
+    /**
+     * @return returns the chosen cards.
+     */
+    public Card[] getChosenCards() {
+        return chosenCards;
     }
 
     @Override
@@ -100,95 +112,41 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
     @Override
     public boolean keyUp(int keycode) {
-        if (keycode == Input.Keys.G) {
-            game.setScreen(gameScreen);
-            return true;
-        }
+        int indexOfChosen = -1;
         if (keycode == Input.Keys.NUM_1) {
-            if (isAlreadyPicked(0)) {
-                System.out.println("Cannot pick a card twice.");
-            } else {
-                String filename = cards[0];
-                addCardToChosen(0, filename);
-            }
-            return true;
+            indexOfChosen = 0;
         }
-        if (keycode == Input.Keys.NUM_2) {
-            if (isAlreadyPicked(1)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[1];
-                addCardToChosen(1, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_2) {
+            indexOfChosen = 1;
         }
-        if (keycode == Input.Keys.NUM_3) {
-            if (isAlreadyPicked(2)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[2];
-                addCardToChosen(2, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_3) {
+            indexOfChosen = 2;
         }
-        if (keycode == Input.Keys.NUM_4) {
-            if (isAlreadyPicked(3)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[3];
-                addCardToChosen(3, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_4) {
+            indexOfChosen = 3;
         }
-        if (keycode == Input.Keys.NUM_5) {
-            if (isAlreadyPicked(4)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[4];
-                addCardToChosen(4, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_5) {
+            indexOfChosen = 4;
         }
-        if (keycode == Input.Keys.NUM_6) {
-            if (isAlreadyPicked(5)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[5];
-                addCardToChosen(5, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_6) {
+            indexOfChosen = 5;
         }
-        if (keycode == Input.Keys.NUM_7) {
-            if (isAlreadyPicked(6)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[6];
-                addCardToChosen(6, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_7) {
+            indexOfChosen = 6;
         }
-        if (keycode == Input.Keys.NUM_8) {
-            if (isAlreadyPicked(7)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[7];
-                addCardToChosen(7, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_8) {
+            indexOfChosen = 7;
         }
-        if (keycode == Input.Keys.NUM_9) {
-            if (isAlreadyPicked(8)) {
-                System.out.println("Cannot pick a card twice");
-            } else {
-                String filename = cards[8];
-                addCardToChosen(8, filename);
-            }
-            return true;
+        else if (keycode == Input.Keys.NUM_9) {
+            indexOfChosen = 8;
         }
-        if (keycode == Input.Keys.R) {
+        else if (keycode == Input.Keys.G) {
+            game.setScreen(gameScreen);
+        }
+        else if (keycode == Input.Keys.R) {
             removeCard();
         }
-        if (keycode == Input.Keys.L) {
+        else if (keycode == Input.Keys.L) {
             for (int i = 0; i < 5; i++) {
                 if (isChosen[i] == -1) {
                     System.out.println("Pick 5 cards to lock in");
@@ -197,7 +155,14 @@ public class RegisterScreen extends InputAdapter implements Screen {
             }
             game.setScreen(gameScreen);
         }
-        return false;
+
+        if (isAlreadyPicked(indexOfChosen)) {
+            System.out.println("Cannot pick a card twice.");
+        }
+        else if (indexOfChosen > -1) {
+            addCardToChosen(indexOfChosen, cards[indexOfChosen]);
+        }
+        return true;
     }
 
     /**
@@ -220,17 +185,18 @@ public class RegisterScreen extends InputAdapter implements Screen {
      */
     public Table makeCardTable() {
         Table tableForCards = new Table();
-        for (String filename : cards) {
-            Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture(filename)));
-            Image card = new Image(drawable);
-            tableForCards.add(card).pad(10);
+        for (int i = 0; i < 9; i++) {
+            Card card = deck.randomCard();
+            cards[i] = card;
+            Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));
+            tableForCards.add(cardImage).pad(10);
         }
         tableForCards.pad(20);
         return tableForCards;
     }
 
     /**
-     * checks if a any cardsa are chosen, if they are they will show up, otherwise a placeholder is shown
+     * checks if a any cards are chosen, if they are they will show up, otherwise a placeholder is shown
      * @return a table of chosen cards
      */
     public Table makeChosenTable() {
@@ -249,7 +215,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
     }
 
     /**
-     * can be used to initialize or reset isChosen boolean list.
+     * can be used to initialize or reset isChosen index list.
      */
     public void initializeIsChosen() {
         for (int i = 0; i < 5; i++) {
@@ -295,9 +261,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
     /**
      * Adds a card to the chosen table.
      * @param cardIndex index of chosen card
-     * @param filename filepath to picture of chosen card.
+     * @param card chosen card
      */
-    public void addCardToChosen(int cardIndex, String filename) {
+    public void addCardToChosen(int cardIndex, Card card) {
         int slot = -1;
         for (int i = 0; i < 5; i++) {
             if (isChosen[i] == -1) {
@@ -315,13 +281,13 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
         //Makes the card with given cardIndex
         Table newChosenTable = new Table();
-        Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture(filename)));
-        Image chosenCard = new Image(drawable);
+        Image cardImage = new Image(new TextureRegionDrawable(new TextureRegion(new Texture(card.getFilepath()))));
 
         isChosen[slot] = cardIndex;
-        chosenImages[slot] = chosenCard;
+        chosenCards[slot] = card;
+        chosenImages[slot] = cardImage;
 
-        newChosenTable.add(chosenCard).pad(10);
+        newChosenTable.add(cardImage).pad(10);
         newChosenTable = makeChosenTable();
         newChosenTable.pad(20);
 
@@ -329,9 +295,5 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
         rootTable.row();
         rootTable.add(newChosenTable);
-    }
-
-    public Image[] getChosenImages() {
-        return chosenImages;
     }
 }
