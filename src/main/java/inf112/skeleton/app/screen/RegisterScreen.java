@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.Card;
+import inf112.skeleton.app.cards.Deck;
 
 /**
  * The screen is built up of a stage containing a root table and two tables inside the root table. One table for the cards to chose from and
@@ -33,9 +34,8 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private Table cardTable;
     private Table chosenTable;
     private Table rootTable;
-    private final String[] cards = { "assets/cards/ace_of_clubs.png", "assets/cards/ace_of_diamonds.png", "assets/cards/ace_of_hearts.png",
-            "assets/cards/ace_of_spades.png", "assets/cards/joker.png", "assets/cards/king_of_clubs.png", "assets/cards/king_of_diamonds.png",
-            "assets/cards/king_of_hearts.png", "assets/cards/king_of_spades.png"};
+    private Deck deck;
+    private final Card[] cards;
     //isChosen is a list of the cardindexes of the cards chosen
     private int[] isChosen;
     private Image[] chosenImages;
@@ -52,6 +52,8 @@ public class RegisterScreen extends InputAdapter implements Screen {
         initializeIsChosen();
         initializeChosenImages();
         rootTable = new Table();
+        deck = new Deck();
+        cards = new Card[9];
         cardTable = makeCardTable();
         chosenTable = makeChosenTable();
         rootTable.setFillParent(true);
@@ -60,6 +62,13 @@ public class RegisterScreen extends InputAdapter implements Screen {
         rootTable.row();
         rootTable.add(chosenTable);
         stage.addActor(rootTable);
+    }
+
+    /**
+     * @return returns the chosen cards.
+     */
+    public Card[] getChosenCards() {
+        return chosenCards;
     }
 
     @Override
@@ -99,10 +108,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-    }
-
-    public Card[] getChosenCards() {
-        return chosenCards;
     }
 
     @Override
@@ -155,8 +160,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
             System.out.println("Cannot pick a card twice.");
         }
         else if (indexOfChosen > -1) {
-            String filename = cards[indexOfChosen];
-            addCardToChosen(indexOfChosen, filename);
+            addCardToChosen(indexOfChosen, cards[indexOfChosen]);
         }
         return true;
     }
@@ -181,17 +185,18 @@ public class RegisterScreen extends InputAdapter implements Screen {
      */
     public Table makeCardTable() {
         Table tableForCards = new Table();
-        for (String filename : cards) {
-            Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture(filename)));
-            Image card = new Image(drawable);
-            tableForCards.add(card).pad(10);
+        for (int i = 0; i < 9; i++) {
+            Card card = deck.randomCard();
+            cards[i] = card;
+            Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));
+            tableForCards.add(cardImage).pad(10);
         }
         tableForCards.pad(20);
         return tableForCards;
     }
 
     /**
-     * checks if a any cardsa are chosen, if they are they will show up, otherwise a placeholder is shown
+     * checks if a any cards are chosen, if they are they will show up, otherwise a placeholder is shown
      * @return a table of chosen cards
      */
     public Table makeChosenTable() {
@@ -256,9 +261,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
     /**
      * Adds a card to the chosen table.
      * @param cardIndex index of chosen card
-     * @param filename filepath to picture of chosen card.
+     * @param card chosen card
      */
-    public void addCardToChosen(int cardIndex, String filename) {
+    public void addCardToChosen(int cardIndex, Card card) {
         int slot = -1;
         for (int i = 0; i < 5; i++) {
             if (isChosen[i] == -1) {
@@ -276,13 +281,13 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
         //Makes the card with given cardIndex
         Table newChosenTable = new Table();
-        Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture(filename)));
-        Image chosenCard = new Image(drawable);
+        Image cardImage = new Image(new TextureRegionDrawable(new TextureRegion(new Texture(card.getFilepath()))));
 
         isChosen[slot] = cardIndex;
-        chosenImages[slot] = chosenCard;
+        chosenCards[slot] = card;
+        chosenImages[slot] = cardImage;
 
-        newChosenTable.add(chosenCard).pad(10);
+        newChosenTable.add(cardImage).pad(10);
         newChosenTable = makeChosenTable();
         newChosenTable.pad(20);
 
