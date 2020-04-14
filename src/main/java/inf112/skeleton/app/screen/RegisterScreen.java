@@ -12,9 +12,12 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Deck;
+
+import java.util.ArrayList;
 
 /**
  * The screen is built up of a stage containing a root table and two tables inside the root table. One table for the cards to chose from and
@@ -29,21 +32,23 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
     private GameScreen gameScreen;
     private RoboRally game;
+    private Player player;
     private Stage stage;
     private BitmapFont font;
     private Table cardTable;
     private Table chosenTable;
     private Table rootTable;
     private Deck deck;
-    private final Card[] cards;
+    private ArrayList<Card> cards;
     //isChosen is a list of the cardindexes of the cards chosen
     private int[] isChosen;
     private Image[] chosenImages;
     private Card[] chosenCards;
 
-    public RegisterScreen(GameScreen gameScreen, RoboRally game) {
+    public RegisterScreen(GameScreen gameScreen, RoboRally game, Player player) {
         this.game = game;
         this.gameScreen = gameScreen;
+        this.player = player;
         stage = new Stage();
         font = new BitmapFont();
         isChosen = new int[5];
@@ -53,8 +58,8 @@ public class RegisterScreen extends InputAdapter implements Screen {
         initializeChosenImages();
         rootTable = new Table();
         deck = new Deck();
-        cards = new Card[9];
-        cardTable = makeCardTable();
+        cards = new ArrayList<>();
+        cardTable = makeCardTable(player.getCurrentHealth()-1);
         chosenTable = makeChosenTable();
         rootTable.setFillParent(true);
         rootTable.setDebug(true);
@@ -154,13 +159,19 @@ public class RegisterScreen extends InputAdapter implements Screen {
                 }
             }
             game.setScreen(gameScreen);
+            return true;
         }
-
+        else if (keycode == Input.Keys.P) {
+            player.powerDown();
+            System.out.println("Player announces powerdown");
+            game.setScreen(gameScreen);
+            return true;
+        }
         if (isAlreadyPicked(indexOfChosen)) {
             System.out.println("Cannot pick a card twice.");
         }
         else if (indexOfChosen > -1) {
-            addCardToChosen(indexOfChosen, cards[indexOfChosen]);
+            addCardToChosen(indexOfChosen, cards.get(indexOfChosen));
         }
         return true;
     }
@@ -183,11 +194,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
      * visually makes a table of cards
      * @return a table of cards to chose from
      */
-    public Table makeCardTable() {
+    public Table makeCardTable(int health) {
         Table tableForCards = new Table();
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < health; i++) {
             Card card = deck.randomCard();
-            cards[i] = card;
+            cards.add(card);
             Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));
             tableForCards.add(cardImage).pad(10);
         }
