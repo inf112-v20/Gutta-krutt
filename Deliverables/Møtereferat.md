@@ -149,17 +149,17 @@ Personlige oppgaver til Oblig 3 innlevering:
 ## Møtereferat 27.03.2020 (Remote via Discord)
 (tilstede: Sedric, Fredrik, Vegard, Oskar)
 
-#####Arbeid som har blitt gjort siden sist:
+##### Arbeid som har blitt gjort siden sist:
 * Vi har blitt ferdige med en prototype på å legge kort og en sekvens.
 Vi har koblet sammen tile_id med getCell, dette henger sammen med funksjonaliteten på brettet.
 Vi er snart ferdig med å implementere funksjonalitet på brettet som hull, flagg og belter.
 
-#####Videre arbeid
+##### Videre arbeid
 * Fremover så er hovedmålet å jobbe videre på det å kunne legge en sekvens og den grafiske fremvisningen av dette
 vi skal finne riktige kort og legge inn istedet for placeholder kort som vi midlertidig nå har.
 Vi er snart ferdig med å implementere all funksjonaliteten, et av hovedmålene er å få dette til å fungere til neste gang
 
-#####Annet
+##### Annet
 * Det har ikke vært noen nye ting å bli enige om i dagens møte, vi har i hovedsak fått mer forståelse 
     for hverandres kode  og har en felles forståelse om hvordan vi ønsker å arbeide fremover.
     
@@ -170,20 +170,20 @@ Vi er snart ferdig med å implementere all funksjonaliteten, et av hovedmålene 
 * Gått gjennom koden fra forrige oblig slik at alle er oppdatert. Diskutert implementasjon
 og diskutert eventuell refaktorering og effektivisering.
 
-####Videre
+#### Videre
 * Vegard: Implementere kort i stedet for placeholder kort. Implementer lockdown. Implementer lagring av sequence. Lage visuelle kort. Finne ut hvordan priority skal vises. 
 * Sedric: Tester til funksjoner på boardet. Flere spillere på et brett. Spillere kan dytte på hverandre.
 * Oskar: Merge implementasjon som ikke kom med på forrige oblig grunnet merge conflicts. Se videre på upgrade kort. 
 * Fredrik: Bugs i brettfunksjonalitet. Merge player og robot klassene og fikser playertest.
 
-####Annet
+#### Annet
 * Spillet vil forhåpentligvis være spillbart når sequenceboard er ferdig og valgte kort 
 bindes sammen med eksisterende kode for å execute dem. 
 
 ## Møtereferat 03.04.2020 (Remote via Discord)
-(Til stede: Vegard, Sedric, Fredrik, Oskar)
+(Til stede: Vegard, Sedric, Oskar og Fredrik)
 
-####Gjort ila uken
+#### Gjort ila uken
 * Diskutert hvordan vi skal binde sammen sequence board og game board.
 * Gjort en stor refaktorering av koden og lagt til javadoc. 
 * Laget visuelle spillekort slik at disse kan brukes når man legger en sekvens.
@@ -191,27 +191,25 @@ bindes sammen med eksisterende kode for å execute dem.
 * Merget player og robot klassene.
 * Fikset playertest.
 
-####Kommende arbeid
+#### Kommende arbeid
 * Vi jobber videre med de arbeidsoppgavene som ble fordelt forrige møte.
 * Jobber videre med deck og hvordan man skal dele ut kortene.
 * Skrive flere tester. Mange av testene til nå har vi gjort manuelt, men vi ønsker å lage flere junit tester.
 * Ønsker å få implementert en win condition.
 * Jobbe videre med game loop.
 
+## Møtereferferat 17.04.2020 (10:00 - 12:00) (Remote via Discord)
+(Til stede: Fredrik, Sedric og Vegard)
+* Gått gjennom vurderingen til Oblig 3
+* Diskutert arbeidet fremover
 
-## Møtereferat 03.04.2020 (Remote via Discord)
-(Til stede: Vegard, Sedric)
+#### Gjort ila uken
+* Gjort om placeholder til kort
+* Lagring av sekvens
+* Powerdown button
 
-####Gjort ila uken
-* Diskutert hvordan vi skal binde sammen sequence board og game board.
-* Gjort en stor refaktorering av koden og lagt til javadoc. 
-* Laget visuelle spillekort slik at disse kan brukes når man legger en sekvens.
-* Fikset funksjonalitet på alle tiles.
-* Merget player og robot klassene.
-* Fikset playertest.
-
-####Kommende arbeid
-* Vi jobber videre med de arbeidsoppgavene som ble fordelt forrige møte.
-
-####Annet
-* 
+#### Til neste gang:
+* Jobbe videre med å legge sekvens
+* Legge til player i registerScreen
+* Legge til win condition
+* Skal utbedre tester
