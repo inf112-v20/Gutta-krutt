@@ -215,7 +215,7 @@ bindes sammen med eksisterende kode for å execute dem.
 * Skal utbedre tester
 
 ## Møtereferat 24.04.2020 (10:00 - 12:00) (Remote via Dicord)
-(Til stede: Fredrik, Sedric, Vegard)
+(Til stede: Fredrik, Sedric, Vegard, Oskar)
 
 #### Gjort ila uken
 * Vi har ikke jobbet veldig mye siden forrige uke
