@@ -196,6 +196,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
      */
     public Table makeCardTable(int health) {
         Table tableForCards = new Table();
+        if (health <= 5) {
+            health = 5;
+        }
         for (int i = 0; i < health; i++) {
             Card card = deck.randomCard();
             cards.add(card);
@@ -216,8 +219,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
             if (isChosen[i] > -1) {
                 newChosenCards.add(chosenImages[i]).pad(10);
             } else {
-                Drawable drawable = new TextureRegionDrawable(new TextureRegion(new Texture("assets/cards/not_chosen_card.png")));
-                Image chosenCard = new Image(drawable);
+                Image chosenCard = new Image(new TextureRegionDrawable(new TextureRegion(new Texture("assets/cards/not_chosen_card.png"))));
                 newChosenCards.add(chosenCard).pad(10);
             }
         }
