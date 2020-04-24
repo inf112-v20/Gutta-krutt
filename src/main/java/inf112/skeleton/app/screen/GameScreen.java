@@ -61,7 +61,7 @@ public class GameScreen extends InputAdapter implements Screen {
     public boolean keyUp(int keycode) {
         MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0]; // todo: this is maybe not optimal
         if (keycode == Input.Keys.G) {
-            game.setScreen(new RegisterScreen(this, game));
+            game.setScreen(new RegisterScreen(this, game, playerList[0]));
             return true;
         }
         return movementhandlerPlayer1.movePlayer(keycode);
