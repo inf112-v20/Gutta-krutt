@@ -34,7 +34,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private RoboRally game;
     private Player player;
     private Stage stage;
-    private BitmapFont font;
     private Table cardTable;
     private Table chosenTable;
     private Table rootTable;
@@ -42,19 +41,20 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private ArrayList<Card> cards;
     //isChosen is a list of the cardindexes of the cards chosen
     private int[] isChosen;
+    private Boolean[] isLocked;
     private Image[] chosenImages;
-    private Card[] chosenCards;
+    private ArrayList<Card> chosenCards;
 
     public RegisterScreen(GameScreen gameScreen, RoboRally game, Player player) {
         this.game = game;
         this.gameScreen = gameScreen;
         this.player = player;
         stage = new Stage();
-        font = new BitmapFont();
         isChosen = new int[5];
+        isLocked = new Boolean[5];
         chosenImages = new Image[5];
-        chosenCards = new Card[5];
-        initializeIsChosen();
+        chosenCards = new ArrayList<>();
+        initializeIsChosenAndIsLocked();
         initializeChosenImages();
         rootTable = new Table();
         deck = new Deck();
@@ -72,7 +72,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
     /**
      * @return returns the chosen cards.
      */
-    public Card[] getChosenCards() {
+    public ArrayList<Card> getChosenCards() {
         return chosenCards;
     }
 
@@ -147,9 +147,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
         }
         else if (keycode == Input.Keys.G) {
             game.setScreen(gameScreen);
+            return true;
         }
         else if (keycode == Input.Keys.R) {
             removeCard();
+            return true;
         }
         else if (keycode == Input.Keys.L) {
             for (int i = 0; i < 5; i++) {
@@ -210,12 +212,19 @@ public class RegisterScreen extends InputAdapter implements Screen {
     }
 
     /**
-     * checks if a any cards are chosen, if they are they will show up, otherwise a placeholder is shown
+     * Checks if a any cards are chosen, if they are they will show up, otherwise a placeholder is shown.
+     * Locks cards if player has taken more than 4 damage.
      * @return a table of chosen cards
      */
     public Table makeChosenTable() {
         Table newChosenCards = new Table();
-        for (int i = 0; i < 5; i++) {
+        int amountOfCardsToChoose = 5;
+        int lockedCardHolders = 0;
+        if (player.getDamageTaken() >= 5) {
+            amountOfCardsToChoose = player.getCurrentHealth()-1;
+            lockedCardHolders = 5 - amountOfCardsToChoose;
+        }
+        for (int i = 0; i < amountOfCardsToChoose; i++) {
             if (isChosen[i] > -1) {
                 newChosenCards.add(chosenImages[i]).pad(10);
             } else {
@@ -223,16 +232,22 @@ public class RegisterScreen extends InputAdapter implements Screen {
                 newChosenCards.add(chosenCard).pad(10);
             }
         }
+        for (int i = 0; i < lockedCardHolders; i++) {
+            Image lockedCardholder = new Image(new TextureRegionDrawable(new TextureRegion(new Texture("assets/cards/lock.png"))));
+            newChosenCards.add(lockedCardholder).pad(10);
+            isLocked[4-i] = true;
+        }
         newChosenCards.pad(20);
         return newChosenCards;
     }
 
     /**
-     * can be used to initialize or reset isChosen index list.
+     * Is used to initialize isChosen and isLocked
      */
-    public void initializeIsChosen() {
+    public void initializeIsChosenAndIsLocked() {
         for (int i = 0; i < 5; i++) {
             isChosen[i] = -1;
+            isLocked[i] = false;
         }
     }
 
@@ -269,6 +284,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
         chosenTable = newChosenTable;
         rootTable.row();
         rootTable.add(newChosenTable);
+        chosenCards.remove(chosenCards.size()-1);
     }
 
     /**
@@ -288,7 +304,10 @@ public class RegisterScreen extends InputAdapter implements Screen {
             System.out.println("Cant add more cards to the sequence");
             return;
         }
-
+        if (isLocked[slot]) {
+            System.out.println("Can´t add more cards, the rest are locked");
+            return;
+        }
         //Removes the table of chosen cards
         rootTable.removeActor(chosenTable);
 
@@ -297,7 +316,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
         Image cardImage = new Image(new TextureRegionDrawable(new TextureRegion(new Texture(card.getFilepath()))));
 
         isChosen[slot] = cardIndex;
-        chosenCards[slot] = card;
+        chosenCards.add(card);
         chosenImages[slot] = cardImage;
 
         newChosenTable.add(cardImage).pad(10);
