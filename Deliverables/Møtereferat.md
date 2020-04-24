@@ -213,3 +213,14 @@ bindes sammen med eksisterende kode for å execute dem.
 * Legge til player i registerScreen
 * Legge til win condition
 * Skal utbedre tester
+
+## Møtereferat 24.04.2020 (10:00 - 12:00) (Remote via Dicord)
+(Til stede: Fredrik, Sedric, Vegard)
+
+#### Gjort ila uken
+* Vi har ikke jobbet veldig mye siden forrige uke
+* Vi har fortsatt å jobbe med tidligere fordelte oppgaver
+
+#### Til neste gang
+* Målet er å bli ferdig med oppgavene til neste fredag slik at vi kan binde sammen spillet vårt.
+* Fortsette å utbrede tester
