@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.Card;
@@ -34,6 +36,8 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private RoboRally game;
     private Player player;
     private Stage stage;
+    private BitmapFont font;
+    private Table priorityTable;
     private Table cardTable;
     private Table chosenTable;
     private Table rootTable;
@@ -50,6 +54,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
         this.gameScreen = gameScreen;
         this.player = player;
         stage = new Stage();
+        font = new BitmapFont();
         isChosen = new int[5];
         isLocked = new Boolean[5];
         chosenImages = new Image[5];
@@ -61,8 +66,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
         cards = new ArrayList<>();
         cardTable = makeCardTable(player.getCurrentHealth()-1);
         chosenTable = makeChosenTable();
+        priorityTable = makePriorityTable();
         rootTable.setFillParent(true);
         rootTable.setDebug(true);
+        rootTable.add(priorityTable);
+        rootTable.row();
         rootTable.add(cardTable);
         rootTable.row();
         rootTable.add(chosenTable);
@@ -193,6 +201,26 @@ public class RegisterScreen extends InputAdapter implements Screen {
     }
 
     /**
+     * Makes a table showing the priorities of the cards.
+     * @return Table consisting of priorities of the cards.
+     */
+    public Table makePriorityTable() {
+        Table priorityTable = new Table();
+        TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+        style.font = font;
+        style.fontColor = Color.RED;
+        for (Card card : cards) {
+            int priority = card.getPriority();
+            String priorityString = Integer.toString(priority);
+            TextField text = new TextField(priorityString, style);
+            text.setAlignment(Align.center);
+            priorityTable.add(text).width(90).height(50).pad(10);
+        }
+        priorityTable.pad(20);
+        return priorityTable;
+    }
+
+    /**
      * visually makes a table of cards
      * @return a table of cards to chose from
      */
@@ -205,7 +233,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
             Card card = deck.randomCard();
             cards.add(card);
             Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));
-            tableForCards.add(cardImage).pad(10);
+            tableForCards.add(cardImage).width(90).height(120).pad(10);
         }
         tableForCards.pad(20);
         return tableForCards;
