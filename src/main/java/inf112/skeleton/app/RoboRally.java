@@ -1,6 +1,7 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.Player.PlayerMovementHandlerPair;
@@ -29,7 +30,6 @@ public class RoboRally extends Game {
         gameScreen = new GameScreen(this);
         createMovementHandlers();
         setScreen(new MenuScreen(this));
-
     }
 
     @Override
@@ -147,4 +147,25 @@ public class RoboRally extends Game {
         sequence.add(new Card(1, 100,0, "assets/SequenceCards/Move_1.png"));
         player.setSequence(sequence);
     }
+
+    public void executeCards(ArrayList<Card> cards) throws InterruptedException {
+        MovementHandler movementHandler = movementHandlerList[0];
+        for (Card card : cards) {
+            int distance = card.getDistance();
+            int rotation = card.getChangeDirection();
+            if (rotation > 0) {
+                playerList[0].setRotation((playerList[0].getDirection() + rotation) % 4);
+                playerList[0].setDirection((playerList[0].getDirection() + rotation) % 4);
+                gameScreen.render(0);
+            }
+            else if (distance > 0) {
+                for (int i = 0; i < distance; i++) {
+                    movementHandler.movePlayer(playerList[0].getDirection());
+                    gameScreen.render(0);
+                }
+            }
+            Thread.sleep(2000);
+        }
+    }
+
 }
