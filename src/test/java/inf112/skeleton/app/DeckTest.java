@@ -40,7 +40,7 @@ public class DeckTest {
 
     @Test
     public void getCorrespondingDirectionTest() {
-        int[] expectedDirections = { 0, 0, 0, 0, 2, -1, 1 };
+        int[] expectedDirections = { 0, 0, 0, 0, 2, 1, 3 };
         for (int i = 0; i < 7; i++) {
             int directionToTurn = deck.getCorrespondingDirection(i);
             assertEquals(expectedDirections[i], directionToTurn);
