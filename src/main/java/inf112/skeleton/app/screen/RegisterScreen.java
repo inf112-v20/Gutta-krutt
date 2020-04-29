@@ -164,11 +164,16 @@ public class RegisterScreen extends InputAdapter implements Screen {
         else if (keycode == Input.Keys.L) {
             for (int i = 0; i < 5; i++) {
                 if (isChosen[i] == -1) {
-                    System.out.println("Pick 5 cards to lock in");
+                    System.out.println("Pick more cards to lock in");
                     return true;
                 }
             }
             game.setScreen(gameScreen);
+            try {
+                game.executeCards(chosenCards);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             return true;
         }
         else if (keycode == Input.Keys.P) {
@@ -214,7 +219,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
             String priorityString = Integer.toString(priority);
             TextField text = new TextField(priorityString, style);
             text.setAlignment(Align.center);
-            priorityTable.add(text).width(90).height(50).pad(10);
+            priorityTable.add(text).width(90).height(20).pad(10);
         }
         priorityTable.pad(20);
         return priorityTable;
@@ -264,6 +269,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
             Image lockedCardholder = new Image(new TextureRegionDrawable(new TextureRegion(new Texture("assets/cards/lock.png"))));
             newChosenCards.add(lockedCardholder).pad(10);
             isLocked[4-i] = true;
+            isChosen[4-i] = 10;
         }
         newChosenCards.pad(20);
         return newChosenCards;
@@ -297,6 +303,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
         int removeIndex = -1;
         for (int i = 4; i >= 0 ; i--) {
             if (isChosen[i] > -1) {
+                if (isChosen[i] > 9) {
+                    continue;
+                }
                 removeIndex = i;
                 break;
             }

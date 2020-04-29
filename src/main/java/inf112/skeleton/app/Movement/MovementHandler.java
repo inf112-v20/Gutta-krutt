@@ -62,13 +62,13 @@ public class MovementHandler {
      */
     public boolean movePlayer(int keycode) {
         switch (keycode) {
-            case Input.Keys.UP:
+            case 0:
                 return movePlayer(Direction.NORTH);
-            case Input.Keys.DOWN:
+            case 2:
                 return movePlayer(Direction.SOUTH);
-            case Input.Keys.LEFT:
+            case 1:
                 return movePlayer(Direction.WEST);
-            case Input.Keys.RIGHT:
+            case 3:
                 return movePlayer(Direction.EAST);
             default:
                 return false;

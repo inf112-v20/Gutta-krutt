@@ -6,6 +6,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Card;
+import inf112.skeleton.app.cards.Direction;
+
 import java.util.LinkedList;
 
 /**
@@ -43,7 +45,7 @@ public class Player {
      * sets the roation of a player
      * @param cell_rotation takes an int form TiledMapTileLayer.Cell.ROTATE_* (0,90,180,270)
      */
-    public void setRotation(int cell_rotation) {playerNormal.setRotation(cell_rotation);}
+    public void setRotation(int cell_rotation) { playerNormal.setRotation(cell_rotation); }
 
     public int getRotation() {return playerNormal.getRotation();}
 

@@ -14,10 +14,10 @@ public class Deck {
     private final int[] distanceToMove = { -1, 1, 2, 3, 0, 0, 0};
     //the idea behind an int array to represent direction is to later implement a direction array where the indexes from
     //represent a direction. By using formula "x + directionRotation[i] % 4" you can easily turn the player the correct way.
-    private final int[] directionRotation = { 0, 0, 0, 0, 2, -1 , 1 };
+    private final int[] directionRotation = { 0, 0, 0, 0, 2, 1 , 3 };
     private final String[] filepath = { "assets/cards/SequenceCards/Backup.png", "assets/cards/SequenceCards/Move_1.png",
-            "assets/cards/SequenceCards/Move_2.png", "assets/cards/SequenceCards/Move_3.png", "assets/cards/SequenceCards/Rotate_left.png",
-            "assets/cards/SequenceCards/Rotate_right.png", "assets/cards/SequenceCards/U_turn.png"};
+            "assets/cards/SequenceCards/Move_2.png", "assets/cards/SequenceCards/Move_3.png", "assets/cards/SequenceCards/U_turn.png",
+            "assets/cards/SequenceCards/Rotate_left.png", "assets/cards/SequenceCards/Rotate_right.png" };
     private final int[] amountOfPriorities = { 5, 17, 11, 5, 5, 17, 17 };
     private HashMap<String, int[]> deck;
 

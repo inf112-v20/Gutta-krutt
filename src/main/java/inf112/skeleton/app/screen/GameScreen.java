@@ -15,6 +15,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.cards.Card;
+
+import java.util.ArrayList;
 
 /**
  * @author vegardbirkenes
@@ -81,9 +84,10 @@ public class GameScreen extends InputAdapter implements Screen {
 
         //Render all the players
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        for (int i = 0; i<playerList.length; i++) {
+        playerLayer.setCell((int) playerList[0].getPosX(), (int) playerList[0].getPosY(), playerList[0].getPlayerNormal());
+        /**for (int i = 0; i<playerList.length; i++) {
             playerLayer.setCell((int) playerList[i].getPosX(), (int) playerList[i].getPosY(), playerList[i].getPlayerNormal());
-        }
+        }*/
     }
 
     @Override
