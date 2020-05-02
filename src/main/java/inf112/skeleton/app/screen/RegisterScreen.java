@@ -184,6 +184,10 @@ public class RegisterScreen extends InputAdapter implements Screen {
         }
         if (isAlreadyPicked(indexOfChosen)) {
             System.out.println("Cannot pick a card twice.");
+            return true;
+        }
+        if (indexOfChosen > cards.size()-1) {
+            System.out.println("There is no card corresponding to the chosen index");
         }
         else if (indexOfChosen > -1) {
             addCardToChosen(indexOfChosen, cards.get(indexOfChosen));
