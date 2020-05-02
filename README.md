@@ -24,8 +24,8 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 
 ### How to play
 -   G to switch between gamescreen and and sequencescreen.
--   Numbers 1-9 to pick available cards.
--   R to remove the card last added
+-   Card in slot 1-9 corresponds with keykode 1-9 (press 1 to choose card 1)
+-   Press "L" to lock inn and execute sequence 
 
 ## GDX-Skin
 Big shoutout to [Raymond "Raeleus" Buckley](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)
