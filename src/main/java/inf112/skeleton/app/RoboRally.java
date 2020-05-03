@@ -18,16 +18,10 @@ import java.util.LinkedList;
 public class RoboRally extends Game {
 
     private GameScreen gameScreen;
-    private Player[] playerList;
-    private MovementHandler[] movementHandlerList;
-    private int amountOfPlayers = 4;
-
 
     @Override
     public void create() {
-        createPlayers(amountOfPlayers);
         gameScreen = new GameScreen(this);
-        createMovementHandlers();
         setScreen(new MenuScreen(this));
 
     }
@@ -38,48 +32,20 @@ public class RoboRally extends Game {
     }
 
     /**
-     * Initialize all the players at the start of the game.
-     * @param amountOfPlayers amount of players playing.
-     */
-    public void createPlayers(int amountOfPlayers){
-        playerList = new Player[amountOfPlayers];
-        movementHandlerList = new MovementHandler[amountOfPlayers];
-        for (int y = 0; y < amountOfPlayers; y++){
-            String path = "assets/playerTexture/robot" + y + ".png";
-            playerList[y] = new Player(0, y, path);
-            playerList[y].renderPlayerTexture();
-        }
-    }
-
-    public void createMovementHandlers(){
-        movementHandlerList = new MovementHandler[playerList.length];
-        for (int i = 0; i < playerList.length; i++){
-            movementHandlerList[i] = new MovementHandler(playerList[i],gameScreen.getTiledMap());
-        }
-    }
-
-    //
-
-    /**
      * @return GameScreen, used in MenuScreen
      */
     public GameScreen getGameScreen() {
         return gameScreen;
     }
 
-    /**
-     * @return Return playerList, Used in GameScreen to render players
-     */
-    public Player[] getPlayerList() {
-        return playerList;
-    }
 
-    /**
-     * @return Return movementHandlerList, Used in GameScreen to render players
-     */
-    public MovementHandler[] getMovementHandlerList() {
-        return movementHandlerList;
-    }
+
+
+
+
+
+
+
 
 
     /**
@@ -97,15 +63,12 @@ public class RoboRally extends Game {
                 distance--;
             }
         }
-        //execute rotate left
-        //else if (rotation < 0){ pair.getMovementHandler().rotatePlayerLeft(); }
-        //execute rotate right
-        //else if (rotation > 0){ pair.getMovementHandler().rotatePlayerRight( ); }
     }
 
     /**
      * Collects every players sequence and execute each card in execution order, based on the card priority.
      */
+    /*
     public void gameTurn(){
         int roundThisTurn = 1;
 
@@ -147,4 +110,6 @@ public class RoboRally extends Game {
         sequence.add(new Card(1, 100,0, "assets/SequenceCards/Move_1.png"));
         player.setSequence(sequence);
     }
+
+     */
 }

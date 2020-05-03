@@ -55,6 +55,8 @@ public class Player {
 
     public float getPosY() {return position.y;}
 
+    public Vector2 getPos() {return position;}
+
     public void addPos(float x, float y) {position.add(x,y);}
 
     public void addPos(Vector2 vector) {position = vector;}

@@ -3,29 +3,31 @@ package inf112.skeleton.app.Movement;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.tiles.*;
+
+import java.util.ArrayList;
 
 /**
  * handling all movement connected to the board
  * @author sedric
  */
 public class MovementHandler {
-    Player player;
     TiledMap tilemap;
     CollisionHandler collisionHandler;
     ActionTiles[] actionTiles;
+    ArrayList<Player> players;
 
     /**
-     * @param player the player to connect the movementhandler with
      * @param tilemap the tilemap the movementHandler connects with
+     * @param players all the players you want to be moveable on the map
      */
-    public MovementHandler(Player player, TiledMap tilemap) {
-       this.player = player;
+    public MovementHandler(TiledMap tilemap, ArrayList<Player> players) {
        this.tilemap = tilemap;
-
        initializeTiles();
+       this.players = players;
     }
 
     /**
@@ -60,16 +62,16 @@ public class MovementHandler {
      * @param keycode keycode from keyboard
      * @return true if valid keycode, false otherwise
      */
-    public boolean movePlayer(int keycode) {
+    public boolean movePlayer(int keycode, Player player) {
         switch (keycode) {
             case Input.Keys.UP:
-                return movePlayer(Direction.NORTH);
+                return movePlayer(Direction.NORTH, player);
             case Input.Keys.DOWN:
-                return movePlayer(Direction.SOUTH);
+                return movePlayer(Direction.SOUTH, player);
             case Input.Keys.LEFT:
-                return movePlayer(Direction.WEST);
+                return movePlayer(Direction.WEST, player);
             case Input.Keys.RIGHT:
-                return movePlayer(Direction.EAST);
+                return movePlayer(Direction.EAST, player);
             default:
                 return false;
         }
@@ -79,7 +81,7 @@ public class MovementHandler {
      * moves a player in a one of four directions if possible
      * @return returns true if valid movement, false otherwise
      */
-    public boolean movePlayer(Direction dir) {
+    public boolean movePlayer(Direction dir, Player player) {
         player.renderPlayerTexture();
 
         //clearing the previouse tile
@@ -109,17 +111,20 @@ public class MovementHandler {
             if(tile.tileAction(player)) {break;}
         }
 
-        outOfBoard();
+        pushPlayer(player, dir);
         //setting the new player tile
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
     }
 
-    //TODO: bugg in out of bounds of board
-    private void outOfBoard() {
-        if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
-            player.isDestroyed();
-            player.addPos(player.getCheckpoint());
+    private boolean pushPlayer(Player player, Direction dir) {
+        Vector2 playerPos = player.getPos();
+        for(Player play: players) {
+            if(play == player) continue;
+            if (playerPos.x == play.getPos().x && playerPos.y == play.getPos().y) {
+                movePlayer(dir, play);
+            }
         }
+        return true;
     }
 }
