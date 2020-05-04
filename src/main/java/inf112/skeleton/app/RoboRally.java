@@ -1,12 +1,9 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import inf112.skeleton.app.Movement.MovementHandler;
-import inf112.skeleton.app.Player.Player;
-import inf112.skeleton.app.Player.PlayerMovementHandlerPair;
+import inf112.skeleton.app.movement.MovementHandler;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.cards.Card;
-import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
 
@@ -59,8 +56,6 @@ public class RoboRally extends Game {
         }
     }
 
-    //
-
     /**
      * @return GameScreen, used in MenuScreen
      */
@@ -80,66 +75,6 @@ public class RoboRally extends Game {
      */
     public MovementHandler[] getMovementHandlerList() {
         return movementHandlerList;
-    }
-
-
-    /**
-     * Helper-method for gameTurn(). GameTurn call this method every time it execute a card.
-     * @param pair A pair containing the card to be executed and the players MovementHandler.
-     */
-    public void executeCard(PlayerMovementHandlerPair pair){
-        int distance = pair.getCard().getDistance();
-        int rotation = pair.getCard().getChangeDirection();
-
-        //Execute distance card.
-        if (distance != 0){
-            while (distance > 0){
-                //pair.getMovementHandler().movePlayer();
-                distance--;
-            }
-        }
-        //execute rotate left
-        //else if (rotation < 0){ pair.getMovementHandler().rotatePlayerLeft(); }
-        //execute rotate right
-        //else if (rotation > 0){ pair.getMovementHandler().rotatePlayerRight( ); }
-    }
-
-    /**
-     * Collects every players sequence and execute each card in execution order, based on the card priority.
-     */
-    public void gameTurn(){
-        int roundThisTurn = 1;
-
-        //Reset the list "lastTurnSequence" and prepare it for a a new one.
-        for (Player player : playerList){ player.resetLastTurnSequence(); }
-        while (roundThisTurn <= 5) {
-            ArrayList<PlayerMovementHandlerPair> currentRound = new ArrayList<>();
-
-            //Gather the first card from each player's sequence and put it in a sorted ArrayList.
-            //The ArrayList is sorted after execution order.
-            for (int x = 0; x<playerList.length; x++){
-                playerList[x].getLastTurnSequence().add(playerList[x].getSequence().peek());
-                PlayerMovementHandlerPair pair = new PlayerMovementHandlerPair(movementHandlerList[x], playerList[x].getSequence().pollFirst());
-                if (pair.getCard() != null) {
-                    if (currentRound.size() == 0) { currentRound.add(0, pair); }
-                    else {
-                        int arraySizeBeforeInsertion = currentRound.size();
-                        for (int i = 0; i < arraySizeBeforeInsertion; i++) {
-                            if (pair.getCard().getPriority() >= currentRound.get(i).getCard().getPriority()) {
-                                currentRound.add(i, pair);
-                                break;
-                            }
-                        }
-                        if (arraySizeBeforeInsertion == currentRound.size()){ currentRound.add(pair); }
-                    }
-                }
-            }
-            //Execute each card
-            for (PlayerMovementHandlerPair currentPair : currentRound) { executeCard(currentPair); }
-            roundThisTurn++;
-        }
-        //reset sequence and lock cards based on damage taken.
-        for (Player player : playerList){ player.resetSequences(); }
     }
 
     // Method for testing functionality. It is here temporarily until its possible for player lock his own sequence.

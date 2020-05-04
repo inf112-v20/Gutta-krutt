@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Deck;

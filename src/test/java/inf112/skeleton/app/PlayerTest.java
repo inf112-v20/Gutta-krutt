@@ -1,6 +1,6 @@
 package inf112.skeleton.app;
 
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.cards.Card;
 import org.junit.Test;
 

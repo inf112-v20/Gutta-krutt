@@ -1,4 +1,4 @@
-package inf112.skeleton.app.Player;
+package inf112.skeleton.app.player;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -6,7 +6,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Card;
-import inf112.skeleton.app.cards.Direction;
 
 import java.util.LinkedList;
 
@@ -134,11 +133,6 @@ public class Player {
      * @param sequence the sequence you want to set.
      */
     public void setLastTurnSequence(LinkedList<Card> sequence) {this.lastTurnSequence = sequence; }
-
-    /**
-     * Reset last turn sequence
-     */
-    public void resetLastTurnSequence() { this.lastTurnSequence = new LinkedList<>(); }
 
     /**
      * Reset players sequence. The amount of cards that are locked for the next round correspond to the amount of

@@ -1,6 +1,6 @@
 package inf112.skeleton.app.tiles;
 
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 
 /**
  * interface to implement behavior for all the tiles that has an action to it

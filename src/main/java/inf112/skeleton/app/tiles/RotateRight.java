@@ -2,7 +2,7 @@ package inf112.skeleton.app.tiles;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 
 /**
  * @author sedric, fredrik
@@ -39,7 +39,6 @@ public class RotateRight implements ActionTiles {
         TiledMapTileLayer rotator = (TiledMapTileLayer) tiledmap.getLayers().get("green_Rotator");
         TiledMapTileLayer.Cell currentTile = rotator.getCell((int) player.getPosX(), (int) player.getPosY());
 
-        if(currentTile != null) { return true;}
-        return false;
+        return currentTile != null;
     }
 }

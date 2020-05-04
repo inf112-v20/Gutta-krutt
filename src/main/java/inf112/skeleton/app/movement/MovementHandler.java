@@ -1,9 +1,8 @@
-package inf112.skeleton.app.Movement;
+package inf112.skeleton.app.movement;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.tiles.*;
 
@@ -115,7 +114,6 @@ public class MovementHandler {
         return true;
     }
 
-    //TODO: bugg in out of bounds of board
     private void outOfBoard() {
         if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
             player.isDestroyed();

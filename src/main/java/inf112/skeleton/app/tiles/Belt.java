@@ -2,7 +2,7 @@ package inf112.skeleton.app.tiles;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.cards.Direction;
 
 /**

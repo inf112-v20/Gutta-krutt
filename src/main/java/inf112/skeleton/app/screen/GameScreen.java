@@ -12,12 +12,9 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import inf112.skeleton.app.Movement.MovementHandler;
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.movement.MovementHandler;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.cards.Card;
-
-import java.util.ArrayList;
 
 /**
  * @author vegardbirkenes

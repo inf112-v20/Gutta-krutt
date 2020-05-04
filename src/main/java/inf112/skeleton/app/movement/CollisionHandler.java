@@ -1,9 +1,9 @@
-package inf112.skeleton.app.Movement;
+package inf112.skeleton.app.movement;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import inf112.skeleton.app.Player.Player;
+import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.cards.Direction;
 
 import java.util.HashMap;

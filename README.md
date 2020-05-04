@@ -10,7 +10,6 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 -   4 Flags
 -   82 Programcards 
 -   One sequence board
--   One 30-second timer
 
 ## Setup
 1.  Install [Maven](https://maven.apache.org/download.cgi)
@@ -26,12 +25,6 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 -   G to switch between gamescreen and and sequencescreen.
 -   Card in slot 1-9 corresponds with keykode 1-9 (press 1 to choose card 1)
 -   Press "L" to lock inn and execute sequence 
-
-## GDX-Skin
-Big shoutout to [Raymond "Raeleus" Buckley](https://ray3k.wordpress.com/software/skin-composer-for-libgdx/)
-for letting us use [Star Soldier UI Ver. 1](https://github.com/czyzby/gdx-skins/tree/master/star-soldier).
-
-Visit: [ray3k.wordpress](ray3k.wordpress.com) for games, tutorials, and much more!
 
 ## Bugs
 Currently throws "WARNING: An illegal reflective access operation has occurred", when the java version used is >8. This has no effect on function or performance, and is just a warning.
