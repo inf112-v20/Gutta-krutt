@@ -77,13 +77,6 @@ public class RoboRally extends Game {
         return movementHandlerList;
     }
 
-    // Method for testing functionality. It is here temporarily until its possible for player lock his own sequence.
-    public void laySequence1(Player player) {
-        LinkedList<Card> sequence = new LinkedList<>();
-        sequence.add(new Card(1, 100,0, "assets/SequenceCards/Move_1.png"));
-        player.setSequence(sequence);
-    }
-
     /**
      *
      * @param cards Takes inn the cards placed by the players in register screen and executes them in the right order.
@@ -113,5 +106,36 @@ public class RoboRally extends Game {
             }
         }
     }
+    public void gameTurn(){
+        int roundThisTurn = 0;
+        while (roundThisTurn < 5) {
+            ArrayList<Card> currentRound = new ArrayList<>();
 
+
+
+            // Collect the first car from all the players
+            for (int x = 0; x<playerList.length; x++){
+                currentRound.add(playerList[x].getSequence().get(roundThisTurn)); // Get - fjerner eller kopierer item?
+            }
+
+            for (int y = 0; y < 5; y++){
+                int highestPriority = 0;
+                card =
+            }
+                playerList[x].getLastTurnSequence().add(playerList[x].getSequence().peek());
+                PlayerMovementHandlerPair pair = new PlayerMovementHandlerPair(movementHandlerList[x], playerList[x].getSequence().pollFirst());
+                if (pair.getCard() != null) {
+                    if (currentRound.size() == 0) { currentRound.add(0, pair); }
+                    else {
+                        int arraySizeBeforeInsertion = currentRound.size();
+                        for (int i = 0; i < arraySizeBeforeInsertion; i++) {
+                            if (pair.getCard().getPriority() >= currentRound.get(i).getCard().getPriority()) {
+                                currentRound.add(i, pair);
+                                break;
+                            }
+                        }
+                        if (arraySizeBeforeInsertion == currentRound.size()){ currentRound.add(pair); }
+                    }
+                }
+            }
 }
