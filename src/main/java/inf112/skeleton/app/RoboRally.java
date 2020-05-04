@@ -6,6 +6,7 @@ import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.Player.PlayerMovementHandlerPair;
 import inf112.skeleton.app.cards.Card;
+import inf112.skeleton.app.cards.Direction;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
- * @author vegardbirkenes, Oskar Marthinussen
+ * @author Vegard Birkenes, Oskar Marthinussen, Fredrik Larsen
  */
 //This is libgdx own Game class, this makes it possible to switch between screens.
 public class RoboRally extends Game {
@@ -148,23 +149,33 @@ public class RoboRally extends Game {
         player.setSequence(sequence);
     }
 
+    /**
+     *
+     * @param cards Takes inn the cards placed by the players in register screen and executes them in the right order.
+     * @throws InterruptedException when thread is sleeping
+     */
     public void executeCards(ArrayList<Card> cards) throws InterruptedException {
         MovementHandler movementHandler = movementHandlerList[0];
         for (Card card : cards) {
             int distance = card.getDistance();
             int rotation = card.getChangeDirection();
+            //Executes the rotation cards
             if (rotation > 0) {
                 playerList[0].setRotation((playerList[0].getDirection() + rotation) % 4);
                 playerList[0].setDirection((playerList[0].getDirection() + rotation) % 4);
-                gameScreen.render(0);
+                Thread.sleep(1000);
             }
-            else if (distance > 0) {
+            //Executes move1 move2 and move3 cards
+            if (distance > 0) {
                 for (int i = 0; i < distance; i++) {
                     movementHandler.movePlayer(playerList[0].getDirection());
-                    gameScreen.render(0);
+                    Thread.sleep(1000);
                 }
+              //Executes the backup card
+            } else if(distance == -1) {
+                movementHandler.movePlayer((playerList[0].getDirection() + 2) % 4);
+                Thread.sleep(1000);
             }
-            Thread.sleep(2000);
         }
     }
 
