@@ -68,7 +68,7 @@ public class CollisionHandler extends InputAdapter {
             }
         }
         for(Direction wall : idToWallName.get(currentPosWallId)) {
-            if(dir == wall) {
+            if(dir.equals(wall)) {
                 return false;
             }
         }

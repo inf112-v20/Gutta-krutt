@@ -67,6 +67,11 @@ public class MenuScreen implements Screen {
         stage.draw();
     }
 
+    /**
+     * Override method that sets the width and the height of the board
+     * @param width = board width
+     * @param height = board height
+     */
     @Override
     public void resize(int width, int height) {
     }

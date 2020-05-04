@@ -92,9 +92,6 @@
     
 *   Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs)
     *   Du kan gå ut og inn av brettet
-    
-*   Kravlista er lang, men det er ikke nødvendig å levere på alle kravene hvis det ikke er realistisk. Det er viktigere at de oppgavene som er utført holder høy kvalitet. Utførte oppgaver skal være ferdige.
-    *   
 
 ## Deloppgave 3: Kode
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelderne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
