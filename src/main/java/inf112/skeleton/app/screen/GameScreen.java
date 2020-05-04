@@ -15,9 +15,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.cards.Card;
-
-import java.util.ArrayList;
 
 /**
  * @author vegardbirkenes
@@ -37,7 +34,6 @@ public class GameScreen extends InputAdapter implements Screen {
         this.game = game;
         this.playerList = game.getPlayerList();
         font = new BitmapFont();
-        font.setColor(Color.RED);
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
@@ -84,6 +80,7 @@ public class GameScreen extends InputAdapter implements Screen {
         }
         if (playerList[0].checkWinCondition()) {
             System.out.println("YOU WIN!!!");
+            game.setScreen(new WinScreen(playerList[0]));
         }
         return movementhandlerPlayer1.movePlayer(wayToMove);
     }

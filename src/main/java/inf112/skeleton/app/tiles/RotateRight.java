@@ -39,7 +39,6 @@ public class RotateRight implements ActionTiles {
         TiledMapTileLayer rotator = (TiledMapTileLayer) tiledmap.getLayers().get("green_Rotator");
         TiledMapTileLayer.Cell currentTile = rotator.getCell((int) player.getPosX(), (int) player.getPosY());
 
-        if(currentTile != null) { return true;}
-        return false;
+        return currentTile != null;
     }
 }

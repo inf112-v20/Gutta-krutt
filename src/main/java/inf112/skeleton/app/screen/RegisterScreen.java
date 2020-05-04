@@ -95,7 +95,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         stage.act();
         stage.draw();
-
     }
 
     @Override
