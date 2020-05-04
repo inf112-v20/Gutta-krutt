@@ -1,6 +1,7 @@
-![Logo](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/logo.png)
-
 # Robo Rally [![Build Status](https://travis-ci.com/inf112-v20/Gutta-krutt.svg?branch=master)](https://travis-ci.com/inf112-v20/Gutta-krutt) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb70fbcc87ab437c85e2f1a17cf31c35)](https://www.codacy.com/gh/inf112-v20/Gutta-krutt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=inf112-v20/Gutta-krutt&amp;utm_campaign=Badge_Grade)
+
+![Logo](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/logo.png=true)
+
 Out goal is to create the most realistic digital versjon of the classic Robo Rally Board Game. To achieve our goal we have to implement necessary game functions as: walls, lasers, pushers, rotators etc...
 
 We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
