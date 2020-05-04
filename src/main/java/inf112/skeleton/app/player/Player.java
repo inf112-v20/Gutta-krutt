@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Card;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -18,8 +19,8 @@ public class Player {
     private Vector2 position;
     private Vector2 checkpoint;
     private TiledMapTileLayer.Cell playerNormal;
-    private LinkedList<Card> sequence; //skal kanskje dette endres til array?
-    private LinkedList<Card> lastTurnSequence;
+    private ArrayList<Card> sequence; //skal kanskje dette endres til array?
+    private ArrayList<Card> lastTurnSequence;
     private String filePath;
     private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
     private int health;
@@ -141,37 +142,22 @@ public class Player {
     }
 
 
-    public void setSequence(LinkedList<Card> sequence) { this.sequence = sequence; }
+    public void setSequence(ArrayList<Card> chosenCards) {
+        lastTurnSequence = sequence;
 
-    public LinkedList<Card> getSequence() { return sequence; }
-
-    /**
-     * Get last turn sequence
-     * @return Last turn sequence
-     */
-    public LinkedList<Card> getLastTurnSequence() { return lastTurnSequence; }
-
-    /**
-     * Set last turn sequence. Method used for testing.
-     * @param sequence the sequence you want to set.
-     */
-    public void setLastTurnSequence(LinkedList<Card> sequence) {this.lastTurnSequence = sequence; }
-
-    /**
-     * Reset players sequence. The amount of cards that are locked for the next round correspond to the amount of
-     * damagetokens a player got minus 4.
-     */
-    public void resetSequences(){
-        LinkedList<Card> newSequence = new LinkedList<>();
-        setSequence(new LinkedList<Card>());
-
-        if (getDamageTaken() > 4){
-            int lockedCards = getDamageTaken() - 4;
-            while (lockedCards > 0){
-                newSequence.add(getLastTurnSequence().pollFirst());
-                lockedCards--;
+        if (chosenCards.size() == 5){
+            sequence = chosenCards;
+        }
+        else if (chosenCards.size() < 5){
+            for (int i = 0; i < 5; i++){
+                for (int j = 0; j < chosenCards.size(); j++){
+                    sequence.set(j, chosenCards.get(j));
+                    i = j;
+                }
+                sequence.set(i, lastTurnSequence.get(i));
             }
-            setSequence(newSequence);
         }
     }
+
+    public ArrayList<Card> getSequence() { return sequence; }
 }
