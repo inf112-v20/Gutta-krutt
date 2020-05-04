@@ -25,6 +25,7 @@ public class Player {
     private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
     private int health;
     private int lives;
+    private boolean[] visitedFlags;
 
     /**
      * @param startingX the starting x-coordinate for player
@@ -39,6 +40,7 @@ public class Player {
         lives = 3;
         direction = 0;
         health = 10;
+        visitedFlags = new boolean[]{false, false, false};
     }
 
     /**
@@ -116,6 +118,22 @@ public class Player {
         TextureRegion[][] pictures = textureRegion.split(300, 300);
 
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
+    }
+
+    public void updateWinCondition() {
+        if (getPosX() == 3.0 && getPosY() == 3.0) {
+            visitedFlags[0] = true;
+        }
+        else if (getPosX() == 8.0 && getPosY() == 4.0) {
+            visitedFlags[1] = true;
+        }
+        else if (getPosX() == 7.0 && getPosY() == 9.0) {
+            visitedFlags[2] = true;
+        }
+    }
+
+    public boolean checkWinCondition() {
+        return visitedFlags[0] && visitedFlags[1] && visitedFlags[2];
     }
 
 

@@ -148,7 +148,7 @@ public class RoboRally extends Game {
         player.setSequence(sequence);
     }
 
-    public void executeCards(ArrayList<Card> cards) throws InterruptedException {
+    public void executeCards(ArrayList<Card> cards) {
         MovementHandler movementHandler = movementHandlerList[0];
         for (Card card : cards) {
             int distance = card.getDistance();
@@ -156,15 +156,15 @@ public class RoboRally extends Game {
             if (rotation > 0) {
                 playerList[0].setRotation((playerList[0].getDirection() + rotation) % 4);
                 playerList[0].setDirection((playerList[0].getDirection() + rotation) % 4);
-                gameScreen.render(0);
             }
             else if (distance > 0) {
                 for (int i = 0; i < distance; i++) {
                     movementHandler.movePlayer(playerList[0].getDirection());
-                    gameScreen.render(0);
                 }
             }
-            Thread.sleep(2000);
+        }
+        if (playerList[0].checkWinCondition()) {
+            System.out.println("YOU WIN!!!");
         }
     }
 

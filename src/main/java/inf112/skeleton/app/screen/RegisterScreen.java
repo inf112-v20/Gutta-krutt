@@ -169,11 +169,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
                 }
             }
             game.setScreen(gameScreen);
-            try {
-                game.executeCards(chosenCards);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            game.executeCards(chosenCards);
             return true;
         }
         else if (keycode == Input.Keys.P) {

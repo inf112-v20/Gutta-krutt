@@ -63,11 +63,29 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public boolean keyUp(int keycode) {
         MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0]; // todo: this is maybe not optimal
+        int wayToMove = -1;
         if (keycode == Input.Keys.G) {
             game.setScreen(new RegisterScreen(this, game, playerList[0]));
-            return true;
         }
-        return movementhandlerPlayer1.movePlayer(keycode);
+        else if (keycode == Input.Keys.UP) {
+            wayToMove = 0;
+        }
+        else if (keycode == Input.Keys.LEFT) {
+            wayToMove = 1;
+        }
+        else if (keycode == Input.Keys.RIGHT) {
+            wayToMove = 3;
+        }
+        else if (keycode == Input.Keys.DOWN) {
+            wayToMove = 2;
+        }
+        if (wayToMove == -1) {
+            return  true;
+        }
+        if (playerList[0].checkWinCondition()) {
+            System.out.println("YOU WIN!!!");
+        }
+        return movementhandlerPlayer1.movePlayer(wayToMove);
     }
 
     @Override
