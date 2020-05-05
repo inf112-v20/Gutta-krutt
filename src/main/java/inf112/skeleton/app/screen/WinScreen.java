@@ -5,40 +5,30 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import inf112.skeleton.app.Player.Player;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.utils.Align;
 
 public class WinScreen extends InputAdapter implements Screen  {
 
-    private Player player;
     private Stage stage;
     private BitmapFont font;
-    private TiledMap tilemap;
-    private OrthogonalTiledMapRenderer renderer;
-    final private int BOARDSIZE = 12;
-    final private int TILESIZE = 300;
 
-    public WinScreen(Player player) {
-        this.player = player;
+    public WinScreen() {
+        stage = new Stage();
         font = new BitmapFont();
-        font.setColor(Color.RED);
-
-        TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/Maps/map1.tmx");
-
-        OrthographicCamera camera = new OrthographicCamera();
-        renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
-
-        camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
-        camera.update();
-        renderer.setView(camera);
-
+        font.getData().setScale(4);
+        Table table = new Table();
+        TextField textField = makeTextField();
+        //TextButton textButton = makeTextButton();
+        table.setFillParent(true);
+        table.add(textField).width(1000);
+        table.row();
+        //table.add(textButton);
+        stage.addActor(table);
     }
 
 
@@ -49,13 +39,10 @@ public class WinScreen extends InputAdapter implements Screen  {
 
     @Override
     public void render(float v) {
-        Gdx.gl.glClearColor( 180/255F, 180/255F ,180/255F, 0);
+        Gdx.gl.glClearColor( 110/255F, 110/255F ,110/255F, 0);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-        renderer.render();
-
-        //Render all the players
-        TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
+        stage.act();
+        stage.draw();
     }
 
     @Override
@@ -83,4 +70,15 @@ public class WinScreen extends InputAdapter implements Screen  {
         stage.dispose();
         font.dispose();
     }
+
+    public TextField makeTextField() {
+        TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+        style.font = font;
+        style.fontColor = Color.RED;
+        TextField text = new TextField("Congratulations, you win!", style);
+        text.setAlignment(Align.center);
+        return text;
+    }
+
+
 }

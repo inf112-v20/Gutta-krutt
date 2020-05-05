@@ -123,12 +123,15 @@ public class Player {
     public void updateWinCondition() {
         if (getPosX() == 3.0 && getPosY() == 3.0) {
             visitedFlags[0] = true;
+            System.out.println("Flag 1 captured!");
         }
-        else if (getPosX() == 8.0 && getPosY() == 4.0) {
+        else if (getPosX() == 8.0 && getPosY() == 4.0 && visitedFlags[0]) {
             visitedFlags[1] = true;
+            System.out.println("Flag 2 captured!");
         }
-        else if (getPosX() == 7.0 && getPosY() == 9.0) {
+        else if (getPosX() == 7.0 && getPosY() == 9.0 && visitedFlags[1]) {
             visitedFlags[2] = true;
+            System.out.println("All flags captured, you are awesome!");
         }
     }
 

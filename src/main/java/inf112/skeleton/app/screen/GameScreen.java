@@ -56,6 +56,10 @@ public class GameScreen extends InputAdapter implements Screen {
         return this.tilemap;
     }
 
+    /**
+     * Sets the registerscreen for the new sequence
+     * @param regScreen RegisterScreen
+     */
     public void setRegisterScreen(RegisterScreen regScreen) { registerScreen = regScreen; }
 
     @Override
@@ -82,7 +86,7 @@ public class GameScreen extends InputAdapter implements Screen {
         }
         if (playerList[0].checkWinCondition()) {
             System.out.println("YOU WIN!!!");
-            game.setScreen(new WinScreen(playerList[0]));
+            game.setScreen(new WinScreen());
         }
         return movementhandlerPlayer1.movePlayer(wayToMove);
     }
