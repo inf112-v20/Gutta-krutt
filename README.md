@@ -2,7 +2,7 @@
 
 ![Logo](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/logo.png)
 
-Out goal is to create the most realistic digital versjon of the classic Robo Rally Board Game. To achieve our goal we have to implement necessary game functions as: walls, lasers, pushers, rotators etc...
+Our goal is to create the most realistic digital versjon of the classic Robo Rally Board Game. To achieve our goal we have to implement necessary game functions as: walls, lasers, pushers, rotators etc...
 
 We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
 
@@ -20,14 +20,14 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 3.  Build game with: `mvn clean install`
 
 ### How to run the game
--   Run main.java which is located in: _src/main/java/roborally_ in intellij.
+-   Run main.java which is located in: _src/main/java/roborally_ in intellij
 -   Press the start button
--   Move around with the arrows
 
 ### How to play
--   G to switch between gamescreen and and sequencescreen.
--   Card in slot 1-9 corresponds with keykode 1-9 (press 1 to choose card 1)
--   Press "L" to lock inn and execute sequence 
+-   Press <kbd>G</kbd> to switch between _GameScreen_ and _SequenceScreen_
+-   Card in slot 1-9 corresponds with key <kbd>1</kbd> - <kbd>9</kbd> (eks: press 1 to choose card 1)
+-   Choose cards in the right order 1 - 5
+-   Press <kbd>L</kbd> to lock inn and execute sequence 
 
 ## Bugs
 Currently throws "WARNING: An illegal reflective access operation has occurred", when the java version used is >8. This has no effect on function or performance, and is just a warning.
