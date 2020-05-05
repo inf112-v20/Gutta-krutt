@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,9 +11,13 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
+import inf112.skeleton.app.cards.Card;
+
+import java.util.ArrayList;
 
 /**
  * @author vegardbirkenes
@@ -29,23 +32,20 @@ public class GameScreen extends InputAdapter implements Screen {
     private Player[] playerList;
     private BitmapFont font;
     private RoboRally game;
+    private RegisterScreen registerScreen;
 
     public GameScreen(RoboRally game) {
         this.game = game;
         this.playerList = game.getPlayerList();
         font = new BitmapFont();
-
-        //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/Maps/map1.tmx");
-
-        //initialize a new camera and renderer for camera
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
-
         camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
         camera.update();
         renderer.setView(camera);
+        registerScreen = new RegisterScreen(this, game, playerList[0]);
     }
 
     /**
@@ -56,12 +56,14 @@ public class GameScreen extends InputAdapter implements Screen {
         return this.tilemap;
     }
 
+    public void setRegisterScreen(RegisterScreen regScreen) { registerScreen = regScreen; }
+
     @Override
     public boolean keyUp(int keycode) {
         MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0]; // todo: this is maybe not optimal
         int wayToMove = -1;
         if (keycode == Input.Keys.G) {
-            game.setScreen(new RegisterScreen(this, game, playerList[0]));
+            game.setScreen(registerScreen);
         }
         else if (keycode == Input.Keys.UP) {
             wayToMove = 0;

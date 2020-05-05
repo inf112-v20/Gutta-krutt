@@ -77,13 +77,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
         stage.addActor(rootTable);
     }
 
-    /**
-     * @return returns the chosen cards.
-     */
-    public ArrayList<Card> getChosenCards() {
-        return chosenCards;
-    }
-
     @Override
     public void show() {
         Gdx.input.setInputProcessor(this);
@@ -167,6 +160,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
                     return true;
                 }
             }
+            gameScreen.setRegisterScreen(new RegisterScreen(gameScreen, game, player));
             game.setScreen(gameScreen);
             game.executeCards(chosenCards);
             return true;
