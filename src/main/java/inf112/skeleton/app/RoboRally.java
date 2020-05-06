@@ -1,7 +1,7 @@
 package inf112.skeleton.app;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.utils.Timer;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.Player.PlayerMovementHandlerPair;
@@ -9,7 +9,9 @@ import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * @author vegardbirkenes, Oskar Marthinussen
@@ -148,11 +150,14 @@ public class RoboRally extends Game {
         sequence.add(new Card(1, 100,0, "assets/SequenceCards/Move_1.png"));
         player.setSequence(sequence);
     }
- 
+
+    /**
+     * Executes cards that have been locked in by going through each card and doing the appropriate action
+     * @param cards locked in cards to execute
+     */
     public void executeCards(ArrayList<Card> cards) {
         MovementHandler movementHandler = movementHandlerList[0];
-        for (Card card : sortCards(cards)) {
-            System.out.println("Card priority: " + card.getPriority());
+        for (Card card : cards) {
             int distance = card.getDistance();
             int rotation = card.getChangeDirection();
             if (rotation > 0) {
@@ -170,6 +175,11 @@ public class RoboRally extends Game {
         }
     }
 
+    /**
+     * Uses Java comparable to sort the cards
+     * @param cards cards to sort
+     * @return ArrayList of cards sorted from highest to lowest priority
+     */
     public ArrayList<Card> sortCards(ArrayList<Card> cards) {
         Collections.sort(cards);
         Collections.reverse(cards);
