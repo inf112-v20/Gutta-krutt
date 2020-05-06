@@ -68,20 +68,12 @@ public class RegisterScreen extends InputAdapter implements Screen {
         chosenTable = makeChosenTable();
         priorityTable = makePriorityTable();
         rootTable.setFillParent(true);
-        rootTable.setDebug(true);
         rootTable.add(priorityTable);
         rootTable.row();
         rootTable.add(cardTable);
         rootTable.row();
         rootTable.add(chosenTable);
         stage.addActor(rootTable);
-    }
-
-    /**
-     * @return returns the chosen cards.
-     */
-    public ArrayList<Card> getChosenCards() {
-        return chosenCards;
     }
 
     @Override
@@ -95,7 +87,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         stage.act();
         stage.draw();
-
     }
 
     @Override
@@ -168,12 +159,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
                     return true;
                 }
             }
+            gameScreen.setRegisterScreen(new RegisterScreen(gameScreen, game, player));
             game.setScreen(gameScreen);
-            try {
-                game.executeCards(chosenCards);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            game.executeCards(chosenCards);
             return true;
         }
         else if (keycode == Input.Keys.P) {
@@ -214,6 +202,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
      * @return Table consisting of priorities of the cards.
      */
     public Table makePriorityTable() {
+        Table rootPriorityTable = new Table();
         Table priorityTable = new Table();
         TextField.TextFieldStyle style = new TextField.TextFieldStyle();
         style.font = font;
@@ -225,8 +214,28 @@ public class RegisterScreen extends InputAdapter implements Screen {
             text.setAlignment(Align.center);
             priorityTable.add(text).width(90).height(20).pad(10);
         }
-        priorityTable.pad(20);
-        return priorityTable;
+        rootPriorityTable.add(makePriorityHeadline()).height(70);
+        rootPriorityTable.row();
+        rootPriorityTable.add(priorityTable);
+        rootPriorityTable.pad(20);
+        return rootPriorityTable;
+    }
+
+    /**
+     * Uses textfield inside a table in order to write a headline for the priorities.
+     * @return table with the headline for priorities
+     */
+    public Table makePriorityHeadline() {
+        Table headline = new Table();
+        BitmapFont headlineFont = new BitmapFont();
+        TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+        style.font = headlineFont;
+        style.fontColor = Color.RED;
+        headlineFont.getData().setScale(2);
+        TextField text = new TextField("Priority", style);
+        text.setAlignment(Align.center);
+        headline.add(text);
+        return headline;
     }
 
     /**
@@ -234,6 +243,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
      * @return a table of cards to chose from
      */
     public Table makeCardTable(int health) {
+        Table rootCardTable = new Table();
         Table tableForCards = new Table();
         if (health <= 5) {
             health = 5;
@@ -244,8 +254,31 @@ public class RegisterScreen extends InputAdapter implements Screen {
             Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));
             tableForCards.add(cardImage).width(90).height(120).pad(10);
         }
-        tableForCards.pad(20);
-        return tableForCards;
+        rootCardTable.add(tableForCards);
+        rootCardTable.row();
+        rootCardTable.add(makeNumberHeadline(health));
+        rootCardTable.pad(20);
+        return rootCardTable;
+    }
+
+    /**
+     * Makes a headline over the cards to choose from to make the registerscreen more user-friendly
+     * @param numberOfCards amount of cards needed
+     * @return A table with numbers corresponding to the cards you can choose between
+     */
+    public Table makeNumberHeadline(int numberOfCards) {
+        Table headline = new Table();
+        BitmapFont headlineFont = new BitmapFont();
+        TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+        style.font = headlineFont;
+        style.fontColor = Color.BROWN;
+        for (int i = 1; i <= numberOfCards; i++) {
+            String number = Integer.toString(i);
+            TextField text = new TextField(number, style);
+            text.setAlignment(Align.center);
+            headline.add(text).width(90).height(10).pad(10);
+        }
+        return headline;
     }
 
     /**

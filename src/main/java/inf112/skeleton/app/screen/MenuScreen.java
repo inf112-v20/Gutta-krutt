@@ -5,7 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -47,9 +47,9 @@ public class MenuScreen implements Screen {
 
         playButton.addListener(new ClickListener() {
             @Override
-            public boolean handle(Event event) {
+            public void clicked(InputEvent event, float x, float y) {
+                System.out.println("Started new game");
                 game.setScreen(game.getGameScreen());
-                return true;
             }
         });
     }
@@ -93,6 +93,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
