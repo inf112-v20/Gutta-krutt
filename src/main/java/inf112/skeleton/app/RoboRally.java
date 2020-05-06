@@ -9,8 +9,7 @@ import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author vegardbirkenes, Oskar Marthinussen
@@ -152,7 +151,8 @@ public class RoboRally extends Game {
  
     public void executeCards(ArrayList<Card> cards) {
         MovementHandler movementHandler = movementHandlerList[0];
-        for (Card card : cards) {
+        for (Card card : sortCards(cards)) {
+            System.out.println("Card priority: " + card.getPriority());
             int distance = card.getDistance();
             int rotation = card.getChangeDirection();
             if (rotation > 0) {
@@ -168,6 +168,12 @@ public class RoboRally extends Game {
         if (playerList[0].checkWinCondition()) {
             System.out.println("YOU WIN!!!");
         }
+    }
+
+    public ArrayList<Card> sortCards(ArrayList<Card> cards) {
+        Collections.sort(cards);
+        Collections.reverse(cards);
+        return cards;
     }
 
 }
