@@ -22,6 +22,7 @@ public class RoboRally extends Game {
     private Player[] playerList;
     private MovementHandler[] movementHandlerList;
     private int amountOfPlayers = 4;
+    private MenuScreen menuScreen;
 
 
     @Override
@@ -29,7 +30,8 @@ public class RoboRally extends Game {
         createPlayers(amountOfPlayers);
         gameScreen = new GameScreen(this);
         createMovementHandlers();
-        setScreen(new MenuScreen(this));
+        menuScreen = new MenuScreen(this);
+        setScreen(menuScreen);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class RoboRally extends Game {
         }
     }
 
-    public void createMovementHandlers(){
+    public void createMovementHandlers() {
         movementHandlerList = new MovementHandler[playerList.length];
         for (int i = 0; i < playerList.length; i++){
             movementHandlerList[i] = new MovementHandler(playerList[i],gameScreen.getTiledMap());
@@ -147,7 +149,7 @@ public class RoboRally extends Game {
         sequence.add(new Card(1, 100,0, "assets/SequenceCards/Move_1.png"));
         player.setSequence(sequence);
     }
-
+ 
     public void executeCards(ArrayList<Card> cards) {
         MovementHandler movementHandler = movementHandlerList[0];
         for (Card card : cards) {

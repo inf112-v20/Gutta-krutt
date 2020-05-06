@@ -1,12 +1,10 @@
 package inf112.skeleton.app.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -50,6 +48,7 @@ public class MenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                System.out.println("clicked start");
                 game.setScreen(game.getGameScreen());
             }
         });
@@ -89,6 +88,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }

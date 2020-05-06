@@ -11,13 +11,10 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import inf112.skeleton.app.Movement.MovementHandler;
 import inf112.skeleton.app.Player.Player;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.cards.Card;
 
-import java.util.ArrayList;
 
 /**
  * @author vegardbirkenes
@@ -86,7 +83,7 @@ public class GameScreen extends InputAdapter implements Screen {
         }
         if (playerList[0].checkWinCondition()) {
             System.out.println("YOU WIN!!!");
-            game.setScreen(new WinScreen());
+            game.setScreen(new WinScreen(game));
         }
         return movementhandlerPlayer1.movePlayer(wayToMove);
     }
@@ -133,5 +130,6 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void dispose() {
+        font.dispose();
     }
 }
