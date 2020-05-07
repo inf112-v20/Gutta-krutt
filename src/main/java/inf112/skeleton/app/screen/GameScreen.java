@@ -80,11 +80,12 @@ public class GameScreen extends InputAdapter implements Screen {
         if (wayToMove == -1) {
             return  true;
         }
+        boolean movePlayer = movementhandlerPlayer1.movePlayer(wayToMove);
         if (playerList[0].checkWinCondition()) {
             System.out.println("YOU WIN!!!");
             game.setScreen(new WinScreen(game));
         }
-        return movementhandlerPlayer1.movePlayer(wayToMove);
+        return movePlayer;
     }
 
     @Override
