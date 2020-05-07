@@ -24,8 +24,8 @@ public class RotateRight implements ActionTiles {
     @Override
     public boolean tileAction(Player player) {
         if(isRotator(player)) {
-            player.setRotation((player.getRotation()+ TiledMapTileLayer.Cell.ROTATE_270) % 4);
-            player.setDirection((player.getRotation()+TiledMapTileLayer.Cell.ROTATE_90) % 4);
+            player.setRotation((player.getDirection()+ TiledMapTileLayer.Cell.ROTATE_270) % 4);
+            player.setDirection((player.getDirection()+TiledMapTileLayer.Cell.ROTATE_270) % 4);
             return true;
         }
         return false;
@@ -39,7 +39,6 @@ public class RotateRight implements ActionTiles {
     private boolean isRotator(Player player) {
         TiledMapTileLayer rotator = (TiledMapTileLayer) tiledmap.getLayers().get("green_Rotator");
         TiledMapTileLayer.Cell currentTile = rotator.getCell((int) player.getPosX(), (int) player.getPosY());
-
         return currentTile != null;
     }
 }
