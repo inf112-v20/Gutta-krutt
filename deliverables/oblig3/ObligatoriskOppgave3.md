@@ -9,9 +9,9 @@
     fungerer på
     *   Mtp prosjektmetodikken "kanban" som vi bruker er vi veldig fornøyd og har nå "modernisert" projectboardet
     vårt ved å automatisere det og legge til:
-        * Milestones
-        * Issues
-        * Tags
+        *   Milestones
+        *   Issues
+        *   Tags
         
     *   Team-messig har vi erfart fra forrige innlevering (Oblig 2) at vi bør være mer oppmerksomme på hva vi faktisk
     velger å levere inn. Sist så leverte vi inn kode som så ut til å ikke kjøre fordi vi hadde
@@ -32,7 +32,9 @@
     handle om prosjektstruktur, ikke kode. Dere kan selvsagt diskutere kode, men dette handler ikke om
     feilretting, men om hvordan man jobber og kommuniserer.
     *   Etter gruppepresentasjonene i klassen ble vår gruppe introdusert for "tags" noe vi selv har implementert i Project Boardet. Vi har også begynt med issues og milestones. Noe som skal gjøreden totale oversikten bedre.    
+    
     *   Vi har lagt til "Travis" etter at vi gikk på en smell på oblig 2 der koden ikke kjørte.
+    
     *   Vi kan bli flinkere på å klargjøre akkurat hva vi jobber med til de andre teammedlemmene. Av og til glemmes dette 
     og da jobbes det dobbelt på noe av implementasjonen.
     
@@ -89,7 +91,7 @@
     
 *   Oppdater hvilke krav dere har prioritert, hvor langt dere har kommet og hva dere har gjort siden forrige gang
     *   Prioriteten fremover ligger i de kravene vi har spesifisert ovenfor.
-    
+
 *   Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs)
     *   Du kan gå ut og inn av brettet
 

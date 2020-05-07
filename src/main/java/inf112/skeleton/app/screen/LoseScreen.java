@@ -10,6 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.Align;
 
+/**
+ * Just a basic "Lose" screen to display when a player either dies or lose
+ * the game.
+ */
 public class LoseScreen implements Screen {
 
     private Stage stage;

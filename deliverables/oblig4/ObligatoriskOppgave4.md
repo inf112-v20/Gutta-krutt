@@ -58,7 +58,6 @@ fungerer på?
         *   Som spiller trenger jeg en brukerhåndbok for å vite hvordan jeg kan vinne.
         *   Som spiller trenger jeg en brukerhåndbok for å vite om spill objekter.
     
-    
 *   Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
     
 *   Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge utfra hva som er gitt fra kunde, hvorfor er dette gjort?
@@ -78,8 +77,7 @@ fungerer på?
 *   Lever klassediagram. (Hvis det er veldig mange klasser, lager dere for de viktigste.)
     *   Ligger i oblig4 mappen
     
-*   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk. 
-    *   
+*   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk.
     
 *   Utførte oppgaver skal være ferdige.
 
