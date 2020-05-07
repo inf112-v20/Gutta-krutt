@@ -24,6 +24,8 @@ public class Flag implements ActionTiles{
     public boolean tileAction(Player player) {
         if(isFlag(player)) {
             player.setCheckpoint();
+            player.updateWinCondition();
+            System.out.println("Updated checkpoint");
             return true;
         }
         return false;

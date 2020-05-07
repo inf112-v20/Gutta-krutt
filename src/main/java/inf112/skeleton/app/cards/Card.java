@@ -4,7 +4,7 @@ package inf112.skeleton.app.cards;
  * Collecting cards
  * @author Fredrik Larsen, Vegard Birkenes
  */
-public class Card {
+public class Card implements Comparable<Card> {
 
     private int distance;
     private int priority;
@@ -50,4 +50,8 @@ public class Card {
      */
     public String getFilepath() { return filepath; }
 
+    @Override
+    public int compareTo(Card o) {
+        return Integer.compare(this.getPriority(), o.getPriority());
+    }
 }
