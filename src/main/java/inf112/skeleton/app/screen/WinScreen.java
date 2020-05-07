@@ -55,22 +55,22 @@ public class WinScreen extends InputAdapter implements Screen  {
 
     @Override
     public void resize(int i, int i1) {
-
+        //empty method body
     }
 
     @Override
     public void pause() {
-
+        //empty method body
     }
 
     @Override
     public void resume() {
-
+        //empty method body
     }
 
     @Override
     public void hide() {
-
+        //empty method body
     }
 
     @Override

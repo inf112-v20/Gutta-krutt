@@ -10,10 +10,10 @@ import static org.junit.Assert.assertTrue;
 
 public class SortTest {
 
-    RoboRally roboRally = new RoboRally();
-    Deck deck = new Deck();
-    ArrayList<Card> cards = new ArrayList<>();
-    int numberOfCasesToTest = 100;
+    private RoboRally roboRally = new RoboRally();
+    private Deck deck = new Deck();
+    private ArrayList<Card> cards = new ArrayList<>();
+    private int numberOfCasesToTest = 100;
 
     /**
      * Checks that the sort function works as intended.

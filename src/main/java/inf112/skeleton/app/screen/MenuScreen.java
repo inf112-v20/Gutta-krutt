@@ -65,16 +65,23 @@ public class MenuScreen implements Screen {
      */
     @Override
     public void resize(int width, int height) {
+        //empty method body
     }
 
     @Override
-    public void pause() {}
+    public void pause() {
+        //empty method body
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+        //empty method body
+    }
 
     @Override
-    public void hide() {}
+    public void hide() {
+        //empty method body
+    }
 
     @Override
     public void dispose() {

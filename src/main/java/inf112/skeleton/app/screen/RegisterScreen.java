@@ -37,8 +37,6 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private Player player;
     private Stage stage;
     private BitmapFont font;
-    private Table priorityTable;
-    private Table cardTable;
     private Table chosenTable;
     private Table rootTable;
     private Deck deck;
@@ -64,9 +62,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
         rootTable = new Table();
         deck = new Deck();
         cards = new ArrayList<>();
-        cardTable = makeCardTable(player.getCurrentHealth()-1);
+        Table cardTable = makeCardTable(player.getCurrentHealth()-1);
         chosenTable = makeChosenTable();
-        priorityTable = makePriorityTable();
+        Table priorityTable = makePriorityTable();
         rootTable.setFillParent(true);
         rootTable.add(priorityTable);
         rootTable.row();
@@ -91,22 +89,22 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
     @Override
     public void resize(int i, int i1) {
-
+        //empty method body
     }
 
     @Override
     public void pause() {
-
+        //empty method body
     }
 
     @Override
     public void resume() {
-
+        //empty method body
     }
 
     @Override
     public void hide() {
-
+        //empty method body
     }
 
     @Override
@@ -245,10 +243,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
     public Table makeCardTable(int health) {
         Table rootCardTable = new Table();
         Table tableForCards = new Table();
+        int cardsToDeal = health;
         if (health <= 5) {
-            health = 5;
+            cardsToDeal = 5;
         }
-        for (int i = 0; i < health; i++) {
+        for (int i = 0; i < cardsToDeal; i++) {
             Card card = deck.randomCard();
             cards.add(card);
             Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));
