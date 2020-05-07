@@ -87,9 +87,8 @@ public class RoboRally extends Game {
     /**
      *
      * @param cards Takes inn the cards placed by the players in register screen and executes them in the right order.
-     * @throws InterruptedException when thread is sleeping
      */
-    public void executeCards(ArrayList<Card> cards) throws InterruptedException {
+    public void executeCards(ArrayList<Card> cards) {
         MovementHandler movementHandler = movementHandlerList[0];
         for (Card card : cards) {
             int distance = card.getDistance();
@@ -98,20 +97,16 @@ public class RoboRally extends Game {
             if (rotation > 0) {
                 playerList[0].setRotation((playerList[0].getDirection() + rotation) % 4);
                 playerList[0].setDirection((playerList[0].getDirection() + rotation) % 4);
-                Thread.sleep(1000);
             }
             //Executes move1 move2 and move3 cards
             if (distance > 0) {
                 for (int i = 0; i < distance; i++) {
                     movementHandler.movePlayer(playerList[0].getDirection());
-                    Thread.sleep(1000);
                 }
               //Executes the backup card
             } else if(distance == -1) {
                 movementHandler.movePlayer((playerList[0].getDirection() + 2) % 4);
-                Thread.sleep(1000);
             }
         }
     }
-
 }
