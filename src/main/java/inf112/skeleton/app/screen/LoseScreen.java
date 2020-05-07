@@ -14,12 +14,11 @@ public class LoseScreen implements Screen {
 
     private Stage stage;
     private BitmapFont font;
-    private Table youLostTable;
 
     public LoseScreen() {
         stage = new Stage();
         font = new BitmapFont();
-        youLostTable = makeYouLostTable();
+        Table youLostTable = makeYouLostTable();
         youLostTable.setFillParent(true);
         stage.addActor(youLostTable);
     }
@@ -38,24 +37,16 @@ public class LoseScreen implements Screen {
     }
 
     @Override
-    public void resize(int i, int i1) {
-
-    }
+    public void resize(int i, int i1) {}
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() {}
 
     @Override
     public void dispose() {
