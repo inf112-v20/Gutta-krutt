@@ -5,7 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import inf112.skeleton.app.player.Player;
 
 /**
- * @author sedric, fredrik
+ * @author Sedric Kvarnes, Fredrik Larsen
  */
 public class Repair implements ActionTiles {
 

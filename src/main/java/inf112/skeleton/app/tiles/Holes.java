@@ -6,13 +6,13 @@ import inf112.skeleton.app.player.Player;
 
 /**
  * checks if a Player is standing on a Hole-tile and executes the command corresponding to the hole tile
- * @author sedric, fredrik
+ * @author Sedric Kvarnes, Fredrik Larsen
  */
-public class Hole implements ActionTiles {
+public class Holes implements ActionTiles {
 
     private TiledMap tiledmap;
 
-    public Hole(TiledMap tiledmap) {
+    public Holes(TiledMap tiledmap) {
         this.tiledmap = tiledmap;
     }
 
@@ -35,7 +35,7 @@ public class Hole implements ActionTiles {
      * @return returns true if the player is standing on a tile corresponding to a hole, false otherwise
      */
     public boolean isHole(Player player) {
-        TiledMapTileLayer hole = (TiledMapTileLayer) tiledmap.getLayers().get("Hole");
+        TiledMapTileLayer hole = (TiledMapTileLayer) tiledmap.getLayers().get("Holes");
         TiledMapTileLayer.Cell currentTile = hole.getCell((int) player.getPosX(), (int) player.getPosY());
 
         return currentTile != null;

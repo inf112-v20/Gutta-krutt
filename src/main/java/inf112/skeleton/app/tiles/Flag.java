@@ -6,7 +6,7 @@ import inf112.skeleton.app.player.Player;
 
 /**
  * a flag object for all flags in a map
- * @author sedric, fredrik
+ * @author Sedric Kvarnes, Fredrik Larsen
  */
 public class Flag implements ActionTiles{
 
@@ -36,7 +36,7 @@ public class Flag implements ActionTiles{
      * @return true if a player is standing on a flag and false otherwise
      */
     private boolean isFlag(Player player) {
-        TiledMapTileLayer flag = (TiledMapTileLayer) tiledmap.getLayers().get("Flag");
+        TiledMapTileLayer flag = (TiledMapTileLayer) tiledmap.getLayers().get("Flags");
         TiledMapTileLayer.Cell currentTile = flag.getCell((int) player.getPosX(), (int) player.getPosY());
 
         return currentTile != null;

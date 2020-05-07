@@ -24,7 +24,8 @@ import java.util.ArrayList;
 public class GameScreen extends InputAdapter implements Screen {
 
     private OrthogonalTiledMapRenderer renderer;
-    final private int BOARDSIZE = 12;
+    final private int HEIGHT = 15;
+    final private int WIDTH = 12;
     final private int TILESIZE = 300;
     private TiledMap tilemap;
     private ArrayList<Player> playerList;
@@ -41,17 +42,17 @@ public class GameScreen extends InputAdapter implements Screen {
         font.setColor(Color.RED);
 
         playerList = new ArrayList<>();
-        player = new Player(0,0, "assets/playerTexture/robot0.png");
-        dummy = new Player(0,2, "assets/playerTexture/robot1.png");
+        player = new Player(5,1, "assets/playerTexture/robot0.png");
+        dummy = new Player(6,1, "assets/playerTexture/robot1.png");
         playerList.add(player);
         playerList.add(dummy);
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/maps/map1.tmx");
+        tilemap = tmxLoader.load("assets/maps/Map_Easy.tmx");
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
-        camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
+        camera.setToOrtho(false, WIDTH*TILESIZE , HEIGHT*TILESIZE);
         camera.update();
         renderer.setView(camera);
         registerScreen = new RegisterScreen(this, game, player);
