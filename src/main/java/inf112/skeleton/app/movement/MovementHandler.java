@@ -178,6 +178,7 @@ public class MovementHandler {
         if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
             player.isDestroyed();
             player.addPos(player.getCheckpoint());
+            player.setFullHealth();
         }
     }
 }
