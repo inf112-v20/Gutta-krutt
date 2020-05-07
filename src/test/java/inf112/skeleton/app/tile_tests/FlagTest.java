@@ -1,4 +1,4 @@
-package inf112.skeleton.app.Tiles;
+package inf112.skeleton.app.tile_tests;
 
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.player.Player;
@@ -11,7 +11,6 @@ import static org.junit.Assert.assertEquals;
 
 public class FlagTest {
 
-    Flag flag;
     Player player;
 
     @Before

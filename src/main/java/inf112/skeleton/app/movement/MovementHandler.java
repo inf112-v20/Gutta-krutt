@@ -163,7 +163,7 @@ public class MovementHandler {
     private boolean pushPlayer(Player player, Direction dir) {
         Vector2 playerPos = player.getPos();
         for(Player play: players) {
-            if(play == player) continue;
+            if(play.equals(player)) continue;
             if (playerPos.x == play.getPos().x && playerPos.y == play.getPos().y) {
                 movePlayer(dir, play);
             }
@@ -206,7 +206,7 @@ public class MovementHandler {
             }
         }
         for(Direction wall : idToWallName.get(currentPosWallId)) {
-            if(dir == wall) {
+            if(dir.equals(wall)) {
                 return false;
             }
         }

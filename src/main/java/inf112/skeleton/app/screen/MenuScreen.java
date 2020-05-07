@@ -27,7 +27,6 @@ public class MenuScreen implements Screen {
      * @param game, has to take in a final game in order to be able to handle a clickevent.
      */
     public MenuScreen(final RoboRally game) {
-        RoboRally roboRally = game;
         stage = new Stage();
         Table table = new Table();
         TextureRegionDrawable textureDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("startknapp.png"))));
