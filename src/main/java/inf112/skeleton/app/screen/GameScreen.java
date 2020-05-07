@@ -70,6 +70,9 @@ public class GameScreen extends InputAdapter implements Screen {
         if (keycode == Input.Keys.G) {
             game.setScreen(registerScreen);
         }
+        else if (keycode == Input.Keys.P) {
+            game.setScreen(new UserManual(this, game));
+        }
         else if (keycode == Input.Keys.UP) {
             wayToMove = 0;
         }
