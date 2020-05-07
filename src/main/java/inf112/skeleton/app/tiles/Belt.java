@@ -50,6 +50,7 @@ public class Belt implements ActionTiles {
             }
             if(rotation != -1) {
                 player.setRotation(rotation);
+                player.setDirection(rotation);
             }
             return true;
         }
