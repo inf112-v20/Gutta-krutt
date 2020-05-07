@@ -15,9 +15,8 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.movement.MovementHandler;
 import inf112.skeleton.app.player.Player;
 
-
 /**
- * @author vegardbirkenes
+ * @author Vegard Birkenes
  * Press G to enter the sequence board.
  */
 public class GameScreen extends InputAdapter implements Screen {

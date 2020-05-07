@@ -13,7 +13,7 @@ fungerer på?
     *   Vi syns prosjektmetodikken Kanban har hatt en svært positiv innvirkning på dette prosjektet. Vi har hatt god oversikt og fremgang siden starten av semesteret.
     
 *   Gjør et retrospektiv hvor dere vurderer prosjektet har gått. Hva har dere gjort bra, hva hadde dere gjort annerledes hvis dere begynte på nytt?
-    *   Vi føler, etter pågående krise at vi har hatt kontroll og gjennomføørt oppgaven bra. Noe av det vi muligens ville gjort annerledes er at flere av medlemmene i gruppen hadde satt seg inn
+    *   Vi føler, etter pågående krise at vi har hatt kontroll og gjennomført oppgaven bra. Noe av det vi muligens ville gjort annerledes er at flere av medlemmene i gruppen hadde satt seg inn
         i LibGdx. Vi ville også ha spilt spillet fysisk slik at vi har personlig erfaring med spillet, men pga korona ble dette ikke til.
     
 *   Legg ved skjermdump av project board ved innlevering. Sørg for at det er oppdatert med siste status ved innlevering. 
@@ -44,17 +44,28 @@ fungerer på?
 ## Deloppgave 3: Produktleveranse og kodekvalitet
 
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelderne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
-
+    *   Står i Readme.md
+    
 *   Prosjektet skal kunne bygge, testes og kjøres på Linux, Windows og OSX.
 
 *   Lever klassediagram. (Hvis det er veldig mange klasser, lager dere for de viktigste.)
-
+    *   Ligger i oblig4 mappen
+    
 *   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk. 
-
+    *   
+    
 *   Utførte oppgaver skal være ferdige.
 
 *   Hvis dere tester manuelt: lever beskrivelser av hvordan testen foregår, slik at gruppeleder kan utføre testen selv.
-
+    *   Ved å bevege spilleren med piltastene kan du teste:
+        *   Checkpoints
+        *   Vegger
+        *   Conveyorbelts
+        *   Hull
+        *   Out of board
+        *   Gears
+            
+    
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
     committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også
     designfiler)

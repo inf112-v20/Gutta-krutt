@@ -97,6 +97,8 @@ public class RoboRally extends Game {
                 for (int i = 0; i < distance; i++) {
                     movementHandler.movePlayer(playerList[0].getDirection());
                 }
+            } else if (distance == -1) {
+                movementHandler.movePlayer((playerList[0].getDirection() + 2) % 4);
             }
         }
         if (playerList[0].checkWinCondition()) {
