@@ -49,7 +49,7 @@ public class Player {
      */
     public void setRotation(int cell_rotation) { playerNormal.setRotation(cell_rotation); }
 
-    public int getRotation() {return playerNormal.getRotation();}
+    public int getRotation() {return playerNormal.getRotation(); }
 
     public void setCheckpoint() {checkpoint = position.cpy();}
 

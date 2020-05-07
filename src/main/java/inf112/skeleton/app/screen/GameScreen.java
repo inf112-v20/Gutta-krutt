@@ -104,7 +104,6 @@ public class GameScreen extends InputAdapter implements Screen {
     @Override
     public void show() {
         Gdx.input.setInputProcessor(this);
-
     }
 
     @Override
@@ -119,6 +118,9 @@ public class GameScreen extends InputAdapter implements Screen {
         playerLayer.setCell((int)dummy.getPosX(), (int) dummy.getPosY(), dummy.getPlayerNormal());
         player.renderPlayerTexture();
         dummy.renderPlayerTexture();
+        for (int i = 0; i<playerList.length; i++) {
+            playerLayer.setCell((int) playerList[i].getPosX(), (int) playerList[i].getPosY(), playerList[i].getPlayerNormal());
+        }
     }
 
     @Override
