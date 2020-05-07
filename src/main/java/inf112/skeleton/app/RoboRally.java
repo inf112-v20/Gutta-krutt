@@ -5,6 +5,7 @@ import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.movement.MovementHandler;
 import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.screen.GameScreen;
+import inf112.skeleton.app.screen.LoseScreen;
 import inf112.skeleton.app.screen.MenuScreen;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,6 +61,9 @@ public class RoboRally extends Game {
             } else if (distance == -1) {
                 movementHandler.movePlayer((player.getDirection() + 2) % 4, player);
             }
+        }
+        if (player.getLives() == 0) {
+            this.setScreen(new LoseScreen());
         }
         if (player.checkWinCondition()) {
             System.out.println("YOU WIN!!!");
