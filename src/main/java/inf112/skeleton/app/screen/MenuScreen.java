@@ -18,13 +18,7 @@ import inf112.skeleton.app.RoboRally;
  */
 public class MenuScreen implements Screen {
 
-    private Texture texture;
-    private TextureRegion textureRegion;
-    private ImageButton playButton;
     private Stage stage;
-    private TextureRegionDrawable textureDrawable;
-    private RoboRally game;
-    private Table table;
 
     /**
      * Makes a new menuscreen with an image button. The button is not yet centered because we are considering using a skin.
@@ -33,14 +27,11 @@ public class MenuScreen implements Screen {
      * @param game, has to take in a final game in order to be able to handle a clickevent.
      */
     public MenuScreen(final RoboRally game) {
-        this.game = game;
+        RoboRally roboRally = game;
         stage = new Stage();
-        table = new Table();
-        texture = new Texture(Gdx.files.internal("startknapp.png"));
-        textureRegion = new TextureRegion(texture);
-        textureDrawable = new TextureRegionDrawable(textureRegion);
-
-        playButton = new ImageButton(textureDrawable);
+        Table table = new Table();
+        TextureRegionDrawable textureDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("startknapp.png"))));
+        ImageButton playButton = new ImageButton(textureDrawable);
         table.setFillParent(true);
         table.add(playButton);
         stage.addActor(table);
@@ -77,19 +68,13 @@ public class MenuScreen implements Screen {
     }
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() {}
 
     @Override
     public void dispose() {
