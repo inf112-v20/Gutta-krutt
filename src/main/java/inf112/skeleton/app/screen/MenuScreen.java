@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import inf112.skeleton.app.RoboRally;
 
 /**
- * @author vegardbirkenes
+ * @author Vegard Birkenes
  */
 public class MenuScreen implements Screen {
 

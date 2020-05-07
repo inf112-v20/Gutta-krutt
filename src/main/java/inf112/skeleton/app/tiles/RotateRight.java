@@ -25,6 +25,7 @@ public class RotateRight implements ActionTiles {
     public boolean tileAction(Player player) {
         if(isRotator(player)) {
             player.setRotation((player.getRotation()+ TiledMapTileLayer.Cell.ROTATE_270) % 4);
+            player.setDirection((player.getRotation()+TiledMapTileLayer.Cell.ROTATE_90) % 4);
             return true;
         }
         return false;

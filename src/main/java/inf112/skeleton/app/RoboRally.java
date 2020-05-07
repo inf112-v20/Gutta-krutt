@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 /**
- * @author vegardbirkenes, Oskar Marthinussen
+ * @author Vegard Birkenes, Oskar Marthinussen, Fredrik Larsen
  */
 //This is libgdx own Game class, this makes it possible to switch between screens.
 public class RoboRally extends Game {
@@ -59,8 +59,6 @@ public class RoboRally extends Game {
         }
     }
 
-    //
-
     /**
      * @return GameScreen, used in MenuScreen
      */
@@ -99,6 +97,8 @@ public class RoboRally extends Game {
                 for (int i = 0; i < distance; i++) {
                     movementHandler.movePlayer(playerList[0].getDirection());
                 }
+            } else if (distance == -1) {
+                movementHandler.movePlayer((playerList[0].getDirection() + 2) % 4);
             }
         }
         if (playerList[0].checkWinCondition()) {
@@ -116,5 +116,4 @@ public class RoboRally extends Game {
         Collections.reverse(cards);
         return cards;
     }
-
 }

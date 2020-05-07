@@ -28,7 +28,7 @@ import java.util.ArrayList;
  *
  * Choose numbers between 1-9 to chose cards, R to remove cards and G to go back to the GameScreen.
  *
- * @author vegardbirkenes
+ * @author Vegard Birkenes
  */
 public class RegisterScreen extends InputAdapter implements Screen {
 
