@@ -20,7 +20,7 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 3.  Build game with: `mvn clean install`
 
 ### How to run the game
--   Run main.java which is located in: _src/main/java/roborally_ in your IDE
+-   Run main.java which is located in: _src/main/java/roborally_in your IDE of choice.
 -   Press the start button
 
 ### How to play

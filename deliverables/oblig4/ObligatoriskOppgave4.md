@@ -70,7 +70,7 @@ fungerer på?
 ## Deloppgave 3: Produktleveranse og kodekvalitet
 
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelderne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
-    *   Står i Readme.md
+    *   Står forklart i Readme.md
     
 *   Prosjektet skal kunne bygge, testes og kjøres på Linux, Windows og OSX.
 
@@ -78,6 +78,7 @@ fungerer på?
     *   Ligger i oblig4 mappen
     
 *   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk.
+    *   Kodekvaliteten ligger på en A i følge Travis CI
     
 *   Utførte oppgaver skal være ferdige.
 
@@ -89,11 +90,16 @@ fungerer på?
         *   Hull
         *   Out of board
         *   Gears
+        *   Pushers
+        *   Flag
+        *   Win condition
             
     
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
     committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også
     designfiler)
+    *   Alle har bidratt bra i dette gruppeprosjektet, rollefordelingen har fungert utmerket og alle har vært med å dra på lasset. Eneste er at den ujevne fordelingen av commits 
+    kan forklares ved at vi har brukt parprogrammering, og enkelte har også hatt oppgaver utenom koding som dokumentasjon og readme filer. Som lag føler vi at alle har gjort sitt beste.
 
 *   Prosjektresentasjonen teller ved denne leveransen. Dere blir vurdert på demo av spillet, 
     en beskrivelse av det viktigste dere har lært, en beskrivelse av hvordan nedstengningen av universitetet påvirket prosjektet 
@@ -123,8 +129,10 @@ i den mappen. Eventuelle slides kan lastes inn opp til samme mappe.
 
 For å få oppdraget godkjent, må hvert lagmedlem:
 *   Møte og delta aktivt i minst 75% av ukentlige møter med deres TA og presentasjon av prosjektet til slutt.
+    *   Alle i gruppen har deltatt mer enn 75% 
 
 *   Utføre de tildelte oppgavene under og mellom disse ukentlige møtene, som avtalt i teamet.
+    *   Alle har jobbet både i avtalte møter/timer og utenom. I dette gruppeprosjektet har vi hatt svært god kommunikasjon og jobbet bra sammen. Alle har deltatt på avtalte møter og jobbet bra.
 
 *   Rapportere tilbake til teamet om framdrift og/eller problemer som oppstår, som avtalt i teamet.
 
