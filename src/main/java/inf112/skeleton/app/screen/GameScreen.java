@@ -35,7 +35,7 @@ public class GameScreen extends InputAdapter implements Screen {
         this.playerList = game.getPlayerList();
         font = new BitmapFont();
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/Maps/map1.tmx");
+        tilemap = tmxLoader.load("assets/maps/map1.tmx");
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
         camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
