@@ -29,10 +29,10 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 -   Choose cards in the right order 1 - 5
 -   Press <kbd>L</kbd> to lock inn and execute sequence 
 -   Press <kbd>P</kbd> to enter the "user manual"
-#### (Look beneath for a preview of our game)
+
+#### (Look beneath for a preview of our game and sequence board)
+![Player Board](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/extra/GameBoard.png)
+![Sequence Board](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/extra/SequenceBoard.png)
 
 ## Bugs
 Currently throws "WARNING: An illegal reflective access operation has occurred", when the java version used is >8. This has no effect on function or performance, and is just a warning.
-
-![Player Board](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/extra/GameBoard.png)
-![Sequence Board](https://github.com/inf112-v20/Gutta-krutt/blob/master/assets/extra/SequenceBoard.png)
