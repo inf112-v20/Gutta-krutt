@@ -38,7 +38,7 @@ public class Player {
         position = new Vector2(startingX, startingY);
         lives = 3;
         direction = 0;
-        health = 10;
+        health = 2;
         visitedFlags = new boolean[]{false, false, false};
     }
 
