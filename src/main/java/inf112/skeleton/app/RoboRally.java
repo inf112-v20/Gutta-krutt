@@ -50,38 +50,16 @@ public class RoboRally extends Game {
         Collections.reverse(cards);
         return cards;
     }
-
     /**
      * Executes cards that have been locked in by going through each card and doing the appropriate action
      * @param cards locked in cards to execute
      */
-    /*
-    public void executeCards(ArrayList<Card> cards) {
-        MovementHandler movementHandler = gameScreen.getMovementHandler();
-        Player player = gameScreen.getPlayer();
-        for (Card card : cards) {
-            public MovementHandler[] getMovementHandlerList () {
-                return movementHandlerList;
-            }
-        }
-    }
-    */
-    /**
-     *
-     * @param cards Takes inn the cards placed by the players in register screen and executes them in the right order.
-     * @throws InterruptedException when thread is sleeping
-     */
-    int totalExec = 0;
     public void executeCards(ArrayList<Card> cards, int[] playerID) {
-        totalExec++;
-        System.out.println("Total cards executed: " + totalExec);
         for (int x = 0; x < cards.size(); x++) {
-
-            System.out.println(cards.get(x).getFilepath());
 
             // Get player and his MovementHandler
             MovementHandler movementHandler = gameScreen.getMovementHandler();
-            Player player = gameScreen.getPlayers().get(x);
+            Player player = gameScreen.getPlayers().get(playerID[x]);
 
             //Get card and its values.
             Card card = cards.get(x);
@@ -112,7 +90,6 @@ public class RoboRally extends Game {
         int playerListLength = gameScreen.getPlayers().size();
         int[] playerID = new int[gameScreen.getPlayers().size()];
         while (roundThisTurn < 5) {
-            System.out.println("current round: " + roundThisTurn);
             ArrayList<Card> currentRound = new ArrayList<>();
 
             // Set sequence for CPU

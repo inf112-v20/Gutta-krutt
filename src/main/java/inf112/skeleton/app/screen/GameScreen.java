@@ -40,7 +40,7 @@ public class GameScreen extends InputAdapter implements Screen {
         font.setColor(Color.RED);
 
         playerList = new ArrayList<>();
-        createPlayers(1);
+        createPlayers(4);
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
@@ -73,7 +73,6 @@ public class GameScreen extends InputAdapter implements Screen {
             int[] playerStartPos = startPos.remove(ran.nextInt(startPos.size()));
             String path = "assets/playerTexture/robot" + y + ".png";
             playerList.add(y, new Player(playerStartPos[0], playerStartPos[1], path));
-           playerList.get(y).renderPlayerTexture(); //< Trenger vi denne linjen?
         }
     }
 
@@ -105,12 +104,12 @@ public class GameScreen extends InputAdapter implements Screen {
         if (wayToMove == -1) {
             return  true;
         }
-        boolean movePlayer = movementHandler.movePlayer(wayToMove, playerList.get(0));
+       boolean movePlayer = movementHandler.movePlayer(wayToMove, playerList.get(0));
         if (playerList.get(0).checkWinCondition()) {
             System.out.println("YOU WIN!!!");
             game.setScreen(new WinScreen(game));
         }
-        return movePlayer; // Hvorfor?
+        return movePlayer;
     }
 
     public MovementHandler getMovementHandler() {
@@ -133,14 +132,6 @@ public class GameScreen extends InputAdapter implements Screen {
         renderer.render();
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-
-
-        /*
-        playerLayer.setCell((int)player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
-        playerLayer.setCell((int)dummy.getPosX(), (int) dummy.getPosY(), dummy.getPlayerNormal());
-        player.renderPlayerTexture();
-        dummy.renderPlayerTexture();
-         */
 
         for (int i = 0; i<playerList.size(); i++) {
             Player player =playerList.get(i);
