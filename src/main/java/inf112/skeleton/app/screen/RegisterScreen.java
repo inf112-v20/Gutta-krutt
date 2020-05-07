@@ -159,9 +159,10 @@ public class RegisterScreen extends InputAdapter implements Screen {
                     return true;
                 }
             }
+            player.setSequence(chosenCards);
             gameScreen.setRegisterScreen(new RegisterScreen(gameScreen, game, player));
             game.setScreen(gameScreen);
-            game.executeCards(chosenCards);
+            game.gameRound();
             return true;
         }
         else if (keycode == Input.Keys.P) {

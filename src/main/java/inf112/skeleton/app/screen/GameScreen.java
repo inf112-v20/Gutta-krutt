@@ -16,6 +16,7 @@ import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.movement.MovementHandler;
 import inf112.skeleton.app.player.Player;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Vegard Birkenes
@@ -30,8 +31,6 @@ public class GameScreen extends InputAdapter implements Screen {
     private ArrayList<Player> playerList;
     private BitmapFont font;
     private RoboRally game;
-    private Player player;
-    private Player dummy;
     private RegisterScreen registerScreen;
     private MovementHandler movementHandler;
 
@@ -41,10 +40,7 @@ public class GameScreen extends InputAdapter implements Screen {
         font.setColor(Color.RED);
 
         playerList = new ArrayList<>();
-        player = new Player(0,0, "assets/playerTexture/robot0.png");
-        dummy = new Player(0,2, "assets/playerTexture/robot1.png");
-        playerList.add(player);
-        playerList.add(dummy);
+        createPlayers(1);
 
         //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
@@ -54,7 +50,31 @@ public class GameScreen extends InputAdapter implements Screen {
         camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
         camera.update();
         renderer.setView(camera);
-        registerScreen = new RegisterScreen(this, game, player);
+        registerScreen = new RegisterScreen(this, game, playerList.get(0)); // Trenger spiller?
+    }
+
+
+    /**
+     * Initialize all the players at the start of the game.
+     * @param amountOfPlayers amount of players playing.
+     */
+    private void createPlayers(int amountOfPlayers){
+        Random ran = new Random();
+        ArrayList<int[]> startPos = new ArrayList<>();
+
+        // Add all starting positions in one array.
+        int[][] coordinates = {{0,0}, {0, 11}, {11,0}, {11, 11}, {1,0}, {2,0}, {0,1}, {0, 2},
+                {1,11}, {2, 11}, {0,10}, {0,9}, {11,10}, {11,9}, {10,11}, {9,11}};
+        for (int[] pos : coordinates){
+            startPos.add(pos);
+        }
+        // Add players to playerList
+        for (int y = 0; y < amountOfPlayers; y++){
+            int[] playerStartPos = startPos.remove(ran.nextInt(startPos.size()));
+            String path = "assets/playerTexture/robot" + y + ".png";
+            playerList.add(y, new Player(playerStartPos[0], playerStartPos[1], path));
+           playerList.get(y).renderPlayerTexture(); //< Trenger vi denne linjen?
+        }
     }
 
     /**
@@ -85,20 +105,20 @@ public class GameScreen extends InputAdapter implements Screen {
         if (wayToMove == -1) {
             return  true;
         }
-        boolean movePlayer = movementHandler.movePlayer(wayToMove, player);
-        if (player.checkWinCondition()) {
+        boolean movePlayer = movementHandler.movePlayer(wayToMove, playerList.get(0));
+        if (playerList.get(0).checkWinCondition()) {
             System.out.println("YOU WIN!!!");
             game.setScreen(new WinScreen(game));
         }
-        return movePlayer;
+        return movePlayer; // Hvorfor?
     }
 
     public MovementHandler getMovementHandler() {
         return movementHandler;
     }
 
-    public Player getPlayer() {
-        return player;
+    public ArrayList<Player> getPlayers() {
+        return playerList;
     }
 
     @Override
@@ -112,14 +132,20 @@ public class GameScreen extends InputAdapter implements Screen {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         renderer.render();
 
-
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
+
+
+        /*
         playerLayer.setCell((int)player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
         playerLayer.setCell((int)dummy.getPosX(), (int) dummy.getPosY(), dummy.getPlayerNormal());
         player.renderPlayerTexture();
         dummy.renderPlayerTexture();
-        for (int i = 0; i<playerList.length; i++) {
-            playerLayer.setCell((int) playerList[i].getPosX(), (int) playerList[i].getPosY(), playerList[i].getPlayerNormal());
+         */
+
+        for (int i = 0; i<playerList.size(); i++) {
+            Player player =playerList.get(i);
+            playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
+            player.renderPlayerTexture();
         }
     }
 
