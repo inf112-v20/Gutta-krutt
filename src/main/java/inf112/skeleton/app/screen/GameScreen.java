@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -32,6 +33,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private Player player;
     private Player dummy;
     private RegisterScreen registerScreen;
+    private MovementHandler movementHandler;
 
     public GameScreen(RoboRally game) {
         this.game = game;
@@ -52,15 +54,7 @@ public class GameScreen extends InputAdapter implements Screen {
         camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
         camera.update();
         renderer.setView(camera);
-        registerScreen = new RegisterScreen(this, game, playerList[0]);
-    }
-
-    /**
-     * used for testing map functionality
-     * @return returns the current tiledMap
-     */
-    public TiledMap getTiledMap(){
-        return this.tilemap;
+        registerScreen = new RegisterScreen(this, game, player);
     }
 
     /**
@@ -71,7 +65,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public boolean keyUp(int keycode) {
-        MovementHandler movementHandler = new MovementHandler(tilemap, playerList);
+        movementHandler = new MovementHandler(tilemap, playerList);
         int wayToMove = -1;
         if (keycode == Input.Keys.G) {
             game.setScreen(registerScreen);
@@ -91,12 +85,20 @@ public class GameScreen extends InputAdapter implements Screen {
         if (wayToMove == -1) {
             return  true;
         }
-        boolean movePlayer = movementhandlerPlayer1.movePlayer(wayToMove);
-        if (playerList[0].checkWinCondition()) {
+        boolean movePlayer = movementHandler.movePlayer(wayToMove, player);
+        if (player.checkWinCondition()) {
             System.out.println("YOU WIN!!!");
             game.setScreen(new WinScreen(game));
         }
         return movePlayer;
+    }
+
+    public MovementHandler getMovementHandler() {
+        return movementHandler;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     @Override

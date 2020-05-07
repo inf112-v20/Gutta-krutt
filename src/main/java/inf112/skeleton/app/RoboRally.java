@@ -16,9 +16,6 @@ import java.util.Collections;
 public class RoboRally extends Game {
 
     private GameScreen gameScreen;
-    private Player[] playerList;
-    private MovementHandler[] movementHandlerList;
-    private int amountOfPlayers = 4;
     private MenuScreen menuScreen;
 
 
@@ -47,23 +44,24 @@ public class RoboRally extends Game {
      * @param cards locked in cards to execute
      */
     public void executeCards(ArrayList<Card> cards) {
-        MovementHandler movementHandler = movementHandlerList[0];
+        MovementHandler movementHandler = gameScreen.getMovementHandler();
+        Player player = gameScreen.getPlayer();
         for (Card card : cards) {
             int distance = card.getDistance();
             int rotation = card.getChangeDirection();
             if (rotation > 0) {
-                playerList[0].setRotation((playerList[0].getDirection() + rotation) % 4);
-                playerList[0].setDirection((playerList[0].getDirection() + rotation) % 4);
+                player.setRotation((player.getDirection() + rotation) % 4);
+                player.setDirection((player.getDirection() + rotation) % 4);
             }
             else if (distance > 0) {
                 for (int i = 0; i < distance; i++) {
-                    movementHandler.movePlayer(playerList[0].getDirection());
+                    movementHandler.movePlayer(player.getDirection(), player);
                 }
             } else if (distance == -1) {
-                movementHandler.movePlayer((playerList[0].getDirection() + 2) % 4);
+                movementHandler.movePlayer((player.getDirection() + 2) % 4, player);
             }
         }
-        if (playerList[0].checkWinCondition()) {
+        if (player.checkWinCondition()) {
             System.out.println("YOU WIN!!!");
         }
     }

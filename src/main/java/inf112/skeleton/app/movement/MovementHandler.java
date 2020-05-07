@@ -116,6 +116,7 @@ public class MovementHandler {
 
         pushPlayer(player, dir);
         //setting the new player tile
+        outOfBoard(player);
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
         return true;
     }
