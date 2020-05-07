@@ -49,8 +49,8 @@ public class Belt implements ActionTiles {
                 player.addPosX(-steps);
             }
             if(rotation != -1) {
-                player.setRotation(rotation);
-                player.setDirection(rotation);
+                player.setRotation((player.getDirection()+rotation) % 4);
+                player.setDirection((player.getDirection()+rotation) % 4);
             }
             return true;
         }
