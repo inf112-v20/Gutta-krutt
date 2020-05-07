@@ -6,10 +6,8 @@ import inf112.skeleton.app.movement.MovementHandler;
 import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.screen.GameScreen;
 import inf112.skeleton.app.screen.MenuScreen;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 
 /**
  * @author Vegard Birkenes, Oskar Marthinussen, Fredrik Larsen
@@ -26,9 +24,7 @@ public class RoboRally extends Game {
 
     @Override
     public void create() {
-        createPlayers(amountOfPlayers);
         gameScreen = new GameScreen(this);
-        createMovementHandlers();
         menuScreen = new MenuScreen(this);
         setScreen(menuScreen);
     }
@@ -39,46 +35,12 @@ public class RoboRally extends Game {
     }
 
     /**
-     * Initialize all the players at the start of the game.
-     * @param amountOfPlayers amount of players playing.
-     */
-    public void createPlayers(int amountOfPlayers){
-        playerList = new Player[amountOfPlayers];
-        movementHandlerList = new MovementHandler[amountOfPlayers];
-        for (int y = 0; y < amountOfPlayers; y++){
-            String path = "assets/playerTexture/robot" + y + ".png";
-            playerList[y] = new Player(0, y, path);
-            playerList[y].renderPlayerTexture();
-        }
-    }
-
-    public void createMovementHandlers() {
-        movementHandlerList = new MovementHandler[playerList.length];
-        for (int i = 0; i < playerList.length; i++){
-            movementHandlerList[i] = new MovementHandler(playerList[i],gameScreen.getTiledMap());
-        }
-    }
-
-    /**
      * @return GameScreen, used in MenuScreen
      */
     public GameScreen getGameScreen() {
         return gameScreen;
     }
 
-    /**
-     * @return Return playerList, Used in GameScreen to render players
-     */
-    public Player[] getPlayerList() {
-        return playerList;
-    }
-
-    /**
-     * @return Return movementHandlerList, Used in GameScreen to render players
-     */
-    public MovementHandler[] getMovementHandlerList() {
-        return movementHandlerList;
-    }
 
     /**
      * Executes cards that have been locked in by going through each card and doing the appropriate action

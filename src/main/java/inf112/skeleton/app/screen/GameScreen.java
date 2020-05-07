@@ -14,6 +14,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.movement.MovementHandler;
 import inf112.skeleton.app.player.Player;
+import java.util.ArrayList;
 
 /**
  * @author Vegard Birkenes
@@ -25,15 +26,25 @@ public class GameScreen extends InputAdapter implements Screen {
     final private int BOARDSIZE = 12;
     final private int TILESIZE = 300;
     private TiledMap tilemap;
-    private Player[] playerList;
+    private ArrayList<Player> playerList;
     private BitmapFont font;
     private RoboRally game;
+    private Player player;
+    private Player dummy;
     private RegisterScreen registerScreen;
 
     public GameScreen(RoboRally game) {
         this.game = game;
-        this.playerList = game.getPlayerList();
         font = new BitmapFont();
+        font.setColor(Color.RED);
+
+        playerList = new ArrayList<>();
+        player = new Player(0,0, "assets/playerTexture/robot0.png");
+        dummy = new Player(0,2, "assets/playerTexture/robot1.png");
+        playerList.add(player);
+        playerList.add(dummy);
+
+        //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
         tilemap = tmxLoader.load("assets/maps/map1.tmx");
         OrthographicCamera camera = new OrthographicCamera();
@@ -60,7 +71,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public boolean keyUp(int keycode) {
-        MovementHandler movementhandlerPlayer1 = game.getMovementHandlerList()[0]; // todo: this is maybe not optimal
+        MovementHandler movementHandler = new MovementHandler(tilemap, playerList);
         int wayToMove = -1;
         if (keycode == Input.Keys.G) {
             game.setScreen(registerScreen);
@@ -100,12 +111,12 @@ public class GameScreen extends InputAdapter implements Screen {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         renderer.render();
 
-        //Render all the players
+
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
-        playerLayer.setCell((int) playerList[0].getPosX(), (int) playerList[0].getPosY(), playerList[0].getPlayerNormal());
-        /**for (int i = 0; i<playerList.length; i++) {
-            playerLayer.setCell((int) playerList[i].getPosX(), (int) playerList[i].getPosY(), playerList[i].getPlayerNormal());
-        }*/
+        playerLayer.setCell((int)player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
+        playerLayer.setCell((int)dummy.getPosX(), (int) dummy.getPosY(), dummy.getPlayerNormal());
+        player.renderPlayerTexture();
+        dummy.renderPlayerTexture();
     }
 
     @Override
