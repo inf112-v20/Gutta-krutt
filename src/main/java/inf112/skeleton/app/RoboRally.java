@@ -54,9 +54,8 @@ public class RoboRally extends Game {
      * Executes cards that have been locked in by going through each card and doing the appropriate action
      * @param cards locked in cards to execute
      */
-    public void executeCards(ArrayList<Card> cards, int[] playerID) {
+    public void executeCards(ArrayList<Card> cards, int[] playerID){
         for (int x = 0; x < cards.size(); x++) {
-
             // Get player and his MovementHandler
             MovementHandler movementHandler = gameScreen.getMovementHandler();
             Player player = gameScreen.getPlayers().get(playerID[x]);
@@ -136,5 +135,25 @@ public class RoboRally extends Game {
             seq.add(card);
         }
         player.setSequence(seq);
+    }
+
+    @Override
+    public void resize(int width, int height) {
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+
+    @Override
+    public void dispose() {
+        super.dispose();
     }
 }
