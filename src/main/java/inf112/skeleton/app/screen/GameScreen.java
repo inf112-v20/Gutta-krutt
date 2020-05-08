@@ -75,7 +75,7 @@ public class GameScreen extends InputAdapter implements Screen {
             String path = "assets/playerTexture/robot" + y + ".png";
             playerList.add(y, new Player(playerStartPos[0], playerStartPos[1], path));
         }
-        playerList.get(0).takeDamage(5);
+        
     }
 
     /**
