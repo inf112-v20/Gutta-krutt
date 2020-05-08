@@ -7,13 +7,13 @@ import org.junit.Test;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 /**
  * @author Oskar Marthinussen, Fredrik Larsen, Vegard Birkenes
  */
 public class PlayerTest {
-   Player player = new Player(0,0,"assets/playerTexture/robot0.png");
+
+    Player player = new Player(0,0,"assets/playerTexture/robot0.png");
 
     /**
      * pre-made sequence used for testing.
@@ -29,33 +29,11 @@ public class PlayerTest {
         return sequence;
     }
 
-    //@Test
+    @Test
     public void powerDownTest() {
         player.takeDamage(8);
-        //player.setSequence(sequence());
         player.powerDown();
-
-        assertEquals(0, player.getDamageTaken());
-        assertNull(player.getSequence());
-    }
-
-    //@Test
-    public void resetSequenceWithNoDamageTokensTest(){
-        //player.setSequence(sequence());
-        //player.resetSequences();
-        assertEquals(new LinkedList<Card>(), player.getSequence());
-    }
-
-    //@Test
-    public void resetSequenceWithMoreThanFourDamageTokensTest() {
-        player.takeDamage(4);
-        for (int i = 1; i <= 5; i++) {
-            //player.setSequence(sequence());
-            //player.setLastTurnSequence(sequence());
-            //player.takeDamage(1);
-            //player.resetSequences();
-            assertEquals(i, player.getSequence().size());
-        }
+        assertEquals(10, player.getCurrentHealth());
     }
 
     @Test

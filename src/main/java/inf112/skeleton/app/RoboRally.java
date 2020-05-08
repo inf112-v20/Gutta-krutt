@@ -6,17 +6,14 @@ import inf112.skeleton.app.cards.Deck;
 import inf112.skeleton.app.movement.MovementHandler;
 import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.screen.GameScreen;
-import inf112.skeleton.app.screen.LoseScreen;
 import inf112.skeleton.app.screen.MenuScreen;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Random;
 
 /**
+ * Extends libggdx´s own game class to make a game where you can switch between screens.
  * @author Vegard Birkenes, Oskar Marthinussen, Fredrik Larsen
  */
-//This is libgdx own Game class, this makes it possible to switch between screens.
 public class RoboRally extends Game {
 
     private GameScreen gameScreen;
@@ -28,6 +25,8 @@ public class RoboRally extends Game {
         menuScreen = new MenuScreen(this);
         setScreen(menuScreen);
     }
+
+    public void setGameScreen(String difficulty) { gameScreen = new GameScreen(this, difficulty); }
 
     @Override
     public void render() {
@@ -51,8 +50,6 @@ public class RoboRally extends Game {
         Collections.reverse(cards);
         return cards;
     }
-
-    public void setGameScreen(String difficulty) { gameScreen = new GameScreen(this, difficulty); }
 
     /**
      * Executes cards that have been locked in by going through each card and doing the appropriate action using executeCard.
@@ -88,39 +85,36 @@ public class RoboRally extends Game {
         }
     }
 
+    /**
+     * Executes cards for the player and the AIs that are on the map
+     */
     public void gameRound() {
         int roundThisTurn = 0;
         int playerListLength = gameScreen.getPlayers().size();
         int[] playerID = new int[gameScreen.getPlayers().size()];
         while (roundThisTurn < 5) {
             ArrayList<Card> currentRound = new ArrayList<>();
-
             // Set sequence for CPU
             for (int j = 1; j < gameScreen.getPlayers().size(); j++){
                 cpu1(gameScreen.getPlayers().get(j)); }
-
             // Collect card from players
             for (int x = 0; x<playerListLength; x++){
                 currentRound.add(gameScreen.getPlayers().get(x).getSequence().get(roundThisTurn));
                 playerID[x] = x;
             }
-
             // Sort array after priority
             for (int i = 0; i < playerListLength - 1; i++) {
                 int max_prio = i;
                 for (int j = i+1; j < playerListLength; j++)
                     if (currentRound.get(j).getPriority() > currentRound.get(max_prio).getPriority())
                         max_prio = j;
-
                 int temp = playerID[max_prio];
                 playerID[max_prio] = playerID[i];
                 playerID[i] = temp;
-
                 Card temp2 = currentRound.get(max_prio);
                 currentRound.set(max_prio, currentRound.get(i));
                 currentRound.set(i, temp2);
             }
-
             // Execute cards for current round
             executeCards(currentRound, playerID);
             roundThisTurn++;
@@ -143,16 +137,17 @@ public class RoboRally extends Game {
 
     @Override
     public void resize(int width, int height) {
+        //empty method body
     }
 
     @Override
     public void pause() {
-
+        //empty method body
     }
 
     @Override
     public void resume() {
-
+        //empty method body
     }
 
 

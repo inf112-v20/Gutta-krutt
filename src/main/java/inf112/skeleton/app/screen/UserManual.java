@@ -13,6 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.Align;
 import inf112.skeleton.app.RoboRally;
 
+/**
+ * A user manual that tells you how to play the game. Consists of text in a table.
+ * @author Vegard Birkenes
+ */
 public class UserManual extends InputAdapter implements Screen {
 
     private GameScreen gameScreen;
@@ -89,8 +93,8 @@ public class UserManual extends InputAdapter implements Screen {
         sentenceToWrite("You can die three times.", instructionTable, style);
         sentenceToWrite("Press G in the game screen to enter the sequence screen.", instructionTable, style);
         sentenceToWrite("Press L after laying a sequence to execute your chosen cards.", instructionTable, style);
-        sentenceToWrite("Press P to announce a powerdown, thereby skipping a turn, ", instructionTable, style);
-        sentenceToWrite("but healing to full health.", instructionTable, style);
+        sentenceToWrite("Press P in sequencescreen to announce a powerdown, thereby", instructionTable, style);
+        sentenceToWrite("skipping a turn, but healing to full health.", instructionTable, style);
         sentenceToWrite("Use 1-9 to choose cards and press R to remove a card.", instructionTable, style);
         return instructionTable;
     }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * handling all movement connected to the board
+ * Handling all movement connected to the board
  * @author sedric
  */
 public class MovementHandler {
@@ -30,7 +30,7 @@ public class MovementHandler {
     }
 
     /**
-     * initialize all the different actionTiles
+     * Initialize all the different tiles
      */
     private void initializeTiles() {
         ActionTiles hole = new Holes(tilemap);
@@ -55,7 +55,6 @@ public class MovementHandler {
         Belt Slow_Belt_South_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{41}, 1, "Regular_Conveyor_belt");
         Belt Slow_Belt_East_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{42}, 1, "Regular_Conveyor_belt");
 
-        //Fast
         Belt Fast_Belt_North = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Express_Conveyor_belt");
         Belt Fast_Belt_West = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Express_Conveyor_belt");
         Belt Fast_Belt_East = new Belt(tilemap, Direction.EAST,-1, new int[]{14}, 2, "Express_Conveyor_belt");
@@ -65,27 +64,18 @@ public class MovementHandler {
         Belt Express_East_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{20}, 2, "Express_Conveyor_belt");
         Belt Express_South_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Express_Conveyor_belt");
         Belt Express_West_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{27}, 2, "Express_Conveyor_belt");
-
         Belt Express_North_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{18}, 2, "Express_Conveyor_belt");
         Belt Express_West_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{17}, 2, "Express_Conveyor_belt");
         Belt Express_South_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{25}, 2, "Express_Conveyor_belt");
         Belt Express_East_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{26}, 2, "Express_Conveyor_belt");
-
 
         Belt Pusher_Odd_North = new Belt(tilemap, Direction.NORTH, -1, new int[]{3, 11}, 1, "Pushers");
         Belt Pusher_Odd_East = new Belt(tilemap, Direction.EAST, -1, new int[]{4, 12}, 1, "Pushers");
         Belt Pusher_Odd_South = new Belt(tilemap, Direction.SOUTH, -1, new int[]{1, 9}, 1, "Pushers");
         Belt Pusher_Odd_West = new Belt(tilemap, Direction.WEST, -1, new int[]{2, 10}, 1, "Pushers");
 
-//        Belt Pusher_Even_North = new Belt(tilemap, Direction.NORTH, -1, new int[]{11}, 1, "Pushers");
-//        Belt Pusher_Even_East = new Belt(tilemap, Direction.EAST, -1, new int[]{4}, 1, "Pushers");
-//        Belt Pusher_Even_South = new Belt(tilemap, Direction.SOUTH, -1, new int[]{1}, 1, "Pushers");
-//        Belt Pusher_Even_West = new Belt(tilemap, Direction.WEST, -1, new int[]{2}, 1, "Pushers");
-
-
         Belt Gear_red = new Belt(tilemap, Direction.DEFAULT,TiledMapTileLayer.Cell.ROTATE_90, new int[]{53}, 0, "Gears");
         Belt Gear_green = new Belt(tilemap, Direction.DEFAULT,TiledMapTileLayer.Cell.ROTATE_270, new int[]{54}, 0, "Gears");
-
 
         actionTiles = new ActionTiles[]{hole, flag, repair};
 
@@ -96,7 +86,8 @@ public class MovementHandler {
     }
 
     /**
-     * moves the player in a given direction, depending on keycode
+     * This is used for debugging when moving with the arrows.
+     * Moves the player in a given direction, depending on keycode
      * @param keycode keycode from keyboard
      * @return true if valid keycode, false otherwise
      */
@@ -116,7 +107,7 @@ public class MovementHandler {
     }
 
     /**
-     * moves a player in a one of four directions if possible
+     * Moves a player in a one of four directions if possible
      * @return returns true if valid movement, false otherwise
      */
     public boolean movePlayer(Direction dir, Player player) {
@@ -160,6 +151,12 @@ public class MovementHandler {
         return true;
     }
 
+    /**
+     * Pushes a player
+     * @param player player to push
+     * @param dir direction to push
+     * @return true after moving
+     */
     private boolean pushPlayer(Player player, Direction dir) {
         Vector2 playerPos = player.getPos();
         for(Player play: players) {
@@ -219,6 +216,10 @@ public class MovementHandler {
         return true;
     }
 
+    /**
+     * Checks if a player is outOfBoard.
+     * @param player player to be checked.
+     */
     private void outOfBoard(Player player) {
         if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 14) {
             player.destroyed();

@@ -86,6 +86,11 @@ public class MenuScreen implements Screen {
         stage.dispose();
     }
 
+    /**
+     * Makes a startbutton capable of switching the screen to the game.
+     * @param game passes to gameScreen when the button is pressed
+     * @return the startbutton
+     */
     public ImageButton makeStartButton(final RoboRally game) {
         TextureRegionDrawable textureDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("startknapp.png"))));
         ImageButton playButton = new ImageButton(textureDrawable);
@@ -99,6 +104,10 @@ public class MenuScreen implements Screen {
         return playButton;
     }
 
+    /**
+     * Makes a table consisting of two buttons to choose the difficulty of the game.
+     * @return the table
+     */
     public Table chooseDifficulty() {
         Table difficultyTable = new Table();
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
@@ -107,10 +116,17 @@ public class MenuScreen implements Screen {
         font.getData().setScale(2);
         makeDifficultyButton("Easy", style, difficultyTable, game);
         makeDifficultyButton("Hard", style, difficultyTable, game);
-        difficultyTable.setDebug(true);
         return difficultyTable;
     }
 
+    /**
+     * Makes a textbutton with a given string for difficulty.
+     * @param difficulty how hard the game should be
+     * @param style textbutton style
+     * @param table which table the button should be added to
+     * @param game the roborally game you want to change difficulty for
+     * @return the textbutton
+     */
     public TextButton makeDifficultyButton(final String difficulty, TextButton.TextButtonStyle style, Table table, final RoboRally game) {
         TextButton textButton = new TextButton(difficulty, style);
         table.add(textButton).width(100).height(80);
