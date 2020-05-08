@@ -144,20 +144,19 @@ public class Player {
 
     public void setSequence(ArrayList<Card> chosenCards) {
         lastTurnSequence = sequence;
-
+        int card = 0;
         if (chosenCards.size() == 5){
             sequence = chosenCards;
         }
         else if (chosenCards.size() < 5){
-            for (int i = 0; i < 5; i++){
-                for (int j = 0; j < chosenCards.size(); j++){
-                    sequence.set(j, chosenCards.get(j));
-                    i = j;
-                }
+            for (int j = 0; j < chosenCards.size(); j++){
+                sequence.set(j, chosenCards.get(j));
+                card++;
+            }
+            for (int i = card; i < 5; i++){
                 sequence.set(i, lastTurnSequence.get(i));
             }
         }
     }
-
     public ArrayList<Card> getSequence() { return sequence; }
 }
