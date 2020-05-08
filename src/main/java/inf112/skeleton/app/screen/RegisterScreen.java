@@ -258,7 +258,7 @@ public class RegisterScreen extends InputAdapter implements Screen {
         }
         rootCardTable.add(tableForCards);
         rootCardTable.row();
-        rootCardTable.add(makeNumberHeadline(health));
+        rootCardTable.add(makeNumberHeadline(cardsToDeal));
         rootCardTable.pad(20);
         return rootCardTable;
     }
