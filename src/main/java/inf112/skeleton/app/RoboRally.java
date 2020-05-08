@@ -43,32 +43,41 @@ public class RoboRally extends Game {
 
 
     /**
-     * Executes cards that have been locked in by going through each card and doing the appropriate action
+     * Executes cards that have been locked in by going through each card and doing the appropriate action using executeCard.
      * @param cards locked in cards to execute
      */
     public void executeCards(ArrayList<Card> cards) {
-        MovementHandler movementHandler = gameScreen.getMovementHandler();
         Player player = gameScreen.getPlayer();
         for (Card card : cards) {
-            int distance = card.getDistance();
-            int rotation = card.getChangeDirection();
-            if (rotation > 0) {
-                player.setRotation((player.getDirection() + rotation) % 4);
-                player.setDirection((player.getDirection() + rotation) % 4);
-            }
-            else if (distance > 0) {
-                for (int i = 0; i < distance; i++) {
-                    movementHandler.movePlayer(player.getDirection(), player);
-                }
-            } else if (distance == -1) {
-                movementHandler.movePlayer((player.getDirection() + 2) % 4, player);
-            }
+            executeCard(card, player);
         }
         if (player.getLives() == 0) {
             this.setScreen(new LoseScreen());
         }
         if (player.checkWinCondition()) {
             System.out.println("YOU WIN!!!");
+        }
+    }
+
+    /**
+     * Executes one card. Checks what kind of card it is and does the correct action for such a card.
+     * @param card card to be executed
+     * @param player the player wanting to execute the card
+     */
+    public void executeCard(Card card, Player player) {
+        MovementHandler movementHandler = gameScreen.getMovementHandler();
+        int distance = card.getDistance();
+        int rotation = card.getChangeDirection();
+        if (rotation > 0) {
+            player.setRotation((player.getDirection() + rotation) % 4);
+            player.setDirection((player.getDirection() + rotation) % 4);
+        }
+        else if (distance > 0) {
+            for (int i = 0; i < distance; i++) {
+                movementHandler.movePlayer(player.getDirection(), player);
+            }
+        } else if (distance == -1) {
+            movementHandler.movePlayer((player.getDirection() + 2) % 4, player);
         }
     }
 
