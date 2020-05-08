@@ -25,7 +25,8 @@ import java.util.Random;
 public class GameScreen extends InputAdapter implements Screen {
 
     private OrthogonalTiledMapRenderer renderer;
-    final private int BOARDSIZE = 12;
+    final private int HEIGHT = 15;
+    final private int WIDTH = 12;
     final private int TILESIZE = 300;
     private TiledMap tilemap;
     private ArrayList<Player> playerList;
@@ -34,7 +35,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private RegisterScreen registerScreen;
     private MovementHandler movementHandler;
 
-    public GameScreen(RoboRally game) {
+    public GameScreen(RoboRally game, String difficulty) {
         this.game = game;
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -43,11 +44,12 @@ public class GameScreen extends InputAdapter implements Screen {
         createPlayers(4);
 
         //initialize a new tilemap
+
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/maps/map1.tmx");
+        tilemap = tmxLoader.load("assets/maps/Map_" + difficulty + ".tmx");
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
-        camera.setToOrtho(false, BOARDSIZE*TILESIZE , BOARDSIZE*TILESIZE);
+        camera.setToOrtho(false, WIDTH*TILESIZE , HEIGHT*TILESIZE);
         camera.update();
         renderer.setView(camera);
         registerScreen = new RegisterScreen(this, game, playerList.get(0)); // Trenger spiller?
@@ -62,9 +64,8 @@ public class GameScreen extends InputAdapter implements Screen {
         Random ran = new Random();
         ArrayList<int[]> startPos = new ArrayList<>();
 
-        // Add all starting positions in one array.
-        int[][] coordinates = {{0,0}, {0, 11}, {11,0}, {11, 11}, {1,0}, {2,0}, {0,1}, {0, 2},
-                {1,11}, {2, 11}, {0,10}, {0,9}, {11,10}, {11,9}, {10,11}, {9,11}};
+        // Add all starting positions in one array. 0,1, 3, 5, 6, 8, 10, 11
+        int[][] coordinates = {{0,1}, {1,1}, {3, 1},{5, 1}, {6, 1}, {8, 1}, {10, 1}, {11, 1}};
         for (int[] pos : coordinates){
             startPos.add(pos);
         }
@@ -88,28 +89,32 @@ public class GameScreen extends InputAdapter implements Screen {
         int wayToMove = -1;
         if (keycode == Input.Keys.G) {
             game.setScreen(registerScreen);
-        }
-        else if (keycode == Input.Keys.UP) {
+        } else if (keycode == Input.Keys.P) {
+            game.setScreen(new UserManual(this, game));
+        } else if (keycode == Input.Keys.UP) {
             wayToMove = 0;
-        }
-        else if (keycode == Input.Keys.LEFT) {
+        } else if (keycode == Input.Keys.LEFT) {
             wayToMove = 1;
-        }
-        else if (keycode == Input.Keys.RIGHT) {
+        } else if (keycode == Input.Keys.RIGHT) {
             wayToMove = 3;
-        }
-        else if (keycode == Input.Keys.DOWN) {
+        } else if (keycode == Input.Keys.DOWN) {
             wayToMove = 2;
         }
         if (wayToMove == -1) {
-            return  true;
+            return true;
         }
-       boolean movePlayer = movementHandler.movePlayer(wayToMove, playerList.get(0));
+
+        boolean movePlayer = movementHandler.movePlayer(wayToMove, playerList.get(0));
         if (playerList.get(0).checkWinCondition()) {
-            System.out.println("YOU WIN!!!");
-            game.setScreen(new WinScreen(game));
+            if (playerList.get(0).getLives() <= 0) {
+                game.setScreen(new LoseScreen());
+            }
+            if (playerList.get(0).checkWinCondition()) {
+                System.out.println("YOU WIN!!!");
+                game.setScreen(new WinScreen(game));
+            }
         }
-        return movePlayer;
+            return movePlayer;
     }
 
     public MovementHandler getMovementHandler() {

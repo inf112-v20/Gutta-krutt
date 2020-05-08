@@ -21,7 +21,7 @@ public class MovementHandler {
 
     /**
      * @param tilemap the tilemap the movementHandler connects with
-     * @param players all the players you want to be moveable on the map
+     * @param players all the players you want to be movable on the map
      */
     public MovementHandler(TiledMap tilemap, ArrayList<Player> players) {
        this.tilemap = tilemap;
@@ -33,27 +33,66 @@ public class MovementHandler {
      * initialize all the different actionTiles
      */
     private void initializeTiles() {
-        ActionTiles hole = new Hole(tilemap);
-        ActionTiles rotateLeft = new RotateLeft(tilemap);
-        ActionTiles rotateRight = new RotateRight(tilemap);
+        ActionTiles hole = new Holes(tilemap);
         ActionTiles flag = new Flag(tilemap);
         ActionTiles repair = new Repair(tilemap);
-        //-1 is placeholder for no roation
-        Belt slowBeltDown = new Belt(tilemap, Direction.SOUTH, -1, new int[]{50}, 1, "Conveyor_Belt_Yellow");
-        Belt slowBeltRotateDown = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_180, new int[]{33,36}, 1, "Conveyor_Belt_Yellow");
-        Belt slowBeltUp = new Belt(tilemap, Direction.NORTH, -1, new int[]{49}, 1, "Conveyor_Belt_Yellow");
-        Belt slowBeltLeft = new Belt(tilemap, Direction.WEST, -1, new int[]{51}, 1, "Conveyor_Belt_Yellow");
-        Belt slowBeltRight = new Belt(tilemap, Direction.EAST, -1, new int[]{52}, 1, "Conveyor_Belt_Yellow");
-        Belt fastBeltUp = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Conveyor_Belt_Blue");
-        Belt fastBeltleft = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Conveyor_Belt_Blue");
-        Belt fastBeltRotateLeft = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Conveyor_Belt_Blue");
-        Belt fastBeltRotateUp = new Belt(tilemap, Direction.NORTH,TiledMapTileLayer.Cell.ROTATE_0, new int[]{77}, 2, "Conveyor_Belt_Blue");
-        Belt fastBeltDown = new Belt(tilemap, Direction.SOUTH,-1, new int[]{21}, 2, "Conveyor_Belt_Blue");
 
-        actionTiles = new ActionTiles[]{hole,rotateLeft,rotateRight,flag,repair};
+        //-1 is placeholder for no rotation
 
-        belts = new Belt[]{slowBeltDown,slowBeltRotateDown,slowBeltUp,slowBeltLeft,slowBeltRight,
-                fastBeltUp,fastBeltleft,fastBeltRotateLeft,fastBeltRotateUp,fastBeltDown};
+        //Regular
+        Belt Slow_Belt_North = new Belt(tilemap, Direction.NORTH, -1, new int[]{49}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_West = new Belt(tilemap, Direction.WEST, -1, new int[]{51}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_East = new Belt(tilemap, Direction.EAST, -1, new int[]{52}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_South = new Belt(tilemap, Direction.SOUTH, -1, new int[]{50}, 1, "Regular_Conveyor_belt");
+
+        Belt Slow_Belt_North_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{35}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_East_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{36}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_South_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{43}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_West_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{44}, 1, "Regular_Conveyor_belt");
+
+        Belt Slow_Belt_North_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{34}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_West_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{33}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_South_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{41}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_East_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{42}, 1, "Regular_Conveyor_belt");
+
+        //Fast
+        Belt Fast_Belt_North = new Belt(tilemap, Direction.NORTH,-1, new int[]{13}, 2, "Express_Conveyor_belt");
+        Belt Fast_Belt_West = new Belt(tilemap, Direction.WEST,-1, new int[]{22}, 2, "Express_Conveyor_belt");
+        Belt Fast_Belt_East = new Belt(tilemap, Direction.EAST,-1, new int[]{14}, 2, "Express_Conveyor_belt");
+        Belt Fast_Belt_South = new Belt(tilemap, Direction.SOUTH,-1, new int[]{21}, 2, "Express_Conveyor_belt");
+
+        Belt Express_North_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{19}, 2, "Express_Conveyor_belt");
+        Belt Express_East_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{20}, 2, "Express_Conveyor_belt");
+        Belt Express_South_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{28}, 2, "Express_Conveyor_belt");
+        Belt Express_West_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{27}, 2, "Express_Conveyor_belt");
+
+        Belt Express_North_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{18}, 2, "Express_Conveyor_belt");
+        Belt Express_West_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{17}, 2, "Express_Conveyor_belt");
+        Belt Express_South_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{25}, 2, "Express_Conveyor_belt");
+        Belt Express_East_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{26}, 2, "Express_Conveyor_belt");
+
+
+        Belt Pusher_Odd_North = new Belt(tilemap, Direction.NORTH, -1, new int[]{3, 11}, 1, "Pushers");
+        Belt Pusher_Odd_East = new Belt(tilemap, Direction.EAST, -1, new int[]{4, 12}, 1, "Pushers");
+        Belt Pusher_Odd_South = new Belt(tilemap, Direction.SOUTH, -1, new int[]{1, 9}, 1, "Pushers");
+        Belt Pusher_Odd_West = new Belt(tilemap, Direction.WEST, -1, new int[]{2, 10}, 1, "Pushers");
+
+//        Belt Pusher_Even_North = new Belt(tilemap, Direction.NORTH, -1, new int[]{11}, 1, "Pushers");
+//        Belt Pusher_Even_East = new Belt(tilemap, Direction.EAST, -1, new int[]{4}, 1, "Pushers");
+//        Belt Pusher_Even_South = new Belt(tilemap, Direction.SOUTH, -1, new int[]{1}, 1, "Pushers");
+//        Belt Pusher_Even_West = new Belt(tilemap, Direction.WEST, -1, new int[]{2}, 1, "Pushers");
+
+
+        Belt Gear_red = new Belt(tilemap, Direction.DEFAULT,TiledMapTileLayer.Cell.ROTATE_90, new int[]{53}, 0, "Gears");
+        Belt Gear_green = new Belt(tilemap, Direction.DEFAULT,TiledMapTileLayer.Cell.ROTATE_270, new int[]{54}, 0, "Gears");
+
+
+        actionTiles = new ActionTiles[]{hole, flag, repair};
+
+        belts = new Belt[]{Slow_Belt_North, Slow_Belt_West, Slow_Belt_East, Slow_Belt_South, Slow_Belt_North_East, Slow_Belt_East_South, Slow_Belt_South_West, Slow_Belt_West_North,
+                Slow_Belt_North_West, Slow_Belt_West_South, Slow_Belt_South_East, Slow_Belt_East_North, Fast_Belt_North, Fast_Belt_West, Fast_Belt_East, Fast_Belt_South, Express_North_East,
+                Express_East_South, Express_South_West, Express_West_North, Express_North_West, Express_West_South, Express_South_East, Express_East_North, Pusher_Odd_North, Pusher_Odd_East,
+                Pusher_Odd_South, Pusher_Odd_West, Gear_red, Gear_green,};
     }
 
     /**
@@ -87,16 +126,16 @@ public class MovementHandler {
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(),(int)player.getPosY(), null);
 
-        if(dir == Direction.NORTH && !isWall(player, dir, (int)player.getPosX(),(int)player.getPosY()+1)){
+        if(dir == Direction.NORTH && isWall(player, dir, (int) player.getPosX(), (int) player.getPosY() + 1)){
             player.addPosY(1);
         }
-        else if(dir == Direction.SOUTH && !isWall(player, dir, (int)player.getPosX(),(int)player.getPosY()-1)) {
+        else if(dir == Direction.SOUTH && isWall(player, dir, (int) player.getPosX(), (int) player.getPosY() - 1)) {
             player.addPosY(-1);
         }
-        else if(dir == Direction.WEST && !isWall(player, dir, (int)player.getPosX()-1,(int)player.getPosY())) {
+        else if(dir == Direction.WEST && isWall(player, dir, (int) player.getPosX() - 1, (int) player.getPosY())) {
             player.addPosX(-1);
         }
-        else if(dir == Direction.EAST && !isWall(player, dir, (int)player.getPosX()+1,(int)player.getPosY())) {
+        else if(dir == Direction.EAST && isWall(player, dir, (int) player.getPosX() + 1, (int) player.getPosY())) {
             player.addPosX(1);
         }
         else {
@@ -108,13 +147,13 @@ public class MovementHandler {
             if(belt.tileAction(player)) break;
         }
 
+        pushPlayer(player, dir);
+
         //checks if a player is on a an actionTile and executes that tileAction
         // only one tileAction will be called, i.e not allowed to activate more than one tile even if you jump to another ActionTile.
         for(ActionTiles tile : actionTiles) {
             if(tile.tileAction(player)) break;
         }
-
-        pushPlayer(player, dir);
         //setting the new player tile
         outOfBoard(player);
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
@@ -124,8 +163,14 @@ public class MovementHandler {
     private boolean pushPlayer(Player player, Direction dir) {
         Vector2 playerPos = player.getPos();
         for(Player play: players) {
-            if(play == player) continue;
+            if(play.equals(player)) continue;
             if (playerPos.x == play.getPos().x && playerPos.y == play.getPos().y) {
+                for(Belt belt : belts) {
+                    if(belt.isBelt(play)) {
+                        belt.tileAction(play);
+                        return true;
+                    }
+                }
                 movePlayer(dir, play);
             }
         }
@@ -163,19 +208,19 @@ public class MovementHandler {
 
         for(Direction wall : idToWallName.get(newPosWallId)) {
             if(dir == Direction.invert(wall)) {
-                return true;
+                return false;
             }
         }
         for(Direction wall : idToWallName.get(currentPosWallId)) {
-            if(dir == wall) {
-                return true;
+            if(dir.equals(wall)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private void outOfBoard(Player player) {
-        if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 11) {
+        if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 14) {
             player.isDestroyed();
             player.addPos(player.getCheckpoint());
             player.setFullHealth();

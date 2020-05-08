@@ -10,7 +10,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
@@ -32,19 +34,17 @@ import java.util.ArrayList;
  */
 public class RegisterScreen extends InputAdapter implements Screen {
 
-    private GameScreen gameScreen;
-    private RoboRally game;
-    private Player player;
-    private Stage stage;
-    private BitmapFont font;
-    private Table priorityTable;
-    private Table cardTable;
+    private final GameScreen gameScreen;
+    private final RoboRally game;
+    private final Player player;
+    private final Stage stage;
+    private final BitmapFont font;
     private Table chosenTable;
-    private Table rootTable;
-    private Deck deck;
-    private ArrayList<Card> cards;
+    private final Table rootTable;
+    private final Deck deck;
+    private final ArrayList<Card> cards;
     //isChosen is a list of the cardindexes of the cards chosen
-    private int[] isChosen;
+    private final int[] isChosen;
     private Boolean[] isLocked;
     private Image[] chosenImages;
     private ArrayList<Card> chosenCards;
@@ -64,9 +64,9 @@ public class RegisterScreen extends InputAdapter implements Screen {
         rootTable = new Table();
         deck = new Deck();
         cards = new ArrayList<>();
-        cardTable = makeCardTable(player.getCurrentHealth()-1);
+        Table cardTable = makeCardTable(player.getCurrentHealth()-1);
         chosenTable = makeChosenTable();
-        priorityTable = makePriorityTable();
+        Table priorityTable = makePriorityTable();
         rootTable.setFillParent(true);
         rootTable.add(priorityTable);
         rootTable.row();
@@ -91,22 +91,22 @@ public class RegisterScreen extends InputAdapter implements Screen {
 
     @Override
     public void resize(int i, int i1) {
-
+        //empty method body
     }
 
     @Override
     public void pause() {
-
+        //empty method body
     }
 
     @Override
     public void resume() {
-
+        //empty method body
     }
 
     @Override
     public void hide() {
-
+        //empty method body
     }
 
     @Override
@@ -246,10 +246,11 @@ public class RegisterScreen extends InputAdapter implements Screen {
     public Table makeCardTable(int health) {
         Table rootCardTable = new Table();
         Table tableForCards = new Table();
+        int cardsToDeal = health;
         if (health <= 5) {
-            health = 5;
+            cardsToDeal = 5;
         }
-        for (int i = 0; i < health; i++) {
+        for (int i = 0; i < cardsToDeal; i++) {
             Card card = deck.randomCard();
             cards.add(card);
             Image cardImage = new Image(new TextureRegionDrawable(new Texture(card.getFilepath())));

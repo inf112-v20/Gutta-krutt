@@ -11,16 +11,16 @@ import inf112.skeleton.app.cards.Direction;
  * a int for rotation if it is a rotate tile, -1 if no rotation
  * int steps to specify how many steps are to be takes when interacting with the belt tile
  * a string layer to specify what layer the belt is located in
- * @author sedric, fredrik
+ * @author Sedric Kvarnes, Fredrik Larsen
  */
 public class Belt implements ActionTiles {
 
-    private TiledMap tiledmap;
-    private Direction dir;
-    private int rotation;
+    private final TiledMap tiledmap;
+    private final Direction dir;
+    private final int rotation;
     private final int[] ID;
-    private int steps;
-    private String layer;
+    private final int steps;
+    private final String layer;
 
     public Belt(TiledMap tiledmap, Direction dir, int rotation, int[] ID, int steps, String layer) {
         this.tiledmap = tiledmap;
@@ -49,8 +49,8 @@ public class Belt implements ActionTiles {
                 player.addPosX(-steps);
             }
             if(rotation != -1) {
-                player.setRotation(rotation);
-                player.setDirection(rotation);
+                player.setRotation((player.getDirection()+rotation) % 4);
+                player.setDirection((player.getDirection()+rotation) % 4);
             }
             return true;
         }

@@ -52,34 +52,33 @@ fungerer på?
     3.  Spiller trenger ett fungerende brett
         *   Som spiller trenger jeg ett fungerende brett for å kunne spille.
         *   Som spiller trenger jeg ett fungerende brett for å ha ett mål.
-    
+        
     4.  Spiller trenger brukerhåndbok
         *   Som spiller trenger jeg en brukerhåndbok for å vite "the way of the game"
         *   Som spiller trenger jeg en brukerhåndbok for å vite hvordan jeg kan vinne.
         *   Som spiller trenger jeg en brukerhåndbok for å vite om spill objekter.
     
-    
 *   Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
-    *   
     
 *   Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge utfra hva som er gitt fra kunde, hvorfor er dette gjort?
     *   Spillet trenger ett fungerende brett
     
 *   Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs). 
-    *   
+    *   Conveyor belts er ikke feilfrie, vi har ikke funnet et bra måte å sjekke om spiller kommer fra 
+    conveyorbelt.
 
 ## Deloppgave 3: Produktleveranse og kodekvalitet
 
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelderne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
-    *   Står i Readme.md
+    *   Står forklart i Readme.md
     
 *   Prosjektet skal kunne bygge, testes og kjøres på Linux, Windows og OSX.
 
 *   Lever klassediagram. (Hvis det er veldig mange klasser, lager dere for de viktigste.)
     *   Ligger i oblig4 mappen
     
-*   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk. 
-    *   
+*   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk.
+    *   Kodekvaliteten ligger på en A i følge Travis CI
     
 *   Utførte oppgaver skal være ferdige.
 
@@ -91,11 +90,16 @@ fungerer på?
         *   Hull
         *   Out of board
         *   Gears
+        *   Pushers
+        *   Flag
+        *   Win condition
             
     
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
     committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også
     designfiler)
+    *   Alle har bidratt bra i dette gruppeprosjektet, rollefordelingen har fungert utmerket og alle har vært med å dra på lasset. Eneste er at den ujevne fordelingen av commits 
+    kan forklares ved at vi har brukt parprogrammering, og enkelte har også hatt oppgaver utenom koding som dokumentasjon og readme filer. Som lag føler vi at alle har gjort sitt beste.
 
 *   Prosjektresentasjonen teller ved denne leveransen. Dere blir vurdert på demo av spillet, 
     en beskrivelse av det viktigste dere har lært, en beskrivelse av hvordan nedstengningen av universitetet påvirket prosjektet 
@@ -104,30 +108,42 @@ fungerer på?
 ## Vurderingskriterier og vekting
 
 *   Om teamet ønsker, kan all tekst leveres på engelsk.
+
 *   Vurderingskriterier ligger på Mitt.Uib
 
-**Innleveringsfrist: fredag 08. mai 2020, klokken 16.00**
+### Innleveringsfrist: fredag 08. mai 2020, klokken 16.00
 
 For å få oppgaven godkjent, må gruppen:
 *   Skrive fornuftige Commit meldinger når endringer lastes opp i gruppens repo.
+
 *   Laste opp de etterspurte resultatene i repo.
+
 *   Laste opp leveransen til github i markdown-format.
+
 *   Leveransen skal lastes opp i egen mappe i repoet, som heter "Deliverables". Hver oblig blir da "ObligX.md"
 i den mappen. Eventuelle slides kan lastes inn opp til samme mappe.
+
 *   Tag en commit av kildekoden som er leveransen til hver oblig. Dette gjør det enklere for de som skal vurdere å gjøre det på riktig tidspunkt.
 
-**I tillegg til koden, vil dere også vurderes på teamarbeidet gjennom semesteret.**
+### I tillegg til koden, vil dere også vurderes på teamarbeidet gjennom semesteret.**
 
 For å få oppdraget godkjent, må hvert lagmedlem:
 *   Møte og delta aktivt i minst 75% av ukentlige møter med deres TA og presentasjon av prosjektet til slutt.
+    *   Alle i gruppen har deltatt mer enn 75% 
+
 *   Utføre de tildelte oppgavene under og mellom disse ukentlige møtene, som avtalt i teamet.
+    *   Alle har jobbet både i avtalte møter/timer og utenom. I dette gruppeprosjektet har vi hatt svært god kommunikasjon og jobbet bra sammen. Alle har deltatt på avtalte møter og jobbet bra.
+
 *   Rapportere tilbake til teamet om framdrift og/eller problemer som oppstår, som avtalt i teamet.
 
 **Vektlegging:** Denne leveransen teller 12,5% av sluttkarakteren.
 
 ## Tips
 *   Husk å lese gjennom retteskjema for å få med alle punktene vi gir poeng for. 
+
 *   Mockito kan være et bra mock-rammeverk i tillegg til JUnit. Generelt sett er det også mulig å skrive manuelle
 tester. Husk at testene dere skriver skal brukes. (Som nevnt i deloppgave 3)
+
 *   Travis og Codacy kan være til god hjelp for å sjekke at koden bygger før dere pusher til master.
+
 *   Husk å kjøre programmet før dere lager en tag til levering slik at dere vet at det kjører.

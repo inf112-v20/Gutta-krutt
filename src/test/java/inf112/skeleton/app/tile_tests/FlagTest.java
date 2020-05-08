@@ -1,9 +1,8 @@
-package inf112.skeleton.app.Tiles;
+package inf112.skeleton.app.tile_tests;
 
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.RoboRally;
-import inf112.skeleton.app.tiles.Flag;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,12 +10,10 @@ import static org.junit.Assert.assertEquals;
 
 public class FlagTest {
 
-    Flag flag;
     Player player;
 
     @Before
     public void init() {
-        RoboRally game = new RoboRally();
         //flag = new Flag();
         player = new Player(0,0, "assets/playerTexture/robot0.png");
     }
