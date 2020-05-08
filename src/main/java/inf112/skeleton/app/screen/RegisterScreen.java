@@ -20,13 +20,13 @@ import inf112.skeleton.app.player.Player;
 import inf112.skeleton.app.RoboRally;
 import inf112.skeleton.app.cards.Card;
 import inf112.skeleton.app.cards.Deck;
-
 import java.util.ArrayList;
 
 /**
  * The screen is built up of a stage containing a root table and two tables inside the root table. One table for the cards to chose from and
  * one table for the cards you chose. When you chose a card the chosen table is removed from the root table, updated and added to the root
- * table again. This is how most of the functions that change the chosen table work.
+ * table again. This is how most of the functions that change the chosen table work. There is a tree structure of tables that make up
+ * the registerscreen.
  *
  * Choose numbers between 1-9 to chose cards, R to remove cards and G to go back to the GameScreen.
  *
@@ -49,6 +49,12 @@ public class RegisterScreen extends InputAdapter implements Screen {
     private Image[] chosenImages;
     private ArrayList<Card> chosenCards;
 
+    /**
+     * Adds all the necessary tables to the registerscreen to be able to choose cards.
+     * @param gameScreen what gamescreen is used
+     * @param game what game is used
+     * @param player which player that is locking in a sequence
+     */
     public RegisterScreen(GameScreen gameScreen, RoboRally game, Player player) {
         this.game = game;
         this.gameScreen = gameScreen;

@@ -6,10 +6,10 @@ package inf112.skeleton.app.cards;
  */
 public class Card implements Comparable<Card> {
 
-    private int distance;
-    private int priority;
-    private int changeDirection;
-    private String filepath;
+    private final int distance;
+    private final int priority;
+    private final int changeDirection;
+    private final String filepath;
 
     /**
      * @param distance the distance to move

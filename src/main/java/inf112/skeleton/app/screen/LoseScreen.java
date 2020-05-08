@@ -11,8 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.utils.Align;
 
 /**
- * Just a basic "Lose" screen to display when a player either dies or lose
- * the game.
+ * Just a basic "Lose" screen to display when a player either dies or loses the game.
  */
 public class LoseScreen implements Screen {
 
@@ -66,6 +65,10 @@ public class LoseScreen implements Screen {
         font.dispose();
     }
 
+    /**
+     * Displays a "you lose" text on the screen
+     * @return table containing the text
+     */
     public Table makeYouLostTable() {
         Table youLostTable = new Table();
         TextField.TextFieldStyle style = new TextField.TextFieldStyle();

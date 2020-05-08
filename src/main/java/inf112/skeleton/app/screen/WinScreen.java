@@ -18,24 +18,21 @@ import inf112.skeleton.app.RoboRally;
 
 public class WinScreen extends InputAdapter implements Screen  {
 
-    private Game game;
     private Stage stage;
     private BitmapFont font;
-    private RoboRally roboRally;
 
-    public WinScreen(Game game) {
-        this.game = game;
+    /**
+     * Simple winscreen that displays that you have won the game.
+     * @author Vegard Birkenes
+     */
+    public WinScreen() {
         stage = new Stage();
         font = new BitmapFont();
-        roboRally = new RoboRally();
         font.getData().setScale(4);
         Table table = new Table();
         TextField textField = makeTextField();
-        TextButton textButton = makeTextButton();
         table.setFillParent(true);
         table.add(textField).width(1000);
-        table.row();
-        table.add(textButton);
         stage.addActor(table);
     }
 
@@ -79,6 +76,10 @@ public class WinScreen extends InputAdapter implements Screen  {
         font.dispose();
     }
 
+    /**
+     * Text that tells you that you won
+     * @return textfield with congratulations
+     */
     public TextField makeTextField() {
         TextField.TextFieldStyle style = new TextField.TextFieldStyle();
         style.font = font;
@@ -87,20 +88,4 @@ public class WinScreen extends InputAdapter implements Screen  {
         text.setAlignment(Align.center);
         return text;
     }
-
-    public TextButton makeTextButton() {
-        TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
-        style.font = font;
-        style.fontColor = Color.RED;
-        TextButton button = new TextButton("Play Again", style);
-        button.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new MenuScreen(new RoboRally()));
-            }
-        });
-        return button;
-    }
-
-
 }

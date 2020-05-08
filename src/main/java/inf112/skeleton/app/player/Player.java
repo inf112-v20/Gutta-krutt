@@ -6,23 +6,21 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.math.Vector2;
 import inf112.skeleton.app.cards.Card;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
- * new instance of a player, containing methods to get position, displaying and rotating
- * player. instanciate player at given X and Y coordinates
+ * New instance of a player, containing methods to get position, displaying and rotating
+ * player. Instantiate player at given X and Y coordinates
  * @author Sedric Kvarnes, Vegard Birkenes, Fredrik Larsen, Oskar Marthinussen
  */
 public class Player {
     private Vector2 position;
     private Vector2 checkpoint;
     private TiledMapTileLayer.Cell playerNormal;
-    private ArrayList<Card> sequence; //skal kanskje dette endres til array?
+    private ArrayList<Card> sequence;
     private ArrayList<Card> lastTurnSequence;
     private String filePath;
-    private int direction; // Direction is an int because TiledMapTileLayer.Cell.ROTATE_* is an int.
+    private int direction;
     private int health;
     private int lives;
     private boolean[] visitedFlags;
@@ -44,12 +42,10 @@ public class Player {
     }
 
     /**
-     * sets the roation of a player
+     * Sets the rotation of a player
      * @param cell_rotation takes an int form TiledMapTileLayer.Cell.ROTATE_* (0,90,180,270)
      */
     public void setRotation(int cell_rotation) { playerNormal.setRotation(cell_rotation); }
-
-    public int getRotation() {return playerNormal.getRotation(); }
 
     public void setCheckpoint() {checkpoint = position.cpy();}
 
@@ -73,12 +69,14 @@ public class Player {
 
     public void setDirection(int direction) {this.direction = direction;}
 
-    public void isDestroyed() {health = 0;}
-
     public void setFullHealth() {health = 10;}
 
+    public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
+
+    public ArrayList<Card> getSequence() { return sequence; }
+
     /**
-     * reduces lives of a player by one
+     * Reduces lives of a player by one.
      */
     public void destroyed() {lives -= 1;}
 
@@ -87,7 +85,7 @@ public class Player {
     public int getCurrentHealth () { return health; }
 
     /**
-     * reduces health by damage
+     * Reduces health by damage
      * @param damage the amount of damage
      */
     public void takeDamage(int damage) {
@@ -106,22 +104,20 @@ public class Player {
         setSequence(null);
     }
 
-    public TiledMapTileLayer.Cell getPlayerNormal() {return playerNormal;}
-
     /**
-     * loading in picture of player, splitting it into 300X300px and setting
+     * Loading in picture of player, splitting it into 300X300px and setting
      * correct player pitctures to the player.
      */
     public void renderPlayerTexture() {
-        //loading in player texture
         Texture texture = new Texture(filePath);
         TextureRegion textureRegion = new TextureRegion(texture);
-        //splitting the picture into squares [row][column]
         TextureRegion[][] pictures = textureRegion.split(300, 300);
-
         playerNormal.setTile(new StaticTiledMapTile(pictures[0][0]));
     }
 
+    /**
+     * Checks if a flag has been captured and updates the wincondition if a flag is visited in correct order
+     */
     public void updateWinCondition() {
         if (getPosX() == 2.0 && getPosY() == 11.0 && !visitedFlags[0]) {
             visitedFlags[0] = true;
@@ -137,14 +133,24 @@ public class Player {
         }
     }
 
+    /**
+     * Checks if a player has won the game
+     * @return true if all flags have been visited
+     */
     public boolean checkWinCondition() {
         return visitedFlags[0] && visitedFlags[1] && visitedFlags[2];
     }
 
-
+    /**
+     * Sets a sequence of card for the player
+     * @param chosenCards the cards that are chosen.
+     */
     public void setSequence(ArrayList<Card> chosenCards) {
         lastTurnSequence = sequence;
         int card = 0;
+        if (chosenCards == null) {
+            return;
+        }
         if (chosenCards.size() == 5){
             sequence = chosenCards;
         }
@@ -158,5 +164,4 @@ public class Player {
             }
         }
     }
-    public ArrayList<Card> getSequence() { return sequence; }
 }

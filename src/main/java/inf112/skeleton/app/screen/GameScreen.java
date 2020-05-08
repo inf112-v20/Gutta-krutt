@@ -56,6 +56,15 @@ public class GameScreen extends InputAdapter implements Screen {
         registerScreen = new RegisterScreen(this, game, playerList.get(0));
     }
 
+    public MovementHandler getMovementHandler() { return movementHandler; }
+
+    public ArrayList<Player> getPlayers() { return playerList; }
+
+    /**
+     * Sets the registerscreen for the new sequence
+     * @param regScreen RegisterScreen
+     */
+    public void setRegisterScreen(RegisterScreen regScreen) { registerScreen = regScreen; }
 
     /**
      * Initialize all the players at the start of the game.
@@ -64,7 +73,6 @@ public class GameScreen extends InputAdapter implements Screen {
     private void createPlayers(int amountOfPlayers){
         Random ran = new Random();
         ArrayList<int[]> startPos = new ArrayList<>();
-
         // Add all starting positions in one array. 0,1, 3, 5, 6, 8, 10, 11
         int[][] coordinates = {{0,1}, {1,1}, {3, 1},{5, 1}, {6, 1}, {8, 1}, {10, 1}, {11, 1}};
         Collections.addAll(startPos, coordinates);
@@ -75,15 +83,13 @@ public class GameScreen extends InputAdapter implements Screen {
             playerList.add(y, new Player(playerStartPos[0], playerStartPos[1], path));
         }
         game.cpu1(playerList.get(0));
-        playerList.get(0).takeDamage(5);
     }
 
     /**
-     * Sets the registerscreen for the new sequence
-     * @param regScreen RegisterScreen
+     * Used for moving the player. You can move with the arrows for debugging purposes.
+     * @param keycode which key is pressed
+     * @return true after player has been moved.
      */
-    public void setRegisterScreen(RegisterScreen regScreen) { registerScreen = regScreen; }
-
     @Override
     public boolean keyUp(int keycode) {
         movementHandler = new MovementHandler(tilemap, playerList);
@@ -111,17 +117,9 @@ public class GameScreen extends InputAdapter implements Screen {
             }
             if (playerList.get(0).checkWinCondition()) {
                 System.out.println("YOU WIN!!!");
-                game.setScreen(new WinScreen(game));
+                game.setScreen(new WinScreen());
             }
             return movePlayer;
-    }
-
-    public MovementHandler getMovementHandler() {
-        return movementHandler;
-    }
-
-    public ArrayList<Player> getPlayers() {
-        return playerList;
     }
 
     @Override
@@ -129,6 +127,10 @@ public class GameScreen extends InputAdapter implements Screen {
         Gdx.input.setInputProcessor(this);
     }
 
+    /**
+     * Renders all players on the map.
+     * @param v time in seconds from the last render (never used)
+     */
     @Override
     public void render(float v) {
         Gdx.gl.glClearColor( 180/255F, 180/255F ,180/255F, 0);
@@ -137,8 +139,7 @@ public class GameScreen extends InputAdapter implements Screen {
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
 
-        for (int i = 0; i < playerList.size(); i++) {
-            Player player = playerList.get(i);
+        for (Player player : playerList) {
             playerLayer.setCell((int) player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
             player.renderPlayerTexture();
         }
@@ -146,26 +147,24 @@ public class GameScreen extends InputAdapter implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        //empty method body
     }
 
     @Override
     public void pause() {
-
+        //empty method body
     }
 
     @Override
     public void resume() {
-
+        //empty method body
     }
 
     @Override
     public void hide() {
-
+        //empty method body
     }
 
     @Override
-    public void dispose() {
-        font.dispose();
-    }
+    public void dispose() { font.dispose(); }
 }
