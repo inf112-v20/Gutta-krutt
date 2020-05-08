@@ -22,7 +22,7 @@ public class RoboRally extends Game {
 
     @Override
     public void create() {
-        gameScreen = new GameScreen(this);
+        gameScreen = new GameScreen(this, "Easy");
         menuScreen = new MenuScreen(this);
         setScreen(menuScreen);
     }
@@ -38,6 +38,8 @@ public class RoboRally extends Game {
     public GameScreen getGameScreen() {
         return gameScreen;
     }
+
+    public void setGameScreen(String difficulty) { gameScreen = new GameScreen(this, difficulty); }
 
 
     /**

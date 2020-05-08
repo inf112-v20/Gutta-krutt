@@ -36,7 +36,7 @@ public class GameScreen extends InputAdapter implements Screen {
     private RegisterScreen registerScreen;
     private MovementHandler movementHandler;
 
-    public GameScreen(RoboRally game) {
+    public GameScreen(RoboRally game, String difficulty) {
         this.game = game;
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -46,10 +46,8 @@ public class GameScreen extends InputAdapter implements Screen {
         dummy = new Player(6,1, "assets/playerTexture/robot1.png");
         playerList.add(player);
         playerList.add(dummy);
-
-        //initialize a new tilemap
         TmxMapLoader tmxLoader = new TmxMapLoader();
-        tilemap = tmxLoader.load("assets/maps/Map_Easy.tmx");
+        tilemap = tmxLoader.load("assets/maps/Map_" + difficulty + ".tmx");
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
         camera.setToOrtho(false, WIDTH*TILESIZE , HEIGHT*TILESIZE);
