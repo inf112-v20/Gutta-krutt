@@ -214,7 +214,7 @@ bindes sammen med eksisterende kode for å execute dem.
 * Legge til win condition
 * Skal utbedre tester
 
-## Møtereferat 24.04.2020 (10:00 - 12:00) (Remote via Dicord)
+## Møtereferat 24.04.2020 (10:00 - 12:00) (Remote via Discord)
 (Til stede: Fredrik, Sedric, Vegard, Oskar)
 
 #### Gjort ila uken
@@ -224,3 +224,19 @@ bindes sammen med eksisterende kode for å execute dem.
 #### Til neste gang
 * Målet er å bli ferdig med oppgavene til neste fredag slik at vi kan binde sammen spillet vårt.
 * Fortsette å utbrede tester
+
+## Møtereferat 08.05.2020 (Remote via Discord)
+(Til stede: Fredrik, Vegard, Sedric)
+(10:15 - )
+
+###Gjort ila uken
+*   Laget Usermanual
+*   Gjort at programmet sorterer kortene basert på prioritet
+*   Fikset på brettet
+*   Win/Lose screen
+*   Finpusset å småting
+*   Ferdigstilt Readme.md filen
+
+### Gjort ila møtet
+*   Mulig å velge mellom ulike spillerbrett
+*   Multiplayer
