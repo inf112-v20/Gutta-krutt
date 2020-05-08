@@ -221,7 +221,7 @@ public class MovementHandler {
 
     private void outOfBoard(Player player) {
         if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 14) {
-            player.isDestroyed();
+            player.destroyed();
             player.addPos(player.getCheckpoint());
             player.setFullHealth();
         }

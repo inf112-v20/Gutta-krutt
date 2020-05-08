@@ -106,7 +106,6 @@ public class GameScreen extends InputAdapter implements Screen {
         }
 
         boolean movePlayer = movementHandler.movePlayer(wayToMove, playerList.get(0));
-        if (playerList.get(0).checkWinCondition()) {
             if (playerList.get(0).getLives() <= 0) {
                 game.setScreen(new LoseScreen());
             }
@@ -114,7 +113,6 @@ public class GameScreen extends InputAdapter implements Screen {
                 System.out.println("YOU WIN!!!");
                 game.setScreen(new WinScreen(game));
             }
-        }
             return movePlayer;
     }
 
