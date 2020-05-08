@@ -3,35 +3,39 @@
 ## Deloppgave 1: Team og prosjekt
 
 *   Referat fra møter siden forrige leveranse skal legges ved.
-    *   deliverables/Møtereferat.md
+    *   [Møtereferat](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/M%C3%B8tereferat.md)
     
 *   Hvordan fungerer rollene i teamet? Trenger dere å oppdatere hvem som er teamlead eller kundekontakt?
     *   Rollene fungerer bra slik som de er satt, så vi velger å ikke oppdatere rollene. Fredrik som 
-    teamlead setter opp møter i gruppen, mens utviklerne har jobbet godt med prosjektet, utover
-    det som var forventet. Nå mot slutten har alle jobbet som utviklere og gått litt vekk fra å
+    teamlead setter opp møter i gruppen, mens utviklerne har jobbet godt med prosjektet. Nå mot slutten har alle jobbet som utviklere og gått litt vekk fra å
     ha én leder til der alle leder sin del av prosjektet.
 
 *   Er det noen erfaringer enten team-messig eller mtp prosjektmetodikk som er verdt å nevne? Synes teamet
 at de valgene dere har tatt er gode? Hvis ikke, hva kan dere gjøre annerledes for å forbedre måten teamet
 fungerer på?
     *   Vi syns prosjektmetodikken Kanban har hatt en svært positiv innvirkning på dette prosjektet. Vi har hatt god oversikt og fremgang siden starten av semesteret.
-    Parprogrammering har blitt litt vanskelig, som har ført til at alle deler problemer (Discord),
+    Parprogrammering har blitt litt vanskelig, som har ført til at alle deler problemer gjennom Discord,
     hjelper hverandre med å finne eventuelle løsninger og fordele arbeidsoppgaver.
     
 *   Gjør et retrospektiv hvor dere vurderer prosjektet har gått. Hva har dere gjort bra, hva hadde dere gjort annerledes hvis dere begynte på nytt?
-    *   Vi føler, etter pågående krise at vi har hatt kontroll og gjennomført oppgaven bra. Noe av det vi muligens ville gjort annerledes er at flere av medlemmene i gruppen hadde satt seg inn
+    *   Vi føler, etter pågående krise at vi har hatt kontroll og gjennomført oppgaven bra. Ved bruk av kanban, Travis CI og parprogrammering har 
+        vi organisert teamet bra og alle har fått en god oversikt og erfaring. Skulle vi startet på nytt hadde vi brukt samme strategi og hjelpemidler
+        som det vi har brukt her. Noe av det vi muligens ville gjort annerledes er at alle i gruppen hadde satt seg inn
         i LibGdx. Vi ville også ha spilt spillet fysisk slik at vi har personlig erfaring med spillet, men pga korona ble dette ikke til.
         I tilegg skulle vi ønske at vi startet med testbasert utvikling fra starten. Vi har møtt noen hindringer
-        når det kommer til testing med tanke på at LibGDX er brukt i store deler av prosjektet.
+        når det kommer til testing med tanke på at LibGDX er brukt i store deler av prosjektet. Til slutt, skulle vi gjerne abstrahert mer slik at programmet blir
+        enda mer oversiktlig og effektivt.
     
 *   Legg ved skjermdump av project board ved innlevering. Sørg for at det er oppdatert med siste status ved innlevering. 
     *   [Projectboard](https://github.com/inf112-v20/Gutta-krutt/projects/2)
-    ![Sequence Board](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/oblig4/Projectboard_Oblig4.png)
+    
+    ![Projectboard](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/oblig4/Projectboard_Oblig4.png)
     
 *   Hvordan fungerer gruppedynamikken og kommunikasjonen nå i forhold til i starten? Hvordan påvirket karantene og nedstengning teamet og fremdriften?
-    *   Gruppedynamikken og kommunikasjonen har blitt noe påvirket av den pågåede pandemien. Det at vi ikke fysisk kan møtes og diskutere oppgaven sammen har satt sine preg.
-        Vi er nok mindre effektive enn det vi var tidligere i år grunnet at det er vanskeligere å jobbe med et stort gruppeprosjekt sammen når medlemmene er spredt utover Norge.
-        Det er vanskelig å forklare kode over discord/videochat når alle medlemmene ikke er fysisk til stedet.
+    *   Gruppedynamikken og kommunikasjonen har blitt noe påvirket av den pågåede pandemien. Det at vi ikke fysisk kan møtes og diskutere oppgaven sammen har satt sine preg,
+        vi kan ikke parprogrammere som tidligere, noe som har ført til at mye har gått over discord ved hjelp av skjermdeling.
+        Vi var nok mindre effektive i starten av nedstengingen grunnet at det er vanskeligere å jobbe med et stort gruppeprosjekt sammen når medlemmene er spredt utover Norge.
+        Selvom det tok litt tid å venne seg til den nye hverdagen, løste vi problemene etterhvert som de oppsto ved god kommunikasjon via discord.
 
 ## Deloppgave 2: Krav
 
@@ -82,6 +86,8 @@ fungerer på?
 *   Lever klassediagram. (Hvis det er veldig mange klasser, lager dere for de viktigste.)
     *   [Klassediagram](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/oblig4/Klassediagram.png)
     
+    ![Klassediagram](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/oblig4/Klassediagram.png)
+    
 *   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk.
     *   [Kodekvaliteten ligger på en A i følge Travis CI](https://travis-ci.com/github/inf112-v20/Gutta-krutt)
     
@@ -90,14 +96,22 @@ fungerer på?
 *   Hvis dere tester manuelt: lever beskrivelser av hvordan testen foregår, slik at gruppeleder kan utføre testen selv.
     *   Ved å bevege spilleren med piltastene kan du teste:
         *   Checkpoints (Du tester checkpoints ved å bevege spilleren over ett checkpoint, for å så dø. Spilleren skal da respawne på sist besøkte checkpoint)
+        
         *   Vegger (Du tester vegger ved å bevege spilleren mot en vegg. Spilleren skal da bli stoppet av veggen)
+        
         *   Conveyorbelts (Du tester conveyorbelts ved å bevege spilleren opp på ett conveyor belt. Spilleren skal da bli flyttet i riktig rettning)
+        
         *   Hull (Du tester hull ved å bevege spilleren ved å bevege spilleren over ett hull. Spilleren skal da dø og respawne på siste checkpoint + miste ett liv)
+        
         *   Out of board (Du tester hull ved å bevege spilleren ut av brettet. Spilleren skal da dø og respawne på siste checkpoint + miste ett liv)
+        
         *   Gears (Du tester gears ved å bevege spilleren over ett gear. Spilleren skal da bli rotert i riktig retning i henhold til player.getDirection)
+        
         *   Pushers (Du tester pushers ved å bevege spilleren forbi en pusher. Spilleren skal da bli dyttet i riktig retning i henhold til pusheren)
+        
         *   Flag (Du tester flag ved å bevege spilleren over ett flag. Spilleren skal da plukke dette opp hvis spilleren har de foregående flaggene. (Det vil si at man 
         trenger flag 1 og 2 for å plukke opp flag 3) Flagget skal også fungere som checkpoint. Det sjekker du ved å dø, for å så se om du respawner på flagget)
+        
         *   Win condition (Du tester win condition ved å bevege spilleren over flaggene i riktig rekkefølge. Da skal du få opp en "Win Screen")
     
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
@@ -108,7 +122,7 @@ fungerer på?
 
 *   Prosjektresentasjonen teller ved denne leveransen. Dere blir vurdert på demo av spillet, 
     en beskrivelse av det viktigste dere har lært, en beskrivelse av hvordan nedstengningen av universitetet påvirket prosjektet 
-    og hva dere ville gjort annerledes nå som dere har mer erfaring med gruppearbeid. 
+    og hva dere ville gjort annerledes nå som dere har mer erfaring med gruppearbeid.
 
 ## Vurderingskriterier og vekting
 
