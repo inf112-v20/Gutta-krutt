@@ -7,10 +7,9 @@ Our goal is to create the most realistic digital versjon of the classic Robo Ral
 We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/rules/robo_rally_rules.pdf)
 
 ## Game content
--   [2 Player boards](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Maps) (With a possibility to make unique boards, just [install Tiled](https://www.mapeditor.org/) and you're good to go!)
--   [Rulebook](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/extra/)
--   [6 Awesome robots](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/Robots)
--   3 Flags
+-   [2 Player boards](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/maps) (With a possibility to make unique boards, just [install Tiled](https://www.mapeditor.org/) and you're good to go!)
+-   [Rulebook](https://github.com/inf112-v20/Gutta-krutt/blob/master/src/main/java/inf112/skeleton/app/screen/UserManual.java)
+-   [6 Awesome robots](https://github.com/inf112-v20/Gutta-krutt/tree/master/assets/playerTexture)
 -   82 Programcards 
 -   One sequence board
 
@@ -20,7 +19,7 @@ We got the rules from: [RoboRally Rulebook 2016](https://media.wizards.com/2015/
 3.  Build game with: `mvn clean install`
 
 ### How to run the game
--   Run main.java which is located in: _src/main/java/roborally_in your IDE of choice.
+-   Run main.java which is located in: _src/main/java/roborally_ in IDE of your choice.
 -   Press the start button
 
 ### How to play
