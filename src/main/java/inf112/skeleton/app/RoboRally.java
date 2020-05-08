@@ -128,33 +128,9 @@ public class RoboRally extends Game {
     }
 
     /**
-
-     * Executes one card. Checks what kind of card it is and does the correct action for such a card.
-     * @param card card to be executed
-     * @param player the player wanting to execute the card
-     */
-    public void executeCard(Card card, Player player) {
-        MovementHandler movementHandler = gameScreen.getMovementHandler();
-        int distance = card.getDistance();
-        int rotation = card.getChangeDirection();
-        if (rotation > 0) {
-            player.setRotation((player.getDirection() + rotation) % 4);
-            player.setDirection((player.getDirection() + rotation) % 4);
-        }
-        else if (distance > 0) {
-            for (int i = 0; i < distance; i++) {
-                movementHandler.movePlayer(player.getDirection(), player);
-            }
-        } else if (distance == -1) {
-            movementHandler.movePlayer((player.getDirection() + 2) % 4, player);
-        }
-    }
-
-    /**
      * Pick 5 random cards for a CPU-player
      * @param player The selected playerg
      */
-
     public void cpu1(Player player){
         Deck deck = new Deck();
         ArrayList<Card> seq = new ArrayList<>();
