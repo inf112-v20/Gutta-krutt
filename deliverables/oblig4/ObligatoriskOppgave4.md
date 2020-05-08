@@ -25,7 +25,8 @@ fungerer på?
         når det kommer til testing med tanke på at LibGDX er brukt i store deler av prosjektet.
     
 *   Legg ved skjermdump av project board ved innlevering. Sørg for at det er oppdatert med siste status ved innlevering. 
-    *   Ligger i oblig4 mappen
+    *   [Projectboard](https://github.com/inf112-v20/Gutta-krutt/projects/2)
+    ![Sequence Board](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/oblig4/Projectboard_Oblig4.png)
     
 *   Hvordan fungerer gruppedynamikken og kommunikasjonen nå i forhold til i starten? Hvordan påvirket karantene og nedstengning teamet og fremdriften?
     *   Gruppedynamikken og kommunikasjonen har blitt noe påvirket av den pågåede pandemien. Det at vi ikke fysisk kan møtes og diskutere oppgaven sammen har satt sine preg.
@@ -74,30 +75,30 @@ fungerer på?
 ## Deloppgave 3: Produktleveranse og kodekvalitet
 
 *   Dere må dokumentere hvordan prosjektet bygger, testes og kjøres, slik at det er lett for gruppelderne å bygge, teste og kjøre koden deres. Under vurdering kommer koden også til å brukertestes.
-    *   Står forklart i Readme.md
+    *   Står forklart i [Readme](https://github.com/inf112-v20/Gutta-krutt/blob/master/README.md)
     
 *   Prosjektet skal kunne bygge, testes og kjøres på Linux, Windows og OSX.
 
 *   Lever klassediagram. (Hvis det er veldig mange klasser, lager dere for de viktigste.)
-    *   Ligger i oblig4 mappen
+    *   [Klassediagram](https://github.com/inf112-v20/Gutta-krutt/blob/master/deliverables/oblig4/Klassediagram.png)
     
 *   Kodekvalitet og testdekning vektlegges. Merk at testene dere skriver skal brukes i produktet. Det kan være smart å skrive manuelle tester for å teste det som er grafisk.
-    *   Kodekvaliteten ligger på en A i følge Travis CI
+    *   [Kodekvaliteten ligger på en A i følge Travis CI](https://travis-ci.com/github/inf112-v20/Gutta-krutt)
     
 *   Utførte oppgaver skal være ferdige.
 
 *   Hvis dere tester manuelt: lever beskrivelser av hvordan testen foregår, slik at gruppeleder kan utføre testen selv.
     *   Ved å bevege spilleren med piltastene kan du teste:
-        *   Checkpoints, man beveger spilleren over et checkpoint og dør med vilje for å sjekke at det funker.
-        *   Vegger, man beveger spiller mot en vegg for å sjekke at spilleren ikke går gjennom veggen.
-        *   Conveyorbelts, man beveger spilleren inn på conveyorbelt fra ulike retninger for å sjekke at man blir dyttet/rotert i riktig retning.
-        *   Hull, beveger seg over et hull og sjekker at spiller dør og respawner på riktig sted og at man mister et liv.
-        *   Out of board, beveger seg ut av brettet og sjekker at spiller respawner på riktig sted og at man mister et liv.
-        *   Gears, går på et gear fra ulike retninger for å sjekke at spilleren blir rotert riktig vei i henhold til spillers retning fra før.
-        *   Pushers, går på en pusher og sjekker at man blir dyttet i riktig retning.
-        *   Flag, går over flaggene i ulik rekkefølge for å sjekke at man bare kan ta flaggene i riktig rekkefølge.
-        *   Win condition, går over alle flaggene i riktig rekkefølge og sjekker om man får opp riktig skjerm.
-            
+        *   Checkpoints (Du tester checkpoints ved å bevege spilleren over ett checkpoint, for å så dø. Spilleren skal da respawne på sist besøkte checkpoint)
+        *   Vegger (Du tester vegger ved å bevege spilleren mot en vegg. Spilleren skal da bli stoppet av veggen)
+        *   Conveyorbelts (Du tester conveyorbelts ved å bevege spilleren opp på ett conveyor belt. Spilleren skal da bli flyttet i riktig rettning)
+        *   Hull (Du tester hull ved å bevege spilleren ved å bevege spilleren over ett hull. Spilleren skal da dø og respawne på siste checkpoint + miste ett liv)
+        *   Out of board (Du tester hull ved å bevege spilleren ut av brettet. Spilleren skal da dø og respawne på siste checkpoint + miste ett liv)
+        *   Gears (Du tester gears ved å bevege spilleren over ett gear. Spilleren skal da bli rotert i riktig retning i henhold til player.getDirection)
+        *   Pushers (Du tester pushers ved å bevege spilleren forbi en pusher. Spilleren skal da bli dyttet i riktig retning i henhold til pusheren)
+        *   Flag (Du tester flag ved å bevege spilleren over ett flag. Spilleren skal da plukke dette opp hvis spilleren har de foregående flaggene. (Det vil si at man 
+        trenger flag 1 og 2 for å plukke opp flag 3) Flagget skal også fungere som checkpoint. Det sjekker du ved å dø, for å så se om du respawner på flagget)
+        *   Win condition (Du tester win condition ved å bevege spilleren over flaggene i riktig rekkefølge. Da skal du få opp en "Win Screen")
     
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
     committer, må dere legge ved en kort forklaring for hvorfor det er sånn. Husk å committe alt. (Også
