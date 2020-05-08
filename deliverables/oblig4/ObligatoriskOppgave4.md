@@ -59,13 +59,17 @@ fungerer på?
         *   Som spiller trenger jeg en brukerhåndbok for å vite om spill objekter.
     
 *   Dersom dere har oppgaver som dere skal til å starte med, hvor dere har oversikt over både brukerhistorie, akseptansekriterier og arbeidsoppgaver, kan dere ta med disse i innleveringen også.
+    *   Starter med å kunne legge/urføre en kort sekvens.
     
 *   Forklar kort hvilke hovedkrav dere anser som en del av MVP og hvorfor. Hvis det er gjort endringer i rekkefølge utfra hva som er gitt fra kunde, hvorfor er dette gjort?
-    *   Spillet trenger ett fungerende brett
+    *   Spiller må kunne se brettet.
+    *   Spiller må kunne legge en sekvens
+    *   Spiller må kunne legge en spillsekvens
+    *   Spiller må kunne spille multiplayer
     
 *   Husk å skrive hvilke bugs som finnes i de kravene dere har utført (dersom det finnes bugs). 
     *   Conveyor belts er ikke feilfrie, vi har ikke funnet et bra måte å sjekke om spiller kommer fra 
-    conveyorbelt.
+    conveyorbelt. Men utenom det er det ikke flere bugs vi vet om.
 
 ## Deloppgave 3: Produktleveranse og kodekvalitet
 

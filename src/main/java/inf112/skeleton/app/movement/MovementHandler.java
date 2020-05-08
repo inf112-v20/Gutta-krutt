@@ -47,8 +47,8 @@ public class MovementHandler {
 
         Belt Slow_Belt_North_East = new Belt(tilemap, Direction.EAST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{35}, 1, "Regular_Conveyor_belt");
         Belt Slow_Belt_East_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{36}, 1, "Regular_Conveyor_belt");
-        Belt Slow_Belt_South_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{43}, 1, "Regular_Conveyor_belt");
-        Belt Slow_Belt_West_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{44}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_South_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_270, new int[]{44}, 1, "Regular_Conveyor_belt");
+        Belt Slow_Belt_West_North = new Belt(tilemap, Direction.NORTH, TiledMapTileLayer.Cell.ROTATE_270, new int[]{43}, 1, "Regular_Conveyor_belt");
 
         Belt Slow_Belt_North_West = new Belt(tilemap, Direction.WEST, TiledMapTileLayer.Cell.ROTATE_90, new int[]{34}, 1, "Regular_Conveyor_belt");
         Belt Slow_Belt_West_South = new Belt(tilemap, Direction.SOUTH, TiledMapTileLayer.Cell.ROTATE_90, new int[]{33}, 1, "Regular_Conveyor_belt");
@@ -221,7 +221,7 @@ public class MovementHandler {
 
     private void outOfBoard(Player player) {
         if(player.getPosX() < 0 || player.getPosX() > 11 || player.getPosY() < 0 || player.getPosY() > 14) {
-            player.isDestroyed();
+            player.destroyed();
             player.addPos(player.getCheckpoint());
             player.setFullHealth();
         }
