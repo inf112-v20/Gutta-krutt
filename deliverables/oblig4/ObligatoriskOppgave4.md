@@ -88,15 +88,15 @@ fungerer på?
 
 *   Hvis dere tester manuelt: lever beskrivelser av hvordan testen foregår, slik at gruppeleder kan utføre testen selv.
     *   Ved å bevege spilleren med piltastene kan du teste:
-        *   Checkpoints
-        *   Vegger
-        *   Conveyorbelts
-        *   Hull
-        *   Out of board
-        *   Gears
-        *   Pushers
-        *   Flag
-        *   Win condition
+        *   Checkpoints, man beveger spilleren over et checkpoint og dør med vilje for å sjekke at det funker.
+        *   Vegger, man beveger spiller mot en vegg for å sjekke at spilleren ikke går gjennom veggen.
+        *   Conveyorbelts, man beveger spilleren inn på conveyorbelt fra ulike retninger for å sjekke at man blir dyttet/rotert i riktig retning.
+        *   Hull, beveger seg over et hull og sjekker at spiller dør og respawner på riktig sted og at man mister et liv.
+        *   Out of board, beveger seg ut av brettet og sjekker at spiller respawner på riktig sted og at man mister et liv.
+        *   Gears, går på et gear fra ulike retninger for å sjekke at spilleren blir rotert riktig vei i henhold til spillers retning fra før.
+        *   Pushers, går på en pusher og sjekker at man blir dyttet i riktig retning.
+        *   Flag, går over flaggene i ulik rekkefølge for å sjekke at man bare kan ta flaggene i riktig rekkefølge.
+        *   Win condition, går over alle flaggene i riktig rekkefølge og sjekker om man får opp riktig skjerm.
             
     
 *   Under vurdering vil det vektlegges at alle bidrar til kodebasen. Hvis det er stor forskjell i hvem som
