@@ -15,12 +15,12 @@ import inf112.skeleton.app.cards.Direction;
  */
 public class Belt implements ActionTiles {
 
-    private TiledMap tiledmap;
-    private Direction dir;
-    private int rotation;
+    private final TiledMap tiledmap;
+    private final Direction dir;
+    private final int rotation;
     private final int[] ID;
-    private int steps;
-    private String layer;
+    private final int steps;
+    private final String layer;
 
     public Belt(TiledMap tiledmap, Direction dir, int rotation, int[] ID, int steps, String layer) {
         this.tiledmap = tiledmap;

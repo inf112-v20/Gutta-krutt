@@ -147,13 +147,13 @@ public class MovementHandler {
             if(belt.tileAction(player)) break;
         }
 
+        pushPlayer(player, dir);
+
         //checks if a player is on a an actionTile and executes that tileAction
         // only one tileAction will be called, i.e not allowed to activate more than one tile even if you jump to another ActionTile.
         for(ActionTiles tile : actionTiles) {
             if(tile.tileAction(player)) break;
         }
-
-        pushPlayer(player, dir);
         //setting the new player tile
         outOfBoard(player);
         playerLayer.setCell((int) player.getPosX(), (int)player.getPosY(), player.getPlayerNormal());
@@ -165,6 +165,12 @@ public class MovementHandler {
         for(Player play: players) {
             if(play.equals(player)) continue;
             if (playerPos.x == play.getPos().x && playerPos.y == play.getPos().y) {
+                for(Belt belt : belts) {
+                    if(belt.isBelt(play)) {
+                        belt.tileAction(play);
+                        return true;
+                    }
+                }
                 movePlayer(dir, play);
             }
         }
