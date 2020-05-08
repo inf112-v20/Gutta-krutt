@@ -23,20 +23,20 @@ import java.util.ArrayList;
  */
 public class GameScreen extends InputAdapter implements Screen {
 
-    private OrthogonalTiledMapRenderer renderer;
-    final private int HEIGHT = 15;
-    final private int WIDTH = 12;
-    final private int TILESIZE = 300;
-    private TiledMap tilemap;
-    private ArrayList<Player> playerList;
-    private BitmapFont font;
-    private RoboRally game;
-    private Player player;
-    private Player dummy;
+    private final OrthogonalTiledMapRenderer renderer;
+    private final TiledMap tilemap;
+    private final ArrayList<Player> playerList;
+    private final BitmapFont font;
+    private final RoboRally game;
+    private final Player player;
+    private final Player dummy;
     private RegisterScreen registerScreen;
     private MovementHandler movementHandler;
 
     public GameScreen(RoboRally game) {
+        int HEIGHT = 15;
+        int WIDTH = 12;
+        int TILESIZE = 300;
         this.game = game;
         font = new BitmapFont();
         font.setColor(Color.RED);
@@ -52,7 +52,7 @@ public class GameScreen extends InputAdapter implements Screen {
         tilemap = tmxLoader.load("assets/maps/Map_Easy.tmx");
         OrthographicCamera camera = new OrthographicCamera();
         renderer = new OrthogonalTiledMapRenderer(tilemap, 1);
-        camera.setToOrtho(false, WIDTH*TILESIZE , HEIGHT*TILESIZE);
+        camera.setToOrtho(false, WIDTH * TILESIZE, HEIGHT * TILESIZE);
         camera.update();
         renderer.setView(camera);
         registerScreen = new RegisterScreen(this, game, player);
@@ -109,17 +109,13 @@ public class GameScreen extends InputAdapter implements Screen {
     }
 
     @Override
-    public void show() {
-        Gdx.input.setInputProcessor(this);
-
-    }
+    public void show() {Gdx.input.setInputProcessor(this);}
 
     @Override
     public void render(float v) {
         Gdx.gl.glClearColor( 180/255F, 180/255F ,180/255F, 0);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
         renderer.render();
-
 
         TiledMapTileLayer playerLayer = (TiledMapTileLayer) tilemap.getLayers().get("Player");
         playerLayer.setCell((int)player.getPosX(), (int) player.getPosY(), player.getPlayerNormal());
@@ -129,24 +125,16 @@ public class GameScreen extends InputAdapter implements Screen {
     }
 
     @Override
-    public void resize(int width, int height) {
-
-    }
+    public void resize(int width, int height) {}
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void hide() {
-
-    }
+    public void hide() {}
 
     @Override
     public void dispose() {

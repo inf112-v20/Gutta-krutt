@@ -34,17 +34,17 @@ import java.util.ArrayList;
  */
 public class RegisterScreen extends InputAdapter implements Screen {
 
-    private GameScreen gameScreen;
-    private RoboRally game;
-    private Player player;
-    private Stage stage;
-    private BitmapFont font;
+    private final GameScreen gameScreen;
+    private final RoboRally game;
+    private final Player player;
+    private final Stage stage;
+    private final BitmapFont font;
     private Table chosenTable;
-    private Table rootTable;
-    private Deck deck;
-    private ArrayList<Card> cards;
+    private final Table rootTable;
+    private final Deck deck;
+    private final ArrayList<Card> cards;
     //isChosen is a list of the cardindexes of the cards chosen
-    private int[] isChosen;
+    private final int[] isChosen;
     private Boolean[] isLocked;
     private Image[] chosenImages;
     private ArrayList<Card> chosenCards;
