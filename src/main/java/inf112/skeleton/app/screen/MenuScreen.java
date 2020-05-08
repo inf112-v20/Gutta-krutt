@@ -105,13 +105,13 @@ public class MenuScreen implements Screen {
         style.font = font;
         style.fontColor = Color.BROWN;
         font.getData().setScale(2);
-        makeTextButton("Easy", style, difficultyTable, game);
-        makeTextButton("Hard", style, difficultyTable, game);
+        makeDifficultyButton("Easy", style, difficultyTable, game);
+        makeDifficultyButton("Hard", style, difficultyTable, game);
         difficultyTable.setDebug(true);
         return difficultyTable;
     }
 
-    public TextButton makeTextButton(final String difficulty, TextButton.TextButtonStyle style, Table table, final RoboRally game) {
+    public TextButton makeDifficultyButton(final String difficulty, TextButton.TextButtonStyle style, Table table, final RoboRally game) {
         TextButton textButton = new TextButton(difficulty, style);
         table.add(textButton).width(100).height(80);
         textButton.addListener(new ClickListener() {

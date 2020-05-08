@@ -96,8 +96,7 @@ public class WinScreen extends InputAdapter implements Screen  {
         button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("clicked");
-                game.setScreen(new MenuScreen(roboRally));
+                game.setScreen(new MenuScreen(new RoboRally()));
             }
         });
         return button;
