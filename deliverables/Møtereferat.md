@@ -227,7 +227,7 @@ bindes sammen med eksisterende kode for å execute dem.
 
 ## Møtereferat 08.05.2020 (Remote via Discord)
 (Til stede: Fredrik, Vegard, Sedric)
-(10:15 - )
+(10:15 - 12:00)
 
 ###Gjort ila uken
 *   Laget Usermanual
